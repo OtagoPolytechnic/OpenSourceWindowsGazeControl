@@ -1,0 +1,853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="76cd982c-e247-46dd-9a09-af08275b1819"
+  name="Client"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="4910652c-651d-46f1-bf38-c32d6472ed9d"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DTobii.EyeX.Client"
+      tag="ViewCode" />
+  </referencesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="4ce79e36-778e-47bc-83de-3e91860d350c">
+      <profileInstance
+        Id="50472673-a89f-49fa-ac44-e8bcc9e4585d"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="4df6da53-5ced-484a-a25f-04519f3d8245"
+        name="Interactor"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="989b15bb-d841-4c33-ac25-a899da07530f"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DInteractor"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="73eb7ffc-208b-4c20-a423-1665574b40bf"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5d0bd3c6-990e-4514-b1f7-5fd2f9babef1">
+                <propertyInstance
+                  Id="ea07d771-65ad-4e6a-a0e9-286bf261cefa"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a0da9523-7681-49d9-a1b7-cccac0dac85f">
+                <propertyInstance
+                  Id="d4793035-b45d-4ef9-9504-c26d24785754"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="feecf7cd-1852-473d-a7cf-37be6d037b38">
+                <propertyInstance
+                  Id="f83cd61c-cf52-4b75-a459-e20b9e18b94d"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b966f0cb-85d1-4947-9c82-30be9ba7dd68">
+                <propertyInstance
+                  Id="28ed5093-8ac9-4162-93ad-1ef83a1c5041"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="57e042c6-7d47-4415-a781-38eeb6fd5064">
+                <propertyInstance
+                  Id="c62f8a67-0fa2-4465-8874-162b401bbff2"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8395d4fc-0bb5-42c2-9a43-05ce633cea2f"
+        name="Behavior"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="5546b4b5-c4ae-477e-8619-b560c496f423"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DBehavior"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="09f6298d-cedd-423c-8112-051e525daf92"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e8055c21-fec8-4819-bcca-06b8f65123ed">
+                <propertyInstance
+                  Id="ce5baf22-ec4b-4f90-9439-2c974ed4dcb1"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9463f507-94bf-4319-9770-6e5137f0e1bc">
+                <propertyInstance
+                  Id="b932ce54-06eb-4ad4-9ceb-7b4f884f6f22"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="17339948-e6a5-406c-add7-7a2417ad8612">
+                <propertyInstance
+                  Id="8bd4395a-1904-404b-af7f-29ff7470916a"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ae069ad2-0bf5-4349-abd9-c8389a4e694d">
+                <propertyInstance
+                  Id="dc11d915-164d-4db7-a18b-43577ab801fd"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="69c3f317-a3e8-44bd-bbb7-b02659467004">
+                <propertyInstance
+                  Id="67ff4235-6b88-400d-bc7b-9abadc220213"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="42da2c8c-5b0e-47de-9ec0-b46c37077613"
+        name="Snapshot"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a3362d5a-2164-4e26-90a5-7b123cb77d79"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DSnapshot"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="a476c2ba-e8ad-4fa2-8f0f-8d9c8c426010"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ed46f1cb-3776-4830-961f-f9d16fcdead4">
+                <propertyInstance
+                  Id="24bdb9d9-ad98-40d2-b325-56c0fd4e84ea"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="390e801b-ea33-4685-969f-9934b9da6cb5">
+                <propertyInstance
+                  Id="db7b37e4-32c1-4bd5-9b0c-e9e61296d6dc"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0b255559-4389-436c-9ee1-9cf5c89b16b5">
+                <propertyInstance
+                  Id="6e53cecd-2de2-4ef3-b950-3fbd6a8497d7"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="73835970-9fa4-4470-9ed1-fd8a471da7df">
+                <propertyInstance
+                  Id="c5323c51-3af6-4d08-bb15-7552e4eb66c8"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c768b0ce-5108-4148-92a5-4f131ce1de43">
+                <propertyInstance
+                  Id="7976cd16-923e-4691-b2e0-889ab4cc989f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="f80eee99-2cc7-46c5-9775-a0565b0cfa30"
+        name="InteractionEvent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="c3bb51b0-772e-4e1e-8de8-a6db9aca4d89"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DInteractionEvent"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="8101494c-f3c5-47e4-af24-3d1c000febb8"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6f5e422c-4430-41f7-8284-2c50f71a56de">
+                <propertyInstance
+                  Id="00a9e836-a5c1-4216-96b5-6c27ed3858cd"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="91bd9a17-239e-4814-8fee-1a7785b4d897">
+                <propertyInstance
+                  Id="a8a49f46-1ab2-46ef-b971-682ab6771ebc"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3bbe9fc2-057d-4992-b3e1-29860b9f1b8f">
+                <propertyInstance
+                  Id="b74f38c2-f05a-4648-b07f-cfe91be6d1b6"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9823f839-7cc7-4d10-876a-1470ed5da08f">
+                <propertyInstance
+                  Id="0ac196c6-f41e-4645-b9cc-3329356e754b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b1d9749d-cd77-4249-9d67-1be6780259af">
+                <propertyInstance
+                  Id="948c7877-6978-4ff5-8d44-a56985630577"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ba0ca409-d80c-4740-88ca-e58e0bedb5f2"
+        name="Context"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="2e5040bf-4cd0-4bb4-b886-f3a8d8a799f4"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DContext"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="8e8f46b1-b326-4637-9417-267d50766370"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4ce89ea2-bb7c-4a1f-85de-1f308eefd01f">
+                <propertyInstance
+                  Id="ace71192-a7bd-4f1b-8a0e-c33d187f9649"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3eebfb9a-a6b0-4b0c-a071-47ba03a66cd9">
+                <propertyInstance
+                  Id="732c0f17-d050-45dc-b638-5df8229d4fa8"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="41c3c196-931e-4382-83ba-d4ca74427bf1">
+                <propertyInstance
+                  Id="c7a55a31-7385-4099-8007-95fd2043af71"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="966d5e3f-6ec4-4fdf-89c7-564b315e135b">
+                <propertyInstance
+                  Id="e2a5fd35-9e2e-42d5-a8c7-52324a8fe1ee"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fdaa4249-eb97-44cf-a11d-9342cd9cbb1f">
+                <propertyInstance
+                  Id="45f48946-9e04-4f46-bab0-4447c8c21656"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8313fc2e-5390-4fcf-821a-de0d9f4e4cb3"
+        name="StateBag"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="893b7a28-2a8a-45c4-a8af-c6296e573791"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DStateBag"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="f0778a00-2f2d-47e1-96da-7aa9dcf8173e"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3b3bdc99-c508-4cd8-a4a8-c246b8087904">
+                <propertyInstance
+                  Id="3c599820-1420-4ab1-aed2-f92619158fa5"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6f19b850-0032-42b8-9b68-ff7b2856024c">
+                <propertyInstance
+                  Id="71164dc1-08cb-49f6-bcd7-d3e4203b8351"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="abfa9334-f62d-4ebe-a4de-6ba192d28ac0">
+                <propertyInstance
+                  Id="c055b650-d25d-4df7-bf2b-1adabba3214c"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="67f3e929-92c9-4678-b073-201f27249605">
+                <propertyInstance
+                  Id="26d46055-f01e-42c6-8f29-ebfa4504935f"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="066f06d1-830e-4270-9789-c05d8a172550">
+                <propertyInstance
+                  Id="10ed83db-91d3-484a-8eeb-26fba709140b"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="06c7dc4b-ae2f-4489-a4d2-5fc2773fc480"
+        name="AsyncData"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="daaaded0-0499-4e8d-a6c0-8976b3c34761"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DAsyncData"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="3e84e7ea-2dd2-4ecd-80dc-e56397202124"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4e11b356-c14b-4071-abfc-a294ed9dc15d">
+                <propertyInstance
+                  Id="abc44448-c236-4737-9a3a-d305d4d40ba3"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9ea4bc50-3ac6-49e3-a7b1-a0d0edd52eeb">
+                <propertyInstance
+                  Id="3e11b9e9-8b77-490a-bb19-a321becc59f3"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="82cc003b-6e50-414f-8248-112cc5272a4f">
+                <propertyInstance
+                  Id="7fa00d8f-2abd-4727-8076-949e8033d56f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ef05dd53-221a-45a6-97c5-1bec4dbbc303">
+                <propertyInstance
+                  Id="6ba7cda7-0ee7-4734-9cab-e79e297a73b2"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4bd90ce4-4e94-4d23-92bd-4e49d789af9a">
+                <propertyInstance
+                  Id="cc63347c-6883-418b-b538-22a79e943f87"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ec9511c5-28a6-4b8a-b307-6e3b530c5b4a"
+        name="AsyncDataHandler"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="56940f06-7b14-4986-bd3c-04e5cb801b5c"
+            handle="viewcode://./CodeSchema_Delegate?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DAsyncDataHandler"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="102f4dee-3b02-4c6e-abfd-4fe0143fe34d"
+            name="delegate"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fc90bb62-f524-4b77-b830-752e4c560dab">
+                <propertyInstance
+                  Id="0a09049c-2412-4e82-9a3d-9b33d6df27f6"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e941109e-dc58-4a5c-b60f-9a4d1d1c0081">
+                <propertyInstance
+                  Id="2b9a10cc-1d1e-4384-9286-248825f692e1"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3c62f85e-d4b6-4317-a42d-65f3d51de26c">
+                <propertyInstance
+                  Id="8528ca69-eded-4a17-931a-04f02be483a6"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="5012633e-fc05-478d-b506-89f4567e797a"
+        name="Query"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a2a15acb-bc68-4400-a4b9-e6db0c2e4749"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DQuery"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="274ae855-12c5-480e-9a16-7cdba3b6750d"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0c5c103c-bf31-48a5-aea9-f4d271c5b279">
+                <propertyInstance
+                  Id="257c1580-4568-4a44-a903-d43a404b694a"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9b916ff3-dac8-4dd1-b2a0-027a7a5a9a6f">
+                <propertyInstance
+                  Id="d599f003-158c-4baf-af42-a2e4d17227b0"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7eede3bf-6631-49ec-a8f4-15887a9f4411">
+                <propertyInstance
+                  Id="492d7137-8a30-4675-a210-d69c8682f514"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="aff06b36-4ba5-466d-9af0-8806303d2613">
+                <propertyInstance
+                  Id="6c497f17-97ee-4967-a2b0-9e58213d8dbf"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="45b69e0e-07af-4c81-8b56-48d122bff9e5">
+                <propertyInstance
+                  Id="4923ade7-8c1b-4061-abce-95fcfdb9c62f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="3089cde0-9253-46a4-bc04-6bac3cc0c392"
+        name="ConnectionStateChangedEventArgs"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="201b4ae4-1019-486b-a0f1-268b7c5584f4"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DConnectionStateChangedEventArgs"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="ec3ef118-e419-4610-95c9-7153010b591a"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4e2f82a6-3d3f-442e-80f1-bb31f3b0b66a">
+                <propertyInstance
+                  Id="28e326de-2f57-48f8-bf34-6f28c39f9e62"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="69f04125-882b-4ca8-91de-43404c7083f5">
+                <propertyInstance
+                  Id="1ddcc00e-56ec-499d-b5b9-85fa0810fdb9"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a29326ae-8ac1-43ae-a970-85f4c02fad65">
+                <propertyInstance
+                  Id="cccbedb7-6426-4641-b0ac-66bdd31fa69a"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="956092cd-3649-4d1b-8011-0d47e5651691">
+                <propertyInstance
+                  Id="67833d94-2db3-4b14-a836-4af80330cc94"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d2578e67-3e1d-445d-b294-0a20a2f8aabb">
+                <propertyInstance
+                  Id="1431bb94-9307-435e-9253-8be1abb9e77f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="425fd1aa-6232-4ccf-9e05-3f8ef436ffa0"
+            isSubstitutable="false">
+            <classMoniker
+              Id="1d68ed99-c77f-43a0-842a-685eed6e2d5d"
+              LastKnownName="EventArgs"
+              LastKnownLocation="Package4_1144.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="766062a4-b9fd-4b6b-aa45-85b42d938480"
+        name="EyeXAvailability"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="01fac1f0-5e4e-4ff8-a383-d91d0855e6d2"
+            handle="viewcode://./CodeSchema_Enum?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DEyeXAvailability"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="4e4e76dc-12f7-4e3f-9d34-bd491972e480"
+            name="enum"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="510f08b2-ba98-4884-8083-e6ab84b1a7fb">
+                <propertyInstance
+                  Id="92935b79-abfc-4890-93cf-48426779c358"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d2faa31f-6f68-4e46-a4ec-dae3420bd464">
+                <propertyInstance
+                  Id="58f96388-d1f7-4707-9eba-dfb2022e1778"
+                  name="BaseType"
+                  value="int" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="014601b3-f2f4-4104-a4b8-0c9a9a8022c1">
+                <propertyInstance
+                  Id="b22413fb-ac9e-4cbd-a3cf-b0153de501d4"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ad644206-48e4-47d1-8e60-39d15195a114"
+        name="Rect"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="205dfa43-9dd6-46c8-8208-4a130cf8bf29"
+            handle="viewcode://./CodeSchema_Struct?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DRect"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b4ebf1ea-ec01-447e-81d9-343fc1ba53e8"
+            name="struct"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b1431683-b36e-434e-8c20-8e4f02f9d535">
+                <propertyInstance
+                  Id="d29da694-5db8-4119-b85b-31dc2f472bf2"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c4b276eb-e146-4bd8-9ce7-6d9e61752d8b">
+                <propertyInstance
+                  Id="3d1fbaa1-c3ed-4405-b8c0-8cfaa4d39de9"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="04983975-0176-4c5e-a697-8f3362a6a7eb">
+                <propertyInstance
+                  Id="465614a0-701e-42c9-b663-35d6a76a2417"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="80a183f4-2494-46e9-a02f-2d32480b0488">
+                <propertyInstance
+                  Id="28a32903-dddc-4a7a-b505-0cede214f4fc"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d6e3eeb5-e3a5-4990-bdff-241f2229004f"
+        name="Size2"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="676f759b-0d74-4001-a4c6-30a812072618"
+            handle="viewcode://./CodeSchema_Struct?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DSize2"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="83f4a080-77b7-433c-b60d-3127ff2e5967"
+            name="struct"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4886283b-46c5-4d6b-85e9-d3f8352ee91e">
+                <propertyInstance
+                  Id="3ff92e7b-98b3-4078-be69-249c953dc102"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="81e3aad0-0f66-4c66-a493-494953fbd507">
+                <propertyInstance
+                  Id="81ed00f9-08fd-4e96-96b0-29bd9c1cf78f"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="16e69aab-6c8b-4093-bf0d-c74fa9d5dd33">
+                <propertyInstance
+                  Id="aaee5efe-ce84-4243-a48c-39454a84b77e"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c8119a00-5f89-4e22-8898-7239f85b8eb4">
+                <propertyInstance
+                  Id="0587cdd6-f9e4-4bd1-882e-70ef1f9696c6"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1880f662-82cb-4a1b-a764-93327dc7d2a5"
+        name="Environment"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="743a5ff8-0472-460c-b892-0378295080bd"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DEnvironment"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="7c25c2d2-f001-4595-86be-46a54f447833"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f8b0ba0e-8e17-4020-bf56-76593e1c8bf7">
+                <propertyInstance
+                  Id="8676634f-481d-4d2e-8e98-a21c4a229d8c"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7abd9899-6602-4e8c-9513-c1cb015aff8d">
+                <propertyInstance
+                  Id="64bc4d87-d437-443a-813b-8adf5991b852"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ca1b7e49-91c7-43e9-a44b-e7146465727b">
+                <propertyInstance
+                  Id="3b963d0b-89df-4e39-965d-863c610d0b7a"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5ee12678-87db-44e1-a9a0-ece94b721e0b">
+                <propertyInstance
+                  Id="0073a3fb-aa62-49ea-bc32-1a660df0a532"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="26874f2e-670a-4dee-bcbb-36e9cbadef91">
+                <propertyInstance
+                  Id="273dd218-ab57-48c2-a22a-57b68f4ce6ad"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a449a25a-d7e8-4674-9cff-9c10228ce479"
+        name="ActivationFocusChangedEventParams"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="cb1fc2bd-1b85-4b8f-9572-e771449d1513"
+            handle="viewcode://./CodeSchema_Struct?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FTobii.EyeX.Client.Net20.dll&quot; Namespace%3DTobii.EyeX.Client Type%3DActivationFocusChangedEventParams"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="711c6d3f-750e-4bd6-92fd-00ded2505f03"
+            name="struct"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="42b65ed0-2a32-43e3-bd99-4441bab77bb4">
+                <propertyInstance
+                  Id="18c74f64-cc86-4600-8d59-c2b3a0c1cba7"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1fd722d9-c760-40ab-adae-1ae36a5d65b6">
+                <propertyInstance
+                  Id="de8965a6-3bc3-4f51-a4c5-139b300e1f66"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f07c6189-a14f-4f26-ada3-eddc2214e5fa">
+                <propertyInstance
+                  Id="922186b1-3730-466b-9ad5-b2763d9a3dd6"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="af191fa2-0879-4772-9e15-5f3ed5a38b54">
+                <propertyInstance
+                  Id="4d125e66-8b8f-49c4-87ff-ca39164d77e1"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="2d3c9a33-0132-4599-a1d5-0cc9ffb4404a"
+  name="ModelingProject1" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="3cb50100-6e34-456f-92d3-96d6595dc77d"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3D::"
+      tag="ViewCode" />
+  </referencesInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="c0702298-1dff-4cb1-b6fc-4d8f0f48e386">
+      <profileInstance
+        Id="951e14cf-613a-461b-8b48-911ba39856b8"
+        name="CSharpProfile" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="38675663-aeaa-4cf8-b753-d5f3e46cc601"
+        LastKnownName="EyeXFramework"
+        LastKnownLocation="Package_1144.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="cdec485d-e351-4ee7-ba51-21c2c136ccc8"
+        LastKnownName="Tobii"
+        LastKnownLocation="Package1_1144.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="50444a3c-aab1-4c9b-a016-ed7dd80800cb"
+        LastKnownName="System"
+        LastKnownLocation="Package4_1144.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9ceaf43f-f332-4797-97d0-9acde350c5c5"
+        name="T‎[]"
+        visibility="Private"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="eb3a8c8b-7d2e-4e17-92b4-373978168313"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FH:%2FMy Documents%2FGitHub%2FGazeControl%2FXYPointTrack%2FEyeXFramework%2Fbin%2Fx86%2FDebug%2FEyeXFramework.dll&quot; Namespace%3DEyeXFramework Type%3D(ArrayRank%3D1 ParentType%3D(Type%3D(Name%3DEnumerableStateAccessor GenericParameterCount%3D1) ParameterIdentifier%3D0))"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="5e5dabb5-04da-423a-a1a9-a61fad04f3f0"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ccd0c26a-f540-4eb5-8826-ff93ed21cdc8">
+                <propertyInstance
+                  Id="5d60218b-c9b8-4db7-8e3d-0bf5675badef"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4c403809-3a37-4be9-ae69-952c92b725a2">
+                <propertyInstance
+                  Id="3c4646e1-248e-4089-9be7-1d52d59bd89d"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a5c37ed1-3173-4b79-90b5-c871364142ff">
+                <propertyInstance
+                  Id="6b9d8774-ef7b-44ef-937d-0985ec41ff66"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6fa3f4af-472b-49b6-a2f0-419f9037fc6c">
+                <propertyInstance
+                  Id="2764029b-df86-494e-9abc-5a2b3d46e81d"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="19fb4226-831c-4c6d-9910-8c0ce4179f35">
+                <propertyInstance
+                  Id="484cc7fd-ca75-4d32-9d13-dafc3c7c0419"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
