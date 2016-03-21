@@ -10,6 +10,8 @@ namespace XYPointTrack
     {
         static void Main(string[] args)
         {
+
+
         }
     }
 }
