@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EyeXFramework", "EyeXFramew
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "ModelingProject1\ModelingProject1.modelproj", "{321B7729-0A73-4580-92A3-A8A3C7DBA22C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "formdisplayXY", "formdisplayXY\formdisplayXY.csproj", "{157FED94-EE71-4329-8E9F-D07E9DF32CEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,18 @@ Global
 		{321B7729-0A73-4580-92A3-A8A3C7DBA22C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{321B7729-0A73-4580-92A3-A8A3C7DBA22C}.Release|x64.ActiveCfg = Release|Any CPU
 		{321B7729-0A73-4580-92A3-A8A3C7DBA22C}.Release|x86.ActiveCfg = Release|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Release|x64.ActiveCfg = Release|Any CPU
+		{157FED94-EE71-4329-8E9F-D07E9DF32CEE}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
