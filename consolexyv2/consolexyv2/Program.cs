@@ -29,7 +29,7 @@ namespace consolexyv2
                     eyeXHost.Start();
 
                     // Write the data to the console.
-
+                     
                     //Create the Deligate
 
                     EventHandler<GazePointEventArgs> displaydel = new EventHandler<GazePointEventArgs>(CustomGazeHandler);
