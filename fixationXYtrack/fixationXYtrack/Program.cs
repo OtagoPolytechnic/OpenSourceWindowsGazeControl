@@ -40,7 +40,9 @@ namespace fixationXYtrack
                 startToEndDuration = lastFixationEndTime - lastFixationStartTime;
 
                 Console.WriteLine("Fixation Duration" + startToEndDuration.ToString());
-
+                Console.WriteLine("start X point" + startXPoint.ToString() + " start Y Point " + startYPoint.ToString());
+                Console.WriteLine("End X point" + endXPoint.ToString() + " end Y Point " + endYPoint.ToString());
+                Console.WriteLine();
             }
 
 
@@ -63,6 +65,9 @@ namespace fixationXYtrack
 
             fixationPointDatastream.Next += displayFixation;
 
+
+            Console.WriteLine("Listening for gaze data, press any key to exit...");
+            Console.In.Read();
 
 
         }
