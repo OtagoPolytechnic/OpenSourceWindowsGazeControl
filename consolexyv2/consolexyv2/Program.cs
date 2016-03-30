@@ -12,7 +12,8 @@ namespace consolexyv2
     {
         public static void CustomGazeHandler(object eventRaiser, GazePointEventArgs ge)
         {
-            Console.WriteLine("My custom handler say: " + ge.X + ", " + ge.Y);
+            Console.Clear();
+            Console.WriteLine("X-Axis {0:0.0} Y-Axis {1:0.0} " , ge.X  , ge.Y);
         }
 
 

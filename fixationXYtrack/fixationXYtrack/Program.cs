@@ -51,6 +51,8 @@ namespace fixationXYtrack
 
         public static EyeXHost eyexHost;
         public static FixationDataStream fixationPointDatastream;
+        
+        
         static void Main(string[] args)
         {
 
