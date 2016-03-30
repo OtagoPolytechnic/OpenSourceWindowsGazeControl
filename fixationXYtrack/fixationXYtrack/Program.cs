@@ -39,6 +39,7 @@ namespace fixationXYtrack
 
                 startToEndDuration = lastFixationEndTime - lastFixationStartTime;
 
+                Console.Clear();
                 Console.WriteLine("Fixation Duration" + startToEndDuration.ToString());
                 Console.WriteLine("start X point" + startXPoint.ToString() + " start Y Point " + startYPoint.ToString());
                 Console.WriteLine("End X point" + endXPoint.ToString() + " end Y Point " + endYPoint.ToString());
