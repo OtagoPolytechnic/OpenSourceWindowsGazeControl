@@ -42,9 +42,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tobii.EyeX.Client.Net20">
-      <HintPath>..\..\consolexyv2\lib\x86\Tobii.EyeX.Client.Net20.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
