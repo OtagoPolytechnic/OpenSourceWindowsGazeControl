@@ -1,0 +1,11 @@
+c:\users\戴利丰\documents\visual studio 2015\Projects\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.exe.config
+c:\users\戴利丰\documents\visual studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Properties.Resources.resources
+c:\users\戴利丰\documents\visual studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csproj.GenerateResource.Cache
+c:\users\戴利丰\documents\visual studio 2015\Projects\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.exe
+c:\users\戴利丰\documents\visual studio 2015\Projects\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.pdb
+c:\users\戴利丰\documents\visual studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.exe
+c:\users\戴利丰\documents\visual studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.pdb
+c:\users\戴利丰\documents\visual studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Form1.resources
+c:\users\戴利丰\documents\visual studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Settings.resources
+C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csprojResolveAssemblyReference.cache
