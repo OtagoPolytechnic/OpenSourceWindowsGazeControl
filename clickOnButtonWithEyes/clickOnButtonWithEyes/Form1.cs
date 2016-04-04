@@ -19,8 +19,9 @@ namespace clickOnButtonWithEyes
         {
             InitializeComponent();
             Program.EyeXHost.Connect(behaviorMap1);
-            behaviorMap1.Add(button1, new ActivatableBehavior(OnButton1Click));
-            Program.EyeXHost.TriggerActivationModeOn();
+
+            behaviorMap1.Add(button1, new GazeAwareBehavior(OnButton1Gaze) { DelayMilliseconds = 500 });
+
         }
 
 
@@ -30,15 +31,25 @@ namespace clickOnButtonWithEyes
 
         }
 
-        private void OnButton1Click(object Sender, EventArgs e)
+
+        private void OnButton1Gaze(object Sender, GazeAwareEventArgs e)
         {
             button1.PerformClick();
-            Console.WriteLine("Button clicked");
+            if (e.HasGaze)
+            {
+                button1.BackColor = Color.Red;
+            }
+            else
+            {
+                button1.BackColor = Color.Gold;
+            }
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Console.WriteLine("Button clicked");
+            
         }
     }
 }
