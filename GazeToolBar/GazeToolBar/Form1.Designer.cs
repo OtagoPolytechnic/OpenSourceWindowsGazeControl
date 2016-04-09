@@ -118,6 +118,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.ShowInTaskbar = false;
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.panel.ResumeLayout(false);

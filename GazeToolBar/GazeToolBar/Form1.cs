@@ -7,28 +7,26 @@ namespace GazeToolBar
 {
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
-        //When auto start is on then set to true
-        //else false
-        private bool isOnStart;
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
         private MenuItem menuItemStartOnOff;
-        private RegistryKey rkApp;
 
         public Form1()
         {
+            //Change resolution to 800 * 600
+            ChangeResolution.ChangeScreenResolution();            
             InitializeComponent();
             Size = ReletiveSize.formSize;
-            Edge = AppBarEdges.Right;
-            rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            isOnStart = false;
+            AutoStart.OpenKey();
             contextMenu = new ContextMenu();
             menuItemExit = new MenuItem();
             menuItemStartOnOff = new MenuItem();
             initMenuItem();
             setBtnSize();
             connectBehaveMap();
+            Edge = AppBarEdges.Right;
+            AutoStart.IsAutoStart(settings, menuItemStartOnOff);
         }
 
         /// <summary>
@@ -65,35 +63,6 @@ namespace GazeToolBar
             panel.Size = ReletiveSize.panelSize;
         }
 
-        /// <summary>
-        /// If auto start is on then it will start
-        /// when user turn on their computer
-        /// </summary>
-        public void setAutoStartOnOff()
-        {
-            if (!isOnStart)
-            {
-                try
-                {
-                    rkApp.SetValue(ValueNeverChange.RES_NAME, Application.ExecutablePath.ToString());
-                    isOnStart = true;
-                    settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_ON;
-                    menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_ON;
-                }
-                catch (UnauthorizedAccessException exception)
-                {
-                    MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                rkApp.DeleteValue(ValueNeverChange.RES_NAME, false);
-                isOnStart = false;
-                settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_OFF;
-                menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
-            }
-        }
-
         private void menuItemExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -101,13 +70,28 @@ namespace GazeToolBar
 
         private void menuItemStartOnOff_Click(object sender, EventArgs e)
         {
-            setAutoStartOnOff();
+            AutoStart.setAutoStartOnOff(settings, menuItemStartOnOff);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             settings = new Settings(this);
             settings.Show();
+        }
+
+        /// <summary>
+        /// Change resolution back to its orignal resolution.
+        /// This will solve the problem that desktop won't show the taskbar properly.
+        /// </summary>
+        private void Form1_Shown(object sender, System.EventArgs e)
+        {
+            ChangeResolution.ChangeResolutionBack();
+        }
+
+        public MenuItem MenuItemStartOnOff { get { return menuItemStartOnOff; } }
+
+        public Settings Settings { get { return settings; }
+            
         }
     }
 }

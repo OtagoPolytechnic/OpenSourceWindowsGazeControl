@@ -67,6 +67,7 @@ namespace GazeToolBar
             this.Controls.Add(this.btnChangeSide);
             this.Name = "Settings";
             this.Text = "Settings";
+            this.Shown += new System.EventHandler(this.Settings_Shown);
             this.ResumeLayout(false);
 
         }

@@ -37,7 +37,7 @@ namespace GazeToolBar
 
         private void btnAutoStart_Click(object sender, EventArgs e)
         {
-            form1.setAutoStartOnOff();
+            AutoStart.setAutoStartOnOff(form1.Settings, form1.MenuItemStartOnOff);
         }
 
         public Button BtnAutoStart
@@ -54,6 +54,11 @@ namespace GazeToolBar
             {
                 return btnChangeSide;
             }
+        }
+
+        private void Settings_Shown(object sender, EventArgs e)
+        {
+            AutoStart.IsAutoStart(form1.Settings, form1.MenuItemStartOnOff);
         }
     }
 }
