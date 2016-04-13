@@ -31,7 +31,7 @@ namespace GazeToolBar
             menuItemStartOnOff = new MenuItem();
             initMenuItem();
             setBtnSize();
-            connectBehaveMap();
+           
             Edge = AppBarEdges.Right;
             AutoStart.IsAutoStart(settings, menuItemStartOnOff);
             btnSingleClick.Image = leftSingleClick;

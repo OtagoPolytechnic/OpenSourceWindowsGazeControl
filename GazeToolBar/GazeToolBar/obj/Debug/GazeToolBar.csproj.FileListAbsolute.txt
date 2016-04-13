@@ -10,3 +10,6 @@ C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.exe
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.pdb
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csprojResolveAssemblyReference.cache
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.exe.config
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.exe
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.pdb
