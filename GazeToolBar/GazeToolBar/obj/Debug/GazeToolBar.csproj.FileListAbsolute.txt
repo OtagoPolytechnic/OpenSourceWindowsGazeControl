@@ -13,3 +13,16 @@ C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar
 C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.exe.config
 C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.exe
 C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.pdb
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\Gaze.ico
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.exe
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.pdb
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\EyeXFramework.dll
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.Net20.dll
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\EyeXFramework.pdb
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.Net20.xml
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csprojResolveAssemblyReference.cache
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Form1.resources
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Properties.Resources.resources
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Settings.resources
+C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csproj.GenerateResource.Cache

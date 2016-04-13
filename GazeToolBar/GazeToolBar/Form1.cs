@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+
 namespace GazeToolBar
 {
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
