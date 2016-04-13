@@ -36,6 +36,10 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnRightClick = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
+            this.bhavMapRightClick = new EyeXFramework.Forms.BehaviorMap(components);
+            this.bhavMapDoubleClick = new EyeXFramework.Forms.BehaviorMap(components);
+            this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(components);
+            this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(components);
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +51,7 @@
             // 
             // btnSingleClick
             // 
-            this.btnSingleClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
+            this.btnSingleClick.BackColor = System.Drawing.Color.FromArgb(173, 83, 201);
             this.btnSingleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSingleClick.Location = new System.Drawing.Point(43, 80);
             this.btnSingleClick.Name = "btnSingleClick";
@@ -57,17 +61,18 @@
             // 
             // btnDoubleClick
             // 
-            this.btnDoubleClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
+            this.btnDoubleClick.BackColor = System.Drawing.Color.FromArgb(173, 83, 201);
             this.btnDoubleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDoubleClick.Location = new System.Drawing.Point(43, 160);
             this.btnDoubleClick.Name = "btnDoubleClick";
             this.btnDoubleClick.Size = new System.Drawing.Size(93, 80);
             this.btnDoubleClick.TabIndex = 4;
+            this.btnDoubleClick.Text = "";
             this.btnDoubleClick.UseVisualStyleBackColor = false;
             // 
             // btnSettings
             // 
-            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(173, 83, 201);
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Location = new System.Drawing.Point(43, 240);
             this.btnSettings.Name = "btnSettings";
@@ -78,7 +83,7 @@
             // 
             // btnRightClick
             // 
-            this.btnRightClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
+            this.btnRightClick.BackColor = System.Drawing.Color.FromArgb(173, 83, 201);
             this.btnRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRightClick.Location = new System.Drawing.Point(43, 0);
             this.btnRightClick.Name = "btnRightClick";
@@ -88,7 +93,7 @@
             // 
             // panel
             // 
-            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
+            this.panel.BackColor = System.Drawing.Color.FromArgb(78, 0, 82);
             this.panel.Controls.Add(this.btnDoubleClick);
             this.panel.Controls.Add(this.btnSettings);
             this.panel.Controls.Add(this.btnSingleClick);
@@ -101,8 +106,8 @@
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(200, 772);
+            this.BackColor = System.Drawing.Color.FromArgb(78, 0, 82);
+            this.ClientSize = new System.Drawing.Size(200, 1000);
             this.ControlBox = false;
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -126,6 +131,10 @@
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnRightClick;
         private System.Windows.Forms.Panel panel;
+        private EyeXFramework.Forms.BehaviorMap bhavMapRightClick;
+        private EyeXFramework.Forms.BehaviorMap bhavMapSingleClick;
+        private EyeXFramework.Forms.BehaviorMap bhavMapDoubleClick;
+        private EyeXFramework.Forms.BehaviorMap bhavMapSettings;
     }
 }
 

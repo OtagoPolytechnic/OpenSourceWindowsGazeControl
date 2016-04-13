@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-
 namespace GazeToolBar
 {
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
@@ -32,7 +31,7 @@ namespace GazeToolBar
             menuItemStartOnOff = new MenuItem();
             initMenuItem();
             setBtnSize();
-           
+            
             Edge = AppBarEdges.Right;
             AutoStart.IsAutoStart(settings, menuItemStartOnOff);
             btnSingleClick.Image = leftSingleClick;
