@@ -1,0 +1,9 @@
+H:\GazeControl\Zoomer\Zoomer\bin\Debug\Zoomer.exe.config
+H:\GazeControl\Zoomer\Zoomer\bin\Debug\Zoomer.exe
+H:\GazeControl\Zoomer\Zoomer\bin\Debug\Zoomer.pdb
+H:\GazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.csprojResolveAssemblyReference.cache
+H:\GazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.Form1.resources
+H:\GazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.Properties.Resources.resources
+H:\GazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.csproj.GenerateResource.Cache
+H:\GazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.exe
+H:\GazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.pdb
