@@ -1,4 +1,5 @@
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.dll
+C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\bin\Debug\Gaze.ico
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.exe.config
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.exe
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.pdb
@@ -8,3 +9,4 @@ C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csproj.GenerateResource.Cache
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.exe
 C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.pdb
+C:\Users\戴利丰\Documents\Visual Studio 2015\Projects\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csprojResolveAssemblyReference.cache

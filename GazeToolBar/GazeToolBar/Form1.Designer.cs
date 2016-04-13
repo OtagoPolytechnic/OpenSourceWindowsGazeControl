@@ -36,10 +36,10 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnRightClick = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
-            this.bhavMapRightClick = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.bhavMapDoubleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavMapRightClick = new EyeXFramework.Forms.BehaviorMap(components);
+            this.bhavMapDoubleClick = new EyeXFramework.Forms.BehaviorMap(components);
+            this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(components);
+            this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(components);
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,52 +51,49 @@
             // 
             // btnSingleClick
             // 
-            this.btnSingleClick.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnSingleClick.BackColor = System.Drawing.Color.FromArgb(173, 83, 201);
             this.btnSingleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSingleClick.Location = new System.Drawing.Point(43, 80);
             this.btnSingleClick.Name = "btnSingleClick";
             this.btnSingleClick.Size = new System.Drawing.Size(93, 80);
             this.btnSingleClick.TabIndex = 3;
-            this.btnSingleClick.Text = "Single Click";
             this.btnSingleClick.UseVisualStyleBackColor = false;
             // 
             // btnDoubleClick
             // 
-            this.btnDoubleClick.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnDoubleClick.BackColor = System.Drawing.Color.FromArgb(173, 83, 201);
             this.btnDoubleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDoubleClick.Location = new System.Drawing.Point(43, 160);
             this.btnDoubleClick.Name = "btnDoubleClick";
             this.btnDoubleClick.Size = new System.Drawing.Size(93, 80);
             this.btnDoubleClick.TabIndex = 4;
-            this.btnDoubleClick.Text = "Double Click";
+            this.btnDoubleClick.Text = "";
             this.btnDoubleClick.UseVisualStyleBackColor = false;
             // 
             // btnSettings
             // 
-            this.btnSettings.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnSettings.BackColor = System.Drawing.Color.FromArgb(173, 83, 201);
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSettings.Location = new System.Drawing.Point(43, 240);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(93, 80);
             this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "Settings";
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnRightClick
             // 
-            this.btnRightClick.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnRightClick.BackColor = System.Drawing.Color.FromArgb(173, 83, 201);
             this.btnRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRightClick.Location = new System.Drawing.Point(43, 0);
             this.btnRightClick.Name = "btnRightClick";
             this.btnRightClick.Size = new System.Drawing.Size(93, 80);
             this.btnRightClick.TabIndex = 3;
-            this.btnRightClick.Text = "Right Click";
             this.btnRightClick.UseVisualStyleBackColor = false;
             // 
             // panel
             // 
-            this.panel.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel.BackColor = System.Drawing.Color.FromArgb(78, 0, 82);
             this.panel.Controls.Add(this.btnDoubleClick);
             this.panel.Controls.Add(this.btnSettings);
             this.panel.Controls.Add(this.btnSingleClick);
@@ -109,18 +106,19 @@
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.BackColor = System.Drawing.Color.FromArgb(78, 0, 82);
             this.ClientSize = new System.Drawing.Size(200, 1000);
             this.ControlBox = false;
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.ShowInTaskbar = false;
-            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panel.ResumeLayout(false);
             this.ResumeLayout(false);
 

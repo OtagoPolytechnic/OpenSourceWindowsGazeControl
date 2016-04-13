@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -11,9 +10,17 @@ namespace GazeToolBar
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
         private MenuItem menuItemStartOnOff;
+        private Bitmap leftSingleClick;
+        private Bitmap rightClick;
+        private Bitmap settingIcon;
+        private Bitmap doubleClick;
 
         public Form1()
         {
+            leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
+            rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
+            settingIcon = new Bitmap(new Bitmap("settings-icon.png"), ReletiveSize.btnSize);
+            doubleClick = new Bitmap(new Bitmap("Double-Click-icon.png"), ReletiveSize.btnSize);
             //Change resolution to 800 * 600
             ChangeResolution.ChangeScreenResolution();            
             InitializeComponent();
@@ -27,6 +34,10 @@ namespace GazeToolBar
             connectBehaveMap();
             Edge = AppBarEdges.Right;
             AutoStart.IsAutoStart(settings, menuItemStartOnOff);
+            btnSingleClick.Image = leftSingleClick;
+            btnRightClick.Image = rightClick;
+            btnSettings.Image = settingIcon;
+            btnDoubleClick.Image = doubleClick;
         }
 
         /// <summary>
