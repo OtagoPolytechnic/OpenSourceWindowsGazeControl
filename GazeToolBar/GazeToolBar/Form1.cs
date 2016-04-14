@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using EyeXFramework;
+using Tobii;
 
 namespace GazeToolBar
 {
