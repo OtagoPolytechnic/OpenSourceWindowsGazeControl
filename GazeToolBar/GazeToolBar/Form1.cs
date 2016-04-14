@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using EyeXFramework;
+using Tobii;
 
 namespace GazeToolBar
 {
@@ -31,7 +33,7 @@ namespace GazeToolBar
             menuItemStartOnOff = new MenuItem();
             initMenuItem();
             setBtnSize();
-            connectBehaveMap();
+            
             Edge = AppBarEdges.Right;
             AutoStart.IsAutoStart(settings, menuItemStartOnOff);
             btnSingleClick.Image = leftSingleClick;
