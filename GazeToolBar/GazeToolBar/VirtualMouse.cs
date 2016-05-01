@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GazeToolBar
 {
-    public class VirtualMouse
+    public static class VirtualMouse
     {
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
