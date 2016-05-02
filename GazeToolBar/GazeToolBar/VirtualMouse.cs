@@ -18,6 +18,7 @@ namespace GazeToolBar
         public static void LeftMouseClick(int xpos, int ypos)
         {
             mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
+            Console.WriteLine("LeftMouseClick X" + xpos + " Y" + ypos);
             mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
         }
 

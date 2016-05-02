@@ -4,10 +4,14 @@ using System.Windows.Forms;
 using EyeXFramework;
 using Tobii;
 
+
 namespace GazeToolBar
 {
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
+        EyeXHost eyeXhost;
+        FixationDetection fixationWorker;
+
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
@@ -105,6 +109,19 @@ namespace GazeToolBar
 
         public Settings Settings { get { return settings; }
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            eyeXhost = new EyeXHost();
+            eyeXhost.Start();
+
+            fixationWorker = new FixationDetection(eyeXhost);
+        }
+
+        private void btnRightClick_Click(object sender, EventArgs e)
+        {
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftMouseClick);
         }
     }
 }
