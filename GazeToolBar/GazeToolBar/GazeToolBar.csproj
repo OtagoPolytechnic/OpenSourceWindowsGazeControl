@@ -94,6 +94,7 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestDrawClass.cs" />
     <Compile Include="ValueNeverChange.cs" />
     <Compile Include="VirtualMouse.cs" />
     <EmbeddedResource Include="Form1.resx">

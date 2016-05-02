@@ -29,6 +29,7 @@ namespace GazeToolBar
 
         int lengthOfTimeOfGazeBeforeRunningAction = 500;
 
+        TestDrawClass drawtestTool;
         
 
 
@@ -45,6 +46,8 @@ namespace GazeToolBar
             aTimer.AutoReset = false;
 
             aTimer.Elapsed += runActionWhenTimerReachesLimit;
+
+            drawtestTool = new TestDrawClass();
         }
 
         //This methof is run on gaze events, checks if it is the begining or end of a fixation and runs appropriate code.
@@ -59,6 +62,7 @@ namespace GazeToolBar
                     xPosFixation = (int)Math.Floor(fixationDataBucket.X);
                     yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
                     Console.WriteLine("Fixation Started X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
+                    drawtestTool.DrawMouseLocation(xPosFixation, yPosFixation);
                 } else if(fixationDataBucket.EventType == FixationDataEventType.End)
                 {
                     aTimer.Stop();

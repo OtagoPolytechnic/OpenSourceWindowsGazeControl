@@ -14,6 +14,9 @@ namespace GazeToolBar
         public const int MOUSEEVENTF_LEFTDOWN = 0x02;
         public const int MOUSEEVENTF_LEFTUP = 0x04;
 
+
+        
+
         //This simulates a left mouse click
         public static void LeftMouseClick(int xpos, int ypos)
         {
