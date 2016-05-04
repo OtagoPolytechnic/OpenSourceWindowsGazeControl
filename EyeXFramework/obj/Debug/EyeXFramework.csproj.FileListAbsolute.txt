@@ -5,3 +5,10 @@ C:\Users\richa_000\Documents\GitHub\GazeControl\EyeXFramework\bin\Debug\Tobii.Ey
 C:\Users\richa_000\Documents\GitHub\GazeControl\EyeXFramework\obj\Debug\EyeXFramework.csprojResolveAssemblyReference.cache
 C:\Users\richa_000\Documents\GitHub\GazeControl\EyeXFramework\obj\Debug\EyeXFramework.dll
 C:\Users\richa_000\Documents\GitHub\GazeControl\EyeXFramework\obj\Debug\EyeXFramework.pdb
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\EyeXFramework\bin\Debug\EyeXFramework.dll
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\EyeXFramework\bin\Debug\EyeXFramework.pdb
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\EyeXFramework\bin\Debug\Tobii.EyeX.Client.Net20.dll
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\EyeXFramework\bin\Debug\Tobii.EyeX.Client.Net20.xml
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\EyeXFramework\obj\Debug\EyeXFramework.csprojResolveAssemblyReference.cache
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\EyeXFramework\obj\Debug\EyeXFramework.dll
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\EyeXFramework\obj\Debug\EyeXFramework.pdb

@@ -13,30 +13,19 @@ namespace GazeToolBar
 
         [DllImport("User32.dll")]
         public static extern IntPtr GetDC(IntPtr hwnd);
-        [DllImport("User32.dll")]
-        public static extern void ReleaseDC(IntPtr hwnd, IntPtr dc);
 
-        IntPtr  desktopPtr = GetDC(IntPtr.Zero); 
-        Graphics g;
-
-        SolidBrush b; 
-        
-
-        
-        //ReleaseDC(IntPtr.Zero, desktopPtr);
-
+       
         public TestDrawClass()
         {
-            g = Graphics.FromHdc(desktopPtr);
-            b = new SolidBrush(Color.White);
-           
+
         }
 
         public void DrawMouseLocation(int xPos, int yPos)
         {
-            g.FillRectangle(b,xPos,yPos,5,5);
-
-            g.Dispose();
+            using (Graphics g = Graphics.FromHwnd(IntPtr.Zero))
+            {
+                g.DrawEllipse(Pens.Black, xPos, yPos, 20, 20);
+            }
         }
 
     }

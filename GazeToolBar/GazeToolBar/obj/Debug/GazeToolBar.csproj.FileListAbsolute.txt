@@ -26,3 +26,19 @@ C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debu
 C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.Net20.dll
 C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\EyeXFramework.pdb
 C:\Users\richa_000\Documents\GitHub\GazeControl\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.Net20.xml
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.exe.config
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.exe
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.pdb
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\Gaze.ico
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.dll
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.exe
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\GazeToolBar.pdb
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\EyeXFramework.dll
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.Net20.dll
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\EyeXFramework.pdb
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\Tobii.EyeX.Client.Net20.xml
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csprojResolveAssemblyReference.cache
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Form1.resources
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Properties.Resources.resources
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Settings.resources
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csproj.GenerateResource.Cache
