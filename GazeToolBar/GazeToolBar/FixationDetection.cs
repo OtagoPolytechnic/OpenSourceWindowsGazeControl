@@ -62,7 +62,7 @@ namespace GazeToolBar
                     xPosFixation = (int)Math.Floor(fixationDataBucket.X);
                     yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
                     Console.WriteLine("Fixation Started X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
-                    drawtestTool.DrawMouseLocation(xPosFixation, yPosFixation);
+                    
                 } else if(fixationDataBucket.EventType == FixationDataEventType.End)
                 {
                     aTimer.Stop();
@@ -79,6 +79,7 @@ namespace GazeToolBar
         {
             Console.WriteLine("Timer reached event, running required action");
             SelectedFixationAcion(xPosFixation, yPosFixation);
+            drawtestTool.DrawMouseLocation(xPosFixation, yPosFixation);
             fixationState = EFixationState.WaitingForInPutSelection;
         }
 
