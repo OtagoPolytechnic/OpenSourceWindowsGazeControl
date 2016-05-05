@@ -20,9 +20,9 @@ namespace GazeToolBar
         //This simulates a left mouse click
         public static void LeftMouseClick(int xpos, int ypos)
         {
-            mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
             Console.WriteLine("LeftMouseClick X" + xpos + " Y" + ypos);
-            mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
+           // mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
         }
 
         public static void LeftDoubleMouseClick(int xpos, int ypos)
