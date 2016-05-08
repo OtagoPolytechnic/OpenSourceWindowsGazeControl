@@ -19,35 +19,23 @@ namespace Zoomer
         public Form1()
         {
             InitializeComponent();
-            graphics = this.CreateGraphics();
-            zoom = new Zoomer(graphics, pictureBox1);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            
+            //graphics = this.CreateGraphics();
+            //zoom = new Zoomer(graphics);
 
 
-            bmpScreenshot = new Bitmap(100, 100);
-            graphics = Graphics.FromImage(bmpScreenshot);
+            //bmpScreenshot = new Bitmap(100, 100);
+            //graphics = Graphics.FromImage(bmpScreenshot);
 
 
-            pictureBox1.Image = bmpScreenshot;
+            MouseDown += OnMouseDown;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OnMouseDown(object sender, EventArgs e)
         {
-            Point mousePoint = System.Windows.Forms.Cursor.Position;
-            Point empty = new Point(0, 0);
-            Size size = new Size(100, 100);
-
-            graphics.CopyFromScreen(mousePoint.X - 50, mousePoint.Y - 50, empty.X, empty.Y, size, CopyPixelOperation.SourceCopy);
-
-
-
-            for (int i = 0; i < 10; i++)
-            {
-                bmpScreenshot = zoom.cropImage(bmpScreenshot);
-                pictureBox1.Image = bmpScreenshot;
-                System.Threading.Thread.Sleep(100);
-                Application.DoEvents();
-            }
+            Form2 form = new Form2();
+            form.Show();
+            form.updatethis();
         }
     }
 }

@@ -12,11 +12,9 @@ namespace Zoomer
     public class Zoomer
     {
         Graphics graphics;
-        PictureBox picturebox1;
 
-        public Zoomer(Graphics graphics, PictureBox picturebox1)
+        public Zoomer(Graphics graphics)
         {
-            this.picturebox1 = picturebox1;
             this.graphics = graphics;
         }
         //this method should take in a bitmap and crop it down slightly
