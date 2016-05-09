@@ -54,6 +54,9 @@
     <ApplicationIcon>Gaze.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="InputSimulator">
+      <HintPath>..\..\lib\InputSimulator.dll</HintPath>
+    </Reference>
     <Reference Include="ShellBasics, Version=1.0.5926.36717, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\ShellBasics.dll</HintPath>

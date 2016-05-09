@@ -42,3 +42,4 @@ H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\
 H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Properties.Resources.resources
 H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.Settings.resources
 H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\obj\Debug\GazeToolBar.csproj.GenerateResource.Cache
+H:\My Documents\GitHub\OpenSourceWindowsGazeControl\GazeToolBar\GazeToolBar\bin\Debug\InputSimulator.dll
