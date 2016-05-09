@@ -16,9 +16,8 @@ namespace Zoomer
         public Form1()
         {
             InitializeComponent();
-
-
             MouseDown += OnMouseDown;
+            
         }
 
         private void OnMouseDown(object sender, EventArgs e)

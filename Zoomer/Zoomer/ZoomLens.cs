@@ -12,6 +12,8 @@ namespace Zoomer
 {
     public partial class ZoomLens : Form
     {
+
+        private const int LENSSIZE = 200;
         Graphics graphics;
         Zoomer zoom;
         Bitmap bmpScreenshot;
@@ -20,6 +22,8 @@ namespace Zoomer
         {
             InitializeComponent();
             graphics = this.CreateGraphics();
+            this.Width = LENSSIZE;
+            this.Height = LENSSIZE;
             bmpScreenshot = new Bitmap(this.Width, this.Height);
             graphics = Graphics.FromImage(bmpScreenshot);
 
@@ -35,19 +39,21 @@ namespace Zoomer
         }
         public void CreateZoomLens(int x, int y)
         {
+            this.DesktopLocation = new Point(x - (size.Width /2), y - (size.Height /2));
             this.Show();
-            Point mousePoint = new Point();
-            mousePoint.X = x;
-            mousePoint.Y = y;
+            Point lensPoint = new Point();
             Point empty = new Point(0, 0);
+            lensPoint.X = x;
+            lensPoint.Y = y;
+
             
-            graphics.CopyFromScreen(mousePoint.X - (size.Width / 2), mousePoint.Y - (size.Height / 2), empty.X, empty.Y, size, CopyPixelOperation.SourceCopy);
+            graphics.CopyFromScreen(lensPoint.X - (size.Width / 2), lensPoint.Y - (size.Height / 2), empty.X, empty.Y, size, CopyPixelOperation.SourceCopy);
             
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 30; i++)
             {
                 bmpScreenshot = zoom.zoom(bmpScreenshot);
                 pictureBox1.Image = bmpScreenshot;
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(50);
                 Application.DoEvents();
             }
             this.Dispose();

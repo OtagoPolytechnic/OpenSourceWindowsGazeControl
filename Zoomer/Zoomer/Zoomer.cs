@@ -12,18 +12,16 @@ namespace Zoomer
     public class Zoomer
     {
         Graphics graphics;
-
+        private const int ZOOMLEVEL = 3;
         public Zoomer(Graphics graphics)
         {
             this.graphics = graphics;
         }
-        //this method should take in a bitmap and crop it down slightly
         public Bitmap zoom(Bitmap bmpScreenshot)
         {
-            Rectangle cropArea = new Rectangle(3,3, bmpScreenshot.Width - 6, bmpScreenshot.Height - 6);
+            Rectangle cropArea = new Rectangle(ZOOMLEVEL, ZOOMLEVEL, bmpScreenshot.Width - (ZOOMLEVEL * 2), bmpScreenshot.Height - (ZOOMLEVEL * 2));
             Bitmap bmpImage = new Bitmap(bmpScreenshot);
             return bmpImage.Clone(cropArea, bmpImage.PixelFormat);
         }
-
     }
 }
