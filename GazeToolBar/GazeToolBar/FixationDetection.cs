@@ -12,12 +12,14 @@ namespace GazeToolBar
 {
 
     public enum EFixationState { WaitingForInPutSelection, RunningFixationWithSelection };
+    
+    
     public class FixationDetection
     {
         private static Timer aTimer;
-
         public static EyeXHost eyeXHost;
         public static FixationDataStream fixationPointDataStream;
+        
         EFixationState fixationState { get; set; }
 
         public delegate void ActionToRunAtFixation(int xpos, int ypos);
@@ -26,11 +28,7 @@ namespace GazeToolBar
         private int yPosFixation = 0;
 
         public ActionToRunAtFixation SelectedFixationAcion { get; set; }
-
-        int lengthOfTimeOfGazeBeforeRunningAction = 500;
-
-        TestDrawClass drawtestTool;
-        
+        public int lengthOfTimeOfGazeBeforeRunningAction { get; set; }
 
 
         public FixationDetection(EyeXHost inputEyeXHost)
@@ -46,8 +44,6 @@ namespace GazeToolBar
             aTimer.AutoReset = false;
 
             aTimer.Elapsed += runActionWhenTimerReachesLimit;
-
-            drawtestTool = new TestDrawClass();
         }
 
         //This method of is run on gaze events, checks if it is the beginning or end of a fixation and runs appropriate code.
@@ -61,11 +57,13 @@ namespace GazeToolBar
                     aTimer.Start();
                     xPosFixation = (int)Math.Floor(fixationDataBucket.X);
                     yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
+                    //Debug 
                     Console.WriteLine("Fixation Started X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                     
                 } else if(fixationDataBucket.EventType == FixationDataEventType.End)
                 {
                     aTimer.Stop();
+                    //Debug
                     Console.WriteLine("Fixation Stopped");
                 }
             }
@@ -77,9 +75,10 @@ namespace GazeToolBar
         // and as long as it does not end, run the required action at that location from the beginning of the fixation.
         public void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
         {
+            //Debug
             Console.WriteLine("Timer reached event, running required action");
+
             SelectedFixationAcion(xPosFixation, yPosFixation);
-            drawtestTool.DrawMouseLocation(xPosFixation, yPosFixation);
             fixationState = EFixationState.WaitingForInPutSelection;
         }
 
