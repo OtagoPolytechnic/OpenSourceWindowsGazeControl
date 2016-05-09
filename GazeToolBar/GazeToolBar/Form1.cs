@@ -64,7 +64,7 @@ namespace GazeToolBar
         /// <summary>
         /// Set all the size of buttons, panel
         /// and location of the buttons, panel.
-        /// This will make toolbar adjust itelf corespond to screen resolution
+        /// This will make tool bar adjust itself correspond to screen resolution
         /// </summary>
         private void setBtnSize()
         {
@@ -97,8 +97,8 @@ namespace GazeToolBar
         }
 
         /// <summary>
-        /// Change resolution back to its orignal resolution.
-        /// This will solve the problem that desktop won't show the taskbar properly.
+        /// Change resolution back to its original resolution.
+        /// This will solve the problem that desktop won't show the task bar properly.
         /// </summary>
         private void Form1_Shown(object sender, System.EventArgs e)
         {
@@ -121,7 +121,7 @@ namespace GazeToolBar
 
         private void btnRightClick_Click(object sender, EventArgs e)
         {
-            fixationWorker.SetupSelectedFixationAction(VirtualMouse.RightMouseClick);
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
         }
 
         private void btnSingleClick_Click(object sender, EventArgs e)

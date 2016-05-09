@@ -24,7 +24,7 @@ namespace GazeToolBar
         {
             using (Graphics g = Graphics.FromHwnd(IntPtr.Zero))
             {
-                g.DrawEllipse(Pens.Black, xPos, yPos, 20, 20);
+                g.DrawEllipse(Pens.Black, xPos - 10, yPos - 10, 20, 20);
             }
         }
 

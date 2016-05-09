@@ -35,13 +35,13 @@ namespace GazeToolBar
 
         public FixationDetection(EyeXHost inputEyeXHost)
         {
-            //Pass in eyexhost from form\class to manage eytracting system.
+            //Pass in eyexhost from form\class to manage eye tracking system.
             eyeXHost = inputEyeXHost;
             fixationPointDataStream = eyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
             EventHandler<FixationEventArgs> runSelectedActionAtFixationDelegate = new EventHandler<FixationEventArgs>(RunSelectedActionAtFixation);
             fixationPointDataStream.Next += runSelectedActionAtFixationDelegate;
 
-            //Timer to run selected interaction with os\applcation user is trying to interact with, once gaze is longer than specified limit
+            //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             aTimer = new System.Timers.Timer(lengthOfTimeOfGazeBeforeRunningAction);
             aTimer.AutoReset = false;
 
@@ -50,7 +50,7 @@ namespace GazeToolBar
             drawtestTool = new TestDrawClass();
         }
 
-        //This methof is run on gaze events, checks if it is the begining or end of a fixation and runs appropriate code.
+        //This method of is run on gaze events, checks if it is the beginning or end of a fixation and runs appropriate code.
         private void RunSelectedActionAtFixation(object o, FixationEventArgs fixationDataBucket)
         {
 
@@ -71,10 +71,10 @@ namespace GazeToolBar
             }
         }
 
-        //this action is run when timer reaches lengthOfTimeOfGazeBeforeRunningAction limit and the elapesed event is run. 
-        // doing it this as as we need a way of knowing when and where a fixation begins which the eyex provides, problem is it only provides when,
-        //a fixation begins and where it ends, we haved to buid the logic to detect where it begins, check that its does not end in a specified time period,
-        // and as long as it doens not end, run the required action at that location from the begining of the fixation.
+        //this action is run when timer reaches lengthOfTimeOfGazeBeforeRunningAction limit and the elapsed event is run. 
+        // doing it this as we need a way of knowing when and where a fixation begins which the eyex provides, problem is it only provides when,
+        //a fixation begins and where it ends, we have to build the logic to detect where it begins, check that its does not end in a specified time period,
+        // and as long as it does not end, run the required action at that location from the beginning of the fixation.
         public void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
         {
             Console.WriteLine("Timer reached event, running required action");
