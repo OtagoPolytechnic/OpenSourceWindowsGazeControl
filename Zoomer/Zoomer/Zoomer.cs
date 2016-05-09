@@ -18,7 +18,7 @@ namespace Zoomer
             this.graphics = graphics;
         }
         //this method should take in a bitmap and crop it down slightly
-        public Bitmap cropImage(Bitmap bmpScreenshot)
+        public Bitmap zoom(Bitmap bmpScreenshot)
         {
             Rectangle cropArea = new Rectangle(3,3, bmpScreenshot.Width - 6, bmpScreenshot.Height - 6);
             Bitmap bmpImage = new Bitmap(bmpScreenshot);

@@ -36,6 +36,7 @@ namespace Zoomer
             Form2 form = new Form2();
             form.Show();
             form.updatethis();
+            
         }
     }
 }
