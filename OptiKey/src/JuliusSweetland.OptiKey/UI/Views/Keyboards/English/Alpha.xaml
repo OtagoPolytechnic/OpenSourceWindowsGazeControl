@@ -46,8 +46,8 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <!--<ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />-->
         </Grid.ColumnDefinitions>
 
         <controls:Output Grid.Row="0" Grid.Column="0"
@@ -64,18 +64,18 @@
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}"/>
         <controls:Key Grid.Row="2" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="1"
-                      SymbolGeometry="{StaticResource DiacriticsIcon}"
-                      Text="{x:Static resx:Resources.DIACRITICS}"
+                      SymbolGeometry="{StaticResource 3of3Icon}"
+                      Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.Diacritic1KeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.NumericAndSymbols3KeyboardKey}"/>
         
         
         <!-- key controls -->
-         <controls:Key Grid.Row="2" Grid.Column="21" Grid.ColumnSpan="2"
+        <!--<controls:Key Grid.Row="2" Grid.Column="21" Grid.ColumnSpan="2"
                       SymbolGeometry="{StaticResource MenuIcon}"
                       Text="{x:Static resx:Resources.MENU}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>
+                      Value="{x:Static models:KeyValues.MenuKeyboardKey}"/>-->
        
 
         <!-- KEYBOARD KEYS  -->

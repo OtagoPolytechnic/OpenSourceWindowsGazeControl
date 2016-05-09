@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         <TabControl Grid.IsSharedSizeScope="True">
             <TabItem Header="{x:Static resx:Resources.VISUALS}">
-                <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" />
+                <management:VisualsView DataContext="{Binding VisualsViewModel, Mode=OneWay}" Margin="0,5,0,-5" />
             </TabItem>
             <TabItem Header="{x:Static resx:Resources.SOUNDS}">
                 <management:SoundsView DataContext="{Binding SoundsViewModel, Mode=OneWay}" />
