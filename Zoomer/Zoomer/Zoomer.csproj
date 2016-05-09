@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EyeXFramework">
+      <HintPath>C:\Users\batessr1\Desktop\EyeXTest\EyeXFramework\bin\x86\Debug\EyeXFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,6 +45,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tobii.EyeX.Client.Net20">
+      <HintPath>C:\Users\batessr1\Desktop\EyeXTest\EyeXFramework\bin\x86\Debug\Tobii.EyeX.Client.Net20.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">

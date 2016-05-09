@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EyeXFramework;
 
 namespace Zoomer
 {
@@ -16,16 +17,13 @@ namespace Zoomer
         public Form1()
         {
             InitializeComponent();
-            MouseDown += OnMouseDown;//binding this to the mouse down event, later this will have to be bound to a fixation event
             
         }
 
-        private void OnMouseDown(object sender, EventArgs e)
+        private void OnMouseDown(int x, int y)
         {
-            ZoomLens ZoomLens = new ZoomLens();
-            int x = System.Windows.Forms.Cursor.Position.X;
-            int y = System.Windows.Forms.Cursor.Position.Y;
-            ZoomLens.CreateZoomLens(x,y);
+            ZoomLens ZoomLens = new ZoomLens(x,y);
+            ZoomLens.CreateZoomLens();
             ZoomLens.Dispose();
         }
     }

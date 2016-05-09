@@ -17,3 +17,7 @@ H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.Form1.resources
 H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.Properties.Resources.resources
 H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.csproj.GenerateResource.Cache
 H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.ZoomLens.resources
+H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\bin\Debug\EyeXFramework.dll
+H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\bin\Debug\Tobii.EyeX.Client.Net20.dll
+H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\bin\Debug\EyeXFramework.pdb
+H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\bin\Debug\Tobii.EyeX.Client.Net20.xml

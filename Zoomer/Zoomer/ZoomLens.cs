@@ -15,14 +15,15 @@ namespace Zoomer
 
         const int LENSSIZE = 200;// how big the actual lens is
         const int ZOOMLEVEL = 30;// this is controls how far the lens will zoom in
-
+        int x, y;
         Graphics graphics;
         Zoomer zoomer;
         Bitmap bmpScreenshot;
-        public ZoomLens()
+        public ZoomLens(int x , int y)
         {
             InitializeComponent();
-
+            this.x = x;
+            this.y = y;
             this.Width = LENSSIZE;//setting the lens size
             this.Height = LENSSIZE;
 
@@ -40,7 +41,7 @@ namespace Zoomer
             zoomer = new Zoomer(graphics);
             
         }
-        public void CreateZoomLens(int x, int y)
+        public void CreateZoomLens()
         {
             this.DesktopLocation = new Point(x - (this.Width /2), y - (this.Height /2));//set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
             this.Show();//make lens visible
