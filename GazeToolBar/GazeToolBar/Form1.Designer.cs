@@ -36,10 +36,6 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnRightClick = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
-            this.bhavMapRightClick = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.bhavMapDoubleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +54,7 @@
             this.btnSingleClick.Size = new System.Drawing.Size(93, 80);
             this.btnSingleClick.TabIndex = 3;
             this.btnSingleClick.UseVisualStyleBackColor = false;
+            this.btnSingleClick.Click += new System.EventHandler(this.btnSingleClick_Click);
             // 
             // btnDoubleClick
             // 
@@ -68,6 +65,7 @@
             this.btnDoubleClick.Size = new System.Drawing.Size(93, 80);
             this.btnDoubleClick.TabIndex = 4;
             this.btnDoubleClick.UseVisualStyleBackColor = false;
+            this.btnDoubleClick.Click += new System.EventHandler(this.btnDoubleClick_Click);
             // 
             // btnSettings
             // 
@@ -132,10 +130,7 @@
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnRightClick;
         private System.Windows.Forms.Panel panel;
-        private EyeXFramework.Forms.BehaviorMap bhavMapRightClick;
-        private EyeXFramework.Forms.BehaviorMap bhavMapSingleClick;
-        private EyeXFramework.Forms.BehaviorMap bhavMapDoubleClick;
-        private EyeXFramework.Forms.BehaviorMap bhavMapSettings;
+
     }
 }
 

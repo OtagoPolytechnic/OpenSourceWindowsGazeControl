@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using WindowsInput.Native;
 
 
 namespace GazeToolBar
@@ -26,24 +27,31 @@ namespace GazeToolBar
         public static void LeftMouseClick(int xpos, int ypos)
         {
 
-            //click now working, but moves curser on screen.
+            //click now working, but moves cursor on screen.
             SetCursorPos(xpos, ypos);
 
             mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
             Thread.Sleep(200);
             mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
 
-
             Console.WriteLine("LeftMouseClick X" + xpos + " Y" + ypos);
            
         }
 
-        public static void LeftDoubleMouseClick(int xpos, int ypos)
+        public static void LeftDoubleClick(int xpos, int ypos)
         {
-            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-            mouse_event(MOUSEEVENTF_LEFTDOWN, xpos, ypos, 0, 0);
-            mouse_event(MOUSEEVENTF_LEFTUP, xpos, ypos, 0, 0);
+            WindowsInput.InputSimulator testSim = new WindowsInput.InputSimulator();
+            SetCursorPos(xpos, ypos);
+            testSim.Mouse.LeftButtonDoubleClick();
+        }
+
+        public static void RightMouseClick(int xpos, int ypos)
+        {
+
+            WindowsInput.InputSimulator testSim = new WindowsInput.InputSimulator();
+            SetCursorPos(xpos, ypos);
+            testSim.Mouse.RightButtonClick();
+
         }
     }
 }

@@ -121,7 +121,17 @@ namespace GazeToolBar
 
         private void btnRightClick_Click(object sender, EventArgs e)
         {
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.RightMouseClick);
+        }
+
+        private void btnSingleClick_Click(object sender, EventArgs e)
+        {
             fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftMouseClick);
+        }
+
+        private void btnDoubleClick_Click(object sender, EventArgs e)
+        {
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftDoubleClick);
         }
     }
 }
