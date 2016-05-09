@@ -17,7 +17,7 @@ namespace Zoomer
         {
             this.graphics = graphics;
         }
-        public Bitmap zoom(Bitmap bmpScreenshot)
+        public Bitmap Zoom(Bitmap bmpScreenshot)
         {
             Rectangle cropArea = new Rectangle(ZOOMLEVEL, ZOOMLEVEL, bmpScreenshot.Width - (ZOOMLEVEL * 2), bmpScreenshot.Height - (ZOOMLEVEL * 2));
             Bitmap bmpImage = new Bitmap(bmpScreenshot);

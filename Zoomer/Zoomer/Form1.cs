@@ -16,7 +16,7 @@ namespace Zoomer
         public Form1()
         {
             InitializeComponent();
-            MouseDown += OnMouseDown;
+            MouseDown += OnMouseDown;//binding this to the mouse down event, later this will have to be bound to a fixation event
             
         }
 
