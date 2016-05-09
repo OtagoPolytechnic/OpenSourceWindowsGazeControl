@@ -16,4 +16,4 @@ H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.csprojResolveAsse
 H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.Form1.resources
 H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.Properties.Resources.resources
 H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.csproj.GenerateResource.Cache
-H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.Form2.resources
+H:\OpenSourceWindowsGazeControl\Zoomer\Zoomer\obj\Debug\Zoomer.ZoomLens.resources

@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace Zoomer
 {
-    public partial class Form2 : Form
+    public partial class ZoomLens : Form
     {
         Graphics graphics;
         Zoomer zoom;
         Bitmap bmpScreenshot;
         Size size;
-        public Form2()
+        public ZoomLens()
         {
             InitializeComponent();
             graphics = this.CreateGraphics();
@@ -33,28 +33,24 @@ namespace Zoomer
             zoom = new Zoomer(graphics);
             
         }
-        public void updatethis()
+        public void CreateZoomLens(int x, int y)
         {
-            Point mousePoint = System.Windows.Forms.Cursor.Position;
+            this.Show();
+            Point mousePoint = new Point();
+            mousePoint.X = x;
+            mousePoint.Y = y;
             Point empty = new Point(0, 0);
-            
             
             graphics.CopyFromScreen(mousePoint.X - (size.Width / 2), mousePoint.Y - (size.Height / 2), empty.X, empty.Y, size, CopyPixelOperation.SourceCopy);
             
-            pictureBox1.Image = bmpScreenshot;
-
-
-
-            //System.Threading.Thread.Sleep(100);
-            //Application.DoEvents();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    bmpScreenshot = zoom.zoom(bmpScreenshot);
-            //    bmpScreenshot.Save("test" + i + ".bmp");
-            //    picture.Image = bmpScreenshot;
-            //    System.Threading.Thread.Sleep(100);
-            //    Application.DoEvents();
-            //}
+            for (int i = 0; i < 10; i++)
+            {
+                bmpScreenshot = zoom.zoom(bmpScreenshot);
+                pictureBox1.Image = bmpScreenshot;
+                System.Threading.Thread.Sleep(100);
+                Application.DoEvents();
+            }
+            this.Dispose();
         }
     }
 }

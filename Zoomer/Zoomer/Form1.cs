@@ -13,19 +13,9 @@ namespace Zoomer
 {
     public partial class Form1 : Form
     {
-        Graphics graphics;
-        Zoomer zoom;
-        Bitmap bmpScreenshot;
         public Form1()
         {
             InitializeComponent();
-            
-            //graphics = this.CreateGraphics();
-            //zoom = new Zoomer(graphics);
-
-
-            //bmpScreenshot = new Bitmap(100, 100);
-            //graphics = Graphics.FromImage(bmpScreenshot);
 
 
             MouseDown += OnMouseDown;
@@ -33,10 +23,11 @@ namespace Zoomer
 
         private void OnMouseDown(object sender, EventArgs e)
         {
-            Form2 form = new Form2();
-            form.Show();
-            form.updatethis();
-            
+            ZoomLens ZoomLens = new ZoomLens();
+            int x = System.Windows.Forms.Cursor.Position.X;
+            int y = System.Windows.Forms.Cursor.Position.Y;
+            ZoomLens.CreateZoomLens(x,y);
+            ZoomLens.Dispose();
         }
     }
 }

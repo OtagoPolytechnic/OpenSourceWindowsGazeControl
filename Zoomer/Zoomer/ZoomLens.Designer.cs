@@ -1,6 +1,6 @@
 ﻿namespace Zoomer
 {
-    partial class Form2
+    partial class ZoomLens
     {
         /// <summary>
         /// Required designer variable.
