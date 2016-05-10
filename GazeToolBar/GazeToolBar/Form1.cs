@@ -66,10 +66,18 @@ namespace GazeToolBar
             btnDoubleClick.Size = ReletiveSize.btnSize;
             btnRightClick.Size = ReletiveSize.btnSize;
             btnSettings.Size = ReletiveSize.btnSize;
+            btnScoll.Size = ReletiveSize.btnSize;
+            btnKeyboard.Size = ReletiveSize.btnSize;
+            btnDragAndDrop.Size = ReletiveSize.btnSize;
+
             btnSingleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(2));
             btnDoubleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(3));
             btnRightClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(1));
             btnSettings.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(4));
+            btnScoll.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(5));
+            btnKeyboard.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(6));
+            btnDragAndDrop.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(7));
+
             panel.Location = new Point(panel.Location.X, ReletiveSize.panelPositionY);
             panel.Size = ReletiveSize.panelSize;
         }
