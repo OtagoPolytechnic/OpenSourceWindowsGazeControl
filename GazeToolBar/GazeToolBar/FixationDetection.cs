@@ -8,32 +8,46 @@ using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Timers;
 
+/*
+ *  Class: FixationDetection
+ *  Name: Richard Horne
+ *  Date: 10/05/2015
+ *  Description: This class is to encapsulate the required logic to detect an user eyes fixation on a point of the screen from the behaviors provided by the eyeX engine.
+ *  Purpose: To enable code to be run when a user fixates on location on the screen. A method can be passed in and run once the fixation is confirmed.
+ */
+
 namespace GazeToolBar
 {
-
+    //State the Fixation detection can be in.
     public enum EFixationState { WaitingForInPutSelection, RunningFixationWithSelection };
     
     
     public class FixationDetection
     {
+        //Timer to measure if a how long it has been since the fixation started. 
         private static Timer aTimer;
+        //Reference to eyeXhost, will be instantiated on form or in another manager/worker class.
         public static EyeXHost eyeXHost;
+        //Fixation data stream, used to attached to fixation events.
         public static FixationDataStream fixationPointDataStream;
-        
+        public ActionToRunAtFixation SelectedFixationAcion { get; set; }
+        public int lengthOfTimeOfGazeBeforeRunningAction { get; set; }
+        //State variable of FixationDetection class.
         EFixationState fixationState { get; set; }
 
+        //Delegate to outline signature of the method that is run when a fixation is detected
         public delegate void ActionToRunAtFixation(int xpos, int ypos);
 
+        //Field to record location of beginning fixation location.
         private int xPosFixation = 0;
         private int yPosFixation = 0;
 
-        public ActionToRunAtFixation SelectedFixationAcion { get; set; }
-        public int lengthOfTimeOfGazeBeforeRunningAction { get; set; }
+
 
 
         public FixationDetection(EyeXHost inputEyeXHost)
         {
-            //Pass in eyexhost from form\class to manage eye tracking system.
+            //Pass in eyeXhost from form\class to manage eye tracking system.
             eyeXHost = inputEyeXHost;
             fixationPointDataStream = eyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
             EventHandler<FixationEventArgs> runSelectedActionAtFixationDelegate = new EventHandler<FixationEventArgs>(RunSelectedActionAtFixation);
@@ -70,9 +84,9 @@ namespace GazeToolBar
         }
 
         //this action is run when timer reaches lengthOfTimeOfGazeBeforeRunningAction limit and the elapsed event is run. 
-        // doing it this as we need a way of knowing when and where a fixation begins which the eyex provides, problem is it only provides when,
+        //doing it this as we need a way of knowing when and where a fixation begins which the eyex provides, problem is it only provides when,
         //a fixation begins and where it ends, we have to build the logic to detect where it begins, check that its does not end in a specified time period,
-        // and as long as it does not end, run the required action at that location from the beginning of the fixation.
+        //and as long as it does not end, run the required action at that location from the beginning of the fixation.
         public void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
         {
             //Debug
