@@ -69,7 +69,7 @@
                       Text="{x:Static resx:Resources.ALPHA}"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       Value="{x:Static models:KeyValues.AlphaKeyboardKey}"/>
-        <!--  -->
+        <!--  row 1 -->
 
         <controls:Key Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
                       ShiftUpText="ă" ShiftDownText="Ă"
@@ -116,8 +116,8 @@
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.Diacritic2KeyboardKey}" />
-        
 
+        <!--  row 2 -->
         <controls:Key Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
                       ShiftUpText="č" ShiftDownText="Č"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -162,11 +162,13 @@
                       ShiftUpText="ë" ShiftDownText="Ë"
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="ë" />
-        
+
+        <!--  row 3 -->
         <controls:Key Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"
-                      ShiftUpText="ë" ShiftDownText="Ë"
-                      SharedSizeGroup="KeyWithSingleLetter"
-                      Value="ë" />
+                      SymbolGeometry="{StaticResource ShiftIcon}"
+                      Text="{x:Static resx:Resources.SHIFT}"
+                      SharedSizeGroup="KeyWithSymbol"
+                      Value="{x:Static models:KeyValues.LeftShiftKey}" />       
         <controls:Key Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"
                       ShiftUpText="ē" ShiftDownText="Ē"
                       SharedSizeGroup="KeyWithSingleLetter"
@@ -208,13 +210,13 @@
                       SymbolGeometry="{StaticResource BackManyIcon}"
                       Text="{x:Static resx:Resources.BACK_WORD_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.BackManyKey}" />        
+                      Value="{x:Static models:KeyValues.BackManyKey}" />
 
+        <!--  row 4 -->
         <controls:Key Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource ShiftIcon}"
-                      Text="{x:Static resx:Resources.SHIFT}"
-                      SharedSizeGroup="KeyWithSymbol"
-                      Value="{x:Static models:KeyValues.LeftShiftKey}" />
+                      ShiftUpText="ë" ShiftDownText="Ë"
+                      SharedSizeGroup="KeyWithSingleLetter"
+                      Value="ë" />
         <controls:Key Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2"
                       ShiftUpText="ĥ" ShiftDownText="Ĥ"
                       SharedSizeGroup="KeyWithSingleLetter"
