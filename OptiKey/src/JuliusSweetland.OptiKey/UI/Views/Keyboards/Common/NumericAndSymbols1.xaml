@@ -60,14 +60,14 @@
         <!--forward and back keys-->
         <!-- left-->
         <controls:Key Grid.Row="2" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="1"
-                      SymbolGeometry="{StaticResource AlphaIcon}"
+                      SymbolGeometry="{StaticResource LeftArrowKeyIcon}"
                       Text="{x:Static resx:Resources.ALPHA}"
                       SharedSizeGroup="KeyWithSymbolAndText"
                       Value="{x:Static models:KeyValues.AlphaKeyboardKey}"/>
 
         <!-- right-->        
         <controls:Key Grid.Row="2" Grid.RowSpan="4" Grid.Column="21" Grid.ColumnSpan="1"
-                      SymbolGeometry="{StaticResource LeftArrowKeyIcon}"
+                      SymbolGeometry="{StaticResource RightArrowKeyIcon}"
                       Text="{x:Static resx:Resources.DIACRITICS}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.Diacritic1KeyboardKey}"/>
@@ -186,7 +186,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="&quot;"/>
         <controls:Key Grid.Row="2" Grid.Column="19" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource 2of3Icon}"
+                      SymbolGeometry="{StaticResource 1of3Icon}"
                       Text="{x:Static resx:Resources.NEXT}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.NumericAndSymbols2KeyboardKey}"/>

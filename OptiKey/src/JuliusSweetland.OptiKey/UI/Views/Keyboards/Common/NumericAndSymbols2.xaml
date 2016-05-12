@@ -95,7 +95,7 @@
                       SharedSizeGroup="KeyWithSingleLetter"
                       Value="÷"/>
         <controls:Key Grid.Row="2"  Grid.Column="18" Grid.ColumnSpan="2"
-                      SymbolGeometry="{StaticResource RightArrowKeyIcon}"
+                      SymbolGeometry="{StaticResource 2of3Icon}"
                       Text="{x:Static resx:Resources.NUM_SYM_SPLIT_WITH_NEWLINE}"
                       SharedSizeGroup="KeyWithSymbol"
                       Value="{x:Static models:KeyValues.NumericAndSymbols1KeyboardKey}"/>
