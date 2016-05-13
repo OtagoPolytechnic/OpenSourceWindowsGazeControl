@@ -72,5 +72,28 @@ namespace GazeToolBar
             //Call middle button click function at the cursor's current location.
             mouseSim.Mouse.MiddleButtonClick();
         }
+
+        //Simulate the left mouse button being pressed and held down.
+        public static void LeftMouseButtonheldDown(int xpos, int ypos)
+        {
+            //Instantiate mouse simulator object.
+            WindowsInput.InputSimulator mouseSim = new WindowsInput.InputSimulator();
+            //Move cursor to screen position pass in.
+            SetCursorPos(xpos, ypos);
+            //Call left button down function at the cursor's current location.
+            mouseSim.Mouse.LeftButtonDown();
+        }
+
+
+        //Simulate the left mouse button being released.
+        public static void LeftMouseButtonheldDown(int xpos, int ypos)
+        {
+            //Instantiate mouse simulator object.
+            WindowsInput.InputSimulator mouseSim = new WindowsInput.InputSimulator();
+            //Move cursor to screen position pass in.
+            SetCursorPos(xpos, ypos);
+            //Call left button down function at the cursor's current location.
+            mouseSim.Mouse.LeftButtonUp();
+        }
     }
 }
