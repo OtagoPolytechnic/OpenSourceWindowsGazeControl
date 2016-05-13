@@ -54,6 +54,7 @@ namespace GazeToolBar
             fixationPointDataStream.Next += runSelectedActionAtFixationDelegate;
 
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
+            lengthOfTimeOfGazeBeforeRunningAction = 600;
             aTimer = new System.Timers.Timer(lengthOfTimeOfGazeBeforeRunningAction);
             aTimer.AutoReset = false;
 
