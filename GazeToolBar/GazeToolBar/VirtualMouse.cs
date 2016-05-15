@@ -86,7 +86,7 @@ namespace GazeToolBar
 
 
         //Simulate the left mouse button being released.
-        public static void LeftMouseButtonheldDown(int xpos, int ypos)
+        public static void LeftMouseReleased(int xpos, int ypos)
         {
             //Instantiate mouse simulator object.
             WindowsInput.InputSimulator mouseSim = new WindowsInput.InputSimulator();
