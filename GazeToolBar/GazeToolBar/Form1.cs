@@ -115,7 +115,6 @@ namespace GazeToolBar
         {
             eyeXhost = new EyeXHost();
             eyeXhost.Start();
-
             fixationWorker = new FixationDetection(eyeXhost);
         }
 

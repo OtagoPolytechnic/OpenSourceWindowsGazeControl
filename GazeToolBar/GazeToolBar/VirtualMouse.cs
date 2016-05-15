@@ -11,7 +11,7 @@ using WindowsInput.Native;
  *  Name: Richard Horne
  *  Date: 10/05/2015
  *  Description: This is an abstract class which does not need to be instantiated, its methods can be call to simulate actions normally provided by a mouse.
- *  The main purpose of this class to encapsulate mouse actions which can be passed into of called by other classes, e.g. when a fixation is detected the Virtual.Mouse.LeftMouseClick
+ *  Purpose: The main purpose of this class to encapsulate mouse actions which can be passed into of called by other classes, e.g. when a fixation is detected the Virtual.Mouse.LeftMouseClick
  *  can be passed in as a type and used to click where the fixation event happened.
  */
 
@@ -71,6 +71,29 @@ namespace GazeToolBar
             SetCursorPos(xpos, ypos);
             //Call middle button click function at the cursor's current location.
             mouseSim.Mouse.MiddleButtonClick();
+        }
+
+        //Simulate the left mouse button being pressed and held down.
+        public static void LeftMouseButtonheldDown(int xpos, int ypos)
+        {
+            //Instantiate mouse simulator object.
+            WindowsInput.InputSimulator mouseSim = new WindowsInput.InputSimulator();
+            //Move cursor to screen position pass in.
+            SetCursorPos(xpos, ypos);
+            //Call left button down function at the cursor's current location.
+            mouseSim.Mouse.LeftButtonDown();
+        }
+
+
+        //Simulate the left mouse button being released.
+        public static void LeftMouseButtonheldDown(int xpos, int ypos)
+        {
+            //Instantiate mouse simulator object.
+            WindowsInput.InputSimulator mouseSim = new WindowsInput.InputSimulator();
+            //Move cursor to screen position pass in.
+            SetCursorPos(xpos, ypos);
+            //Call left button down function at the cursor's current location.
+            mouseSim.Mouse.LeftButtonUp();
         }
     }
 }
