@@ -14,6 +14,7 @@ namespace GazeToolBar
         private Bitmap rightClick;
         private Bitmap settingIcon;
         private Bitmap doubleClick;
+        private Bitmap scrollImage;
 
         public Form1()
         {
@@ -21,6 +22,8 @@ namespace GazeToolBar
             rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
             settingIcon = new Bitmap(new Bitmap("settings-icon.png"), ReletiveSize.btnSize);
             doubleClick = new Bitmap(new Bitmap("Double-Click-icon.png"), ReletiveSize.btnSize);
+            scrollImage = new Bitmap(new Bitmap("Scroll-icon.png"), ReletiveSize.btnSize);
+
             //Change resolution to 800 * 600
             ChangeResolution.ChangeScreenResolution();            
             InitializeComponent();
@@ -38,6 +41,7 @@ namespace GazeToolBar
             btnRightClick.Image = rightClick;
             btnSettings.Image = settingIcon;
             btnDoubleClick.Image = doubleClick;
+            btnScoll.Image = scrollImage;
         }
 
         /// <summary>
