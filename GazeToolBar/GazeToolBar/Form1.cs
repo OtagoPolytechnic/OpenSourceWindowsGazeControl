@@ -1,11 +1,21 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using EyeXFramework;
+using Tobii;
+
 
 namespace GazeToolBar
 {
+    /*
+        Date: 17/05/2016
+        Name: Derek Dai
+        Description: Main toolbar form
+    */
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
+        private EyeXHost eyeXhost;
+        private FixationDetection fixationWorker;
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
@@ -14,13 +24,21 @@ namespace GazeToolBar
         private Bitmap rightClick;
         private Bitmap settingIcon;
         private Bitmap doubleClick;
+        private Bitmap scrollImage;
+        private Bitmap keyboardImage;
+        private Bitmap dragAndDropImage;
 
         public Form1()
         {
+            //Initial a image to each button
             leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
             rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
-            settingIcon = new Bitmap(new Bitmap("settings-icon.png"), ReletiveSize.btnSize);
+            settingIcon = new Bitmap(new Bitmap("Settings-icon.png"), ReletiveSize.btnSize);
             doubleClick = new Bitmap(new Bitmap("Double-Click-icon.png"), ReletiveSize.btnSize);
+            scrollImage = new Bitmap(new Bitmap("Scroll-icon.png"), ReletiveSize.btnSize);
+            keyboardImage = new Bitmap(new Bitmap("Keyboard-icon.png"), ReletiveSize.btnSize);
+            dragAndDropImage = new Bitmap(new Bitmap("Drag-and-drop-icon.png"), ReletiveSize.btnSize);
+
             //Change resolution to 800 * 600
             ChangeResolution.ChangeScreenResolution();            
             InitializeComponent();
@@ -31,13 +49,18 @@ namespace GazeToolBar
             menuItemStartOnOff = new MenuItem();
             initMenuItem();
             setBtnSize();
-            connectBehaveMap();
+            
             Edge = AppBarEdges.Right;
             AutoStart.IsAutoStart(settings, menuItemStartOnOff);
+
+            //Set all the image to its button
             btnSingleClick.Image = leftSingleClick;
             btnRightClick.Image = rightClick;
             btnSettings.Image = settingIcon;
             btnDoubleClick.Image = doubleClick;
+            btnScoll.Image = scrollImage;
+            btnKeyboard.Image = keyboardImage;
+            btnDragAndDrop.Image = dragAndDropImage;
         }
 
         /// <summary>
@@ -58,7 +81,7 @@ namespace GazeToolBar
         /// <summary>
         /// Set all the size of buttons, panel
         /// and location of the buttons, panel.
-        /// This will make toolbar adjust itelf corespond to screen resolution
+        /// This will make tool bar adjust itself correspond to screen resolution
         /// </summary>
         private void setBtnSize()
         {
@@ -99,8 +122,8 @@ namespace GazeToolBar
         }
 
         /// <summary>
-        /// Change resolution back to its orignal resolution.
-        /// This will solve the problem that desktop won't show the taskbar properly.
+        /// Change resolution back to its original resolution.
+        /// This will solve the problem that desktop won't show the task bar properly.
         /// </summary>
         private void Form1_Shown(object sender, System.EventArgs e)
         {
@@ -111,6 +134,29 @@ namespace GazeToolBar
 
         public Settings Settings { get { return settings; }
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            eyeXhost = new EyeXHost();
+            eyeXhost.Start();
+            fixationWorker = new FixationDetection(eyeXhost);
+        }
+
+        private void btnRightClick_Click(object sender, EventArgs e)
+        {
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
+        }
+
+        private void btnSingleClick_Click(object sender, EventArgs e)
+        {
+            ZoomLens zoom = new ZoomLens();
+            fixationWorker.SetupSelectedFixationAction(zoom.CreateZoomLens);
+        }
+
+        private void btnDoubleClick_Click(object sender, EventArgs e)
+        {
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftDoubleClick);
         }
     }
 }

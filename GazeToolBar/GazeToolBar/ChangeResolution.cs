@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace GazeToolBar
 {
+    /*
+        Date: 17/05/2016
+        Name: Derek Dai
+        Description: Change resolution of the screen
+    */
     static class ChangeResolution
     {
         private static int width = ValueNeverChange.PRIMARY_SCREEN.Width;
