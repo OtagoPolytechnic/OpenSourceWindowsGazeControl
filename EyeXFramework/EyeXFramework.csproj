@@ -76,14 +76,13 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
+    <Reference Include="Tobii.EyeX.Client.Net20" Condition="'$(Platform)' == 'x86'">
+      <HintPath>..\..\lib\x86\Tobii.EyeX.Client.Net20.dll</HintPath>
+    </Reference>
     <Reference Include="Tobii.EyeX.Client.Net20" Condition="'$(Platform)' == 'x64'">
       <HintPath>..\..\lib\x64\Tobii.EyeX.Client.Net20.dll</HintPath>
     </Reference>
     <Reference Include="Tobii.EyeX.Client.Net20">
-      <HintPath>..\lib\x86\Tobii.EyeX.Client.Net20.dll</HintPath>
-    </Reference>
-    <Reference Include="Tobii.EyeX.Client.Net20, Version=1.7.480.0, Culture=neutral, PublicKeyToken=70326046dcdce6cb, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\x64\Tobii.EyeX.Client.Net20.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />

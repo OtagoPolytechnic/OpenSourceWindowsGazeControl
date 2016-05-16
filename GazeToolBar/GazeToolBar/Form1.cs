@@ -4,10 +4,14 @@ using System.Windows.Forms;
 using EyeXFramework;
 using Tobii;
 
+
 namespace GazeToolBar
 {
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
+        EyeXHost eyeXhost;
+        FixationDetection fixationWorker;
+
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
@@ -60,7 +64,7 @@ namespace GazeToolBar
         /// <summary>
         /// Set all the size of buttons, panel
         /// and location of the buttons, panel.
-        /// This will make toolbar adjust itelf corespond to screen resolution
+        /// This will make tool bar adjust itself correspond to screen resolution
         /// </summary>
         private void setBtnSize()
         {
@@ -68,10 +72,18 @@ namespace GazeToolBar
             btnDoubleClick.Size = ReletiveSize.btnSize;
             btnRightClick.Size = ReletiveSize.btnSize;
             btnSettings.Size = ReletiveSize.btnSize;
+            btnScoll.Size = ReletiveSize.btnSize;
+            btnKeyboard.Size = ReletiveSize.btnSize;
+            btnDragAndDrop.Size = ReletiveSize.btnSize;
+
             btnSingleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(2));
             btnDoubleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(3));
             btnRightClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(1));
             btnSettings.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(4));
+            btnScoll.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(5));
+            btnKeyboard.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(6));
+            btnDragAndDrop.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(7));
+
             panel.Location = new Point(panel.Location.X, ReletiveSize.panelPositionY);
             panel.Size = ReletiveSize.panelSize;
         }
@@ -93,8 +105,8 @@ namespace GazeToolBar
         }
 
         /// <summary>
-        /// Change resolution back to its orignal resolution.
-        /// This will solve the problem that desktop won't show the taskbar properly.
+        /// Change resolution back to its original resolution.
+        /// This will solve the problem that desktop won't show the task bar properly.
         /// </summary>
         private void Form1_Shown(object sender, System.EventArgs e)
         {
@@ -105,6 +117,29 @@ namespace GazeToolBar
 
         public Settings Settings { get { return settings; }
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            eyeXhost = new EyeXHost();
+            eyeXhost.Start();
+            fixationWorker = new FixationDetection(eyeXhost);
+        }
+
+        private void btnRightClick_Click(object sender, EventArgs e)
+        {
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
+        }
+
+        private void btnSingleClick_Click(object sender, EventArgs e)
+        {
+            ZoomLens zoom = new ZoomLens();
+            fixationWorker.SetupSelectedFixationAction(zoom.CreateZoomLens);
+        }
+
+        private void btnDoubleClick_Click(object sender, EventArgs e)
+        {
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftDoubleClick);
         }
     }
 }
