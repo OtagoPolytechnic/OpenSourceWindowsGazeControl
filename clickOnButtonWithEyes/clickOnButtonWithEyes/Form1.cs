@@ -21,6 +21,7 @@ namespace clickOnButtonWithEyes
             Program.EyeXHost.Connect(behaviorMap1);
 
             behaviorMap1.Add(button1, new GazeAwareBehavior(OnButton1Gaze) { DelayMilliseconds = 500 });
+            behaviorMap1.Add(button2, new GazeAwareBehavior(OnButton2Gaze) { DelayMilliseconds = 500 });
 
         }
 
@@ -28,6 +29,22 @@ namespace clickOnButtonWithEyes
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+        }
+
+
+
+        private void OnButton2Gaze(object Sender, GazeAwareEventArgs e)
+        {
+            button2.PerformClick();
+            if (e.HasGaze)
+            {
+                button2.BackColor = Color.Red;
+            }
+            else
+            {
+                button2.BackColor = Color.Gold;
+            }
 
         }
 
