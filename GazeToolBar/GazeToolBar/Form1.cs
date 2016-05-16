@@ -125,7 +125,8 @@ namespace GazeToolBar
 
         private void btnSingleClick_Click(object sender, EventArgs e)
         {
-            fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftMouseClick);
+            ZoomLens zoom = new ZoomLens();
+            fixationWorker.SetupSelectedFixationAction(zoom.CreateZoomLens);
         }
 
         private void btnDoubleClick_Click(object sender, EventArgs e)
