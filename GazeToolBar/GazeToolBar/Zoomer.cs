@@ -12,7 +12,7 @@ namespace GazeToolBar
     public class Zoomer
     {
         Graphics graphics;
-        private const int ZOOMLEVEL = 3;
+        private const int ZOOMLEVEL = 1;
         public Zoomer(Graphics graphics)
         {
             this.graphics = graphics;
