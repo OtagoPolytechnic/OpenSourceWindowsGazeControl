@@ -13,16 +13,18 @@ namespace GazeToolBar
     public partial class ZoomLens : Form
     {
 
-        const int LENSSIZE = 200;// how big the actual lens is
+        const int LENSSIZE = 600;// how big the actual lens is
         const int ZOOMLEVEL = 30;// this is controls how far the lens will zoom in
         int x, y;
         Graphics graphics;
         Zoomer zoomer;
         Bitmap bmpScreenshot;
         delegate void SetFormDelegate(int x, int y);
-        public ZoomLens()
+        FixationDetection fixationWorker;
+        public ZoomLens(FixationDetection fixationWorker)
         {
             InitializeComponent();
+            this.fixationWorker = fixationWorker;
             //this.x = x;
             //this.y = y;
             this.Width = LENSSIZE;//setting the lens size
@@ -49,8 +51,6 @@ namespace GazeToolBar
                 SetFormDelegate sfd = new SetFormDelegate(SetForm);
                 this.Invoke(sfd, new Object[] { x, y });
             }
-
-
             //perform click here @ the center of the form
         }
         public void SetForm(int x, int y)
@@ -62,13 +62,18 @@ namespace GazeToolBar
             lensPoint.X = x - (this.Width / 2);//this sets the position on the screen which is being zoomed in. 
             lensPoint.Y = y - (this.Height / 2);
             graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, empty.X, empty.Y, this.Size, CopyPixelOperation.SourceCopy);
-            for (int i = 0; i < ZOOMLEVEL; i++)
-            {
-                bmpScreenshot = zoomer.Zoom(bmpScreenshot);
-                pictureBox1.Image = bmpScreenshot;
-                System.Threading.Thread.Sleep(50);
-                Application.DoEvents();
-            }
+
+            bmpScreenshot = zoomer.Zoom(bmpScreenshot);
+            pictureBox1.Image = bmpScreenshot;
+            Application.DoEvents();
+            //somehow check for when another fixation happens on the form?
+            System.Threading.Thread.Sleep(2000);
+
+            int xMiddleofForm = this.Top + this.Height / 2;
+            int yMiddleofForm = this.Left + this.Width / 2;
+            VirtualMouse.LeftMouseClick(xMiddleofForm, yMiddleofForm);
+            //fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftMouseClick);//this needs to change based on what event is being called. also the x,y needs to be 
+
             this.Dispose();
         }
     }
