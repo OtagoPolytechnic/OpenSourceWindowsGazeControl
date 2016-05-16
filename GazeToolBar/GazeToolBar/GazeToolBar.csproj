@@ -54,6 +54,10 @@
     <ApplicationIcon>Gaze.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EyeXFramework, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\x64\EyeXFramework.dll</HintPath>
+    </Reference>
     <Reference Include="ShellBasics, Version=1.0.5926.36717, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\ShellBasics.dll</HintPath>
@@ -156,12 +160,6 @@
     <Content Include="Tobii.EyeX.Client.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\EyeXFramework\EyeXFramework.csproj">
-      <Project>{c9bbfbac-fd0f-46de-843f-f3620bf79dc2}</Project>
-      <Name>EyeXFramework</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
