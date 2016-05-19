@@ -12,14 +12,14 @@ namespace GazeToolBar
     public class Zoomer
     {
         Graphics graphics;
-        private const int ZOOMLEVEL = 3;
+        private const int ZOOMSPEED = 1;
         public Zoomer(Graphics graphics)
         {
             this.graphics = graphics;
         }
         public Bitmap Zoom(Bitmap bmpScreenshot)
         {
-            Rectangle cropArea = new Rectangle(ZOOMLEVEL, ZOOMLEVEL, bmpScreenshot.Width - (ZOOMLEVEL * 2), bmpScreenshot.Height - (ZOOMLEVEL * 2));
+            Rectangle cropArea = new Rectangle(ZOOMSPEED, ZOOMSPEED, bmpScreenshot.Width - (ZOOMSPEED * 2), bmpScreenshot.Height - (ZOOMSPEED * 2));
             Bitmap bmpImage = new Bitmap(bmpScreenshot);
             return bmpImage.Clone(cropArea, bmpImage.PixelFormat);
         }
