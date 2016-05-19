@@ -102,7 +102,7 @@
             this.btnScoll.Size = new System.Drawing.Size(93, 80);
             this.btnScoll.TabIndex = 5;
             this.btnScoll.UseVisualStyleBackColor = false;
-            this.btnScoll.Click += new System.EventHandler(this.btnSettings_Click);
+            //this.btnScoll.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnKeyboard
             // 
