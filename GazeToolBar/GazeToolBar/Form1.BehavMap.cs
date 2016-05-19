@@ -19,13 +19,15 @@ namespace GazeToolBar
         {
             Program.EyeXHost.Connect(bhavMap);
 
-            bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
-            bhavMap.Add(btnRightClick, new GazeAwareBehavior(OnBtnRightClick) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
-            bhavMap.Add(btnSingleClick, new GazeAwareBehavior(OnBtnSingleClick) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
-            bhavMap.Add(btnSettings, new GazeAwareBehavior(OnBtnSettings) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
-            bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
-            bhavMap.Add(btnKeyboard, new GazeAwareBehavior(OnBtnKeyboard) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
-            bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            //Temp for 100 
+            //Will change later
+            bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick) { DelayMilliseconds = 100 });
+            bhavMap.Add(btnRightClick, new GazeAwareBehavior(OnBtnRightClick) { DelayMilliseconds = 100 });
+            bhavMap.Add(btnSingleClick, new GazeAwareBehavior(OnBtnSingleClick) { DelayMilliseconds = 100 });
+            bhavMap.Add(btnSettings, new GazeAwareBehavior(OnBtnSettings) { DelayMilliseconds = 100 });
+            bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = 100 });
+            bhavMap.Add(btnKeyboard, new GazeAwareBehavior(OnBtnKeyboard) { DelayMilliseconds = 100 });
+            bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = 100 });
         }
 
         private void OnBtnDoubleClick(object sender, EventArgs e)

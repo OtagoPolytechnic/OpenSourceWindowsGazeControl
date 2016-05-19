@@ -117,7 +117,6 @@
             this.btnDragAndDrop.Size = new System.Drawing.Size(93, 80);
             this.btnDragAndDrop.TabIndex = 5;
             this.btnDragAndDrop.UseVisualStyleBackColor = false;
-            this.btnDragAndDrop.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnKeyboard
             // 
@@ -128,7 +127,6 @@
             this.btnKeyboard.Size = new System.Drawing.Size(93, 80);
             this.btnKeyboard.TabIndex = 5;
             this.btnKeyboard.UseVisualStyleBackColor = false;
-            this.btnKeyboard.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnScoll
             // 
@@ -139,7 +137,6 @@
             this.btnScoll.Size = new System.Drawing.Size(93, 80);
             this.btnScoll.TabIndex = 5;
             this.btnScoll.UseVisualStyleBackColor = false;
-            this.btnScoll.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // Form1
             // 
