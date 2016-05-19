@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using EyeXFramework;
 using Tobii;
+using System.IO;
+using System.Diagnostics;
 
 
 namespace GazeToolBar
@@ -140,6 +142,17 @@ namespace GazeToolBar
         private void btnDoubleClick_Click(object sender, EventArgs e)
         {
             fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftDoubleClick);
+        }
+
+        private void btnKeyboard_Click(object sender, EventArgs e)
+        {
+            // this will open the exe for optikey. is tried to both the location of optikeys exe and the binary file for GazeToolBar. so will likely break if file/folders are moved
+            //will need some logic to decide if it needs to open or close optikey
+            Process process = System.Diagnostics.Process.Start(Path.GetFullPath("../../../../OptiKey/src/JuliusSweetland.OptiKey/bin/Debug/OptiKey.exe"));
+            //MessageBox.Show(Environment.CurrentDirectory);
+
+            //if optikey is already open
+            //process.Kill();
         }
     }
 }
