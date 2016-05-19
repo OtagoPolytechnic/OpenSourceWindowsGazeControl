@@ -36,14 +36,10 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnRightClick = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
-
             this.btnScoll = new System.Windows.Forms.Button();
-            this.btnKeyboard = new System.Windows.Forms.Button();
             this.btnDragAndDrop = new System.Windows.Forms.Button();
-            this.bhavMapRightClick = new EyeXFramework.Forms.BehaviorMap(components);
-            this.bhavMapDoubleClick = new EyeXFramework.Forms.BehaviorMap(components);
-            this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(components);
-            this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(components);
+            this.btnKeyboard = new System.Windows.Forms.Button();
+            this.bhavMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,6 +141,16 @@
             this.panel.Size = new System.Drawing.Size(200, 573);
             this.panel.TabIndex = 6;
             // 
+            // btnDragAndDrop
+            // 
+            this.btnDragAndDrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
+            this.btnDragAndDrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDragAndDrop.Location = new System.Drawing.Point(43, 488);
+            this.btnDragAndDrop.Name = "btnDragAndDrop";
+            this.btnDragAndDrop.Size = new System.Drawing.Size(93, 80);
+            this.btnDragAndDrop.TabIndex = 5;
+            this.btnDragAndDrop.UseVisualStyleBackColor = false;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -181,6 +187,8 @@
         private EyeXFramework.Forms.BehaviorMap bhavMapSingleClick;
         private EyeXFramework.Forms.BehaviorMap bhavMapDoubleClick;
         private EyeXFramework.Forms.BehaviorMap bhavMapSettings;
+        private EyeXFramework.Forms.BehaviorMap bhavMap;
+
 
     }
 }

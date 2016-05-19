@@ -7,11 +7,15 @@ using Tobii;
 
 namespace GazeToolBar
 {
+    /*
+        Date: 17/05/2016
+        Name: Derek Dai
+        Description: Main toolbar form
+    */
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
         EyeXHost eyeXhost;
         FixationDetection fixationWorker;
-
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
@@ -20,13 +24,21 @@ namespace GazeToolBar
         private Bitmap rightClick;
         private Bitmap settingIcon;
         private Bitmap doubleClick;
+        private Bitmap scrollImage;
+        private Bitmap keyboardImage;
+        private Bitmap dragAndDropImage;
 
         public Form1()
         {
+            //Initial a image to each button
             leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
             rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
-            settingIcon = new Bitmap(new Bitmap("settings-icon.png"), ReletiveSize.btnSize);
+            settingIcon = new Bitmap(new Bitmap("Settings-icon.png"), ReletiveSize.btnSize);
             doubleClick = new Bitmap(new Bitmap("Double-Click-icon.png"), ReletiveSize.btnSize);
+            scrollImage = new Bitmap(new Bitmap("Scroll-icon.png"), ReletiveSize.btnSize);
+            keyboardImage = new Bitmap(new Bitmap("Keyboard-icon.png"), ReletiveSize.btnSize);
+            dragAndDropImage = new Bitmap(new Bitmap("Drag-and-drop-icon.png"), ReletiveSize.btnSize);
+
             //Change resolution to 800 * 600
             ChangeResolution.ChangeScreenResolution();            
             InitializeComponent();
@@ -40,10 +52,17 @@ namespace GazeToolBar
             
             Edge = AppBarEdges.Right;
             AutoStart.IsAutoStart(settings, menuItemStartOnOff);
+
+            //Set all the image to its button
             btnSingleClick.Image = leftSingleClick;
             btnRightClick.Image = rightClick;
             btnSettings.Image = settingIcon;
             btnDoubleClick.Image = doubleClick;
+            btnScoll.Image = scrollImage;
+            btnKeyboard.Image = keyboardImage;
+            btnDragAndDrop.Image = dragAndDropImage;
+
+            connectBehaveMap();
         }
 
         /// <summary>
