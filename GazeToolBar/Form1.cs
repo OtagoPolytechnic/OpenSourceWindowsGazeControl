@@ -9,11 +9,15 @@ using System.Diagnostics;
 
 namespace GazeToolBar
 {
+    /*
+        Date: 17/05/2016
+        Name: Derek Dai
+        Description: Main toolbar form
+    */
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
         EyeXHost eyeXhost;
         FixationDetection fixationWorker;
-
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
@@ -22,13 +26,21 @@ namespace GazeToolBar
         private Bitmap rightClick;
         private Bitmap settingIcon;
         private Bitmap doubleClick;
+        private Bitmap scrollImage;
+        private Bitmap keyboardImage;
+        private Bitmap dragAndDropImage;
 
         public Form1()
         {
+            //Initial a image to each button
             leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
             rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
-            settingIcon = new Bitmap(new Bitmap("settings-icon.png"), ReletiveSize.btnSize);
+            settingIcon = new Bitmap(new Bitmap("Settings-icon.png"), ReletiveSize.btnSize);
             doubleClick = new Bitmap(new Bitmap("Double-Click-icon.png"), ReletiveSize.btnSize);
+            scrollImage = new Bitmap(new Bitmap("Scroll-icon.png"), ReletiveSize.btnSize);
+            keyboardImage = new Bitmap(new Bitmap("Keyboard-icon.png"), ReletiveSize.btnSize);
+            dragAndDropImage = new Bitmap(new Bitmap("Drag-and-drop-icon.png"), ReletiveSize.btnSize);
+
             //Change resolution to 800 * 600
             ChangeResolution.ChangeScreenResolution();            
             InitializeComponent();
@@ -42,10 +54,17 @@ namespace GazeToolBar
             
             Edge = AppBarEdges.Right;
             AutoStart.IsAutoStart(settings, menuItemStartOnOff);
-            btnSingleClick.Image = leftSingleClick;
+
+            //Set all the image to its button
+            btnSingleLeftClick.Image = leftSingleClick;
             btnRightClick.Image = rightClick;
             btnSettings.Image = settingIcon;
             btnDoubleClick.Image = doubleClick;
+            btnScoll.Image = scrollImage;
+            btnKeyboard.Image = keyboardImage;
+            btnDragAndDrop.Image = dragAndDropImage;
+
+            connectBehaveMap();
         }
 
         /// <summary>
@@ -70,7 +89,7 @@ namespace GazeToolBar
         /// </summary>
         private void setBtnSize()
         {
-            btnSingleClick.Size = ReletiveSize.btnSize;
+            btnSingleLeftClick.Size = ReletiveSize.btnSize;
             btnDoubleClick.Size = ReletiveSize.btnSize;
             btnRightClick.Size = ReletiveSize.btnSize;
             btnSettings.Size = ReletiveSize.btnSize;
@@ -78,7 +97,7 @@ namespace GazeToolBar
             btnKeyboard.Size = ReletiveSize.btnSize;
             btnDragAndDrop.Size = ReletiveSize.btnSize;
 
-            btnSingleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(2));
+            btnSingleLeftClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(2));
             btnDoubleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(3));
             btnRightClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(1));
             btnSettings.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(4));
@@ -98,12 +117,6 @@ namespace GazeToolBar
         private void menuItemStartOnOff_Click(object sender, EventArgs e)
         {
             AutoStart.setAutoStartOnOff(settings, menuItemStartOnOff);
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            settings = new Settings(this);
-            settings.Show();
         }
 
         /// <summary>
@@ -128,12 +141,18 @@ namespace GazeToolBar
             fixationWorker = new FixationDetection(eyeXhost);
         }
 
-        private void btnRightClick_Click(object sender, EventArgs e)
+        private void btnSettings_Click(object sender, EventArgs e)
         {
-            fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
+            settings = new Settings(this);
+            settings.Show();
         }
 
-        private void btnSingleClick_Click(object sender, EventArgs e)
+        private void btnRightClick_Click(object sender, EventArgs e)
+        {
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.RightMouseClick);
+        }
+
+        private void btnSingleLeftClick_Click(object sender, EventArgs e)
         {
             ZoomLens zoom = new ZoomLens();
             fixationWorker.SetupSelectedFixationAction(zoom.CreateZoomLens);
@@ -148,11 +167,24 @@ namespace GazeToolBar
         {
             // this will open the exe for optikey. is tried to both the location of optikeys exe and the binary file for GazeToolBar. so will likely break if file/folders are moved
             //will need some logic to decide if it needs to open or close optikey
-            Process process = System.Diagnostics.Process.Start(Path.GetFullPath("../../../../OptiKey/src/JuliusSweetland.OptiKey/bin/Debug/OptiKey.exe"));
+            Process process = System.Diagnostics.Process.Start(Path.GetFullPath("../../../OptiKey/src/JuliusSweetland.OptiKey/bin/Debug/OptiKey.exe"));
             //MessageBox.Show(Environment.CurrentDirectory);
 
             //if optikey is already open
             //process.Kill();
         }
+
+        private void btnScoll_Click(object sender, EventArgs e)
+        {
+            fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
+            //Add logic to scroll/pan with eyes after middle click
+        }
+
+        private void btnDragAndDrop_Click(object sender, EventArgs e)
+        {
+            //Create logic to run left mouse down, update xy then left mouse up to simulate drag and drop
+        }
+
+
     }
 }

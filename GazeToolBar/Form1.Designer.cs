@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ntficGaze = new System.Windows.Forms.NotifyIcon(this.components);
-            this.btnSingleClick = new System.Windows.Forms.Button();
+            this.btnSingleLeftClick = new System.Windows.Forms.Button();
             this.btnDoubleClick = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnRightClick = new System.Windows.Forms.Button();
@@ -43,6 +43,7 @@
             this.bhavMapDoubleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,16 +53,16 @@
             this.ntficGaze.Text = "Gaze Toolbar";
             this.ntficGaze.Visible = true;
             // 
-            // btnSingleClick
+            // btnSingleLeftClick
             // 
-            this.btnSingleClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
-            this.btnSingleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSingleClick.Location = new System.Drawing.Point(43, 80);
-            this.btnSingleClick.Name = "btnSingleClick";
-            this.btnSingleClick.Size = new System.Drawing.Size(93, 80);
-            this.btnSingleClick.TabIndex = 3;
-            this.btnSingleClick.UseVisualStyleBackColor = false;
-            this.btnSingleClick.Click += new System.EventHandler(this.btnSingleClick_Click);
+            this.btnSingleLeftClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
+            this.btnSingleLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSingleLeftClick.Location = new System.Drawing.Point(43, 80);
+            this.btnSingleLeftClick.Name = "btnSingleLeftClick";
+            this.btnSingleLeftClick.Size = new System.Drawing.Size(93, 80);
+            this.btnSingleLeftClick.TabIndex = 3;
+            this.btnSingleLeftClick.UseVisualStyleBackColor = false;
+            this.btnSingleLeftClick.Click += new System.EventHandler(this.btnSingleLeftClick_Click);
             // 
             // btnDoubleClick
             // 
@@ -104,7 +105,7 @@
             this.panel.Controls.Add(this.btnKeyboard);
             this.panel.Controls.Add(this.btnScoll);
             this.panel.Controls.Add(this.btnSettings);
-            this.panel.Controls.Add(this.btnSingleClick);
+            this.panel.Controls.Add(this.btnSingleLeftClick);
             this.panel.Controls.Add(this.btnRightClick);
             this.panel.Location = new System.Drawing.Point(0, 200);
             this.panel.Name = "panel";
@@ -120,7 +121,7 @@
             this.btnDragAndDrop.Size = new System.Drawing.Size(93, 80);
             this.btnDragAndDrop.TabIndex = 5;
             this.btnDragAndDrop.UseVisualStyleBackColor = false;
-            this.btnDragAndDrop.Click += new System.EventHandler(this.btnSettings_Click);
+            this.btnDragAndDrop.Click += new System.EventHandler(this.btnDragAndDrop_Click);
             // 
             // btnKeyboard
             // 
@@ -142,13 +143,13 @@
             this.btnScoll.Size = new System.Drawing.Size(93, 80);
             this.btnScoll.TabIndex = 5;
             this.btnScoll.UseVisualStyleBackColor = false;
-            this.btnScoll.Click += new System.EventHandler(this.btnSettings_Click);
+            this.btnScoll.Click += new System.EventHandler(this.btnScoll_Click);
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
-            this.ClientSize = new System.Drawing.Size(200, 1000);
+            this.ClientSize = new System.Drawing.Size(200, 780);
             this.ControlBox = false;
             this.Controls.Add(this.panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -168,7 +169,7 @@
 
         #endregion
         private System.Windows.Forms.NotifyIcon ntficGaze;
-        private System.Windows.Forms.Button btnSingleClick;
+        private System.Windows.Forms.Button btnSingleLeftClick;
         private System.Windows.Forms.Button btnDoubleClick;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnRightClick;
@@ -180,6 +181,8 @@
         private EyeXFramework.Forms.BehaviorMap bhavMapSingleClick;
         private EyeXFramework.Forms.BehaviorMap bhavMapDoubleClick;
         private EyeXFramework.Forms.BehaviorMap bhavMapSettings;
+        private EyeXFramework.Forms.BehaviorMap bhavMap;
+
 
     }
 }
