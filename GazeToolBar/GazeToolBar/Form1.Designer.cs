@@ -36,14 +36,13 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnRightClick = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
-
-            this.btnScoll = new System.Windows.Forms.Button();
-            this.btnKeyboard = new System.Windows.Forms.Button();
             this.btnDragAndDrop = new System.Windows.Forms.Button();
-            this.bhavMapRightClick = new EyeXFramework.Forms.BehaviorMap(components);
-            this.bhavMapDoubleClick = new EyeXFramework.Forms.BehaviorMap(components);
-            this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(components);
-            this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(components);
+            this.btnKeyboard = new System.Windows.Forms.Button();
+            this.btnScoll = new System.Windows.Forms.Button();
+            this.bhavMapRightClick = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavMapDoubleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,39 +96,6 @@
             this.btnRightClick.UseVisualStyleBackColor = false;
             this.btnRightClick.Click += new System.EventHandler(this.btnRightClick_Click);
             // 
-            // btnScoll
-            // 
-            this.btnScoll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
-            this.btnScoll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScoll.Location = new System.Drawing.Point(43, 316);
-            this.btnScoll.Name = "btnScoll";
-            this.btnScoll.Size = new System.Drawing.Size(93, 80);
-            this.btnScoll.TabIndex = 5;
-            this.btnScoll.UseVisualStyleBackColor = false;
-            this.btnScoll.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
-            // btnKeyboard
-            // 
-            this.btnKeyboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
-            this.btnKeyboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKeyboard.Location = new System.Drawing.Point(43, 402);
-            this.btnKeyboard.Name = "btnKeyboard";
-            this.btnKeyboard.Size = new System.Drawing.Size(93, 80);
-            this.btnKeyboard.TabIndex = 5;
-            this.btnKeyboard.UseVisualStyleBackColor = false;
-            this.btnKeyboard.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
-            // btnDragAndDrop
-            // 
-            this.btnDragAndDrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
-            this.btnDragAndDrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDragAndDrop.Location = new System.Drawing.Point(43, 488);
-            this.btnDragAndDrop.Name = "btnDragAndDrop";
-            this.btnDragAndDrop.Size = new System.Drawing.Size(93, 80);
-            this.btnDragAndDrop.TabIndex = 5;
-            this.btnDragAndDrop.UseVisualStyleBackColor = false;
-            this.btnDragAndDrop.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
             // panel
             // 
             this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
@@ -144,6 +110,39 @@
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(200, 573);
             this.panel.TabIndex = 6;
+            // 
+            // btnDragAndDrop
+            // 
+            this.btnDragAndDrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
+            this.btnDragAndDrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDragAndDrop.Location = new System.Drawing.Point(43, 488);
+            this.btnDragAndDrop.Name = "btnDragAndDrop";
+            this.btnDragAndDrop.Size = new System.Drawing.Size(93, 80);
+            this.btnDragAndDrop.TabIndex = 5;
+            this.btnDragAndDrop.UseVisualStyleBackColor = false;
+            this.btnDragAndDrop.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // btnKeyboard
+            // 
+            this.btnKeyboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
+            this.btnKeyboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKeyboard.Location = new System.Drawing.Point(43, 402);
+            this.btnKeyboard.Name = "btnKeyboard";
+            this.btnKeyboard.Size = new System.Drawing.Size(93, 80);
+            this.btnKeyboard.TabIndex = 5;
+            this.btnKeyboard.UseVisualStyleBackColor = false;
+            this.btnKeyboard.Click += new System.EventHandler(this.btnKeyboard_Click);
+            // 
+            // btnScoll
+            // 
+            this.btnScoll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(173)))), ((int)(((byte)(83)))), ((int)(((byte)(201)))));
+            this.btnScoll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScoll.Location = new System.Drawing.Point(43, 316);
+            this.btnScoll.Name = "btnScoll";
+            this.btnScoll.Size = new System.Drawing.Size(93, 80);
+            this.btnScoll.TabIndex = 5;
+            this.btnScoll.UseVisualStyleBackColor = false;
+            this.btnScoll.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // Form1
             // 
