@@ -13,6 +13,8 @@ namespace GazeToolBar
         {
             InitializeComponent();
             this.form1 = form1;
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
             OnTheRight = true;
         }
 
