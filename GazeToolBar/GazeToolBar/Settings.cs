@@ -13,8 +13,10 @@ namespace GazeToolBar
         {
             InitializeComponent();
             this.form1 = form1;
+            //This code make setting form full screen
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+            //End
             OnTheRight = true;
         }
 

@@ -63,7 +63,8 @@ namespace GazeToolBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(180, 222);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
+            this.ClientSize = new System.Drawing.Size(1634, 1053);
             this.Controls.Add(this.btnAutoStart);
             this.Controls.Add(this.btnChangeSide);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
