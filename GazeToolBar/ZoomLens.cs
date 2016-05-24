@@ -13,22 +13,31 @@ namespace GazeToolBar
     public partial class ZoomLens : Form
     {
 
-        const int LENSSIZE = 200;// how big the actual lens is
-        const int ZOOMLEVEL = 30;// this is controls how far the lens will zoom in
+        const int LENSSIZE = 1200;// how big the actual lens is
+        const int ZOOMLEVEL = 2;// this is controls how far the lens will zoom in
         int x, y;
         Graphics graphics;
-        Zoomer zoomer;
         Bitmap bmpScreenshot;
         delegate void SetFormDelegate(int x, int y);
-        public ZoomLens()
+        FixationDetection fixationWorker;
+        public ZoomLens(FixationDetection fixationWorker)
         {
+
+            //get gaze coordinates
+            //find the offset based on how big the screenshot will be
+            //take a screenshot at the coordinates
+            //make a form %percentage size of the screenshot %percentage = the zoom percentage
+            //off set the form so it is above the original coordinates
+            //wait to see where the user is looking
+            //translate where the user looked on the form to 
             InitializeComponent();
+            this.fixationWorker = fixationWorker;
             //this.x = x;
             //this.y = y;
             this.Width = LENSSIZE;//setting the lens size
             this.Height = LENSSIZE;
 
-            bmpScreenshot = new Bitmap(this.Width, this.Height);//set bitmap to same size as the lens
+            bmpScreenshot = new Bitmap(this.Width / ZOOMLEVEL, this.Height / ZOOMLEVEL);//set bitmap to same size as the lens
             graphics = this.CreateGraphics();
             graphics = Graphics.FromImage(bmpScreenshot);
 
@@ -39,8 +48,6 @@ namespace GazeToolBar
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
 
             this.FormBorderStyle = FormBorderStyle.None;
-            zoomer = new Zoomer(graphics);
-
         }
         public void CreateZoomLens(int x, int y)
         {
@@ -49,16 +56,7 @@ namespace GazeToolBar
                 SetFormDelegate sfd = new SetFormDelegate(SetForm);
                 this.Invoke(sfd, new Object[] { x, y });
             }
-
-            for (int i = 0; i < ZOOMLEVEL; i++)
-            {
-                bmpScreenshot = zoomer.Zoom(bmpScreenshot);
-                pictureBox1.Image = bmpScreenshot;
-                System.Threading.Thread.Sleep(50);
-                Application.DoEvents();
-            }
             //perform click here @ the center of the form
-            this.Dispose();
         }
         public void SetForm(int x, int y)
         {
@@ -66,17 +64,38 @@ namespace GazeToolBar
             this.Show();//make lens visible
             Point lensPoint = new Point();
             Point empty = new Point(0, 0);
-            lensPoint.X = x - (this.Width / 2);//this sets the position on the screen which is being zoomed in. 
-            lensPoint.Y = y - (this.Height / 2);
-            graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, empty.X, empty.Y, this.Size, CopyPixelOperation.SourceCopy);
-            for (int i = 0; i < ZOOMLEVEL; i++)
-            {
-                bmpScreenshot = zoomer.Zoom(bmpScreenshot);
-                pictureBox1.Image = bmpScreenshot;
-                System.Threading.Thread.Sleep(50);
-                Application.DoEvents();
-            }
+            lensPoint.X = x; //- (this.Width / 2);//this sets the position on the screen which is being zoomed in. 
+            lensPoint.Y = y; //- (this.Height / 2);
+            graphics.CopyFromScreen(lensPoint.X - (bmpScreenshot.Width /2), lensPoint.Y - (bmpScreenshot.Height /2) , empty.X, empty.Y, bmpScreenshot.Size, CopyPixelOperation.SourceCopy);
+
+            bmpScreenshot = Zoom(bmpScreenshot);
+            pictureBox1.Image = bmpScreenshot;
+            Application.DoEvents();
+            //somehow check for when another fixation happens on the form?
+            System.Threading.Thread.Sleep(10000);
+
+
+            //somehow get current looking location 
+            //Point clickPoint = TranslateToDesktop(newX, newY);
+            //Make the @ the newX and newY Point
             this.Dispose();
+        }
+        public Bitmap Zoom(Bitmap bmpScreenshot)
+        {
+            //RectangleF destinationRect = new RectangleF(150, 20, 1.3f * bmpScreenshot.Width, 1.3f * bmpScreenshot.Height);
+            RectangleF cropArea = new RectangleF(0, 0, .5f * bmpScreenshot.Width, .5f * bmpScreenshot.Height);
+
+
+            //Rectangle cropArea = new Rectangle(ZOOMLEVEL, ZOOMLEVEL, bmpScreenshot.Width - (ZOOMLEVEL * 2), bmpScreenshot.Height - (ZOOMLEVEL * 2));
+            Bitmap bmpImage = new Bitmap(bmpScreenshot);
+            return bmpImage.Clone(cropArea, bmpImage.PixelFormat);
+        }
+        public Point TranslateToDesktop(int x, int y)
+        {
+            Point returnPoint = new Point();
+            returnPoint.X = x - (this.Width / 2) * (1 / ZOOMLEVEL) + (this.Left + (this.Width / 2));
+            returnPoint.Y = y - (this.Height / 2) * (1 / ZOOMLEVEL) + (this.Top + (this.Height / 2));
+            return returnPoint;
         }
     }
 }
