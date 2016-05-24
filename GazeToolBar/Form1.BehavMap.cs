@@ -15,20 +15,30 @@ namespace GazeToolBar
         /// Connect behave map with buttons
         /// and add event to the behave map
         /// </summary>
+        /// 
+
+        private int delayBeforeButtonSelected = 500;
         private void connectBehaveMap()
         {
             Program.EyeXHost.Connect(bhavMap);
 
             //Temp for 100 
             //Will change later
-            bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick) { DelayMilliseconds = 100 });
-            bhavMap.Add(btnRightClick, new GazeAwareBehavior(OnBtnRightClick) { DelayMilliseconds = 100 });
-            bhavMap.Add(btnSingleLeftClick, new GazeAwareBehavior(OnBtnSingleClick) { DelayMilliseconds = 100 });
-            bhavMap.Add(btnSettings, new GazeAwareBehavior(OnBtnSettings) { DelayMilliseconds = 100 });
-            bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = 100 });
-            bhavMap.Add(btnKeyboard, new GazeAwareBehavior(OnBtnKeyboard) { DelayMilliseconds = 100 });
-            bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = 100 });
+            bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick) { DelayMilliseconds = delayBeforeButtonSelected });
+            bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick)
+            bhavMap.Add(btnRightClick, new GazeAwareBehavior(OnBtnRightClick) { DelayMilliseconds = delayBeforeButtonSelected });
+            bhavMap.Add(btnSingleLeftClick, new GazeAwareBehavior(OnBtnSingleClick) { DelayMilliseconds = delayBeforeButtonSelected });
+            bhavMap.Add(btnSettings, new GazeAwareBehavior(OnBtnSettings) { DelayMilliseconds = delayBeforeButtonSelected });
+            bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = delayBeforeButtonSelected });
+            bhavMap.Add(btnKeyboard, new GazeAwareBehavior(OnBtnKeyboard) { DelayMilliseconds = delayBeforeButtonSelected });
+            bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
         }
+
+        private void OnGazeShowBorder(object s, GazeAwareEventArgs)
+        {
+
+        }
+
 
         private void OnBtnDoubleClick(object sender, EventArgs e)
         {
