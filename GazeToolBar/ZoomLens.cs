@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EyeXFramework;
 
 namespace GazeToolBar
 {
@@ -16,7 +17,10 @@ namespace GazeToolBar
         int x, y;
         Graphics graphics;
         Bitmap bmpScreenshot;
-        delegate void SetFormDelegate(int x, int y);;
+        delegate void SetFormDelegate(int x, int y);
+
+        FixationDetection fixdet;
+        EyeXHost eyeHost;
         public ZoomLens()
         {
             //wait to see where the user is looking
@@ -36,6 +40,13 @@ namespace GazeToolBar
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
 
             this.FormBorderStyle = FormBorderStyle.None;
+            eyeHost = new EyeXHost();
+            fixdet = new FixationDetection(eyeHost);
+            //fixdet.SetupSelectedFixationAction();//pass in getrelativecoords
+        }
+        public void getRelativeCoords()
+        {
+ 
         }
         public void CreateZoomLens(int x, int y)
         {
@@ -51,14 +62,14 @@ namespace GazeToolBar
             this.DesktopLocation = new Point(x - (this.Width / 2), y - (this.Height / 2));//set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
             this.Show();//make lens visible
 
-            graphics.CopyFromScreen(x - (bmpScreenshot.Width /2), y - (bmpScreenshot.Height /2) , 0,0, bmpScreenshot.Size, CopyPixelOperation.SourceCopy);
+            graphics.CopyFromScreen(x - (bmpScreenshot.Width / 2), y - (bmpScreenshot.Height / 2), 0, 0, bmpScreenshot.Size, CopyPixelOperation.SourceCopy);
 
             pictureBox1.Image = bmpScreenshot;
 
             Application.DoEvents();
 
             //somehow check for when another fixation happens on the form?
-
+            
             System.Threading.Thread.Sleep(10000);//find a better way than sleep
 
 
@@ -67,7 +78,7 @@ namespace GazeToolBar
             //Make the @ the newX and newY Point
             this.Dispose();
         }
-        
+
         public Bitmap Zoom(Bitmap bmpScreenshot)//old method not needed for magnify version
         {
             //RectangleF destinationRect = new RectangleF(150, 20, 1.3f * bmpScreenshot.Width, 1.3f * bmpScreenshot.Height);
