@@ -1,6 +1,7 @@
 ﻿using EyeXFramework;
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace GazeToolBar
 {
@@ -25,8 +26,9 @@ namespace GazeToolBar
             //Temp for 100 
             //Will change later
             bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick) { DelayMilliseconds = delayBeforeButtonSelected });
-            bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick)
+            //bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnGazeShowBorder));
             bhavMap.Add(btnRightClick, new GazeAwareBehavior(OnBtnRightClick) { DelayMilliseconds = delayBeforeButtonSelected });
+
             bhavMap.Add(btnSingleLeftClick, new GazeAwareBehavior(OnBtnSingleClick) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnSettings, new GazeAwareBehavior(OnBtnSettings) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = delayBeforeButtonSelected });
@@ -34,9 +36,13 @@ namespace GazeToolBar
             bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
         }
 
-        private void OnGazeShowBorder(object s, GazeAwareEventArgs)
+        private void OnGazeShowBorder(object s, GazeAwareEventArgs e)
         {
-
+            Button sentButton = s as Button;
+            if(sentButton != null)
+            {
+                sentButton.BackColor = (e.HasGaze) ? Color.Red : Color.FromArgb(173, 83, 201);
+            }
         }
 
 

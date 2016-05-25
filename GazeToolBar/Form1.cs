@@ -79,7 +79,7 @@ namespace GazeToolBar
             menuItemStartOnOff.Click += new EventHandler(menuItemStartOnOff_Click);
             contextMenu.MenuItems.Add(menuItemStartOnOff);
             contextMenu.MenuItems.Add(menuItemExit);
-            ntficGaze.ContextMenu = contextMenu;
+           // ntficGaze.ContextMenu = contextMenu;
         }
 
         /// <summary>

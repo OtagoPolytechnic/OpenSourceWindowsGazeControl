@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.ntficGaze = new System.Windows.Forms.NotifyIcon(this.components);
             this.btnSingleLeftClick = new System.Windows.Forms.Button();
             this.btnDoubleClick = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -39,19 +38,9 @@
             this.btnDragAndDrop = new System.Windows.Forms.Button();
             this.btnKeyboard = new System.Windows.Forms.Button();
             this.btnScoll = new System.Windows.Forms.Button();
-            this.bhavMapRightClick = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.bhavMapDoubleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.panel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ntficGaze
-            // 
-            this.ntficGaze.Icon = ((System.Drawing.Icon)(resources.GetObject("ntficGaze.Icon")));
-            this.ntficGaze.Text = "Gaze Toolbar";
-            this.ntficGaze.Visible = true;
             // 
             // btnSingleLeftClick
             // 
@@ -168,7 +157,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.NotifyIcon ntficGaze;
+
         private System.Windows.Forms.Button btnSingleLeftClick;
         private System.Windows.Forms.Button btnDoubleClick;
         private System.Windows.Forms.Button btnSettings;
@@ -177,10 +166,6 @@
         private System.Windows.Forms.Button btnDragAndDrop;
         private System.Windows.Forms.Button btnKeyboard;
         private System.Windows.Forms.Button btnScoll;
-        private EyeXFramework.Forms.BehaviorMap bhavMapRightClick;
-        private EyeXFramework.Forms.BehaviorMap bhavMapSingleClick;
-        private EyeXFramework.Forms.BehaviorMap bhavMapDoubleClick;
-        private EyeXFramework.Forms.BehaviorMap bhavMapSettings;
         private EyeXFramework.Forms.BehaviorMap bhavMap;
 
 
