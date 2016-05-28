@@ -16,8 +16,7 @@ namespace GazeToolBar
     */
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
-        EyeXHost eyeXhost;
-        FixationDetection fixationWorker;
+
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
@@ -30,8 +29,10 @@ namespace GazeToolBar
         private Bitmap keyboardImage;
         private Bitmap dragAndDropImage;
 
-        public Form1()
+        public Form1(FixationDetection fixationWorker)
         {
+            this.fixationWorker = fixationWorker;
+
             //Initial a image to each button
             leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
             rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
@@ -136,9 +137,7 @@ namespace GazeToolBar
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            eyeXhost = new EyeXHost();
-            eyeXhost.Start();
-            fixationWorker = new FixationDetection(eyeXhost);
+
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
