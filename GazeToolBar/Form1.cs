@@ -16,7 +16,7 @@ namespace GazeToolBar
     */
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
-
+        FixationDetection fixationWorker;
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
@@ -149,6 +149,7 @@ namespace GazeToolBar
         private void btnRightClick_Click(object sender, EventArgs e)
         {
             fixationWorker.SetupSelectedFixationAction(VirtualMouse.RightMouseClick);
+            
         }
 
         private void btnSingleLeftClick_Click(object sender, EventArgs e)

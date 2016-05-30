@@ -103,6 +103,7 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="StateManager.cs" />
     <Compile Include="ValueNeverChange.cs" />
     <Compile Include="VirtualMouse.cs" />
     <Compile Include="Zoomer.cs" />

@@ -12,6 +12,17 @@ namespace GazeToolBar
     {
         EyeXHost eyeXhost;
         FixationDetection fixationWorker;
+        Form1 toolbar;
+        Zoomer zoomer;
+        //optikey
+
+        /*Things that need to change in other classes
+         * Toolbar must raise the actionbuttonselected flag when an action button is selected
+         * FixationDetection must raise flag when a timeout happens
+         * Zoomer needs to accept a fixation point from the StateManager or it needs to figure out it's second point and return it to the StateManager
+         * StateManger needs to save the x,y from the zoomer and it also needs to know which action was to be performed (Form will raise the flag based on what action was selected)
+         * */
+
         public StateManager()
         {
             globalVars.currentState = SystemState.Setup;
@@ -103,7 +114,7 @@ namespace GazeToolBar
                     //create zoomer and have it zoom on the current fixation point
                     break;
                 case SystemState.Zoomed:
-                    //get another fixation point and pass it to the zoomer 
+                    //get another fixation point and pass it to the zoomer
                     //zoomer can check if that point is on it's own and can translate the coords to desktop
                     break;
                 case SystemState.ApplyAction:
