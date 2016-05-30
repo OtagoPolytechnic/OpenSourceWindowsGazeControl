@@ -106,7 +106,6 @@
     <Compile Include="StateManager.cs" />
     <Compile Include="ValueNeverChange.cs" />
     <Compile Include="VirtualMouse.cs" />
-    <Compile Include="Zoomer.cs" />
     <Compile Include="ZoomLens.cs">
       <SubType>Form</SubType>
     </Compile>

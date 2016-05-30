@@ -16,7 +16,6 @@ namespace GazeToolBar
     */
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
-        FixationDetection fixationWorker;
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
@@ -28,11 +27,11 @@ namespace GazeToolBar
         private Bitmap scrollImage;
         private Bitmap keyboardImage;
         private Bitmap dragAndDropImage;
+        private EyeXHost EyeXHost;
 
-        public Form1(FixationDetection fixationWorker)
+        public Form1(EyeXHost EyeXHost)
         {
-            this.fixationWorker = fixationWorker;
-
+            this.EyeXHost = EyeXHost;
             //Initial a image to each button
             leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
             rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
@@ -148,19 +147,21 @@ namespace GazeToolBar
 
         private void btnRightClick_Click(object sender, EventArgs e)
         {
-            fixationWorker.SetupSelectedFixationAction(VirtualMouse.RightMouseClick);
+            globalVars.actionButtonSelected = true;//raise action button flag
+            globalVars.actionToBePerformed = ActionToBePerformed.RightClick;
             
         }
 
         private void btnSingleLeftClick_Click(object sender, EventArgs e)
         {
-            ZoomLens zoom = new ZoomLens();
-            fixationWorker.SetupSelectedFixationAction(zoom.CreateZoomLens);
+            globalVars.actionButtonSelected = true;//raise action button flag
+            globalVars.actionToBePerformed = ActionToBePerformed.LeftClick;
         }
 
         private void btnDoubleClick_Click(object sender, EventArgs e)
         {
-            fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftDoubleClick);
+            globalVars.actionButtonSelected = true;//raise action button flag
+            globalVars.actionToBePerformed = ActionToBePerformed.DoubleClick;
         }
 
         private void btnKeyboard_Click(object sender, EventArgs e)
@@ -176,7 +177,9 @@ namespace GazeToolBar
 
         private void btnScoll_Click(object sender, EventArgs e)
         {
-            fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
+            /*This will have to be added to the action enum and the logic will have to someplace else, not sure where yet*/
+            
+            //fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
             //Add logic to scroll/pan with eyes after middle click
         }
 
@@ -184,7 +187,5 @@ namespace GazeToolBar
         {
             //Create logic to run left mouse down, update xy then left mouse up to simulate drag and drop
         }
-
-
     }
 }

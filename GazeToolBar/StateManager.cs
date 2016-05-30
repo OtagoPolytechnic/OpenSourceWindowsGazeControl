@@ -1,6 +1,7 @@
 ﻿using EyeXFramework;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,25 @@ using System.Threading.Tasks;
 namespace GazeToolBar
 {
     public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, Zoomed, ApplyAction, DisplayFeedback }
+    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick }
+   
+    public static class globalVars
+    {
+        public static bool isKeyBoardUP { get; set; }
+        public static bool actionButtonSelected { get; set; }
+        public static ActionToBePerformed actionToBePerformed { get; set; }
+        public static SystemState currentState { get; set; }
+        public static bool Gaze { get; set; }
+        public static bool timeOut { get; set; }
+    }
+    
     public class StateManager
     {
         EyeXHost eyeXhost;
         FixationDetection fixationWorker;
         Form1 toolbar;
-        Zoomer zoomer;
+        ZoomLens zoomer;
+        Point fixationPoint;
         //optikey
 
         /*Things that need to change in other classes
@@ -31,7 +45,7 @@ namespace GazeToolBar
             eyeXhost.Start();
             fixationWorker = new FixationDetection(eyeXhost);
 
-            Form1 form = new Form1(fixationWorker);
+            Form1 form = new Form1(eyeXhost);
 
             globalVars.currentState = SystemState.Wait;
 
@@ -49,30 +63,34 @@ namespace GazeToolBar
                     }
                     else if (globalVars.isKeyBoardUP) //Keyboard button is pressed
                     {
-                        currentState = SystemState.DisplayFeedback;
+                        currentState = //SystemState.DisplayFeedback;
+                            SystemState.Wait;
                     }
                     break;
                 case SystemState.ActionButtonSelected:
-                    if (globalVars.firstZoomGaze)
+                    if (globalVars.Gaze)
                     {
                         currentState = SystemState.Zooming;
                     }
                     else if (globalVars.timeOut)
                     {
-                        currentState = SystemState.DisplayFeedback;
+                        currentState = //SystemState.DisplayFeedback;
+                            SystemState.Wait;
+                        globalVars.timeOut = false;
                     }
                     break;
                 case SystemState.Zooming:
                     currentState = SystemState.Zoomed;
                     break;
                 case SystemState.Zoomed:
-                    if (globalVars.secondZoomGaze)//if the second zoomGazehashapped an action needs to be performed
+                    if (globalVars.Gaze)//if the second zoomGazehashapped an action needs to be performed
                     {
                         currentState = SystemState.ApplyAction;
                     }
                     else if (globalVars.timeOut)
                     {
-                        currentState = SystemState.DisplayFeedback;
+                        currentState = //SystemState.DisplayFeedback;
+                            SystemState.Wait;
                     }
                     break;
                 case SystemState.ApplyAction:
@@ -107,33 +125,44 @@ namespace GazeToolBar
                     //set keyboard toolbar buttons to active
                     break;
                 case SystemState.ActionButtonSelected:
-                    //get a fixation point and save what action was selected
-                    //or timeOut
+                    //turn off form buttons
+                    if (globalVars.Gaze)
+                    {
+                        fixationPoint = fixationWorker.getXY();
+                        globalVars.Gaze = false;
+                    }
                     break;
                 case SystemState.Zooming:
-                    //create zoomer and have it zoom on the current fixation point
+                    zoomer = new ZoomLens(eyeXhost);
+                    fixationPoint = zoomer.CreateZoomLens(fixationPoint);
                     break;
                 case SystemState.Zoomed:
+                    if (globalVars.Gaze)
+                    {
+                        zoomer.clickGazePoint(fixationPoint);//this returns the middle of the form for now, later it will translate the coordinates and give a real location
+                    }
                     //get another fixation point and pass it to the zoomer
                     //zoomer can check if that point is on it's own and can translate the coords to desktop
                     break;
                 case SystemState.ApplyAction:
-                    //get the desktop x,y from the zoomer
-                    //give x,y and currentAction to virtualMouse
+                    if (globalVars.actionToBePerformed == ActionToBePerformed.LeftClick)
+                    {
+                        VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
+                    }
+                    else if (globalVars.actionToBePerformed == ActionToBePerformed.RightClick)
+                    {
+                        VirtualMouse.RightMouseClick(fixationPoint.X, fixationPoint.Y);
+                    }
+                    else if (globalVars.actionToBePerformed == ActionToBePerformed.DoubleClick)
+                    {
+                        VirtualMouse.LeftDoubleClick(fixationPoint.X, fixationPoint.Y);
+                    }
                     break;
                 case SystemState.DisplayFeedback:
                     //Inform the user that gazing has ended (maybe a sound tone, or changing the button's colour)
                     break;
             }
         }
-        public static class globalVars
-        {
-            public static bool isKeyBoardUP { get; set; }
-            public static bool actionButtonSelected { get; set; }
-            public static SystemState currentState { get; set; }
-            public static bool firstZoomGaze { get; set; }
-            public static bool secondZoomGaze { get; set; }
-            public static bool timeOut { get; set; }
-        }
+
     }
 }
