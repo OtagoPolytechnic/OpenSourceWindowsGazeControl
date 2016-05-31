@@ -33,7 +33,7 @@ namespace GazeToolBar
                 isOnStart = false;
                 if (settings != null)
                 {
-                    settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_OFF;
+                    //settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_OFF;
                 }
                 menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
             }
@@ -43,7 +43,7 @@ namespace GazeToolBar
                 isOnStart = true;
                 if (settings != null)
                 {
-                    settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_ON;
+                    //settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_ON;
                 }
                 menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_ON;
             }
@@ -64,7 +64,7 @@ namespace GazeToolBar
                     isOnStart = true;
                     if (settings != null)
                     {
-                        settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_ON;
+                        //settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_ON;
                     }
                     menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_ON;
                 }
@@ -79,7 +79,7 @@ namespace GazeToolBar
                 isOnStart = false;
                 if (settings != null)
                 {
-                    settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_OFF;
+                    //settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_OFF;
                 }
                 menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
             }

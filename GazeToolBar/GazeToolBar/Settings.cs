@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ShellLib;
+using System.Drawing;
 
 namespace GazeToolBar
 {
@@ -24,17 +25,17 @@ namespace GazeToolBar
         {
             if (OnTheRight)
             {
-                changeSide("To Right", ApplicationDesktopToolbar.AppBarEdges.Left, false);
+                changeSide("On left", ApplicationDesktopToolbar.AppBarEdges.Left, false);
             }
             else
             {
-                changeSide("To Left", ApplicationDesktopToolbar.AppBarEdges.Right, true);
+                changeSide("On Right", ApplicationDesktopToolbar.AppBarEdges.Right, true);
             }
         }
 
         private void changeSide(string text, ApplicationDesktopToolbar.AppBarEdges edge, bool flag)
         {
-            btnChangeSide.Text = text;
+            lblIndicationLeftOrRight.Text = text;
             form1.Edge = edge;
             OnTheRight = flag;
         }
@@ -63,6 +64,17 @@ namespace GazeToolBar
         private void Settings_Shown(object sender, EventArgs e)
         {
             AutoStart.IsAutoStart(form1.Settings, form1.MenuItemStartOnOff);
+        }
+
+        private void tabControlMain_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TabPage page = tabControlMain.TabPages[e.Index];
+            e.Graphics.FillRectangle(new SolidBrush(page.BackColor), e.Bounds);
+
+            Rectangle paddedBounds = e.Bounds;
+            int yOffset = (e.State == DrawItemState.Selected) ? -2 : 1;
+            paddedBounds.Offset(1, yOffset);
+            TextRenderer.DrawText(e.Graphics, page.Text, Font, paddedBounds, page.ForeColor);
         }
     }
 }

@@ -30,7 +30,6 @@ namespace GazeToolBar
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
             eyeXHost.Dispose();
-            
         }
     }
 }
