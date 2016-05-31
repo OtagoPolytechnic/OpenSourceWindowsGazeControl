@@ -19,6 +19,8 @@ namespace GazeToolBar
             WindowState = FormWindowState.Maximized;
             //End
             OnTheRight = true;
+            panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
+            tabControlMain.Size = ReletiveSize.TabControlSize;
         }
 
         private void btnChangeSide_Click(object sender, EventArgs e)

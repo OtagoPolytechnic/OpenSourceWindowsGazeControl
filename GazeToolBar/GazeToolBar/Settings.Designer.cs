@@ -74,6 +74,7 @@ namespace GazeToolBar
             this.lblWordPrediction = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.panelSaveAndCancel = new System.Windows.Forms.Panel();
             this.panelSelection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPrecision)).BeginInit();
             this.panelPrecision.SuspendLayout();
@@ -87,6 +88,7 @@ namespace GazeToolBar
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGazeTypingSpeed)).BeginInit();
             this.panelSize.SuspendLayout();
             this.panelLanguage.SuspendLayout();
+            this.panelSaveAndCancel.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAutoStart
@@ -204,7 +206,7 @@ namespace GazeToolBar
             // 
             this.panelPrecision.Controls.Add(this.trackBarPrecision);
             this.panelPrecision.Controls.Add(this.lblPrecision);
-            this.panelPrecision.Location = new System.Drawing.Point(3, 201);
+            this.panelPrecision.Location = new System.Drawing.Point(6, 170);
             this.panelPrecision.Name = "panelPrecision";
             this.panelPrecision.Size = new System.Drawing.Size(1243, 115);
             this.panelPrecision.TabIndex = 13;
@@ -234,7 +236,7 @@ namespace GazeToolBar
             // 
             this.panelSpeed.Controls.Add(this.trackBarSpeed);
             this.panelSpeed.Controls.Add(this.lblSpeed);
-            this.panelSpeed.Location = new System.Drawing.Point(6, 383);
+            this.panelSpeed.Location = new System.Drawing.Point(6, 303);
             this.panelSpeed.Name = "panelSpeed";
             this.panelSpeed.Size = new System.Drawing.Size(1243, 118);
             this.panelSpeed.TabIndex = 16;
@@ -291,7 +293,7 @@ namespace GazeToolBar
             this.panelOther.Controls.Add(this.label2);
             this.panelOther.Controls.Add(this.lblOther);
             this.panelOther.Controls.Add(this.lblPosition);
-            this.panelOther.Location = new System.Drawing.Point(6, 576);
+            this.panelOther.Location = new System.Drawing.Point(6, 443);
             this.panelOther.Name = "panelOther";
             this.panelOther.Size = new System.Drawing.Size(421, 192);
             this.panelOther.TabIndex = 21;
@@ -546,7 +548,7 @@ namespace GazeToolBar
             this.btnSave.FlatAppearance.BorderSize = 3;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(521, 924);
+            this.btnSave.Location = new System.Drawing.Point(25, 23);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(197, 56);
             this.btnSave.TabIndex = 23;
@@ -558,12 +560,21 @@ namespace GazeToolBar
             this.btnCancel.FlatAppearance.BorderSize = 3;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(822, 924);
+            this.btnCancel.Location = new System.Drawing.Point(326, 23);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(197, 56);
             this.btnCancel.TabIndex = 24;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // panelSaveAndCancel
+            // 
+            this.panelSaveAndCancel.Controls.Add(this.btnSave);
+            this.panelSaveAndCancel.Controls.Add(this.btnCancel);
+            this.panelSaveAndCancel.Location = new System.Drawing.Point(464, 883);
+            this.panelSaveAndCancel.Name = "panelSaveAndCancel";
+            this.panelSaveAndCancel.Size = new System.Drawing.Size(546, 100);
+            this.panelSaveAndCancel.TabIndex = 25;
             // 
             // Settings
             // 
@@ -571,8 +582,7 @@ namespace GazeToolBar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1634, 1053);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.panelSaveAndCancel);
             this.Controls.Add(this.tabControlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -601,6 +611,7 @@ namespace GazeToolBar
             this.panelSize.PerformLayout();
             this.panelLanguage.ResumeLayout(false);
             this.panelLanguage.PerformLayout();
+            this.panelSaveAndCancel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -650,5 +661,6 @@ namespace GazeToolBar
         private Label lblSoundFeedback;
         private Button btnSave;
         private Button btnCancel;
+        private Panel panelSaveAndCancel;
     }
 }

@@ -17,6 +17,13 @@ namespace GazeToolBar
         public static readonly Size panelSize = new Size(formSize.Width, btnSize.Height * 7 + gap * 6);
         public static readonly int btnPositionX = formSize.Width / 2 - btnSize.Width / 2;
         public static readonly int panelPositionY = formSize.Height / 2 - panelSize.Height / 2;
+        public static Size TabControlSize = new Size(ValueNeverChange.SCREEN_SIZE.Width, ValueNeverChange.SCREEN_SIZE.Height - 56 * 2);        
+
+        public static Point panelSaveAndCancel(int width, int height)
+        {
+            int i = (ValueNeverChange.SCREEN_SIZE.Width - width) / 2;
+            return new Point((ValueNeverChange.SCREEN_SIZE.Width - width) / 2, ValueNeverChange.SCREEN_SIZE.Height - height);
+        } 
 
         public static int btnPostionY(int num)
         {
