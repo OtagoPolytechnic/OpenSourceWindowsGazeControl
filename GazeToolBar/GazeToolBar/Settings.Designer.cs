@@ -136,6 +136,7 @@ namespace GazeToolBar
             this.btnGaze.Size = new System.Drawing.Size(55, 55);
             this.btnGaze.TabIndex = 6;
             this.btnGaze.UseVisualStyleBackColor = false;
+            this.btnGaze.Click += new System.EventHandler(this.btnGaze_Click);
             // 
             // btnSwitch
             // 
@@ -147,6 +148,7 @@ namespace GazeToolBar
             this.btnSwitch.Size = new System.Drawing.Size(55, 55);
             this.btnSwitch.TabIndex = 7;
             this.btnSwitch.UseVisualStyleBackColor = false;
+            this.btnSwitch.Click += new System.EventHandler(this.btnSwitch_Click);
             // 
             // lblGaze
             // 
@@ -201,6 +203,7 @@ namespace GazeToolBar
             this.trackBarPrecision.Size = new System.Drawing.Size(1074, 69);
             this.trackBarPrecision.TabIndex = 12;
             this.trackBarPrecision.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarPrecision.Scroll += new System.EventHandler(this.trackBarPrecision_Scroll);
             // 
             // panelPrecision
             // 
@@ -231,6 +234,7 @@ namespace GazeToolBar
             this.trackBarSpeed.Size = new System.Drawing.Size(1074, 69);
             this.trackBarSpeed.TabIndex = 15;
             this.trackBarSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarSpeed.Scroll += new System.EventHandler(this.trackBarSpeed_Scroll);
             // 
             // panelSpeed
             // 
@@ -359,6 +363,7 @@ namespace GazeToolBar
             this.trackBarGazeTypingSpeed.Size = new System.Drawing.Size(798, 69);
             this.trackBarGazeTypingSpeed.TabIndex = 17;
             this.trackBarGazeTypingSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarGazeTypingSpeed.Scroll += new System.EventHandler(this.trackBarGazeTypingSpeed_Scroll);
             // 
             // lblGazeTypingSpeed
             // 
@@ -395,6 +400,7 @@ namespace GazeToolBar
             this.btnSoundFeedback.Size = new System.Drawing.Size(55, 55);
             this.btnSoundFeedback.TabIndex = 13;
             this.btnSoundFeedback.UseVisualStyleBackColor = true;
+            this.btnSoundFeedback.Click += new System.EventHandler(this.btnSoundFeedback_Click);
             // 
             // lblSoundFeedbackOnOff
             // 
@@ -425,6 +431,7 @@ namespace GazeToolBar
             this.btnSizeSmall.Size = new System.Drawing.Size(55, 55);
             this.btnSizeSmall.TabIndex = 8;
             this.btnSizeSmall.UseVisualStyleBackColor = true;
+            this.btnSizeSmall.Click += new System.EventHandler(this.btnSizeSmall_Click);
             // 
             // lblSoundFeedback
             // 
@@ -465,6 +472,7 @@ namespace GazeToolBar
             this.btnSizeLarge.Size = new System.Drawing.Size(55, 55);
             this.btnSizeLarge.TabIndex = 10;
             this.btnSizeLarge.UseVisualStyleBackColor = true;
+            this.btnSizeLarge.Click += new System.EventHandler(this.btnSizeLarge_Click);
             // 
             // panelLanguage
             // 
@@ -490,6 +498,7 @@ namespace GazeToolBar
             this.btnChangeLanguage.TabIndex = 2;
             this.btnChangeLanguage.Text = "Change";
             this.btnChangeLanguage.UseVisualStyleBackColor = true;
+            this.btnChangeLanguage.Click += new System.EventHandler(this.btnChangeLanguage_Click);
             // 
             // lblWordPredictionOnOffIndiction
             // 
@@ -521,6 +530,7 @@ namespace GazeToolBar
             this.btnWordPredictionOnOff.Size = new System.Drawing.Size(55, 55);
             this.btnWordPredictionOnOff.TabIndex = 4;
             this.btnWordPredictionOnOff.UseVisualStyleBackColor = true;
+            this.btnWordPredictionOnOff.Click += new System.EventHandler(this.btnWordPredictionOnOff_Click);
             // 
             // lblCurrentLanguage
             // 
@@ -554,6 +564,7 @@ namespace GazeToolBar
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -566,6 +577,7 @@ namespace GazeToolBar
             this.btnCancel.TabIndex = 24;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panelSaveAndCancel
             // 
@@ -662,5 +674,6 @@ namespace GazeToolBar
         private Button btnSave;
         private Button btnCancel;
         private Panel panelSaveAndCancel;
+        private EyeXFramework.Forms.BehaviorMap bhavSettingMap;
     }
 }

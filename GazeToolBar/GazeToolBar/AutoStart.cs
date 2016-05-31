@@ -64,7 +64,7 @@ namespace GazeToolBar
                     isOnStart = true;
                     if (settings != null)
                     {
-                        //settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_ON;
+                        settings.ChangeButtonColor(settings.BtnAutoStart, true);
                     }
                     menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_ON;
                 }
@@ -79,7 +79,7 @@ namespace GazeToolBar
                 isOnStart = false;
                 if (settings != null)
                 {
-                    //settings.BtnAutoStart.Text = ValueNeverChange.AUTO_START_OFF;
+                    settings.ChangeButtonColor(settings.BtnAutoStart, false);
                 }
                 menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
             }
