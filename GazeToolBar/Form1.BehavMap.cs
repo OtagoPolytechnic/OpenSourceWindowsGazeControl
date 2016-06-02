@@ -22,11 +22,12 @@ namespace GazeToolBar
         private void connectBehaveMap()
         {
             Program.EyeXHost.Connect(bhavMap);
+            Program.EyeXHost.Connect(bhavMapHLCurrentGazeOnBT);
 
             //Temp for 100 
             //Will change later
             bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick) { DelayMilliseconds = delayBeforeButtonSelected });
-            //bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnGazeShowBorder));
+            bhavMap.Add(pnlHiLteRightClick, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(btnRightClick, new GazeAwareBehavior(OnBtnRightClick) { DelayMilliseconds = delayBeforeButtonSelected });
 
             bhavMap.Add(btnSingleLeftClick, new GazeAwareBehavior(OnBtnSingleClick) { DelayMilliseconds = delayBeforeButtonSelected });
@@ -36,12 +37,14 @@ namespace GazeToolBar
             bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
         }
 
-        private void OnGazeShowBorder(object s, GazeAwareEventArgs e)
+
+        //toggle border on and off on gaze to gaze to give feed back.
+        private void OnGazeChangeBTColour(object s, GazeAwareEventArgs e)
         {
-            Button sentButton = s as Button;
+            var sentButton = s as Panel;
             if(sentButton != null)
             {
-                sentButton.BackColor = (e.HasGaze) ? Color.Red : Color.FromArgb(173, 83, 201);
+                sentButton.BorderStyle = (e.HasGaze) ? BorderStyle.FixedSingle : BorderStyle.None;
             }
         }
 

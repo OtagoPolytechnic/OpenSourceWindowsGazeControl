@@ -79,7 +79,7 @@ namespace GazeToolBar
             menuItemStartOnOff.Click += new EventHandler(menuItemStartOnOff_Click);
             contextMenu.MenuItems.Add(menuItemStartOnOff);
             contextMenu.MenuItems.Add(menuItemExit);
-           // ntficGaze.ContextMenu = contextMenu;
+            //ntficGaze.ContextMenu = contextMenu;
         }
 
         /// <summary>
@@ -96,6 +96,7 @@ namespace GazeToolBar
             btnScoll.Size = ReletiveSize.btnSize;
             btnKeyboard.Size = ReletiveSize.btnSize;
             btnDragAndDrop.Size = ReletiveSize.btnSize;
+            pnlHiLteRightClick.Size = ReletiveSize.btnPanelSize;
 
             btnSingleLeftClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(2));
             btnDoubleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(3));
@@ -104,6 +105,7 @@ namespace GazeToolBar
             btnScoll.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(5));
             btnKeyboard.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(6));
             btnDragAndDrop.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(7));
+            pnlHiLteRightClick.Location = btnRightClick.Location;
 
             panel.Location = new Point(panel.Location.X, ReletiveSize.panelPositionY);
             panel.Size = ReletiveSize.panelSize;
