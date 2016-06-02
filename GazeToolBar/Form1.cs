@@ -5,6 +5,7 @@ using EyeXFramework;
 using Tobii;
 using System.IO;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 
 namespace GazeToolBar
@@ -30,6 +31,8 @@ namespace GazeToolBar
         private Bitmap keyboardImage;
         private Bitmap dragAndDropImage;
 
+        List<Panel> highlightPannerList;
+
         public Form1()
         {
             //Initial a image to each button
@@ -50,6 +53,18 @@ namespace GazeToolBar
             menuItemExit = new MenuItem();
             menuItemStartOnOff = new MenuItem();
             initMenuItem();
+
+
+            highlightPannerList = new List<Panel>();
+
+            highlightPannerList.Add(pnlHiLteRightClick);
+            highlightPannerList.Add(pnlHighLightSingleLeft);
+            highlightPannerList.Add(pnlHighLightDoubleClick);
+            highlightPannerList.Add(pnlHighLightSettings);
+            highlightPannerList.Add(pnlHighLightScrol);
+            highlightPannerList.Add(pnlHighLightKeyboard);
+            highlightPannerList.Add(pnlHighLightDragAndDrop);
+
             setBtnSize();
             
             Edge = AppBarEdges.Right;
@@ -96,16 +111,28 @@ namespace GazeToolBar
             btnScoll.Size = ReletiveSize.btnSize;
             btnKeyboard.Size = ReletiveSize.btnSize;
             btnDragAndDrop.Size = ReletiveSize.btnSize;
-            pnlHiLteRightClick.Size = ReletiveSize.btnPanelSize;
+            //pnlHiLteRightClick.Size = ReletiveSize.btnPanelSize;
 
-            btnSingleLeftClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(2));
-            btnDoubleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(3));
-            btnRightClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(1));
-            btnSettings.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(4));
-            btnScoll.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(5));
-            btnKeyboard.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(6));
-            btnDragAndDrop.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY(7));
-            pnlHiLteRightClick.Location = btnRightClick.Location;
+
+            btnRightClick.Location = new Point(3, ReletiveSize.btnPostionY);
+            btnSingleLeftClick.Location = new Point(3, 3);
+            Console.WriteLine(btnRightClick.Location);
+            Console.WriteLine(btnSingleLeftClick.Location);
+
+            btnDoubleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+            btnSettings.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+            btnScoll.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+            btnKeyboard.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+            btnDragAndDrop.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+            
+            //pnlHiLteRightClick.Location = new Point(ReletiveSize.btnPositionX - 3, ReletiveSize.btnPostionY(1));
+
+
+            for (int i = 0; i < highlightPannerList.Count; i++)
+            {
+                highlightPannerList[i].Size = ReletiveSize.btnPanelSize;
+                highlightPannerList[i].Location = new Point(ReletiveSize.pnlPositionX - 3, ReletiveSize.pnlPostionY(i+1));
+            }
 
             panel.Location = new Point(panel.Location.X, ReletiveSize.panelPositionY);
             panel.Size = ReletiveSize.panelSize;
@@ -186,6 +213,8 @@ namespace GazeToolBar
         {
             //Create logic to run left mouse down, update xy then left mouse up to simulate drag and drop
         }
+
+
 
 
     }
