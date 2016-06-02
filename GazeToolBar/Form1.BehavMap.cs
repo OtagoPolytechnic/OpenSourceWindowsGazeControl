@@ -18,7 +18,7 @@ namespace GazeToolBar
         /// </summary>
         /// 
 
-        private int delayBeforeButtonSelected = 500;
+        private int delayBeforeButtonSelected = 2000;
         private void connectBehaveMap()
         {
             Program.EyeXHost.Connect(bhavMap);
@@ -27,14 +27,20 @@ namespace GazeToolBar
             //Temp for 100 
             //Will change later
             bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick) { DelayMilliseconds = delayBeforeButtonSelected });
-            bhavMap.Add(pnlHiLteRightClick, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(btnRightClick, new GazeAwareBehavior(OnBtnRightClick) { DelayMilliseconds = delayBeforeButtonSelected });
-
             bhavMap.Add(btnSingleLeftClick, new GazeAwareBehavior(OnBtnSingleClick) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnSettings, new GazeAwareBehavior(OnBtnSettings) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnKeyboard, new GazeAwareBehavior(OnBtnKeyboard) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
+
+            bhavMap.Add(pnlHiLteRightClick, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavMap.Add(pnlHighLightDoubleClick, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavMap.Add(pnlHighLightDragAndDrop, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavMap.Add(pnlHighLightScrol, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavMap.Add(pnlHighLightSettings, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavMap.Add(pnlHighLightSingleLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavMap.Add(pnlHighLightKeyboard, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
 
 
@@ -44,7 +50,7 @@ namespace GazeToolBar
             var sentButton = s as Panel;
             if(sentButton != null)
             {
-                sentButton.BorderStyle = (e.HasGaze) ? BorderStyle.FixedSingle : BorderStyle.None;
+                sentButton.BackColor = (e.HasGaze) ? Color.Red : Color.FromArgb(173, 83, 201);
             }
         }
 
