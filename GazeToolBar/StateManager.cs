@@ -5,13 +5,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace GazeToolBar
 {
-    public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, Zoomed, ApplyAction, DisplayFeedback }
+    public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback }
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick }
    
-    public static class globalVars
+    public static class SystemFlags
     {
         public static bool isKeyBoardUP { get; set; }
         public static bool actionButtonSelected { get; set; }
@@ -23,7 +24,6 @@ namespace GazeToolBar
     
     public class StateManager
     {
-        EyeXHost eyeXhost;
         FixationDetection fixationWorker;
         Form1 toolbar;
         ZoomLens zoomer;
@@ -39,63 +39,69 @@ namespace GazeToolBar
 
         public StateManager()
         {
-            globalVars.currentState = SystemState.Setup;
+            SystemFlags.currentState = SystemState.Setup;
 
-            eyeXhost = new EyeXHost();
-            eyeXhost.Start();
-            fixationWorker = new FixationDetection(eyeXhost);
+            fixationWorker = new FixationDetection();
 
-            Form1 form = new Form1(eyeXhost);
 
-            globalVars.currentState = SystemState.Wait;
-
+            SystemFlags.currentState = SystemState.Wait;
+            Run();
+        }
+        public void Run()
+        {
+            while (true)
+            {
+                UpdateState();
+                Action();
+            }
         }
         public void UpdateState()
         {
-            SystemState currentState = globalVars.currentState;
+            SystemState currentState = SystemFlags.currentState;
             switch (currentState)
             {
                 case SystemState.Wait:
-                    if (globalVars.actionButtonSelected) //if a button has been selected (raised by the form itself?)
+                    if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
-                        globalVars.actionButtonSelected = false;
+                        SystemFlags.actionButtonSelected = false;
                     }
-                    else if (globalVars.isKeyBoardUP) //Keyboard button is pressed
+                    else if (SystemFlags.isKeyBoardUP) //Keyboard button is pressed
                     {
                         currentState = //SystemState.DisplayFeedback;
                             SystemState.Wait;
                     }
                     break;
                 case SystemState.ActionButtonSelected:
-                    if (globalVars.Gaze)
+                    if (SystemFlags.Gaze)
                     {
                         currentState = SystemState.Zooming;
                     }
-                    else if (globalVars.timeOut)
+                    else if (SystemFlags.timeOut)
                     {
                         currentState = //SystemState.DisplayFeedback;
                             SystemState.Wait;
-                        globalVars.timeOut = false;
+                        SystemFlags.timeOut = false;
                     }
                     break;
                 case SystemState.Zooming:
-                    currentState = SystemState.Zoomed;
+                    currentState = SystemState.ZoomWait;
                     break;
-                case SystemState.Zoomed:
-                    if (globalVars.Gaze)//if the second zoomGazehashapped an action needs to be performed
+                case SystemState.ZoomWait:
+                    if (SystemFlags.Gaze)//if the second zoomGazehashapped an action needs to be performed
                     {
                         currentState = SystemState.ApplyAction;
                     }
-                    else if (globalVars.timeOut)
+                    else if (SystemFlags.timeOut)
                     {
                         currentState = //SystemState.DisplayFeedback;
                             SystemState.Wait;
+                        //get rid of zoom
                     }
                     break;
                 case SystemState.ApplyAction:
                     //action is applied in action()
-                    if (globalVars.isKeyBoardUP)
+                    if (SystemFlags.isKeyBoardUP)
                     {
                         currentState = SystemState.KeyboardDisplayed;
                     }
@@ -103,18 +109,18 @@ namespace GazeToolBar
                     break;
                 case SystemState.DisplayFeedback:
                     //feedback has been applied by action()
-                    if (globalVars.isKeyBoardUP)
+                    if (SystemFlags.isKeyBoardUP)
                     {
                         currentState = SystemState.KeyboardDisplayed;
                     }
                     else currentState = SystemState.Wait;
                     break;
             }
-            globalVars.currentState = currentState;
+            SystemFlags.currentState = currentState;
         }
         public void Action()
         {
-            switch (globalVars.currentState)
+            switch (SystemFlags.currentState)
             {
                 case SystemState.Setup:
                     break;
@@ -126,37 +132,46 @@ namespace GazeToolBar
                     break;
                 case SystemState.ActionButtonSelected:
                     //turn off form buttons
-                    if (globalVars.Gaze)
-                    {
-                        fixationPoint = fixationWorker.getXY();
-                        globalVars.Gaze = false;
-                    }
                     break;
                 case SystemState.Zooming:
-                    zoomer = new ZoomLens(eyeXhost);
-                    fixationPoint = zoomer.CreateZoomLens(fixationPoint);
+                    zoomer = new ZoomLens();
+                    fixationPoint = fixationWorker.getXY();
+                    zoomer.CreateZoomLens(fixationPoint);
+                    SystemFlags.Gaze = false;
                     break;
-                case SystemState.Zoomed:
-                    if (globalVars.Gaze)
-                    {
-                        zoomer.clickGazePoint(fixationPoint);//this returns the middle of the form for now, later it will translate the coordinates and give a real location
-                    }
-                    //get another fixation point and pass it to the zoomer
-                    //zoomer can check if that point is on it's own and can translate the coords to desktop
+                case SystemState.ZoomWait:
                     break;
                 case SystemState.ApplyAction:
-                    if (globalVars.actionToBePerformed == ActionToBePerformed.LeftClick)
+                    fixationPoint = fixationWorker.getXY();
+                    fixationPoint = zoomer.TranslateGazePoint(fixationPoint);
+                    if (fixationPoint.X == -1)
                     {
-                        VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
+                        if (SystemFlags.isKeyBoardUP)
+                        {
+                            SystemFlags.currentState = SystemState.KeyboardDisplayed;
+                        }
+                        else
+                        {
+                            SystemFlags.currentState = SystemState.Wait;
+                        }
                     }
-                    else if (globalVars.actionToBePerformed == ActionToBePerformed.RightClick)
+                    else
                     {
-                        VirtualMouse.RightMouseClick(fixationPoint.X, fixationPoint.Y);
+                        //delete zoomer form or form hide or something
+                        if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)
+                        {
+                            VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
+                        }
+                        else if (SystemFlags.actionToBePerformed == ActionToBePerformed.RightClick)
+                        {
+                            VirtualMouse.RightMouseClick(fixationPoint.X, fixationPoint.Y);
+                        }
+                        else if (SystemFlags.actionToBePerformed == ActionToBePerformed.DoubleClick)
+                        {
+                            VirtualMouse.LeftDoubleClick(fixationPoint.X, fixationPoint.Y);
+                        }
                     }
-                    else if (globalVars.actionToBePerformed == ActionToBePerformed.DoubleClick)
-                    {
-                        VirtualMouse.LeftDoubleClick(fixationPoint.X, fixationPoint.Y);
-                    }
+
                     break;
                 case SystemState.DisplayFeedback:
                     //Inform the user that gazing has ended (maybe a sound tone, or changing the button's colour)

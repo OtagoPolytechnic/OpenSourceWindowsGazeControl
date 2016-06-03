@@ -20,8 +20,7 @@ namespace GazeToolBar
         delegate void SetFormDelegate(int x, int y);
 
         FixationDetection fixdet;
-        EyeXHost eyexHost;
-        public ZoomLens(EyeXHost eyex)
+        public ZoomLens()
         {
             //wait to see where the user is looking
             //translate where the user looked on the form to 
@@ -40,8 +39,7 @@ namespace GazeToolBar
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
 
             this.FormBorderStyle = FormBorderStyle.None;
-            eyexHost = eyex;
-            fixdet = new FixationDetection(eyexHost);
+            fixdet = new FixationDetection();
             //fixdet.SetupSelectedFixationAction();//pass in getrelativecoords
         }
         public void getRelativeCoords()
@@ -57,7 +55,7 @@ namespace GazeToolBar
         //    }
         //    //perform click here @ the center of the form
         //}
-        public Point CreateZoomLens(Point xy)
+        public void CreateZoomLens(Point xy)
         {
             this.DesktopLocation = new Point(x - (this.Width / 2), y - (this.Height / 2));//set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
             this.Show();//make lens visible
@@ -66,48 +64,17 @@ namespace GazeToolBar
             lensPoint.X = x - (this.Width / 2);//this sets the position on the screen which is being zoomed in. 
             lensPoint.Y = y - (this.Height / 2);
             graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, empty.X, empty.Y, this.Size, CopyPixelOperation.SourceCopy);
-
-            //bmpScreenshot = zoomer.Zoom(bmpScreenshot);
             pictureBox1.Image = bmpScreenshot;
             Application.DoEvents();
-            //somehow check for when another fixation happens on the form?
-            System.Threading.Thread.Sleep(2000);
-
- //temporary returning middle
-
-
-            //VirtualMouse.LeftMouseClick(xMiddleofForm, yMiddleofForm);
-            //fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftMouseClick);//this needs to change based on what event is being called. also the x,y needs to be 
-
-            //this.Dispose();
-
-
-            //this.DesktopLocation = new Point(x - (this.Width / 2), y - (this.Height / 2));//set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
-            //this.Show();//make lens visible
-
-            //graphics.CopyFromScreen(x - (bmpScreenshot.Width / 2), y - (bmpScreenshot.Height / 2), 0, 0, bmpScreenshot.Size, CopyPixelOperation.SourceCopy);
-
-            //pictureBox1.Image = bmpScreenshot;
-
-            //Application.DoEvents();
-
-            ////somehow check for when another fixation happens on the form?
-
-            //System.Threading.Thread.Sleep(10000);//find a better way than sleep
-
-
-            ////somehow get current looking location 
-            ////Point clickPoint = TranslateToDesktop(newX, newY);
-            ////Make the @ the newX and newY Point
-            //this.Dispose();
         }
-        public Point clickGazePoint(Point fixationPoint)
+        public Point TranslateGazePoint(Point fixationPoint)
         {
-            int xMiddleofForm = this.Top + this.Height / 2;
-            int yMiddleofForm = this.Left + this.Width / 2;
-            return new Point(xMiddleofForm, yMiddleofForm);
-            //TODO: check if the point is on the form and return the translated coordinates
-            
+            Point relativePoint = this.PointToClient(fixationPoint);
+            if (relativePoint.X < 0 || relativePoint.Y < 0 || relativePoint.X > this.Width || relativePoint.Y > this.Height)
+            {
+                return new Point(-1, -1);//cheap hack. If it is out of bound at all, this will return -1, -1. The statemanager will cancel the zoom
+            }
+            return TranslateToDesktop(fixationPoint.X, fixationPoint.Y);
         }
 
         public Bitmap Zoom(Bitmap bmpScreenshot)//old method not needed for magnify version

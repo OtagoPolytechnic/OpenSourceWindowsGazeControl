@@ -28,8 +28,6 @@ namespace GazeToolBar
         //Timer to measure if a how long it has been since the fixation started. 
         private static Timer fixationTimer;
         public static Timer timeOutTimer;
-        //Reference to eyeXhost, will be instantiated on form or in another manager/worker class.
-        public static EyeXHost eyeXHost;
         //Fixation data stream, used to attached to fixation events.
         public static FixationDataStream fixationPointDataStream;
         public ActionToRunAtFixation SelectedFixationAcion { get; set; }
@@ -47,11 +45,9 @@ namespace GazeToolBar
 
 
 
-        public FixationDetection(EyeXHost inputEyeXHost)
+        public FixationDetection()
         {
-            //Pass in eyeXhost from form\class to manage eye tracking system.
-            eyeXHost = inputEyeXHost;
-            fixationPointDataStream = eyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
+            fixationPointDataStream = Program.EyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
             EventHandler<FixationEventArgs> runSelectedActionAtFixationDelegate = new EventHandler<FixationEventArgs>(RunSelectedActionAtFixation);
             fixationPointDataStream.Next += runSelectedActionAtFixationDelegate;
 
@@ -107,12 +103,12 @@ namespace GazeToolBar
 
             //Once the fixation has run, set the state of fixation detection back to waiting.
             fixationState = EFixationState.WaitingForInPutSelection;
-            globalVars.Gaze = true;
+            SystemFlags.Gaze = true;
             
         }
         public void FixationTimeOut(object o, ElapsedEventArgs e)
         {
-            globalVars.timeOut = true;
+            SystemFlags.timeOut = true;
             fixationState = EFixationState.WaitingForInPutSelection;
         }
 

@@ -27,11 +27,10 @@ namespace GazeToolBar
         private Bitmap scrollImage;
         private Bitmap keyboardImage;
         private Bitmap dragAndDropImage;
-        private EyeXHost EyeXHost;
+        public StateManager stateManager;
 
-        public Form1(EyeXHost EyeXHost)
+        public Form1()
         {
-            this.EyeXHost = EyeXHost;
             //Initial a image to each button
             leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
             rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
@@ -65,6 +64,7 @@ namespace GazeToolBar
             btnDragAndDrop.Image = dragAndDropImage;
 
             connectBehaveMap();
+            stateManager = new StateManager();
         }
 
         /// <summary>
@@ -147,21 +147,21 @@ namespace GazeToolBar
 
         private void btnRightClick_Click(object sender, EventArgs e)
         {
-            globalVars.actionButtonSelected = true;//raise action button flag
-            globalVars.actionToBePerformed = ActionToBePerformed.RightClick;
+            SystemFlags.actionButtonSelected = true;//raise action button flag
+            SystemFlags.actionToBePerformed = ActionToBePerformed.RightClick;
             
         }
 
         private void btnSingleLeftClick_Click(object sender, EventArgs e)
         {
-            globalVars.actionButtonSelected = true;//raise action button flag
-            globalVars.actionToBePerformed = ActionToBePerformed.LeftClick;
+            SystemFlags.actionButtonSelected = true;//raise action button flag
+            SystemFlags.actionToBePerformed = ActionToBePerformed.LeftClick;
         }
 
         private void btnDoubleClick_Click(object sender, EventArgs e)
         {
-            globalVars.actionButtonSelected = true;//raise action button flag
-            globalVars.actionToBePerformed = ActionToBePerformed.DoubleClick;
+            SystemFlags.actionButtonSelected = true;//raise action button flag
+            SystemFlags.actionToBePerformed = ActionToBePerformed.DoubleClick;
         }
 
         private void btnKeyboard_Click(object sender, EventArgs e)

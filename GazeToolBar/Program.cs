@@ -11,13 +11,13 @@ namespace GazeToolBar
 {
     static class Program
     {
-        //private static FormsEyeXHost eyeXHost = new FormsEyeXHost();
+        private static FormsEyeXHost eyeXHost = new FormsEyeXHost();
 
-        
-        //public static FormsEyeXHost EyeXHost
-        //{
-        //    get { return eyeXHost; }
-        //}
+
+        public static FormsEyeXHost EyeXHost
+        {
+            get { return eyeXHost; }
+        }
         
         /// <summary>
         /// The main entry point for the application.
@@ -25,15 +25,12 @@ namespace GazeToolBar
         [STAThread]
         static void Main()
         {
-            //eyeXHost.Start();
+            eyeXHost.Start();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(); 
-           // eyeXHost.Dispose();
+            AppContext context = new AppContext();
 
-            //The statemanager will instatiate all needed objects
-            StateManager stateManager = new StateManager();
-            
+            Application.Run(new Form1());
         }
     }
 }
