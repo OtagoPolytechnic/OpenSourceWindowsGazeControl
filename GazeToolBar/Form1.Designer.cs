@@ -44,6 +44,7 @@
             this.bhavMapSettings = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavMapSingleClick = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavMap = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,6 +146,11 @@
             this.btnScoll.UseVisualStyleBackColor = false;
             this.btnScoll.Click += new System.EventHandler(this.btnScoll_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -182,6 +188,7 @@
         private EyeXFramework.Forms.BehaviorMap bhavMapDoubleClick;
         private EyeXFramework.Forms.BehaviorMap bhavMapSettings;
         private EyeXFramework.Forms.BehaviorMap bhavMap;
+        private System.Windows.Forms.Timer timer1;
 
 
     }

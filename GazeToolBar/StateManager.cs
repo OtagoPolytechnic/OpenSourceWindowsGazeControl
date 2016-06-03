@@ -11,7 +11,7 @@ namespace GazeToolBar
 {
     public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback }
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick }
-   
+
     public static class SystemFlags
     {
         public static bool isKeyBoardUP { get; set; }
@@ -20,8 +20,9 @@ namespace GazeToolBar
         public static SystemState currentState { get; set; }
         public static bool Gaze { get; set; }
         public static bool timeOut { get; set; }
+        public static bool FixationRunning { get; set; }
     }
-    
+
     public class StateManager
     {
         FixationDetection fixationWorker;
@@ -43,17 +44,13 @@ namespace GazeToolBar
 
             fixationWorker = new FixationDetection();
 
-
             SystemFlags.currentState = SystemState.Wait;
             Run();
         }
         public void Run()
         {
-            while (true)
-            {
-                UpdateState();
-                Action();
-            }
+            UpdateState();
+            Action();
         }
         public void UpdateState()
         {
@@ -61,6 +58,7 @@ namespace GazeToolBar
             switch (currentState)
             {
                 case SystemState.Wait:
+                    Console.WriteLine("Wait State");
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
@@ -73,6 +71,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.ActionButtonSelected:
+                    Console.WriteLine("ActionButtonSelected");
                     if (SystemFlags.Gaze)
                     {
                         currentState = SystemState.Zooming;
@@ -85,9 +84,12 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.Zooming:
+                    Console.WriteLine("Zooming");
                     currentState = SystemState.ZoomWait;
                     break;
                 case SystemState.ZoomWait:
+                    Console.WriteLine("ZoomWait");
+                    
                     if (SystemFlags.Gaze)//if the second zoomGazehashapped an action needs to be performed
                     {
                         currentState = SystemState.ApplyAction;
@@ -100,6 +102,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.ApplyAction:
+                    Console.WriteLine("ApplyAction");
                     //action is applied in action()
                     if (SystemFlags.isKeyBoardUP)
                     {
@@ -125,12 +128,23 @@ namespace GazeToolBar
                 case SystemState.Setup:
                     break;
                 case SystemState.Wait:
+                    SystemFlags.FixationRunning = false;
+                    SystemFlags.actionButtonSelected = false;
+                    SystemFlags.FixationRunning = false;
+                    SystemFlags.Gaze = false;
+                    SystemFlags.timeOut = false;
                     //set toolbar buttons to active
                     break;
                 case SystemState.KeyboardDisplayed:
                     //set keyboard toolbar buttons to active
                     break;
                 case SystemState.ActionButtonSelected:
+                    if (!SystemFlags.FixationRunning)
+                    {
+                        fixationWorker.SetupSelectedFixationAction();
+                        SystemFlags.FixationRunning = true;
+                    }
+                    
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
@@ -138,12 +152,19 @@ namespace GazeToolBar
                     fixationPoint = fixationWorker.getXY();
                     zoomer.CreateZoomLens(fixationPoint);
                     SystemFlags.Gaze = false;
+                    SystemFlags.FixationRunning = false;
                     break;
                 case SystemState.ZoomWait:
+                    if (!SystemFlags.FixationRunning)
+                    {
+                        fixationWorker.SetupSelectedFixationAction();
+                        SystemFlags.FixationRunning = true;
+                    }
                     break;
                 case SystemState.ApplyAction:
                     fixationPoint = fixationWorker.getXY();
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);
+                    zoomer.Dispose();
                     if (fixationPoint.X == -1)
                     {
                         if (SystemFlags.isKeyBoardUP)

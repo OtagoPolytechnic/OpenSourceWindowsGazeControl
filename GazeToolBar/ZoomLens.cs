@@ -27,6 +27,8 @@ namespace GazeToolBar
             InitializeComponent();
             this.Width = Screen.PrimaryScreen.Bounds.Width / 4;//setting the lens size
             this.Height = Screen.PrimaryScreen.Bounds.Height / 4;
+            Console.WriteLine("This.width = " + this.Width);
+            Console.WriteLine("This.width = " + this.Height);
 
             bmpScreenshot = new Bitmap(this.Width / ZOOMLEVEL, this.Height / ZOOMLEVEL);//set bitmap to same size as the lens
             graphics = this.CreateGraphics();
@@ -55,14 +57,14 @@ namespace GazeToolBar
         //    }
         //    //perform click here @ the center of the form
         //}
-        public void CreateZoomLens(Point xy)
+        public void CreateZoomLens(Point FixationPoint)
         {
-            this.DesktopLocation = new Point(x - (this.Width / 2), y - (this.Height / 2));//set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
+            this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));//set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
             this.Show();//make lens visible
             Point lensPoint = new Point();
             Point empty = new Point(0, 0);
-            lensPoint.X = x - (this.Width / 2);//this sets the position on the screen which is being zoomed in. 
-            lensPoint.Y = y - (this.Height / 2);
+            lensPoint.X = FixationPoint.X - (this.Width / 2);//this sets the position on the screen which is being zoomed in. 
+            lensPoint.Y = FixationPoint.Y - (this.Height / 2);
             graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, empty.X, empty.Y, this.Size, CopyPixelOperation.SourceCopy);
             pictureBox1.Image = bmpScreenshot;
             Application.DoEvents();
@@ -70,11 +72,15 @@ namespace GazeToolBar
         public Point TranslateGazePoint(Point fixationPoint)
         {
             Point relativePoint = this.PointToClient(fixationPoint);
+            Console.WriteLine("FormLeft =" + this.Left);
+            Console.WriteLine("fixationPoint = " + fixationPoint);
+            Console.WriteLine("relativePoint = " + relativePoint);
+            Console.WriteLine("Form Width = " + this.Width);
             if (relativePoint.X < 0 || relativePoint.Y < 0 || relativePoint.X > this.Width || relativePoint.Y > this.Height)
             {
                 return new Point(-1, -1);//cheap hack. If it is out of bound at all, this will return -1, -1. The statemanager will cancel the zoom
             }
-            return TranslateToDesktop(fixationPoint.X, fixationPoint.Y);
+            return TranslateToDesktop(relativePoint.X, relativePoint.Y);
         }
 
         public Bitmap Zoom(Bitmap bmpScreenshot)//old method not needed for magnify version
@@ -92,6 +98,7 @@ namespace GazeToolBar
             Point returnPoint = new Point();
             returnPoint.X = x - (this.Width / 2) * (1 / ZOOMLEVEL) + (this.Left + (this.Width / 2));
             returnPoint.Y = y - (this.Height / 2) * (1 / ZOOMLEVEL) + (this.Top + (this.Height / 2));
+            Console.WriteLine("returnPoint = " + returnPoint);
             return returnPoint;
         }
     }

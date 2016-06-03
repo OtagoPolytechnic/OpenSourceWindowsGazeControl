@@ -31,6 +31,7 @@ namespace GazeToolBar
 
         public Form1()
         {
+            
             //Initial a image to each button
             leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
             rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
@@ -41,7 +42,7 @@ namespace GazeToolBar
             dragAndDropImage = new Bitmap(new Bitmap("Drag-and-drop-icon.png"), ReletiveSize.btnSize);
 
             //Change resolution to 800 * 600
-            ChangeResolution.ChangeScreenResolution();            
+            ChangeResolution.ChangeScreenResolution();
             InitializeComponent();
             Size = ReletiveSize.formSize;
             AutoStart.OpenKey();
@@ -50,7 +51,7 @@ namespace GazeToolBar
             menuItemStartOnOff = new MenuItem();
             initMenuItem();
             setBtnSize();
-            
+
             Edge = AppBarEdges.Right;
             AutoStart.IsAutoStart(settings, menuItemStartOnOff);
 
@@ -64,7 +65,6 @@ namespace GazeToolBar
             btnDragAndDrop.Image = dragAndDropImage;
 
             connectBehaveMap();
-            stateManager = new StateManager();
         }
 
         /// <summary>
@@ -133,10 +133,10 @@ namespace GazeToolBar
         public Settings Settings { get { return settings; }
             
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            stateManager = new StateManager();
+            timer1.Enabled = true;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -186,6 +186,11 @@ namespace GazeToolBar
         private void btnDragAndDrop_Click(object sender, EventArgs e)
         {
             //Create logic to run left mouse down, update xy then left mouse up to simulate drag and drop
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            stateManager.Run();
         }
     }
 }

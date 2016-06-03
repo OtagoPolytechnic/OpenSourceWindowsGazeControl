@@ -30,7 +30,7 @@ namespace GazeToolBar
         public static Timer timeOutTimer;
         //Fixation data stream, used to attached to fixation events.
         public static FixationDataStream fixationPointDataStream;
-        public ActionToRunAtFixation SelectedFixationAcion { get; set; }
+        //public ActionToRunAtFixation SelectedFixationAcion { get; set; }
         public int lengthOfTimeOfGazeBeforeRunningAction { get; set; }
         //State variable of FixationDetection class.
         EFixationState fixationState { get; set; }
@@ -53,7 +53,7 @@ namespace GazeToolBar
 
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
-            lengthOfTimeOfGazeBeforeRunningAction = 600;
+            lengthOfTimeOfGazeBeforeRunningAction = 1000;
 
             timeOutTimer = new Timer(5000);
             timeOutTimer.AutoReset = false;
@@ -99,7 +99,7 @@ namespace GazeToolBar
             //Debug
             Console.WriteLine("Timer reached event, running required action");
             //Run the method stored in SelectfixationAction
-            SelectedFixationAcion(xPosFixation, yPosFixation);//(may need to work on some  logic to detect and handle if the selectedFicationAction ran successfully).
+            //SelectedFixationAcion(xPosFixation, yPosFixation);//(may need to work on some  logic to detect and handle if the selectedFicationAction ran successfully).
 
             //Once the fixation has run, set the state of fixation detection back to waiting.
             fixationState = EFixationState.WaitingForInPutSelection;

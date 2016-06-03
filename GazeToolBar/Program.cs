@@ -28,8 +28,6 @@ namespace GazeToolBar
             eyeXHost.Start();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            AppContext context = new AppContext();
-
             Application.Run(new Form1());
         }
     }
