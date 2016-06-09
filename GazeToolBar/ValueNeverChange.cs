@@ -20,6 +20,7 @@ namespace GazeToolBar
         public static readonly Size SCREEN_SIZE = Screen.PrimaryScreen.WorkingArea.Size;
         public static readonly Rectangle PRIMARY_SCREEN = Screen.PrimaryScreen.Bounds;
         public static readonly Color SelectedColor = Color.FromArgb(78, 0, 82);
+        public static readonly Color SettingButtonColor = Color.FromArgb(170, 170, 170);
 
         /// <summary>
         /// By calling this method all the buttons that passed in will be reset its color

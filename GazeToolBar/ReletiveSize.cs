@@ -35,5 +35,13 @@ namespace GazeToolBar
                 return ((num - 1) * btnSize.Height + gap * (num - 1) + 3);
             }
         }
+
+
+        public static Point panelSaveAndCancel(int width, int height)
+        {
+            int i = (ValueNeverChange.SCREEN_SIZE.Width - width) / 2;
+            return new Point((ValueNeverChange.SCREEN_SIZE.Width - width) / 2, ValueNeverChange.SCREEN_SIZE.Height - height);
+        }
+        public static Size TabControlSize = new Size(ValueNeverChange.SCREEN_SIZE.Width, ValueNeverChange.SCREEN_SIZE.Height - 56 * 2);  
     }
 }
