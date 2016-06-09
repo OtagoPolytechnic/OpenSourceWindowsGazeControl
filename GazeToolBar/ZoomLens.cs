@@ -13,7 +13,7 @@ namespace GazeToolBar
 {
     public partial class ZoomLens : Form
     {
-        const int ZOOMLEVEL = 2;// this is controls how far the lens will zoom in
+        const int ZOOMLEVEL = 3;// this is controls how far the lens will zoom in
         int x, y;
         Graphics graphics;
         Bitmap bmpScreenshot;
@@ -25,8 +25,8 @@ namespace GazeToolBar
             //wait to see where the user is looking
             //translate where the user looked on the form to 
             InitializeComponent();
-            this.Width = 200; //Screen.PrimaryScreen.Bounds.Width / 4;//setting the lens size
-            this.Height = 200;//Screen.PrimaryScreen.Bounds.Width / 4;
+            this.Width = 500; //Screen.PrimaryScreen.Bounds.Width / 4;//setting the lens size
+            this.Height = 500;//Screen.PrimaryScreen.Bounds.Width / 4;
             Console.WriteLine("This.width = " + this.Width);
             Console.WriteLine("This.width = " + this.Height);
 
@@ -102,13 +102,27 @@ namespace GazeToolBar
         public Point TranslateToDesktop(int x, int y)//This method translate on form coordinates to desktop coordinates
         {
             Point returnPoint = new Point();
-            returnPoint.X = x - (this.Width / 2);
-            returnPoint.X = returnPoint.X * (1 / ZOOMLEVEL);
-            returnPoint.X = returnPoint.X + ((this.Left + (this.Width / 2)));
 
-            returnPoint.Y = y - (this.Height / 2);
-            returnPoint.Y = returnPoint.Y * (1 / ZOOMLEVEL);
-            returnPoint.Y = returnPoint.Y + ((this.Top + (this.Height / 2)));
+            int halfHeight = this.Width / 2;
+            int halfWidth = this.Height / 2;
+            int halfHeightDivZoom = halfHeight / ZOOMLEVEL;
+            int halfWidthDivZoom = halfWidth / ZOOMLEVEL;
+
+            int a = halfHeight - halfHeightDivZoom;
+            a = this.Top + a;
+            returnPoint.Y = a + (y / ZOOMLEVEL);
+
+            int b = halfWidth - halfWidthDivZoom;
+            b = this.Left + b;
+            returnPoint.X = b + (x / ZOOMLEVEL);
+
+            //returnPoint.X = x - (this.Width / 2);
+            //returnPoint.X = returnPoint.X * (1 / ZOOMLEVEL);
+            //returnPoint.X = returnPoint.X + ((this.Left + (this.Width / 2)));
+
+            //returnPoint.Y = y - (this.Height / 2);
+            //returnPoint.Y = returnPoint.Y * (1 / ZOOMLEVEL);
+            //returnPoint.Y = returnPoint.Y + ((this.Top + (this.Height / 2)));
             Console.WriteLine("returnPoint = " + returnPoint);
             return returnPoint;
         }

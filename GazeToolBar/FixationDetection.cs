@@ -73,6 +73,8 @@ namespace GazeToolBar
 
             if(fixationState == EFixationState.RunningFixationWithSelection)
             {
+
+
                 if(fixationDataBucket.EventType == FixationDataEventType.Begin)
                 {
                     fixationTimer.Start();
