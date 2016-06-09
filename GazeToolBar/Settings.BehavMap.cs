@@ -15,20 +15,20 @@ namespace GazeToolBar
 
             //Temp for 100 
             //Will change later
-            bhavSettingMap.Add(btnAutoStart, new GazeAwareBehavior(OnbtnAutoStart_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnGaze, new GazeAwareBehavior(OnbtnGaze_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnSave, new GazeAwareBehavior(OnbtnSave_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnCancel, new GazeAwareBehavior(OnbtnCancel_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnChangeLanguage, new GazeAwareBehavior(OnbtnChangeLanguage_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnChangeSide, new GazeAwareBehavior(OnbtnChangeSide_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnSizeLarge, new GazeAwareBehavior(OnbtnSizeLarge_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnSwitch, new GazeAwareBehavior(OnbtnSwitch_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarPrecision, new GazeAwareBehavior(OntrackBarPrecision_Scroll) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarSpeed, new GazeAwareBehavior(OntrackBarSpeed_Scroll) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnWordPredictionOnOff, new GazeAwareBehavior(OnbtnWordPredictionOnOff_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnSizeSmall, new GazeAwareBehavior(OnbtnSizeSmall_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnSoundFeedback, new GazeAwareBehavior(OnbtnSoundFeedback_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarGazeTypingSpeed, new GazeAwareBehavior(OntrackBarGazeTypingSpeed_Scroll) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnAutoStart, new GazeAwareBehavior(OnbtnAutoStart_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnGaze, new GazeAwareBehavior(OnbtnGaze_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnSave, new GazeAwareBehavior(OnbtnSave_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnCancel, new GazeAwareBehavior(OnbtnCancel_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnChangeLanguage, new GazeAwareBehavior(OnbtnChangeLanguage_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnChangeSide, new GazeAwareBehavior(OnbtnChangeSide_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnSizeLarge, new GazeAwareBehavior(OnbtnSizeLarge_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnSwitch, new GazeAwareBehavior(OnbtnSwitch_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(trackBarPrecision, new GazeAwareBehavior(OntrackBarPrecision_Scroll) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(trackBarSpeed, new GazeAwareBehavior(OntrackBarSpeed_Scroll) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnWordPredictionOnOff, new GazeAwareBehavior(OnbtnWordPredictionOnOff_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnSizeSmall, new GazeAwareBehavior(OnbtnSizeSmall_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(btnSoundFeedback, new GazeAwareBehavior(OnbtnSoundFeedback_Click) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
+            bhavSettingMap.Add(trackBarGazeTypingSpeed, new GazeAwareBehavior(OntrackBarGazeTypingSpeed_Scroll) { DelayMilliseconds = ValueNeverChange.DELAY_MILLISECONDS });
         }
 
         private void OntrackBarGazeTypingSpeed_Scroll(object sender, GazeAwareEventArgs e)

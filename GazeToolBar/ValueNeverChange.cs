@@ -10,7 +10,7 @@ namespace GazeToolBar
     */
     static class ValueNeverChange
     {
-        public static readonly int DELAY_MILLISECONDS = 1500;
+        public static readonly int DELAY_MILLISECONDS = 100;
         public static readonly double FORM_WEIGTH_PERCENTAGE = 0.1;
         public static readonly string RES_NAME = "GazeToolBar";
         public static readonly string AUTO_START_ON = "Auto Start Is On";

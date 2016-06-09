@@ -86,7 +86,7 @@
     <Compile Include="FixationDetection.cs" />
     <Compile Include="Form1.BehavMap.cs">
       <SubType>Form</SubType>
-    </Compile>
+  <DependentUpon>Form1.cs</DependentUpon>  </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,12 +99,11 @@
     <Compile Include="Resolution.cs" />
     <Compile Include="Settings.BehavMap.cs">
       <SubType>Form</SubType>
-    </Compile>
+  <DependentUpon>Settings.cs</DependentUpon>  </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.Designer.cs" />
-    <Compile Include="ValueNeverChange.cs" />
+    <Compile Include="Settings.Designer.cs"> <DependentUpon>Settings.cs</DependentUpon> </Compile>    <Compile Include="ValueNeverChange.cs" />
     <Compile Include="VirtualMouse.cs" />
     <Compile Include="Zoomer.cs" />
     <Compile Include="ZoomLens.cs">
