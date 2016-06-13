@@ -39,22 +39,23 @@
             this.btnDragAndDrop = new System.Windows.Forms.Button();
             this.btnDoubleClick = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
+            this.pnlHighLightDragAndDrop = new System.Windows.Forms.Panel();
+            this.pnlHighLightKeyboard = new System.Windows.Forms.Panel();
+            this.pnlHighLightScrol = new System.Windows.Forms.Panel();
+            this.pnlHighLightSettings = new System.Windows.Forms.Panel();
+            this.pnlHighLightDoubleClick = new System.Windows.Forms.Panel();
+            this.pnlHighLightSingleLeft = new System.Windows.Forms.Panel();
             this.pnlHiLteRightClick = new System.Windows.Forms.Panel();
             this.bhavMapHLCurrentGazeOnBT = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.pnlHighLightSingleLeft = new System.Windows.Forms.Panel();
-            this.pnlHighLightDoubleClick = new System.Windows.Forms.Panel();
-            this.pnlHighLightSettings = new System.Windows.Forms.Panel();
-            this.pnlHighLightScrol = new System.Windows.Forms.Panel();
-            this.pnlHighLightKeyboard = new System.Windows.Forms.Panel();
-            this.pnlHighLightDragAndDrop = new System.Windows.Forms.Panel();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel.SuspendLayout();
-            this.pnlHiLteRightClick.SuspendLayout();
-            this.pnlHighLightSingleLeft.SuspendLayout();
-            this.pnlHighLightDoubleClick.SuspendLayout();
-            this.pnlHighLightSettings.SuspendLayout();
-            this.pnlHighLightScrol.SuspendLayout();
-            this.pnlHighLightKeyboard.SuspendLayout();
             this.pnlHighLightDragAndDrop.SuspendLayout();
+            this.pnlHighLightKeyboard.SuspendLayout();
+            this.pnlHighLightScrol.SuspendLayout();
+            this.pnlHighLightSettings.SuspendLayout();
+            this.pnlHighLightDoubleClick.SuspendLayout();
+            this.pnlHighLightSingleLeft.SuspendLayout();
+            this.pnlHiLteRightClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRightClick
@@ -149,45 +150,13 @@
             this.panel.Size = new System.Drawing.Size(183, 634);
             this.panel.TabIndex = 6;
             // 
-            // pnlHiLteRightClick
+            // pnlHighLightDragAndDrop
             // 
-            this.pnlHiLteRightClick.Controls.Add(this.btnRightClick);
-            this.pnlHiLteRightClick.Location = new System.Drawing.Point(3, 0);
-            this.pnlHiLteRightClick.Name = "pnlHiLteRightClick";
-            this.pnlHiLteRightClick.Size = new System.Drawing.Size(180, 80);
-            this.pnlHiLteRightClick.TabIndex = 6;
-            // 
-            // pnlHighLightSingleLeft
-            // 
-            this.pnlHighLightSingleLeft.Controls.Add(this.btnSingleLeftClick);
-            this.pnlHighLightSingleLeft.Location = new System.Drawing.Point(3, 82);
-            this.pnlHighLightSingleLeft.Name = "pnlHighLightSingleLeft";
-            this.pnlHighLightSingleLeft.Size = new System.Drawing.Size(180, 80);
-            this.pnlHighLightSingleLeft.TabIndex = 7;
-            // 
-            // pnlHighLightDoubleClick
-            // 
-            this.pnlHighLightDoubleClick.Controls.Add(this.btnDoubleClick);
-            this.pnlHighLightDoubleClick.Location = new System.Drawing.Point(3, 168);
-            this.pnlHighLightDoubleClick.Name = "pnlHighLightDoubleClick";
-            this.pnlHighLightDoubleClick.Size = new System.Drawing.Size(180, 80);
-            this.pnlHighLightDoubleClick.TabIndex = 8;
-            // 
-            // pnlHighLightSettings
-            // 
-            this.pnlHighLightSettings.Controls.Add(this.btnSettings);
-            this.pnlHighLightSettings.Location = new System.Drawing.Point(3, 254);
-            this.pnlHighLightSettings.Name = "pnlHighLightSettings";
-            this.pnlHighLightSettings.Size = new System.Drawing.Size(180, 80);
-            this.pnlHighLightSettings.TabIndex = 9;
-            // 
-            // pnlHighLightScrol
-            // 
-            this.pnlHighLightScrol.Controls.Add(this.btnScoll);
-            this.pnlHighLightScrol.Location = new System.Drawing.Point(0, 340);
-            this.pnlHighLightScrol.Name = "pnlHighLightScrol";
-            this.pnlHighLightScrol.Size = new System.Drawing.Size(180, 80);
-            this.pnlHighLightScrol.TabIndex = 10;
+            this.pnlHighLightDragAndDrop.Controls.Add(this.btnDragAndDrop);
+            this.pnlHighLightDragAndDrop.Location = new System.Drawing.Point(0, 512);
+            this.pnlHighLightDragAndDrop.Name = "pnlHighLightDragAndDrop";
+            this.pnlHighLightDragAndDrop.Size = new System.Drawing.Size(180, 80);
+            this.pnlHighLightDragAndDrop.TabIndex = 12;
             // 
             // pnlHighLightKeyboard
             // 
@@ -197,13 +166,51 @@
             this.pnlHighLightKeyboard.Size = new System.Drawing.Size(180, 80);
             this.pnlHighLightKeyboard.TabIndex = 11;
             // 
-            // pnlHighLightDragAndDrop
+            // pnlHighLightScrol
             // 
-            this.pnlHighLightDragAndDrop.Controls.Add(this.btnDragAndDrop);
-            this.pnlHighLightDragAndDrop.Location = new System.Drawing.Point(0, 512);
-            this.pnlHighLightDragAndDrop.Name = "pnlHighLightDragAndDrop";
-            this.pnlHighLightDragAndDrop.Size = new System.Drawing.Size(180, 80);
-            this.pnlHighLightDragAndDrop.TabIndex = 12;
+            this.pnlHighLightScrol.Controls.Add(this.btnScoll);
+            this.pnlHighLightScrol.Location = new System.Drawing.Point(0, 340);
+            this.pnlHighLightScrol.Name = "pnlHighLightScrol";
+            this.pnlHighLightScrol.Size = new System.Drawing.Size(180, 80);
+            this.pnlHighLightScrol.TabIndex = 10;
+            // 
+            // pnlHighLightSettings
+            // 
+            this.pnlHighLightSettings.Controls.Add(this.btnSettings);
+            this.pnlHighLightSettings.Location = new System.Drawing.Point(3, 254);
+            this.pnlHighLightSettings.Name = "pnlHighLightSettings";
+            this.pnlHighLightSettings.Size = new System.Drawing.Size(180, 80);
+            this.pnlHighLightSettings.TabIndex = 9;
+            // 
+            // pnlHighLightDoubleClick
+            // 
+            this.pnlHighLightDoubleClick.Controls.Add(this.btnDoubleClick);
+            this.pnlHighLightDoubleClick.Location = new System.Drawing.Point(3, 168);
+            this.pnlHighLightDoubleClick.Name = "pnlHighLightDoubleClick";
+            this.pnlHighLightDoubleClick.Size = new System.Drawing.Size(180, 80);
+            this.pnlHighLightDoubleClick.TabIndex = 8;
+            // 
+            // pnlHighLightSingleLeft
+            // 
+            this.pnlHighLightSingleLeft.Controls.Add(this.btnSingleLeftClick);
+            this.pnlHighLightSingleLeft.Location = new System.Drawing.Point(3, 82);
+            this.pnlHighLightSingleLeft.Name = "pnlHighLightSingleLeft";
+            this.pnlHighLightSingleLeft.Size = new System.Drawing.Size(180, 80);
+            this.pnlHighLightSingleLeft.TabIndex = 7;
+            // 
+            // pnlHiLteRightClick
+            // 
+            this.pnlHiLteRightClick.Controls.Add(this.btnRightClick);
+            this.pnlHiLteRightClick.Location = new System.Drawing.Point(3, 0);
+            this.pnlHiLteRightClick.Name = "pnlHiLteRightClick";
+            this.pnlHiLteRightClick.Size = new System.Drawing.Size(180, 80);
+            this.pnlHiLteRightClick.TabIndex = 6;
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "GazeToolbar";
+            this.notifyIcon.Visible = true;
             // 
             // Form1
             // 
@@ -223,13 +230,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panel.ResumeLayout(false);
-            this.pnlHiLteRightClick.ResumeLayout(false);
-            this.pnlHighLightSingleLeft.ResumeLayout(false);
-            this.pnlHighLightDoubleClick.ResumeLayout(false);
-            this.pnlHighLightSettings.ResumeLayout(false);
-            this.pnlHighLightScrol.ResumeLayout(false);
-            this.pnlHighLightKeyboard.ResumeLayout(false);
             this.pnlHighLightDragAndDrop.ResumeLayout(false);
+            this.pnlHighLightKeyboard.ResumeLayout(false);
+            this.pnlHighLightScrol.ResumeLayout(false);
+            this.pnlHighLightSettings.ResumeLayout(false);
+            this.pnlHighLightDoubleClick.ResumeLayout(false);
+            this.pnlHighLightSingleLeft.ResumeLayout(false);
+            this.pnlHiLteRightClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -253,8 +260,7 @@
         private System.Windows.Forms.Panel pnlHighLightDragAndDrop;
         private System.Windows.Forms.Panel pnlHighLightKeyboard;
         private System.Windows.Forms.Panel pnlHighLightScrol;
-
-
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 

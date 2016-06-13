@@ -75,6 +75,7 @@ namespace GazeToolBar
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panelSaveAndCancel = new System.Windows.Forms.Panel();
+            this.lblInformation = new System.Windows.Forms.Label();
             this.panelSelection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPrecision)).BeginInit();
             this.panelPrecision.SuspendLayout();
@@ -291,6 +292,7 @@ namespace GazeToolBar
             // 
             // panelOther
             // 
+            this.panelOther.Controls.Add(this.lblInformation);
             this.panelOther.Controls.Add(this.btnAutoStart);
             this.panelOther.Controls.Add(this.lblIndicationLeftOrRight);
             this.panelOther.Controls.Add(this.btnChangeSide);
@@ -299,7 +301,7 @@ namespace GazeToolBar
             this.panelOther.Controls.Add(this.lblPosition);
             this.panelOther.Location = new System.Drawing.Point(6, 443);
             this.panelOther.Name = "panelOther";
-            this.panelOther.Size = new System.Drawing.Size(421, 192);
+            this.panelOther.Size = new System.Drawing.Size(834, 192);
             this.panelOther.TabIndex = 21;
             // 
             // tabControlMain
@@ -588,6 +590,16 @@ namespace GazeToolBar
             this.panelSaveAndCancel.Size = new System.Drawing.Size(546, 100);
             this.panelSaveAndCancel.TabIndex = 25;
             // 
+            // lblInformation
+            // 
+            this.lblInformation.AutoSize = true;
+            this.lblInformation.Font = new System.Drawing.Font("SimSun", 10F);
+            this.lblInformation.Location = new System.Drawing.Point(438, 78);
+            this.lblInformation.Name = "lblInformation";
+            this.lblInformation.Size = new System.Drawing.Size(249, 40);
+            this.lblInformation.TabIndex = 21;
+            this.lblInformation.Text = "These two settings will \r\neffect toolbar instantly";
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -675,5 +687,6 @@ namespace GazeToolBar
         private Button btnCancel;
         private Panel panelSaveAndCancel;
         private EyeXFramework.Forms.BehaviorMap bhavSettingMap;
+        private Label lblInformation;
     }
 }

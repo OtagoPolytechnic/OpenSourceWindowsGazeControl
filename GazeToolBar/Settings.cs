@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using ShellLib;
 using System.Drawing;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace GazeToolBar
 {
@@ -10,6 +12,18 @@ namespace GazeToolBar
         private Form1 form1;
         private bool OnTheRight;
         private bool[] onOff;
+
+        public enum GazeOrSwitch
+        {
+            GAZE,
+            SWITCH
+        }
+
+        public enum Sizes
+        {
+            SMALL,
+            LARGE
+        }
 
         public Settings(Form1 form1)
         {
@@ -22,7 +36,7 @@ namespace GazeToolBar
             OnTheRight = true;
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
             tabControlMain.Size = ReletiveSize.TabControlSize;
-            onOff = new bool[5];
+            onOff = new bool[2];
             for (int i = 0; i < onOff.Length; i++)
             {
                 onOff[i] = false;
@@ -74,6 +88,8 @@ namespace GazeToolBar
         private void Settings_Shown(object sender, EventArgs e)
         {
             AutoStart.IsAutoStart(form1.Settings, form1.MenuItemStartOnOff);
+            string settings = File.ReadAllText(Program.path);
+            SettingJSON setting = JsonConvert.DeserializeObject<SettingJSON>(settings);
         }
 
         private void tabControlMain_DrawItem(object sender, DrawItemEventArgs e)
@@ -94,8 +110,8 @@ namespace GazeToolBar
 
         private void btnGaze_Click(object sender, EventArgs e)
         {
-            onOff[0] = !onOff[0];
-            ChangeButtonColor(btnGaze, onOff[0]);
+            GazeOrSwitch gaze = GazeOrSwitch.GAZE;
+            EnumTranslate.GazeOrSwitchTranslate(btnGaze, btnSwitch, gaze);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -105,32 +121,32 @@ namespace GazeToolBar
 
         private void btnSwitch_Click(object sender, EventArgs e)
         {
-            onOff[1] = !onOff[1];
-            ChangeButtonColor(btnSwitch, onOff[1]);
+            GazeOrSwitch Switch = GazeOrSwitch.SWITCH;
+            EnumTranslate.GazeOrSwitchTranslate(btnGaze, btnSwitch, Switch);
         }
 
         private void btnWordPredictionOnOff_Click(object sender, EventArgs e)
         {
-            onOff[2] = !onOff[2];
-            ChangeButtonColor(btnWordPredictionOnOff, onOff[2]);
+            onOff[0] = !onOff[0];
+            ChangeButtonColor(btnWordPredictionOnOff, onOff[0]);
         }
 
         private void btnSoundFeedback_Click(object sender, EventArgs e)
         {
-            onOff[3] = !onOff[3];
-            ChangeButtonColor(btnSoundFeedback, onOff[3]);
+            onOff[1] = !onOff[1];
+            ChangeButtonColor(btnSoundFeedback, onOff[1]);
         }
 
         private void btnSizeLarge_Click(object sender, EventArgs e)
         {
-            ChangeButtonColor(btnSizeLarge, !onOff[4]);
-            ChangeButtonColor(btnSizeSmall, onOff[4]);
+            Sizes large = Sizes.LARGE;
+            EnumTranslate.SisesTranslate(btnSizeSmall, btnSizeLarge, large);
         }
 
         private void btnSizeSmall_Click(object sender, EventArgs e)
         {
-            ChangeButtonColor(btnSizeLarge, onOff[4]);
-            ChangeButtonColor(btnSizeSmall, !onOff[4]);
+            Sizes small = Sizes.SMALL;
+            EnumTranslate.SisesTranslate(btnSizeSmall, btnSizeLarge, small);
         }
 
         private void trackBarSpeed_Scroll(object sender, EventArgs e)

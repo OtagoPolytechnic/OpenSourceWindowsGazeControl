@@ -78,7 +78,7 @@ namespace GazeToolBar
             btnScoll.Image = scrollImage;
             btnKeyboard.Image = keyboardImage;
             btnDragAndDrop.Image = dragAndDropImage;
-
+            notifyIcon.ContextMenu = contextMenu;
             connectBehaveMap();
         }
 
