@@ -6,7 +6,7 @@ using Tobii;
 using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
-
+using Newtonsoft.Json;
 
 namespace GazeToolBar
 {
@@ -155,6 +155,14 @@ namespace GazeToolBar
         private void Form1_Shown(object sender, System.EventArgs e)
         {
             ChangeResolution.ChangeResolutionBack();
+            //Read settings
+            SettingJSON settings = ReadFromSetting();
+        }
+
+        public SettingJSON ReadFromSetting()
+        {
+            string settings = File.ReadAllText(Program.path);
+            return JsonConvert.DeserializeObject<SettingJSON>(settings);
         }
 
         public MenuItem MenuItemStartOnOff { get { return menuItemStartOnOff; } }

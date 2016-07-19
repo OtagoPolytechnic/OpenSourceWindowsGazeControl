@@ -12,6 +12,8 @@ namespace GazeToolBar
         private Form1 form1;
         private bool OnTheRight;
         private bool[] onOff;
+        private GazeOrSwitch gazeOrSwitch;
+        private Sizes sizes;
 
         public enum GazeOrSwitch
         {
@@ -47,7 +49,7 @@ namespace GazeToolBar
         {
             if (OnTheRight)
             {
-                changeSide("On left", ApplicationDesktopToolbar.AppBarEdges.Left, false);
+                changeSide("On Left", ApplicationDesktopToolbar.AppBarEdges.Left, false);
                 ChangeButtonColor(btnChangeSide, true);
             }
             else
@@ -88,8 +90,6 @@ namespace GazeToolBar
         private void Settings_Shown(object sender, EventArgs e)
         {
             AutoStart.IsAutoStart(form1.Settings, form1.MenuItemStartOnOff);
-            string settings = File.ReadAllText(Program.path);
-            SettingJSON setting = JsonConvert.DeserializeObject<SettingJSON>(settings);
         }
 
         private void tabControlMain_DrawItem(object sender, DrawItemEventArgs e)
@@ -103,15 +103,16 @@ namespace GazeToolBar
             TextRenderer.DrawText(e.Graphics, page.Text, Font, paddedBounds, page.ForeColor);
         }
 
-        public void ChangeButtonColor(Button button, bool onOff)
+        public string ChangeButtonColor(Button button, bool onOff)
         {
             button.BackColor = onOff ? ValueNeverChange.SettingButtonColor : ValueNeverChange.SelectedColor;
+            return onOff ? "On" : "Off";
         }
 
         private void btnGaze_Click(object sender, EventArgs e)
         {
-            GazeOrSwitch gaze = GazeOrSwitch.GAZE;
-            EnumTranslate.GazeOrSwitchTranslate(btnGaze, btnSwitch, gaze);
+            gazeOrSwitch = GazeOrSwitch.GAZE;
+            EnumTranslate.GazeOrSwitchTranslate(btnGaze, btnSwitch, gazeOrSwitch);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -121,32 +122,32 @@ namespace GazeToolBar
 
         private void btnSwitch_Click(object sender, EventArgs e)
         {
-            GazeOrSwitch Switch = GazeOrSwitch.SWITCH;
-            EnumTranslate.GazeOrSwitchTranslate(btnGaze, btnSwitch, Switch);
+            gazeOrSwitch = GazeOrSwitch.SWITCH;
+            EnumTranslate.GazeOrSwitchTranslate(btnGaze, btnSwitch, gazeOrSwitch);
         }
 
         private void btnWordPredictionOnOff_Click(object sender, EventArgs e)
         {
             onOff[0] = !onOff[0];
-            ChangeButtonColor(btnWordPredictionOnOff, onOff[0]);
+            lblWordPredictionOnOffIndiction.Text = ChangeButtonColor(btnWordPredictionOnOff, onOff[0]);
         }
 
         private void btnSoundFeedback_Click(object sender, EventArgs e)
         {
             onOff[1] = !onOff[1];
-            ChangeButtonColor(btnSoundFeedback, onOff[1]);
+            lblSoundFeedbackOnOff.Text = ChangeButtonColor(btnSoundFeedback, onOff[1]);
         }
 
         private void btnSizeLarge_Click(object sender, EventArgs e)
         {
-            Sizes large = Sizes.LARGE;
-            EnumTranslate.SisesTranslate(btnSizeSmall, btnSizeLarge, large);
+            sizes = Sizes.LARGE;
+            EnumTranslate.SisesTranslate(btnSizeSmall, btnSizeLarge, sizes);
         }
 
         private void btnSizeSmall_Click(object sender, EventArgs e)
         {
-            Sizes small = Sizes.SMALL;
-            EnumTranslate.SisesTranslate(btnSizeSmall, btnSizeLarge, small);
+            sizes = Sizes.SMALL;
+            EnumTranslate.SisesTranslate(btnSizeSmall, btnSizeLarge, sizes);
         }
 
         private void trackBarSpeed_Scroll(object sender, EventArgs e)
@@ -171,7 +172,26 @@ namespace GazeToolBar
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SettingJSON setting = new SettingJSON();
+                setting.language = lblCurrentLanguage.Text;
+                setting.position = lblIndicationLeftOrRight.Text.Substring(3);
+                setting.precision = trackBarPrecision.Value;
+                setting.selection = gazeOrSwitch.ToString();
+                setting.size = sizes.ToString();
+                setting.soundFeedback = onOff[1];
+                setting.speed = trackBarSpeed.Value;
+                setting.typingSpeed = trackBarGazeTypingSpeed.Value;
+                setting.wordPercision = onOff[0];
+                string settings = JsonConvert.SerializeObject(setting);
+                File.WriteAllText(Program.path, settings);
+                MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

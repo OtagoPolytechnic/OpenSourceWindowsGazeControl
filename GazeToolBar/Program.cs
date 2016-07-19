@@ -31,11 +31,11 @@ namespace GazeToolBar
             if (!File.Exists(path))
             {
                 SettingJSON defaultSetting = new SettingJSON();
-                defaultSetting.language = "English(United States)";
+                defaultSetting.language = "    English\r\n(United States)";
                 defaultSetting.position = "Right";
                 defaultSetting.precision = 0;
-                defaultSetting.selection = "Gaze";
-                defaultSetting.size = "Small";
+                defaultSetting.selection = "GAZE";
+                defaultSetting.size = "SMALL";
                 defaultSetting.soundFeedback = false;
                 defaultSetting.speed = 0;
                 defaultSetting.typingSpeed = 0;

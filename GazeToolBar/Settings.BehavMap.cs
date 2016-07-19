@@ -88,7 +88,7 @@ namespace GazeToolBar
 
         private void OnbtnSave_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnSave.PerformClick();
         }
 
         private void OnbtnGaze_Click(object sender, GazeAwareEventArgs e)
