@@ -7,6 +7,7 @@ using EyeXFramework;
 using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Timers;
+using System.Drawing;
 
 /*
  *  Class: FixationDetection
@@ -25,12 +26,11 @@ namespace GazeToolBar
     public class FixationDetection
     {
         //Timer to measure if a how long it has been since the fixation started. 
-        private static Timer aTimer;
-        //Reference to eyeXhost, will be instantiated on form or in another manager/worker class.
-        public static EyeXHost eyeXHost;
+        private static Timer fixationTimer;
+        public static Timer timeOutTimer;
         //Fixation data stream, used to attached to fixation events.
         public static FixationDataStream fixationPointDataStream;
-        public ActionToRunAtFixation SelectedFixationAcion { get; set; }
+        //public ActionToRunAtFixation SelectedFixationAcion { get; set; }
         public int lengthOfTimeOfGazeBeforeRunningAction { get; set; }
         //State variable of FixationDetection class.
         EFixationState fixationState { get; set; }
@@ -45,21 +45,26 @@ namespace GazeToolBar
 
 
 
-        public FixationDetection(EyeXHost inputEyeXHost)
+        public FixationDetection()
         {
-            //Pass in eyeXhost from form\class to manage eye tracking system.
-            eyeXHost = inputEyeXHost;
-            fixationPointDataStream = eyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
+            fixationPointDataStream = Program.EyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
             EventHandler<FixationEventArgs> runSelectedActionAtFixationDelegate = new EventHandler<FixationEventArgs>(RunSelectedActionAtFixation);
             fixationPointDataStream.Next += runSelectedActionAtFixationDelegate;
 
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
-            lengthOfTimeOfGazeBeforeRunningAction = 600;
-            aTimer = new System.Timers.Timer(lengthOfTimeOfGazeBeforeRunningAction);
-            aTimer.AutoReset = false;
+            lengthOfTimeOfGazeBeforeRunningAction = 1000;
 
-            aTimer.Elapsed += runActionWhenTimerReachesLimit;
+            timeOutTimer = new Timer(5000);
+            timeOutTimer.AutoReset = false;
+
+            timeOutTimer.Elapsed += FixationTimeOut;
+
+
+            fixationTimer = new System.Timers.Timer(lengthOfTimeOfGazeBeforeRunningAction);
+            fixationTimer.AutoReset = false;
+
+            fixationTimer.Elapsed += runActionWhenTimerReachesLimit;
         }
 
         //This method of is run on gaze events, checks if it is the beginning or end of a fixation and runs appropriate code.
@@ -68,9 +73,11 @@ namespace GazeToolBar
 
             if(fixationState == EFixationState.RunningFixationWithSelection)
             {
+
+
                 if(fixationDataBucket.EventType == FixationDataEventType.Begin)
                 {
-                    aTimer.Start();
+                    fixationTimer.Start();
                     xPosFixation = (int)Math.Floor(fixationDataBucket.X);
                     yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
                     //Debug 
@@ -78,7 +85,7 @@ namespace GazeToolBar
                     
                 } else if(fixationDataBucket.EventType == FixationDataEventType.End)
                 {
-                    aTimer.Stop();
+                    fixationTimer.Stop();
                     //Debug
                     Console.WriteLine("Fixation Stopped");
                 }
@@ -94,19 +101,30 @@ namespace GazeToolBar
             //Debug
             Console.WriteLine("Timer reached event, running required action");
             //Run the method stored in SelectfixationAction
-            SelectedFixationAcion(xPosFixation, yPosFixation);//(may need to work on some  logic to detect and handle if the selectedFicationAction ran successfully).
+            //SelectedFixationAcion(xPosFixation, yPosFixation);//(may need to work on some  logic to detect and handle if the selectedFicationAction ran successfully).
 
             //Once the fixation has run, set the state of fixation detection back to waiting.
+            fixationState = EFixationState.WaitingForInPutSelection;
+            SystemFlags.Gaze = true;
+            
+        }
+        public void FixationTimeOut(object o, ElapsedEventArgs e)
+        {
+            SystemFlags.timeOut = true;
             fixationState = EFixationState.WaitingForInPutSelection;
         }
 
 
         //This method has the Action that will be run once a fixation is confirmed passed in and stored in SelectedFicationAction. It also sets the state to RunningFixationDetection, 
         //which sets logic in RunSelectedActionAtFixation to run on fixationPointDataStream.Next events.
-        public void SetupSelectedFixationAction(ActionToRunAtFixation inputActionToRun)
+        public void SetupSelectedFixationAction()
         {
-            SelectedFixationAcion = inputActionToRun;
+            //SelectedFixationAcion = inputActionToRun;
             fixationState = EFixationState.RunningFixationWithSelection;
+        }
+        public Point getXY()
+        {
+            return new Point(xPosFixation, yPosFixation);
         }
     }
 }

@@ -17,8 +17,6 @@ namespace GazeToolBar
     */
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
-        EyeXHost eyeXhost;
-        FixationDetection fixationWorker;
         private Settings settings;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
@@ -30,11 +28,13 @@ namespace GazeToolBar
         private Bitmap scrollImage;
         private Bitmap keyboardImage;
         private Bitmap dragAndDropImage;
+        public StateManager stateManager;
 
         List<Panel> highlightPannerList;
 
         public Form1()
         {
+            
             //Initial a image to each button
             leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
             rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
@@ -45,7 +45,7 @@ namespace GazeToolBar
             dragAndDropImage = new Bitmap(new Bitmap("Drag-and-drop-icon.png"), ReletiveSize.btnSize);
 
             //Change resolution to 800 * 600
-            ChangeResolution.ChangeScreenResolution();            
+            ChangeResolution.ChangeScreenResolution();
             InitializeComponent();
             Size = ReletiveSize.formSize;
             AutoStart.OpenKey();
@@ -66,7 +66,7 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHighLightDragAndDrop);
 
             setBtnSize();
-            
+
             Edge = AppBarEdges.Right;
             AutoStart.IsAutoStart(settings, menuItemStartOnOff);
 
@@ -162,12 +162,10 @@ namespace GazeToolBar
         public Settings Settings { get { return settings; }
             
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            eyeXhost = new EyeXHost();
-            eyeXhost.Start();
-            fixationWorker = new FixationDetection(eyeXhost);
+            stateManager = new StateManager();
+            timer2.Enabled = true;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -178,18 +176,21 @@ namespace GazeToolBar
 
         private void btnRightClick_Click(object sender, EventArgs e)
         {
-            fixationWorker.SetupSelectedFixationAction(VirtualMouse.RightMouseClick);
+            SystemFlags.actionButtonSelected = true;//raise action button flag
+            SystemFlags.actionToBePerformed = ActionToBePerformed.RightClick;
+            
         }
 
         private void btnSingleLeftClick_Click(object sender, EventArgs e)
         {
-            ZoomLens zoom = new ZoomLens();
-            fixationWorker.SetupSelectedFixationAction(zoom.CreateZoomLens);
+            SystemFlags.actionButtonSelected = true;//raise action button flag
+            SystemFlags.actionToBePerformed = ActionToBePerformed.LeftClick;
         }
 
         private void btnDoubleClick_Click(object sender, EventArgs e)
         {
-            fixationWorker.SetupSelectedFixationAction(VirtualMouse.LeftDoubleClick);
+            SystemFlags.actionButtonSelected = true;//raise action button flag
+            SystemFlags.actionToBePerformed = ActionToBePerformed.DoubleClick;
         }
 
         private void btnKeyboard_Click(object sender, EventArgs e)
@@ -205,7 +206,9 @@ namespace GazeToolBar
 
         private void btnScoll_Click(object sender, EventArgs e)
         {
-            fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
+            /*This will have to be added to the action enum and the logic will have to someplace else, not sure where yet*/
+            
+            //fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
             //Add logic to scroll/pan with eyes after middle click
         }
 
@@ -216,6 +219,10 @@ namespace GazeToolBar
 
 
 
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            stateManager.Run();
+        }
 
     }
 }

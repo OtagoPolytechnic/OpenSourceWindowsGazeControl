@@ -36,6 +36,7 @@ namespace GazeToolBar
             SetCursorPos(xpos, ypos);
             //Call left button click function at the cursor's current location.
             mouseSim.Mouse.LeftButtonClick();
+            mouseSim.Keyboard.KeyPress(VirtualKeyCode.CONTROL);
         }
 
 
@@ -94,6 +95,8 @@ namespace GazeToolBar
             SetCursorPos(xpos, ypos);
             //Call left button down function at the cursor's current location.
             mouseSim.Mouse.LeftButtonUp();
+
+            
         }
     }
 }
