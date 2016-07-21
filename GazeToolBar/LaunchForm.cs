@@ -12,7 +12,7 @@ namespace GazeToolBar
         StateManager statemanager;
         public LaunchForm()
         {
-            statemanager = new StateManager();
+           // statemanager = new StateManager();
             statemanager.Run();
         }
     }

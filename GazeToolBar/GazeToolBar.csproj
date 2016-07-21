@@ -81,7 +81,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppContext.cs" />
     <Compile Include="AutoStart.cs" />
     <Compile Include="ChangeResolution.cs" />
     <Compile Include="FixationDetection.cs" />

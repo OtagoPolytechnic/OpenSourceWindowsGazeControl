@@ -21,6 +21,7 @@ namespace GazeToolBar
         public static bool Gaze { get; set; }
         public static bool timeOut { get; set; }
         public static bool FixationRunning { get; set; }
+        public static bool HasSelectedButtonColourBeenReset { get; set; }
     }
 
     public class StateManager
@@ -38,13 +39,18 @@ namespace GazeToolBar
          * StateManger needs to save the x,y from the zoomer and it also needs to know which action was to be performed (Form will raise the flag based on what action was selected)
          * */
 
-        public StateManager()
+        public StateManager(Form1 Toolbar)
         {
+            toolbar = Toolbar;
+
             SystemFlags.currentState = SystemState.Setup;
 
             fixationWorker = new FixationDetection();
 
             SystemFlags.currentState = SystemState.Wait;
+
+            SystemFlags.HasSelectedButtonColourBeenReset = true;
+
             Run();
         }
         public void Run()
@@ -72,15 +78,16 @@ namespace GazeToolBar
                     break;
                 case SystemState.ActionButtonSelected:
                     Console.WriteLine("ActionButtonSelected");
+                    SystemFlags.HasSelectedButtonColourBeenReset = false;
                     if (SystemFlags.Gaze)
                     {
                         currentState = SystemState.Zooming;
                     }
                     else if (SystemFlags.timeOut)
                     {
-                        currentState = //SystemState.DisplayFeedback;
+                            currentState = //SystemState.DisplayFeedback;
                             SystemState.Wait;
-                        SystemFlags.timeOut = false;
+                            SystemFlags.timeOut = false;
                     }
                     break;
                 case SystemState.Zooming:
@@ -133,6 +140,13 @@ namespace GazeToolBar
                     SystemFlags.FixationRunning = false;
                     SystemFlags.Gaze = false;
                     SystemFlags.timeOut = false;
+                    //this is run every time the timer tick happens, seems
+                    if(SystemFlags.HasSelectedButtonColourBeenReset == false)
+                    {
+                        toolbar.resetButtonsColor();
+                        SystemFlags.HasSelectedButtonColourBeenReset = true;
+                    }
+
                     //set toolbar buttons to active
                     break;
                 case SystemState.KeyboardDisplayed:

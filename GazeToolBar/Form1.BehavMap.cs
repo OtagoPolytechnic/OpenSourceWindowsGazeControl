@@ -107,7 +107,7 @@ namespace GazeToolBar
             btnDragAndDrop.PerformClick();
         }
 
-        private void resetButtonsColor()
+        public void resetButtonsColor()
         {
             ValueNeverChange.ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard, btnDragAndDrop);
         }

@@ -164,7 +164,7 @@ namespace GazeToolBar
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            stateManager = new StateManager();
+            stateManager = new StateManager(this);
             timer2.Enabled = true;
         }
 
