@@ -36,19 +36,18 @@ namespace GazeToolBar
         {
             
             //Initial a image to each button
-            leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
-            rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
-            settingIcon = new Bitmap(new Bitmap("Settings-icon.png"), ReletiveSize.btnSize);
-            doubleClick = new Bitmap(new Bitmap("Double-Click-icon.png"), ReletiveSize.btnSize);
-            scrollImage = new Bitmap(new Bitmap("Scroll-icon.png"), ReletiveSize.btnSize);
-            keyboardImage = new Bitmap(new Bitmap("Keyboard-icon.png"), ReletiveSize.btnSize);
-            dragAndDropImage = new Bitmap(new Bitmap("Drag-and-drop-icon.png"), ReletiveSize.btnSize);
+            //leftSingleClick = new Bitmap(new Bitmap("Left-Click-icon.png"), ReletiveSize.btnSize);
+            //rightClick = new Bitmap(new Bitmap("Right-Click-icon.png"), ReletiveSize.btnSize);
+            //settingIcon = new Bitmap(new Bitmap("Settings-icon.png"), ReletiveSize.btnSize);
+            //doubleClick = new Bitmap(new Bitmap("Double-Click-icon.png"), ReletiveSize.btnSize);
+            //scrollImage = new Bitmap(new Bitmap("Scroll-icon.png"), ReletiveSize.btnSize);
+            //keyboardImage = new Bitmap(new Bitmap("Keyboard-icon.png"), ReletiveSize.btnSize);
+            //dragAndDropImage = new Bitmap(new Bitmap("Drag-and-drop-icon.png"), ReletiveSize.btnSize);
 
             //Change resolution to 800 * 600
-            ChangeResolution.ChangeScreenResolution();
+            //ChangeResolution.ChangeScreenResolution();
             InitializeComponent();
-            Size = ReletiveSize.formSize;
-            AutoStart.OpenKey();
+            //Size = ReletiveSize.formSize;
             contextMenu = new ContextMenu();
             menuItemExit = new MenuItem();
             menuItemStartOnOff = new MenuItem();
@@ -65,10 +64,8 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHighLightKeyboard);
             highlightPannerList.Add(pnlHighLightDragAndDrop);
 
-            setBtnSize();
+           // setBtnSize();
 
-            Edge = AppBarEdges.Right;
-            AutoStart.IsAutoStart(settings, menuItemStartOnOff);
 
             //Set all the image to its button
             btnSingleLeftClick.Image = leftSingleClick;
@@ -91,7 +88,7 @@ namespace GazeToolBar
             menuItemExit.Text = "Exit";
             menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
             menuItemExit.Click += new EventHandler(menuItemExit_Click);
-            menuItemStartOnOff.Click += new EventHandler(menuItemStartOnOff_Click);
+           // menuItemStartOnOff.Click += new EventHandler(menuItemStartOnOff_Click);
             contextMenu.MenuItems.Add(menuItemStartOnOff);
             contextMenu.MenuItems.Add(menuItemExit);
             //ntficGaze.ContextMenu = contextMenu;
@@ -101,52 +98,48 @@ namespace GazeToolBar
         /// Set all the size of buttons, panel
         /// and location of the buttons, panel.
         /// This will make tool bar adjust itself correspond to screen resolution
-        /// </summary>
-        private void setBtnSize()
-        {
-            btnSingleLeftClick.Size = ReletiveSize.btnSize;
-            btnDoubleClick.Size = ReletiveSize.btnSize;
-            btnRightClick.Size = ReletiveSize.btnSize;
-            btnSettings.Size = ReletiveSize.btnSize;
-            btnScoll.Size = ReletiveSize.btnSize;
-            btnKeyboard.Size = ReletiveSize.btnSize;
-            btnDragAndDrop.Size = ReletiveSize.btnSize;
-            //pnlHiLteRightClick.Size = ReletiveSize.btnPanelSize;
+        ///// </summary>
+        //private void setBtnSize()
+        //{
+        //    btnSingleLeftClick.Size = ReletiveSize.btnSize;
+        //    btnDoubleClick.Size = ReletiveSize.btnSize;
+        //    btnRightClick.Size = ReletiveSize.btnSize;
+        //    btnSettings.Size = ReletiveSize.btnSize;
+        //    btnScoll.Size = ReletiveSize.btnSize;
+        //    btnKeyboard.Size = ReletiveSize.btnSize;
+        //    btnDragAndDrop.Size = ReletiveSize.btnSize;
+        //    //pnlHiLteRightClick.Size = ReletiveSize.btnPanelSize;
 
 
-            btnRightClick.Location = new Point(3, ReletiveSize.btnPostionY);
-            btnSingleLeftClick.Location = new Point(3, 3);
-            Console.WriteLine(btnRightClick.Location);
-            Console.WriteLine(btnSingleLeftClick.Location);
+        //    btnRightClick.Location = new Point(3, ReletiveSize.btnPostionY);
+        //    btnSingleLeftClick.Location = new Point(3, 3);
+        //    Console.WriteLine(btnRightClick.Location);
+        //    Console.WriteLine(btnSingleLeftClick.Location);
 
-            btnDoubleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
-            btnSettings.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
-            btnScoll.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
-            btnKeyboard.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
-            btnDragAndDrop.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+        //    btnDoubleClick.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+        //    btnSettings.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+        //    btnScoll.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+        //    btnKeyboard.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
+        //    btnDragAndDrop.Location = new Point(ReletiveSize.btnPositionX, ReletiveSize.btnPostionY);
             
-            //pnlHiLteRightClick.Location = new Point(ReletiveSize.btnPositionX - 3, ReletiveSize.btnPostionY(1));
+        //    //pnlHiLteRightClick.Location = new Point(ReletiveSize.btnPositionX - 3, ReletiveSize.btnPostionY(1));
 
 
-            for (int i = 0; i < highlightPannerList.Count; i++)
-            {
-                highlightPannerList[i].Size = ReletiveSize.btnPanelSize;
-                highlightPannerList[i].Location = new Point(ReletiveSize.pnlPositionX - 3, ReletiveSize.pnlPostionY(i+1));
-            }
+        //    for (int i = 0; i < highlightPannerList.Count; i++)
+        //    {
+        //        highlightPannerList[i].Size = ReletiveSize.btnPanelSize;
+        //        highlightPannerList[i].Location = new Point(ReletiveSize.pnlPositionX - 3, ReletiveSize.pnlPostionY(i+1));
+        //    }
 
-            panel.Location = new Point(panel.Location.X, ReletiveSize.panelPositionY);
-            panel.Size = ReletiveSize.panelSize;
-        }
+        //    panel.Location = new Point(panel.Location.X, ReletiveSize.panelPositionY);
+        //    panel.Size = ReletiveSize.panelSize;
+        //}
 
         private void menuItemExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void menuItemStartOnOff_Click(object sender, EventArgs e)
-        {
-            AutoStart.setAutoStartOnOff(settings, menuItemStartOnOff);
-        }
 
         /// <summary>
         /// Change resolution back to its original resolution.
@@ -154,7 +147,7 @@ namespace GazeToolBar
         /// </summary>
         private void Form1_Shown(object sender, System.EventArgs e)
         {
-            ChangeResolution.ChangeResolutionBack();
+            
         }
 
         public MenuItem MenuItemStartOnOff { get { return menuItemStartOnOff; } }
@@ -164,6 +157,7 @@ namespace GazeToolBar
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            Edge = AppBarEdges.Left;
             stateManager = new StateManager(this);
             timer2.Enabled = true;
         }
