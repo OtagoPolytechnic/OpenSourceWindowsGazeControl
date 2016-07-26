@@ -51,6 +51,8 @@ namespace GazeToolBar
 
             SystemFlags.HasSelectedButtonColourBeenReset = true;
 
+            zoomer = new ZoomLens();
+
             Run();
         }
         public void Run()
@@ -162,7 +164,7 @@ namespace GazeToolBar
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
-                    zoomer = new ZoomLens();
+                    
                     fixationPoint = fixationWorker.getXY();
                     zoomer.CreateZoomLens(fixationPoint);
                     SystemFlags.Gaze = false;
