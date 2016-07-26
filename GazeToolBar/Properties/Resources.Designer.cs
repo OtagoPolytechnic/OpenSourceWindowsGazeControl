@@ -59,5 +59,15 @@ namespace GazeToolBar.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Right_Click_icon {
+            get {
+                object obj = ResourceManager.GetObject("Right-Click-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

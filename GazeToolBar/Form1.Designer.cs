@@ -60,8 +60,9 @@
             // 
             this.btnRightClick.BackColor = System.Drawing.Color.Transparent;
             this.btnRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRightClick.Image = ((System.Drawing.Image)(resources.GetObject("btnRightClick.Image")));
-            this.btnRightClick.Location = new System.Drawing.Point(3, 3);
+            this.btnRightClick.ForeColor = System.Drawing.Color.Black;
+            this.btnRightClick.Image = global::GazeToolBar.Properties.Resources.Right_Click_icon;
+            this.btnRightClick.Location = new System.Drawing.Point(13, 7);
             this.btnRightClick.Name = "btnRightClick";
             this.btnRightClick.Size = new System.Drawing.Size(75, 75);
             this.btnRightClick.TabIndex = 3;
@@ -188,7 +189,7 @@
             this.pnlHiLteRightClick.Controls.Add(this.btnRightClick);
             this.pnlHiLteRightClick.Location = new System.Drawing.Point(15, 30);
             this.pnlHiLteRightClick.Name = "pnlHiLteRightClick";
-            this.pnlHiLteRightClick.Size = new System.Drawing.Size(85, 85);
+            this.pnlHiLteRightClick.Size = new System.Drawing.Size(91, 85);
             this.pnlHiLteRightClick.TabIndex = 6;
             // 
             // timer2
