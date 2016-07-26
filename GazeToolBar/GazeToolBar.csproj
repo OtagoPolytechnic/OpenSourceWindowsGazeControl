@@ -161,6 +161,18 @@
     <Content Include="Gaze.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Double-Click-icon-Selected.fw.png" />
+    <Content Include="Images\Double-Click-icon.png" />
+    <Content Include="Images\Drag-and-drop-icon-selected.fw.png" />
+    <Content Include="Images\Drag-and-drop-icon.png" />
+    <Content Include="Images\Keyboard-icon-Selected.fw.png" />
+    <Content Include="Images\Keyboard-icon.png" />
+    <Content Include="Images\Left-Click-ico-Selected.fw.png" />
+    <Content Include="Images\Left-Click-icon.png" />
+    <Content Include="Images\Right-Click-icon-Selected.fw.png" />
+    <Content Include="Images\Right-Click-icon.png" />
+    <Content Include="Images\settings-icon-selected.fw.png" />
+    <Content Include="Images\settings-icon.png" />
     <Content Include="Tobii.EyeX.Client.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
