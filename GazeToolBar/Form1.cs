@@ -21,13 +21,6 @@ namespace GazeToolBar
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
         private MenuItem menuItemStartOnOff;
-        private Bitmap leftSingleClick;
-        private Bitmap rightClick;
-        private Bitmap settingIcon;
-        private Bitmap doubleClick;
-        private Bitmap scrollImage;
-        private Bitmap keyboardImage;
-        private Bitmap dragAndDropImage;
         public StateManager stateManager;
 
         List<Panel> highlightPannerList;
@@ -36,15 +29,12 @@ namespace GazeToolBar
         {
             
             InitializeComponent();
-            //Size = ReletiveSize.formSize;
             contextMenu = new ContextMenu();
             menuItemExit = new MenuItem();
             menuItemStartOnOff = new MenuItem();
             initMenuItem();
-
-
+            
             highlightPannerList = new List<Panel>();
-
             highlightPannerList.Add(pnlHiLteRightClick);
             highlightPannerList.Add(pnlHighLightSingleLeft);
             highlightPannerList.Add(pnlHighLightDoubleClick);
@@ -52,15 +42,6 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHighLightScrol);
             highlightPannerList.Add(pnlHighLightKeyboard);
             highlightPannerList.Add(pnlHighLightDragAndDrop);
-
-            //Set all the image to its button
-            btnSingleLeftClick.Image = leftSingleClick;
-            btnRightClick.Image = rightClick;
-            btnSettings.Image = settingIcon;
-            btnDoubleClick.Image = doubleClick;
-            btnScoll.Image = scrollImage;
-            btnKeyboard.Image = keyboardImage;
-            btnDragAndDrop.Image = dragAndDropImage;
 
             connectBehaveMap();
         }

@@ -50,7 +50,7 @@ namespace GazeToolBar
             var sentButton = s as Panel;
             if(sentButton != null)
             {
-                sentButton.BackColor = (e.HasGaze) ? Color.Red : Color.FromArgb(173, 83, 201);
+                sentButton.BackColor = (e.HasGaze) ? Color.Red : Color.Black;
             }
         }
 
@@ -109,7 +109,19 @@ namespace GazeToolBar
 
         public void resetButtonsColor()
         {
-            ValueNeverChange.ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard, btnDragAndDrop);
+            ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard, btnDragAndDrop);
+        }
+
+        /// <summary>
+        /// By calling this method all the buttons that passed in will be reset its color
+        /// </summary>
+        /// <param name="button">Buttons that will be reset on</param>
+        void ResetBtnBackcolor(params Button[] button)
+        {
+            foreach (Button b in button)
+            {
+                b.BackColor = Color.Black;
+            }
         }
     }
 }
