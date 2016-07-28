@@ -120,11 +120,17 @@
   <metadata name="bhavMap.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="bhavMapHLCurrentGazeOnBT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>147, 17</value>
+  </metadata>
+  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>362, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnRightClick.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsRAAALEQF/ZF+RAAAAHHRFWHRTb2Z0d2FyZQBBZG9i
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsMAAALDAE/QCLIAAAAHHRFWHRTb2Z0d2FyZQBBZG9i
         ZSBGaXJld29ya3MgQ1M26LyyjAAACHJwclZXeJzlW9u17CYMZTCPNtJCOkkL+cjJ721nmkkBWdNLOsjE
         gCQEFgJ7zmvlcs/c8fi12RJ6IOy///3rH/PD/Hju7bH/ez4ez/vzeX88357Pt/13+vV4q9/5s28/YftT
         26N8OP4D+8e2D/1dPX72fso5zTb2/ZPboX9vx/59bofKR5Nb309RFyvHz51vPrn1kvkf4nsX/Ri/s7MP
@@ -1005,7 +1011,7 @@
   <data name="btnSingleLeftClick.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAAABHNCSVQICAgIfAhkiAAAAAFzUkdCAK7O
-        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsRAAALEQF/ZF+RAAAAHHRFWHRTb2Z0d2FyZQBBZG9i
+        HOkAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAAsMAAALDAE/QCLIAAAAHHRFWHRTb2Z0d2FyZQBBZG9i
         ZSBGaXJld29ya3MgQ1M26LyyjAAACN1wclZXeJztWk1uGzcUnnDIIaBFL9CNoG5aoJYsO5FrwXZQOAi6
         SRE0AVp0p0iyaySWBEmBnRyhN8gZeoGu2m1QeNFLdN1du6s6/Hkkh8OZITVyjKJiOrU04vDj9/74+Ia/
         /fPLn9Esmq3SdpP+W93crN6tVu9uVmer1dnN6nT8w8VXb+fjZ2+/fj58+3J4OGo9PGkcXfevL2eX4+Wg
@@ -1896,11 +1902,8 @@
         jj/JkL7t/mL2v+mXjDvu/zSCleO046mBAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="bhavMapHLCurrentGazeOnBT.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>147, 17</value>
-  </metadata>
-  <metadata name="timer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>362, 17</value>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>28</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

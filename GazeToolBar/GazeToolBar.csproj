@@ -171,6 +171,7 @@
     <Content Include="Images\Left-Click-icon.png" />
     <Content Include="Images\Right-Click-icon-Selected.png" />
     <Content Include="Images\Right-Click-icon.png" />
+    <None Include="Images\Scroll-icon.png" />
     <Content Include="Images\settings-icon-selected.fw.png" />
     <Content Include="Images\settings-icon.png" />
     <Content Include="Tobii.EyeX.Client.dll">
