@@ -14,7 +14,6 @@ namespace GazeToolBar
     public partial class ZoomLens : Form
     {
         const int ZOOMLEVEL = 3;// this is controls how far the lens will zoom in
-        int x, y;
         Graphics graphics;
         Bitmap bmpScreenshot;
         delegate void SetFormDelegate(int x, int y);
@@ -22,11 +21,9 @@ namespace GazeToolBar
         FixationDetection fixdet;
         public ZoomLens()
         {
-            //wait to see where the user is looking
-            //translate where the user looked on the form to 
             InitializeComponent();
-            this.Width = 500; //Screen.PrimaryScreen.Bounds.Width / 4;//setting the lens size
-            this.Height = 500;//Screen.PrimaryScreen.Bounds.Width / 4;
+            this.Width = 500;//setting the lens size
+            this.Height = 500;
             Console.WriteLine("This.width = " + this.Width);
             Console.WriteLine("This.width = " + this.Height);
 
@@ -42,25 +39,16 @@ namespace GazeToolBar
 
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = new FixationDetection();
-            //fixdet.SetupSelectedFixationAction();//pass in getrelativecoords
         }
         public void getRelativeCoords()
         {
 
         }
-        //public void CreateZoomLens(int x, int y)
-        //{
-        //    if (this.InvokeRequired)
-        //    {
-        //        SetFormDelegate sfd = new SetFormDelegate(SetForm);
-        //        this.Invoke(sfd, new Object[] { x, y });
-        //    }
-        //    //perform click here @ the center of the form
-        //}
         public void CreateZoomLens(Point FixationPoint)
         {
             this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));//set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
             this.Show();//make lens visible
+            
             Point lensPoint = new Point();
             Point empty = new Point(0, 0);
 
@@ -74,6 +62,10 @@ namespace GazeToolBar
             pictureBox1.Image = bmpScreenshot;
             this.TopMost = true;
             Application.DoEvents();
+        }
+        public void ResetZoomLens()
+        {
+            this.Hide();
         }
         public Point TranslateGazePoint(Point fixationPoint)
         {
@@ -115,14 +107,6 @@ namespace GazeToolBar
             int b = halfWidth - halfWidthDivZoom;
             b = this.Left + b;
             returnPoint.X = b + (x / ZOOMLEVEL);
-
-            //returnPoint.X = x - (this.Width / 2);
-            //returnPoint.X = returnPoint.X * (1 / ZOOMLEVEL);
-            //returnPoint.X = returnPoint.X + ((this.Left + (this.Width / 2)));
-
-            //returnPoint.Y = y - (this.Height / 2);
-            //returnPoint.Y = returnPoint.Y * (1 / ZOOMLEVEL);
-            //returnPoint.Y = returnPoint.Y + ((this.Top + (this.Height / 2)));
             Console.WriteLine("returnPoint = " + returnPoint);
             return returnPoint;
         }
