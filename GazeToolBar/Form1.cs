@@ -38,10 +38,11 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHiLteRightClick);
             highlightPannerList.Add(pnlHighLightSingleLeft);
             highlightPannerList.Add(pnlHighLightDoubleClick);
-            highlightPannerList.Add(pnlHighLightSettings);
+            highlightPannerList.Add(pnlHighLightDragAndDrop);
             highlightPannerList.Add(pnlHighLightScrol);
             highlightPannerList.Add(pnlHighLightKeyboard);
-            highlightPannerList.Add(pnlHighLightDragAndDrop);
+            highlightPannerList.Add(pnlHighLightSettings);
+            setButtonPanelHight(highlightPannerList);
 
             connectBehaveMap();
         }
@@ -54,11 +55,9 @@ namespace GazeToolBar
         {
             menuItemExit.Text = "Exit";
             menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
-            menuItemExit.Click += new EventHandler(menuItemExit_Click);
-           // menuItemStartOnOff.Click += new EventHandler(menuItemStartOnOff_Click);
+            menuItemExit.Click += new EventHandler(menuItemExit_Click);         
             contextMenu.MenuItems.Add(menuItemStartOnOff);
             contextMenu.MenuItems.Add(menuItemExit);
-            //ntficGaze.ContextMenu = contextMenu;
         }
 
 
@@ -137,5 +136,29 @@ namespace GazeToolBar
             stateManager.Run();
         }
 
+
+        private void setButtonPanelHight(List<Panel> panelList)
+        {
+            int screenHeight = ValueNeverChange.SCREEN_SIZE.Height;
+            int amountOfPanels = panelList.Count;
+            int panelHight = panelList[0].Height;
+            int screenSectionSize = screenHeight / amountOfPanels;
+            int spacer = screenSectionSize - panelHight;
+            int spacerBuffer = spacer / 2;
+
+            foreach(Panel currentPanel in panelList)
+            {
+                Point panelLocation = new Point(currentPanel.Location.X, spacerBuffer);
+
+                Console.WriteLine(screenHeight);
+                Console.WriteLine(panelLocation.Y);
+
+                currentPanel.Location = panelLocation;
+
+                spacerBuffer += screenSectionSize;
+            }
+
+
+        }
     }
 }
