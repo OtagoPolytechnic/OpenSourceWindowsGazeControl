@@ -32,21 +32,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bhavMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.pnlHighLightDragAndDrop = new System.Windows.Forms.Panel();
+            this.btnDragAndDrop = new System.Windows.Forms.Button();
             this.pnlHighLightKeyboard = new System.Windows.Forms.Panel();
+            this.btnKeyboard = new System.Windows.Forms.Button();
             this.pnlHighLightScrol = new System.Windows.Forms.Panel();
+            this.btnScoll = new System.Windows.Forms.Button();
             this.pnlHighLightSettings = new System.Windows.Forms.Panel();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.pnlHighLightDoubleClick = new System.Windows.Forms.Panel();
+            this.btnDoubleClick = new System.Windows.Forms.Button();
             this.pnlHighLightSingleLeft = new System.Windows.Forms.Panel();
+            this.btnSingleLeftClick = new System.Windows.Forms.Button();
             this.pnlHiLteRightClick = new System.Windows.Forms.Panel();
+            this.btnRightClick = new System.Windows.Forms.Button();
             this.bhavMapHLCurrentGazeOnBT = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.btnDragAndDrop = new System.Windows.Forms.Button();
-            this.btnKeyboard = new System.Windows.Forms.Button();
-            this.btnRightClick = new System.Windows.Forms.Button();
-            this.btnScoll = new System.Windows.Forms.Button();
-            this.btnSingleLeftClick = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
-            this.btnDoubleClick = new System.Windows.Forms.Button();
             this.pnlHighLightDragAndDrop.SuspendLayout();
             this.pnlHighLightKeyboard.SuspendLayout();
             this.pnlHighLightScrol.SuspendLayout();
@@ -64,58 +64,6 @@
             this.pnlHighLightDragAndDrop.Size = new System.Drawing.Size(80, 80);
             this.pnlHighLightDragAndDrop.TabIndex = 12;
             // 
-            // pnlHighLightKeyboard
-            // 
-            this.pnlHighLightKeyboard.Controls.Add(this.btnKeyboard);
-            this.pnlHighLightKeyboard.Location = new System.Drawing.Point(15, 564);
-            this.pnlHighLightKeyboard.Name = "pnlHighLightKeyboard";
-            this.pnlHighLightKeyboard.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightKeyboard.TabIndex = 11;
-            // 
-            // pnlHighLightScrol
-            // 
-            this.pnlHighLightScrol.Controls.Add(this.btnScoll);
-            this.pnlHighLightScrol.Location = new System.Drawing.Point(15, 455);
-            this.pnlHighLightScrol.Name = "pnlHighLightScrol";
-            this.pnlHighLightScrol.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightScrol.TabIndex = 10;
-            // 
-            // pnlHighLightSettings
-            // 
-            this.pnlHighLightSettings.Controls.Add(this.btnSettings);
-            this.pnlHighLightSettings.Location = new System.Drawing.Point(15, 682);
-            this.pnlHighLightSettings.Name = "pnlHighLightSettings";
-            this.pnlHighLightSettings.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightSettings.TabIndex = 9;
-            // 
-            // pnlHighLightDoubleClick
-            // 
-            this.pnlHighLightDoubleClick.Controls.Add(this.btnDoubleClick);
-            this.pnlHighLightDoubleClick.Location = new System.Drawing.Point(15, 239);
-            this.pnlHighLightDoubleClick.Name = "pnlHighLightDoubleClick";
-            this.pnlHighLightDoubleClick.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightDoubleClick.TabIndex = 8;
-            // 
-            // pnlHighLightSingleLeft
-            // 
-            this.pnlHighLightSingleLeft.Controls.Add(this.btnSingleLeftClick);
-            this.pnlHighLightSingleLeft.Location = new System.Drawing.Point(15, 127);
-            this.pnlHighLightSingleLeft.Name = "pnlHighLightSingleLeft";
-            this.pnlHighLightSingleLeft.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightSingleLeft.TabIndex = 7;
-            // 
-            // pnlHiLteRightClick
-            // 
-            this.pnlHiLteRightClick.Controls.Add(this.btnRightClick);
-            this.pnlHiLteRightClick.Location = new System.Drawing.Point(15, 30);
-            this.pnlHiLteRightClick.Name = "pnlHiLteRightClick";
-            this.pnlHiLteRightClick.Size = new System.Drawing.Size(80, 80);
-            this.pnlHiLteRightClick.TabIndex = 6;
-            // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // btnDragAndDrop
             // 
             this.btnDragAndDrop.BackColor = System.Drawing.Color.Black;
@@ -127,6 +75,14 @@
             this.btnDragAndDrop.TabIndex = 5;
             this.btnDragAndDrop.UseVisualStyleBackColor = false;
             this.btnDragAndDrop.Click += new System.EventHandler(this.btnDragAndDrop_Click);
+            // 
+            // pnlHighLightKeyboard
+            // 
+            this.pnlHighLightKeyboard.Controls.Add(this.btnKeyboard);
+            this.pnlHighLightKeyboard.Location = new System.Drawing.Point(15, 564);
+            this.pnlHighLightKeyboard.Name = "pnlHighLightKeyboard";
+            this.pnlHighLightKeyboard.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightKeyboard.TabIndex = 11;
             // 
             // btnKeyboard
             // 
@@ -140,17 +96,13 @@
             this.btnKeyboard.UseVisualStyleBackColor = false;
             this.btnKeyboard.Click += new System.EventHandler(this.btnKeyboard_Click);
             // 
-            // btnRightClick
+            // pnlHighLightScrol
             // 
-            this.btnRightClick.BackColor = System.Drawing.Color.Black;
-            this.btnRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRightClick.Image = ((System.Drawing.Image)(resources.GetObject("btnRightClick.Image")));
-            this.btnRightClick.Location = new System.Drawing.Point(3, 3);
-            this.btnRightClick.Name = "btnRightClick";
-            this.btnRightClick.Size = new System.Drawing.Size(75, 75);
-            this.btnRightClick.TabIndex = 3;
-            this.btnRightClick.UseVisualStyleBackColor = false;
-            this.btnRightClick.Click += new System.EventHandler(this.btnRightClick_Click);
+            this.pnlHighLightScrol.Controls.Add(this.btnScoll);
+            this.pnlHighLightScrol.Location = new System.Drawing.Point(15, 455);
+            this.pnlHighLightScrol.Name = "pnlHighLightScrol";
+            this.pnlHighLightScrol.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightScrol.TabIndex = 10;
             // 
             // btnScoll
             // 
@@ -164,17 +116,13 @@
             this.btnScoll.UseVisualStyleBackColor = false;
             this.btnScoll.Click += new System.EventHandler(this.btnScoll_Click);
             // 
-            // btnSingleLeftClick
+            // pnlHighLightSettings
             // 
-            this.btnSingleLeftClick.BackColor = System.Drawing.Color.Black;
-            this.btnSingleLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSingleLeftClick.Image = ((System.Drawing.Image)(resources.GetObject("btnSingleLeftClick.Image")));
-            this.btnSingleLeftClick.Location = new System.Drawing.Point(3, 3);
-            this.btnSingleLeftClick.Name = "btnSingleLeftClick";
-            this.btnSingleLeftClick.Size = new System.Drawing.Size(75, 75);
-            this.btnSingleLeftClick.TabIndex = 3;
-            this.btnSingleLeftClick.UseVisualStyleBackColor = false;
-            this.btnSingleLeftClick.Click += new System.EventHandler(this.btnSingleLeftClick_Click);
+            this.pnlHighLightSettings.Controls.Add(this.btnSettings);
+            this.pnlHighLightSettings.Location = new System.Drawing.Point(15, 682);
+            this.pnlHighLightSettings.Name = "pnlHighLightSettings";
+            this.pnlHighLightSettings.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightSettings.TabIndex = 9;
             // 
             // btnSettings
             // 
@@ -188,6 +136,14 @@
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // pnlHighLightDoubleClick
+            // 
+            this.pnlHighLightDoubleClick.Controls.Add(this.btnDoubleClick);
+            this.pnlHighLightDoubleClick.Location = new System.Drawing.Point(15, 239);
+            this.pnlHighLightDoubleClick.Name = "pnlHighLightDoubleClick";
+            this.pnlHighLightDoubleClick.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightDoubleClick.TabIndex = 8;
+            // 
             // btnDoubleClick
             // 
             this.btnDoubleClick.BackColor = System.Drawing.Color.Black;
@@ -199,6 +155,51 @@
             this.btnDoubleClick.TabIndex = 4;
             this.btnDoubleClick.UseVisualStyleBackColor = false;
             this.btnDoubleClick.Click += new System.EventHandler(this.btnDoubleClick_Click);
+            // 
+            // pnlHighLightSingleLeft
+            // 
+            this.pnlHighLightSingleLeft.Controls.Add(this.btnSingleLeftClick);
+            this.pnlHighLightSingleLeft.Location = new System.Drawing.Point(15, 127);
+            this.pnlHighLightSingleLeft.Name = "pnlHighLightSingleLeft";
+            this.pnlHighLightSingleLeft.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightSingleLeft.TabIndex = 7;
+            // 
+            // btnSingleLeftClick
+            // 
+            this.btnSingleLeftClick.BackColor = System.Drawing.Color.Black;
+            this.btnSingleLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSingleLeftClick.Image = ((System.Drawing.Image)(resources.GetObject("btnSingleLeftClick.Image")));
+            this.btnSingleLeftClick.Location = new System.Drawing.Point(3, 3);
+            this.btnSingleLeftClick.Name = "btnSingleLeftClick";
+            this.btnSingleLeftClick.Size = new System.Drawing.Size(75, 75);
+            this.btnSingleLeftClick.TabIndex = 3;
+            this.btnSingleLeftClick.UseVisualStyleBackColor = false;
+            this.btnSingleLeftClick.Click += new System.EventHandler(this.btnSingleLeftClick_Click);
+            // 
+            // pnlHiLteRightClick
+            // 
+            this.pnlHiLteRightClick.Controls.Add(this.btnRightClick);
+            this.pnlHiLteRightClick.Location = new System.Drawing.Point(15, 30);
+            this.pnlHiLteRightClick.Name = "pnlHiLteRightClick";
+            this.pnlHiLteRightClick.Size = new System.Drawing.Size(80, 80);
+            this.pnlHiLteRightClick.TabIndex = 6;
+            // 
+            // btnRightClick
+            // 
+            this.btnRightClick.BackColor = System.Drawing.Color.Black;
+            this.btnRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRightClick.Image = ((System.Drawing.Image)(resources.GetObject("btnRightClick.Image")));
+            this.btnRightClick.Location = new System.Drawing.Point(3, 3);
+            this.btnRightClick.Name = "btnRightClick";
+            this.btnRightClick.Size = new System.Drawing.Size(75, 75);
+            this.btnRightClick.TabIndex = 3;
+            this.btnRightClick.UseVisualStyleBackColor = false;
+            this.btnRightClick.Click += new System.EventHandler(this.btnRightClick_Click);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 

@@ -155,7 +155,7 @@ namespace GazeToolBar
                 case SystemState.ActionButtonSelected:
                     if (!SystemFlags.FixationRunning)
                     {
-                        fixationWorker.SetupSelectedFixationAction();
+                        fixationWorker.StartDetectingFixation();
                         SystemFlags.FixationRunning = true;
                     }
                     
@@ -171,7 +171,7 @@ namespace GazeToolBar
                 case SystemState.ZoomWait:
                     if (!SystemFlags.FixationRunning)
                     {
-                        fixationWorker.SetupSelectedFixationAction();
+                        fixationWorker.StartDetectingFixation();
                         SystemFlags.FixationRunning = true;
                     }
                     break;
