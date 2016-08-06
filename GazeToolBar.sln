@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GazeToolBar", "GazeToolBar\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EyeXFramework", "EyeXFramework\EyeXFramework.csproj", "{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{552313AA-78AE-4247-B99F-E571AB0BC9BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,14 @@ Global
 		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x64.Build.0 = Release|x64
 		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x86.ActiveCfg = Release|x86
 		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x86.Build.0 = Release|x86
+		{552313AA-78AE-4247-B99F-E571AB0BC9BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{552313AA-78AE-4247-B99F-E571AB0BC9BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{552313AA-78AE-4247-B99F-E571AB0BC9BB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{552313AA-78AE-4247-B99F-E571AB0BC9BB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{552313AA-78AE-4247-B99F-E571AB0BC9BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{552313AA-78AE-4247-B99F-E571AB0BC9BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{552313AA-78AE-4247-B99F-E571AB0BC9BB}.Release|x64.ActiveCfg = Release|Any CPU
+		{552313AA-78AE-4247-B99F-E571AB0BC9BB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
