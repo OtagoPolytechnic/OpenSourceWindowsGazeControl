@@ -162,7 +162,7 @@ namespace GazeToolBar
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
-                    zoomer = new ZoomLens();
+                    zoomer = new ZoomLens(fixationWorker);
                     fixationPoint = fixationWorker.getXY();
                     zoomer.CreateZoomLens(fixationPoint);
                     SystemFlags.Gaze = false;

@@ -14,7 +14,7 @@ using System.Drawing;
  *  Name: Richard Horne
  *  Date: 10/05/2015
  *  Description: This class is to encapsulate the required logic to detect an user eyes fixation on a point of the screen from the behaviors provided by the eyeX engine.
- *  Purpose: To enable code to be run when a user fixates on location on the screen. A method can be passed in and run once the fixation is confirmed.
+ *  Purpose: To enable code to be run when a user fixates on location on the screen. The last fixation coordinates can be passed retrieved once a fixation has occurred.
  */
 
 namespace GazeToolBar
@@ -41,8 +41,6 @@ namespace GazeToolBar
         private int xPosFixation = 0;
         private int yPosFixation = 0;
 
-        bool fixtest = false;
-
 
 
 
@@ -50,7 +48,7 @@ namespace GazeToolBar
         {
             fixationPointDataStream = Program.EyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
             
-            EventHandler<FixationEventArgs> FixationEventStreamDelegate = new EventHandler<FixationEventArgs>(RunSelectedActionAtFixation);
+            EventHandler<FixationEventArgs> FixationEventStreamDelegate = new EventHandler<FixationEventArgs>(DetectFixation);
             
             fixationPointDataStream.Next += FixationEventStreamDelegate;
 
@@ -73,22 +71,16 @@ namespace GazeToolBar
         }
 
         //This method of is run on gaze events, checks if it is the beginning or end of a fixation and runs appropriate code.
-        private void RunSelectedActionAtFixation(object o, FixationEventArgs fixationDataBucket)
+        private void DetectFixation(object o, FixationEventArgs fixationDataBucket)
         {
-            Console.WriteLine(fixtest.ToString());
-
-            if(fixtest)
+         
+            if(fixationState == EFixationState.DetectingFixation)
             {
-                Console.WriteLine("detecting fixation");
 
                 if(fixationDataBucket.EventType == FixationDataEventType.Begin)
                 {
                     fixationTimer.Start();
-                    xPosFixation = (int)Math.Floor(fixationDataBucket.X);
-                    yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
-                    //Debug 
-                    Console.WriteLine("Fixation Started X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
-                    
+                    Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
                 
                 if(fixationDataBucket.EventType == FixationDataEventType.Data)
@@ -101,29 +93,21 @@ namespace GazeToolBar
                 {
                     fixationTimer.Stop();
                     //Debug
-                    Console.WriteLine("Fixation Stopped");
+                    Console.WriteLine("Fixation Stopped due to end datatype");
                 }
             }
         }
 
-        //This action is run when the timer reaches lengthOfTimeOfGazeBeforeRunningAction and the elapsed event on the timer is fired. 
-        //doing it this as we need a way of knowing when and where a fixation begins which the eyex provides, problem is it only provides when
-        //a fixation begins and where it ends, we have to build the logic to detect where it begins, check that its does not end in a specified time period,
-        //and as long as it does not end, run the required action at that location from the beginning of the fixation.
+
         public void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
         {
-            //Debug
-            Console.WriteLine("Timer reached event, running required action");
-            //Run the method stored in SelectfixationAction
-            //SelectedFixationAcion(xPosFixation, yPosFixation);//(may need to work on some  logic to detect and handle if the selectedFicationAction ran successfully).
-
             //Once the fixation has run, set the state of fixation detection back to waiting.
             fixationState = EFixationState.WaitingForFixationRequest;
-            fixtest = false;
-           
             SystemFlags.Gaze = true;
-            
+            //Debug
+            Console.WriteLine("Timer reached event, running required action");
         }
+
         public void FixationTimeOut(object o, ElapsedEventArgs e)
         {
             SystemFlags.timeOut = true;
@@ -138,8 +122,8 @@ namespace GazeToolBar
             //SelectedFixationAcion = inputActionToRun;
             Console.WriteLine("Start detection call");
             fixationState = EFixationState.DetectingFixation;
-            fixtest = true;
         }
+
         public Point getXY()
         {
             return new Point(xPosFixation, yPosFixation);

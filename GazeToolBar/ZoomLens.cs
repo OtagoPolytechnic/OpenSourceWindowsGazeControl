@@ -20,7 +20,7 @@ namespace GazeToolBar
         delegate void SetFormDelegate(int x, int y);
 
         FixationDetection fixdet;
-        public ZoomLens()
+        public ZoomLens(FixationDetection FixDet)
         {
             //wait to see where the user is looking
             //translate where the user looked on the form to 
@@ -41,7 +41,7 @@ namespace GazeToolBar
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
 
             this.FormBorderStyle = FormBorderStyle.None;
-            fixdet = new FixationDetection();
+            fixdet = FixDet;
             //fixdet.SetupSelectedFixationAction();//pass in getrelativecoords
         }
         public void getRelativeCoords()
