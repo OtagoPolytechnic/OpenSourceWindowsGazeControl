@@ -51,6 +51,8 @@ namespace GazeToolBar
 
             SystemFlags.HasSelectedButtonColourBeenReset = true;
 
+            zoomer = new ZoomLens(fixationWorker);
+
             Run();
         }
         public void Run()
@@ -65,6 +67,7 @@ namespace GazeToolBar
             {
                 case SystemState.Wait:
                     Console.WriteLine("Wait State");
+                    zoomer.ResetZoomLens();
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
@@ -162,7 +165,6 @@ namespace GazeToolBar
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
-                    zoomer = new ZoomLens(fixationWorker);
                     fixationPoint = fixationWorker.getXY();
                     zoomer.CreateZoomLens(fixationPoint);
                     SystemFlags.Gaze = false;
@@ -178,7 +180,6 @@ namespace GazeToolBar
                 case SystemState.ApplyAction:
                     fixationPoint = fixationWorker.getXY();
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);
-                    zoomer.Dispose();
                     if (fixationPoint.X == -1)
                     {
                         if (SystemFlags.isKeyBoardUP)
