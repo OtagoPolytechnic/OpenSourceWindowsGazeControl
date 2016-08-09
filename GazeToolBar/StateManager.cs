@@ -51,7 +51,7 @@ namespace GazeToolBar
 
             SystemFlags.HasSelectedButtonColourBeenReset = true;
 
-            zoomer = new ZoomLens();
+            zoomer = new ZoomLens(fixationWorker);
 
             Run();
         }
@@ -158,14 +158,13 @@ namespace GazeToolBar
                 case SystemState.ActionButtonSelected:
                     if (!SystemFlags.FixationRunning)
                     {
-                        fixationWorker.SetupSelectedFixationAction();
+                        fixationWorker.StartDetectingFixation();
                         SystemFlags.FixationRunning = true;
                     }
                     
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
-                    
                     fixationPoint = fixationWorker.getXY();
                     zoomer.CreateZoomLens(fixationPoint);
                     SystemFlags.Gaze = false;
@@ -174,7 +173,7 @@ namespace GazeToolBar
                 case SystemState.ZoomWait:
                     if (!SystemFlags.FixationRunning)
                     {
-                        fixationWorker.SetupSelectedFixationAction();
+                        fixationWorker.StartDetectingFixation();
                         SystemFlags.FixationRunning = true;
                     }
                     break;
