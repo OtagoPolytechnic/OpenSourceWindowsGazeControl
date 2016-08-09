@@ -18,7 +18,7 @@ namespace GazeToolBar
         /// </summary>
         /// 
 
-        private int delayBeforeButtonSelected = 2000;
+        private int delayBeforeButtonSelected = 1000;
         private void connectBehaveMap()
         {
             Program.EyeXHost.Connect(bhavMap);

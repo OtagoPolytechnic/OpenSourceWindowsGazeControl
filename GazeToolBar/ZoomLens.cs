@@ -64,8 +64,8 @@ namespace GazeToolBar
             Point lensPoint = new Point();
             Point empty = new Point(0, 0);
 
-            lensPoint.X = FixationPoint.X - (this.Width / 2);//this sets the position on the screen which is being zoomed in. 
-            lensPoint.Y = FixationPoint.Y - (this.Height / 2);
+            lensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25 );//this sets the position on the screen which is being zoomed in. 
+            lensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) *1.25);
 
             Size zoomSize = new Size(this.Size.Width /2 , this.Size.Height / 2);
             graphics.CopyFromScreen(lensPoint.X + this.Size.Width / 4, lensPoint.Y + this.Size.Height / 4, empty.X, empty.Y, zoomSize, CopyPixelOperation.SourceCopy);
