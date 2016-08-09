@@ -19,7 +19,7 @@ namespace GazeToolBar
         delegate void SetFormDelegate(int x, int y);
 
         FixationDetection fixdet;
-        public ZoomLens()
+        public ZoomLens(FixationDetection FixDet)
         {
             InitializeComponent();
             this.Width = 500;//setting the lens size
@@ -38,7 +38,8 @@ namespace GazeToolBar
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
 
             this.FormBorderStyle = FormBorderStyle.None;
-            fixdet = new FixationDetection();
+            fixdet = FixDet;
+            
         }
         public void getRelativeCoords()
         {
