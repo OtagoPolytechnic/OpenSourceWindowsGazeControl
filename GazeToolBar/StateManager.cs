@@ -67,7 +67,7 @@ namespace GazeToolBar
             {
                 case SystemState.Wait:
                     Console.WriteLine("Wait State");
-                    zoomer.ResetZoomLens();
+                    // moved to apply action zoomer.ResetZoomLens();
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
@@ -179,6 +179,7 @@ namespace GazeToolBar
                     break;
                 case SystemState.ApplyAction:
                     fixationPoint = fixationWorker.getXY();
+                    zoomer.ResetZoomLens();
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);
                     if (fixationPoint.X == -1)
                     {
