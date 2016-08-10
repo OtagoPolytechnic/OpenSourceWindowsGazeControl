@@ -118,7 +118,17 @@ namespace GazeToolBar
 
         private void btnScoll_Click(object sender, EventArgs e)
         {
+
+            SystemFlags.actionButtonSelected = true;
+            SystemFlags.actionToBePerformed = ActionToBePerformed.Scroll;
+
             /*This will have to be added to the action enum and the logic will have to someplace else, not sure where yet*/
+
+            //detect fixation, drop middle click where user fixates.
+
+            //move in to scroll mode.
+
+            //drop out of scroll mode if user looks outside screen bounds.
             
             //fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
             //Add logic to scroll/pan with eyes after middle click

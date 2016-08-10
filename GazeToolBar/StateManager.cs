@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace GazeToolBar
 {
     public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback }
-    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick }
+    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
 
     public static class SystemFlags
     {
@@ -22,6 +22,7 @@ namespace GazeToolBar
         public static bool timeOut { get; set; }
         public static bool FixationRunning { get; set; }
         public static bool HasSelectedButtonColourBeenReset { get; set; }
+        
     }
 
     public class StateManager
@@ -71,6 +72,7 @@ namespace GazeToolBar
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
+
                         SystemFlags.actionButtonSelected = false;
                     }
                     else if (SystemFlags.isKeyBoardUP) //Keyboard button is pressed
@@ -95,7 +97,15 @@ namespace GazeToolBar
                     break;
                 case SystemState.Zooming:
                     Console.WriteLine("Zooming");
-                    currentState = SystemState.ZoomWait;
+
+                    if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
+                    {
+                        currentState = SystemState.ApplyAction;
+                    }
+                    else
+                    {
+                        currentState = SystemState.ZoomWait;
+                    }
                     break;
                 case SystemState.ZoomWait:
                     Console.WriteLine("ZoomWait");
@@ -179,7 +189,9 @@ namespace GazeToolBar
                     break;
                 case SystemState.ApplyAction:
                     fixationPoint = fixationWorker.getXY();
+  
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);
+                    
                     if (fixationPoint.X == -1)
                     {
                         if (SystemFlags.isKeyBoardUP)
@@ -205,6 +217,10 @@ namespace GazeToolBar
                         else if (SystemFlags.actionToBePerformed == ActionToBePerformed.DoubleClick)
                         {
                             VirtualMouse.LeftDoubleClick(fixationPoint.X, fixationPoint.Y);
+                        }
+                        else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
+                        {
+                            VirtualMouse.MiddleMouseButton(fixationPoint.X, fixationPoint.Y);
                         }
                     }
 
