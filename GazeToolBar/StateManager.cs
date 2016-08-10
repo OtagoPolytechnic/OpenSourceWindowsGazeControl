@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -68,7 +69,7 @@ namespace GazeToolBar
             {
                 case SystemState.Wait:
                     Console.WriteLine("Wait State");
-                    zoomer.ResetZoomLens();
+                    
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
@@ -189,7 +190,7 @@ namespace GazeToolBar
                     break;
                 case SystemState.ApplyAction:
                     fixationPoint = fixationWorker.getXY();
-  
+                    zoomer.ResetZoomLens();
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);
                     
                     if (fixationPoint.X == -1)
@@ -205,6 +206,8 @@ namespace GazeToolBar
                     }
                     else
                     {
+                        
+
                         //delete zoomer form or form hide or something
                         if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)
                         {
