@@ -98,5 +98,12 @@ namespace GazeToolBar
 
             
         }
+
+        public static void Scroll(int scrollAmountVertical, int scrollAmountHorizontal)
+        {//The amount to scroll in clicks. A positive value indicates that the wheel was rotated forward, away from the user; a negative value indicates that the wheel was rotated backward, toward the user
+            WindowsInput.InputSimulator mouseSim = new WindowsInput.InputSimulator();
+            mouseSim.Mouse.VerticalScroll(scrollAmountVertical);
+            mouseSim.Mouse.HorizontalScroll(scrollAmountVertical);
+        }
     }
 }

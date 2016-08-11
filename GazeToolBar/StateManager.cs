@@ -69,7 +69,7 @@ namespace GazeToolBar
             {
                 case SystemState.Wait:
                     Console.WriteLine("Wait State");
-                    
+                    // moved to apply action zoomer.ResetZoomLens();
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
@@ -207,8 +207,6 @@ namespace GazeToolBar
                     else
                     {
                         
-
-                        //delete zoomer form or form hide or something
                         if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)
                         {
                             VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
@@ -223,7 +221,28 @@ namespace GazeToolBar
                         }
                         else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
                         {
-                            VirtualMouse.MiddleMouseButton(fixationPoint.X, fixationPoint.Y);
+                            VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
+                           
+                            int waitTimetest = 100;
+                            int vertScrollClicks = 2;
+
+
+                            var watch = System.Diagnostics.Stopwatch.StartNew();
+                            VirtualMouse.Scroll(vertScrollClicks, 0);
+                            watch.Stop();
+                            var elapsedMs = watch.ElapsedMilliseconds;
+                            Console.WriteLine("elapsed time " + elapsedMs);
+                            VirtualMouse.Scroll(vertScrollClicks, 0);
+                            Thread.Sleep(waitTimetest);
+                            VirtualMouse.Scroll(vertScrollClicks, 0);
+                            Thread.Sleep(waitTimetest);
+                            VirtualMouse.Scroll(vertScrollClicks, 0);
+                            Thread.Sleep(waitTimetest);
+                            VirtualMouse.Scroll(vertScrollClicks, 0);
+                            Thread.Sleep(waitTimetest);
+                            VirtualMouse.Scroll(vertScrollClicks, 0);
+                            Thread.Sleep(waitTimetest);
+                            VirtualMouse.Scroll(vertScrollClicks, 0);
                         }
                     }
 
