@@ -11,8 +11,25 @@ using System.Timers;
 
 namespace GazeToolBar
 {
-    class ScrollControl
+    enum ESrollState { Scrolling, NotScrolling}
+
+    struct noScollRect
     {
+        public int LeftBound, RightBound, TopBound, BottomBound;
+
+        public noScollRect(int leftBound, int rightBound, int topBound, int bottomBound)
+        {
+            LeftBound = leftBound;
+            RightBound = rightBound;
+            TopBound = topBound;
+            BottomBound = bottomBound;
+        }
+    }
+
+   public class ScrollControl
+    {
+        noScollRect deadZoneRect;
+
         GazePointDataStream gazeStream;
         
         double currentGazeLocationX;
@@ -20,11 +37,16 @@ namespace GazeToolBar
 
         private Timer scrollStepTimer;
 
+        private ESrollState currentState;
+
+        public int DeadZoneHorizontalPercent { get; set; }
+        public int DeadZoneVerticalPercent { get; set; }
 
         public int ScrollTimerDuration { get; set; }
 
-        public ScrollControl(int scrollTimerDuration)
+        public ScrollControl(int scrollTimerDuration, int deadZoneHorizontalPercent, int deadZoneVerticalPercent)
         {
+
             ScrollTimerDuration = scrollTimerDuration;
 
             gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
@@ -33,8 +55,14 @@ namespace GazeToolBar
             
             gazeStream.Next += gazeDel;
 
+            scrollStepTimer = new Timer(ScrollTimerDuration);
 
-            scrollStepTimer = new Timer(ScrollTimerDuration); 
+            DeadZoneHorizontalPercent = deadZoneHorizontalPercent;
+            DeadZoneVerticalPercent = deadZoneVerticalPercent;
+
+            SetDeadZoneBounds();
+
+            currentState = ESrollState.NotScrolling;
         }
 
 
@@ -44,16 +72,45 @@ namespace GazeToolBar
             currentGazeLocationY = currentGaze.Y;
         }
 
-        private int calculateScrollAmount(double axisCoordinate, int ScaleSpace)
+        private int calculateScrollSpeed(double axisCoordinate, int ScaleMin, int scaleMax, int speedMultiplier)
         {
             return 0;
         }
 
+        private void startScroll()
+        {
+            SetDeadZoneBounds();
 
-        private void StopScroll()
+            
+        }
+
+
+        private void stopScroll()
         {
 
         }
+
+        public void SetDeadZoneBounds()
+        {
+            int screenHolizontalCenter = ValueNeverChange.SCREEN_SIZE.Width / 2;
+            int screenVerticalCenter = ValueNeverChange.SCREEN_SIZE.Height / 2;
+            int deadZoneWidth = (int)(((double)DeadZoneHorizontalPercent / 100) * ValueNeverChange.SCREEN_SIZE.Width);
+            int deadZoneHeight = (int)(((double)DeadZoneVerticalPercent / 100) * ValueNeverChange.SCREEN_SIZE.Height);
+            int halfDeadZoneWidth = deadZoneWidth / 2;
+            int halfDeadZoneHeight = deadZoneHeight / 2;
+
+            deadZoneRect.LeftBound = screenHolizontalCenter - halfDeadZoneWidth;
+            deadZoneRect.RightBound = screenHolizontalCenter + halfDeadZoneWidth;
+
+            deadZoneRect.TopBound = screenVerticalCenter - halfDeadZoneHeight;
+            deadZoneRect.BottomBound = screenVerticalCenter + halfDeadZoneHeight;
+            
+        
+        }
+
+
+
+
 
     }
 }
