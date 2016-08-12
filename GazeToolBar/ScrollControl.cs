@@ -28,7 +28,7 @@ namespace GazeToolBar
 
    public class ScrollControl
     {
-       int scrollScalarValue { get; set; } 
+        public int ScrollScalarValue { get; set; } 
 
         public noScollRect deadZoneRect;
 
@@ -60,6 +60,8 @@ namespace GazeToolBar
             scrollStepTimer = new Timer(ScrollTimerDuration);
             scrollStepTimer.AutoReset = true;
 
+            scrollStepTimer.Elapsed += scroll;
+
             DeadZoneHorizontalPercent = deadZoneHorizontalPercent;
             DeadZoneVerticalPercent = deadZoneVerticalPercent;
 
@@ -67,16 +69,40 @@ namespace GazeToolBar
 
             currentState = ESrollState.NotScrolling;
 
-            scrollScalarValue = 5;
+            ScrollScalarValue = 5;
 
         }
 
        private void scroll(object O, ElapsedEventArgs e )
         {
-          
+           int xScrollValue = 0;
+           int yScrollValue = 0;
 
+           if(currentGazeLocationX > deadZoneRect.RightBound)
+           {
+               xScrollValue = calculateScrollSpeed(currentGazeLocationX, deadZoneRect.RightBound, ValueNeverChange.SCREEN_SIZE.Width, ScrollScalarValue, false);
+           }
+           if(currentGazeLocationX < deadZoneRect.LeftBound)
+           {
+               xScrollValue = calculateScrollSpeed(currentGazeLocationX, 0, deadZoneRect.LeftBound, ScrollScalarValue, true);
+           }
+
+           if (currentGazeLocationY > deadZoneRect.BottomBound)
+           {
+               yScrollValue = calculateScrollSpeed(currentGazeLocationY, deadZoneRect.BottomBound, ValueNeverChange.SCREEN_SIZE.Height, ScrollScalarValue, false);
+           }
+           if (currentGazeLocationY < deadZoneRect.TopBound)
+           {
+               yScrollValue = calculateScrollSpeed(currentGazeLocationY, 0, deadZoneRect.TopBound, ScrollScalarValue, true);
+           }
+
+           
+           if(xScrollValue > 0 || yScrollValue > 0)
+           VirtualMouse.Scroll(yScrollValue, xScrollValue);
 
         }
+
+
 
 
         private void updateGazeCoodinates(object o, GazePointEventArgs currentGaze)
@@ -117,7 +143,7 @@ namespace GazeToolBar
 
 
 
-        private void startScroll()
+        public void startScroll()
         {
             SetDeadZoneBounds();
 

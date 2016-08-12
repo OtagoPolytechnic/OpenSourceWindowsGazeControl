@@ -226,28 +226,29 @@ namespace GazeToolBar
                         }
                         else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
                         {
-                            VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
+                            scrollWorker.startScroll();
+                            //VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
                            
-                            int waitTimetest = 100;
-                            int vertScrollClicks = 2;
+                            //int waitTimetest = 100;
+                            //int vertScrollClicks = 2;
 
 
-                            var watch = System.Diagnostics.Stopwatch.StartNew();
-                            VirtualMouse.Scroll(vertScrollClicks, 0);
-                            watch.Stop();
-                            var elapsedMs = watch.ElapsedMilliseconds;
-                            Console.WriteLine("elapsed time " + elapsedMs);
-                            VirtualMouse.Scroll(vertScrollClicks, 0);
-                            Thread.Sleep(waitTimetest);
-                            VirtualMouse.Scroll(vertScrollClicks, 0);
-                            Thread.Sleep(waitTimetest);
-                            VirtualMouse.Scroll(vertScrollClicks, 0);
-                            Thread.Sleep(waitTimetest);
-                            VirtualMouse.Scroll(vertScrollClicks, 0);
-                            Thread.Sleep(waitTimetest);
-                            VirtualMouse.Scroll(vertScrollClicks, 0);
-                            Thread.Sleep(waitTimetest);
-                            VirtualMouse.Scroll(vertScrollClicks, 0);
+                            //var watch = System.Diagnostics.Stopwatch.StartNew();
+                            //VirtualMouse.Scroll(vertScrollClicks, 0);
+                            //watch.Stop();
+                            //var elapsedMs = watch.ElapsedMilliseconds;
+                            //Console.WriteLine("elapsed time " + elapsedMs);
+                            //VirtualMouse.Scroll(vertScrollClicks, 0);
+                            //Thread.Sleep(waitTimetest);
+                            //VirtualMouse.Scroll(vertScrollClicks, 0);
+                            //Thread.Sleep(waitTimetest);
+                            //VirtualMouse.Scroll(vertScrollClicks, 0);
+                            //Thread.Sleep(waitTimetest);
+                            //VirtualMouse.Scroll(vertScrollClicks, 0);
+                            //Thread.Sleep(waitTimetest);
+                            //VirtualMouse.Scroll(vertScrollClicks, 0);
+                            //Thread.Sleep(waitTimetest);
+                            //VirtualMouse.Scroll(vertScrollClicks, 0);
                         }
                     }
 
