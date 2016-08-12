@@ -28,6 +28,8 @@ namespace GazeToolBar
 
    public class ScrollControl
     {
+       int scrollScalarValue { get; set; } 
+
         public noScollRect deadZoneRect;
 
         GazePointDataStream gazeStream;
@@ -56,6 +58,7 @@ namespace GazeToolBar
             gazeStream.Next += gazeDel;
 
             scrollStepTimer = new Timer(ScrollTimerDuration);
+            scrollStepTimer.AutoReset = true;
 
             DeadZoneHorizontalPercent = deadZoneHorizontalPercent;
             DeadZoneVerticalPercent = deadZoneVerticalPercent;
@@ -63,6 +66,16 @@ namespace GazeToolBar
             SetDeadZoneBounds();
 
             currentState = ESrollState.NotScrolling;
+
+            scrollScalarValue = 5;
+
+        }
+
+       private void scroll(object O, ElapsedEventArgs e )
+        {
+          
+
+
         }
 
 
@@ -72,24 +85,49 @@ namespace GazeToolBar
             currentGazeLocationY = currentGaze.Y;
         }
 
-        private int calculateScrollSpeed(double axisCoordinate, int scaleMin, int scaleMax, int speedMultiplier)
+        private int calculateScrollSpeed(double axisCoordinate, int scaleMin, int scaleMax, int scrollScalarValue, bool ISNegativeScroll)
         {
 
+            double rangeToCalcScrollSpeedOver = scaleMax - scaleMin;
+            double calculatedInputFromCoordinate = 0;
 
-            return 0;
+            if (ISNegativeScroll)
+            {
+                calculatedInputFromCoordinate = scaleMax - axisCoordinate;
+            }
+            else
+            {
+                 calculatedInputFromCoordinate = axisCoordinate - scaleMin;
+            }
+
+            double ScrollSpeedInPercent = calculatedInputFromCoordinate / rangeToCalcScrollSpeedOver;
+
+            int scaledScrollSpeed = (int) Math.Ceiling(ScrollSpeedInPercent * scrollScalarValue);
+
+            if(ISNegativeScroll)
+            {
+                scaledScrollSpeed *= -1;
+            }
+
+            return scaledScrollSpeed;
         }
+
+
+
+
+
 
         private void startScroll()
         {
             SetDeadZoneBounds();
 
-            
+            scrollStepTimer.Start();
         }
 
 
         private void stopScroll()
         {
-
+            scrollStepTimer.Stop();
         }
 
         public void SetDeadZoneBounds()
