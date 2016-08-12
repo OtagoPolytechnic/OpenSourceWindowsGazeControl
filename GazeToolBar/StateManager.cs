@@ -29,6 +29,7 @@ namespace GazeToolBar
     public class StateManager
     {
         FixationDetection fixationWorker;
+        ScrollControl scrollWorker;
         Form1 toolbar;
         ZoomLens zoomer;
         Point fixationPoint;
@@ -49,11 +50,15 @@ namespace GazeToolBar
 
             fixationWorker = new FixationDetection();
 
+            scrollWorker = new ScrollControl(100, 50, 20);
+
             SystemFlags.currentState = SystemState.Wait;
 
             SystemFlags.HasSelectedButtonColourBeenReset = true;
 
             zoomer = new ZoomLens(fixationWorker);
+
+            Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound );
 
             Run();
         }

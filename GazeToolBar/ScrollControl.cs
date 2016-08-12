@@ -13,7 +13,7 @@ namespace GazeToolBar
 {
     enum ESrollState { Scrolling, NotScrolling}
 
-    struct noScollRect
+    public struct noScollRect
     {
         public int LeftBound, RightBound, TopBound, BottomBound;
 
@@ -28,7 +28,7 @@ namespace GazeToolBar
 
    public class ScrollControl
     {
-        noScollRect deadZoneRect;
+        public noScollRect deadZoneRect;
 
         GazePointDataStream gazeStream;
         
@@ -72,8 +72,10 @@ namespace GazeToolBar
             currentGazeLocationY = currentGaze.Y;
         }
 
-        private int calculateScrollSpeed(double axisCoordinate, int ScaleMin, int scaleMax, int speedMultiplier)
+        private int calculateScrollSpeed(double axisCoordinate, int scaleMin, int scaleMax, int speedMultiplier)
         {
+
+
             return 0;
         }
 
@@ -92,6 +94,8 @@ namespace GazeToolBar
 
         public void SetDeadZoneBounds()
         {
+            //Work out bounds of deadzone rectangle ie place where no scrolling happens when the user is looking there.
+
             int screenHolizontalCenter = ValueNeverChange.SCREEN_SIZE.Width / 2;
             int screenVerticalCenter = ValueNeverChange.SCREEN_SIZE.Height / 2;
             int deadZoneWidth = (int)(((double)DeadZoneHorizontalPercent / 100) * ValueNeverChange.SCREEN_SIZE.Width);
@@ -104,7 +108,6 @@ namespace GazeToolBar
 
             deadZoneRect.TopBound = screenVerticalCenter - halfDeadZoneHeight;
             deadZoneRect.BottomBound = screenVerticalCenter + halfDeadZoneHeight;
-            
         
         }
 
