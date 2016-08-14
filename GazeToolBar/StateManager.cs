@@ -30,14 +30,8 @@ namespace GazeToolBar
         Form1 toolbar;
         ZoomLens zoomer;
         Point fixationPoint;
-        //optikey
+        //optikey?
 
-        /*Things that need to change in other classes
-         * Toolbar must raise the actionbuttonselected flag when an action button is selected
-         * FixationDetection must raise flag when a timeout happens
-         * Zoomer needs to accept a fixation point from the StateManager or it needs to figure out it's second point and return it to the StateManager
-         * StateManger needs to save the x,y from the zoomer and it also needs to know which action was to be performed (Form will raise the flag based on what action was selected)
-         * */
 
         public StateManager(Form1 Toolbar)
         {
@@ -60,6 +54,10 @@ namespace GazeToolBar
             UpdateState();
             Action();
         }
+
+        /*The statemanager works by running the update state, which determines what state the system needs to be in.
+         * Then the state action method is run, this method will run the appropriate code based on what state the system is in.
+         */
         public void UpdateState()
         {
             SystemState currentState = SystemFlags.currentState;
@@ -136,21 +134,19 @@ namespace GazeToolBar
             switch (SystemFlags.currentState)
             {
                 case SystemState.Setup:
-                    break;
+                    break;//no action
                 case SystemState.Wait:
+                    //turn reset state to wait mode
                     SystemFlags.FixationRunning = false;
                     SystemFlags.actionButtonSelected = false;
                     SystemFlags.FixationRunning = false;
                     SystemFlags.Gaze = false;
                     SystemFlags.timeOut = false;
-                    //this is run every time the timer tick happens, seems
                     if(SystemFlags.HasSelectedButtonColourBeenReset == false)
                     {
                         toolbar.resetButtonsColor();
                         SystemFlags.HasSelectedButtonColourBeenReset = true;
                     }
-
-                    //set toolbar buttons to active
                     break;
                 case SystemState.KeyboardDisplayed:
                     //set keyboard toolbar buttons to active
@@ -165,23 +161,23 @@ namespace GazeToolBar
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
-                    fixationPoint = fixationWorker.getXY();
-                    zoomer.CreateZoomLens(fixationPoint);
+                    fixationPoint = fixationWorker.getXY();//get the location the user looked
+                    zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
                     SystemFlags.Gaze = false;
                     SystemFlags.FixationRunning = false;
                     break;
-                case SystemState.ZoomWait:
+                case SystemState.ZoomWait://waiting for the fixation on the zoom window
                     if (!SystemFlags.FixationRunning)
                     {
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.FixationRunning = true;
                     }
                     break;
-                case SystemState.ApplyAction:
+                case SystemState.ApplyAction://the fixation on the zoom lens has been detected
                     fixationPoint = fixationWorker.getXY();
-                    zoomer.ResetZoomLens();
-                    fixationPoint = zoomer.TranslateGazePoint(fixationPoint);
-                    if (fixationPoint.X == -1)
+                    zoomer.ResetZoomLens();//hide the lens
+                    fixationPoint = zoomer.TranslateGazePoint(fixationPoint);//translate the form coordinates to the desktop
+                    if (fixationPoint.X == -1)//check if it's out of bounds
                     {
                         if (SystemFlags.isKeyBoardUP)
                         {
@@ -194,7 +190,7 @@ namespace GazeToolBar
                     }
                     else
                     {
-                        //delete zoomer form or form hide or something
+                        
                         if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)
                         {
                             VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
