@@ -35,11 +35,38 @@ namespace GazeToolBar
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = FixDet;
         }
+        public bool checkCorners(Point FixationPoint)
+        {
+            int maxDistance = 100;
+
+            Point topLeft = new Point(0, Screen.PrimaryScreen.Bounds.Y);
+            Point topRight = new Point(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y);
+            Point bottomLeft = new Point(0, 0);
+            Point bottomRight = new Point(Screen.PrimaryScreen.Bounds.X, 0);
+
+            Point[] Corners = { topLeft, topRight, bottomLeft, bottomRight };
+
+            for (int i = 0; i < Corners.Length; i++)
+            {
+                if (calculateCornerDistance(FixationPoint, Corners[i]) < maxDistance)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public int calculateCornerDistance(Point fixationPoint, Point corner)
+        {
+            return (int)Math.Sqrt((corner.X - fixationPoint.X) ^ 2 + (corner.Y - fixationPoint.Y) ^ 2);
+        }
         /*This method uses the passed in point to create a lens that will zoom in on a portion of the screen
          * TODO: Make sure this accounts for screen boundaries
          */
         public void CreateZoomLens(Point FixationPoint)
         {
+            int ScreenWidth = Screen.PrimaryScreen.Bounds.Width;
+            int ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
+
             //set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
             this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
             this.Show();//make lens visible
