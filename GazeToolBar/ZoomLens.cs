@@ -35,9 +35,9 @@ namespace GazeToolBar
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = FixDet;
         }
-        public bool checkCorners(Point FixationPoint)
+        public int checkCorners(Point FixationPoint)
         {
-            int maxDistance = 100;
+            int maxDistance = 200;
 
             Point topLeft = new Point(0, Screen.PrimaryScreen.Bounds.Y);
             Point topRight = new Point(Screen.PrimaryScreen.Bounds.X, Screen.PrimaryScreen.Bounds.Y);
@@ -50,12 +50,12 @@ namespace GazeToolBar
             {
                 if (calculateCornerDistance(FixationPoint, Corners[i]) < maxDistance)
                 {
-                    return true;
+                    return i;
                 }
             }
-            return false;
+            return -1;
         }
-        public int calculateCornerDistance(Point fixationPoint, Point corner)
+        private int calculateCornerDistance(Point fixationPoint, Point corner)
         {
             return (int)Math.Sqrt((corner.X - fixationPoint.X) ^ 2 + (corner.Y - fixationPoint.Y) ^ 2);
         }
@@ -64,11 +64,34 @@ namespace GazeToolBar
          */
         public void CreateZoomLens(Point FixationPoint)
         {
-            int ScreenWidth = Screen.PrimaryScreen.Bounds.Width;
-            int ScreenHeight = Screen.PrimaryScreen.Bounds.Height;
+            int corner = checkCorners(FixationPoint);
 
-            //set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
-            this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
+            if (corner != -1)
+            {
+                //create corner zoom
+                switch (corner)
+                {
+                    case 0:
+                        this.DesktopLocation = new Point(0, 0);
+                        break;
+                    case 1:
+                        this.DesktopLocation = new Point(Screen.PrimaryScreen.Bounds.X - (this.Width /2), (this.Height /2));
+                        break;
+                    case 2:
+                        this.DesktopLocation = new Point((this.Width / 2), Screen.PrimaryScreen.Bounds.Y - (this.Height / 2));
+                        break;
+                    case 3:
+                        this.DesktopLocation = new Point(Screen.PrimaryScreen.Bounds.X - (this.Width / 2), Screen.PrimaryScreen.Bounds.Y - (this.Height / 2));
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                //set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
+                this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
+            }
             this.Show();//make lens visible
             
             Point lensPoint = new Point();
