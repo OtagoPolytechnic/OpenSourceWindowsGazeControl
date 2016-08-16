@@ -50,7 +50,7 @@ namespace GazeToolBar
 
             fixationWorker = new FixationDetection();
 
-            scrollWorker = new ScrollControl(100, 50, 20);
+            scrollWorker = new ScrollControl(200, 50, 20);
 
             SystemFlags.currentState = SystemState.Wait;
 
@@ -226,9 +226,9 @@ namespace GazeToolBar
                         }
                         else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
                         {
+                            
+                            VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
                             scrollWorker.startScroll();
-                            //VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
-                           
                             //int waitTimetest = 100;
                             //int vertScrollClicks = 2;
 

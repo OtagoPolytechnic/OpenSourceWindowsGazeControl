@@ -11,7 +11,6 @@ using System.Timers;
 
 namespace GazeToolBar
 {
-    enum ESrollState { Scrolling, NotScrolling}
 
     public struct noScollRect
     {
@@ -39,8 +38,6 @@ namespace GazeToolBar
 
         private Timer scrollStepTimer;
 
-        private ESrollState currentState;
-
         public int DeadZoneHorizontalPercent { get; set; }
         public int DeadZoneVerticalPercent { get; set; }
 
@@ -66,8 +63,6 @@ namespace GazeToolBar
             DeadZoneVerticalPercent = deadZoneVerticalPercent;
 
             SetDeadZoneBounds();
-
-            currentState = ESrollState.NotScrolling;
 
             ScrollScalarValue = 5;
 
@@ -97,8 +92,8 @@ namespace GazeToolBar
            }
 
            
-           if(xScrollValue > 0 || yScrollValue > 0)
-           VirtualMouse.Scroll(yScrollValue, xScrollValue);
+           if(Math.Abs(xScrollValue) > 0 || Math.Abs(yScrollValue) > 0)
+              VirtualMouse.Scroll(yScrollValue, xScrollValue * -1);
 
         }
 
@@ -115,6 +110,7 @@ namespace GazeToolBar
         {
 
             double rangeToCalcScrollSpeedOver = scaleMax - scaleMin;
+
             double calculatedInputFromCoordinate = 0;
 
             if (ISNegativeScroll)
@@ -128,9 +124,9 @@ namespace GazeToolBar
 
             double ScrollSpeedInPercent = calculatedInputFromCoordinate / rangeToCalcScrollSpeedOver;
 
-            int scaledScrollSpeed = (int) Math.Ceiling(ScrollSpeedInPercent * scrollScalarValue);
+            int scaledScrollSpeed = (int) Math.Floor(ScrollSpeedInPercent * scrollScalarValue);
 
-            if(ISNegativeScroll)
+            if(!ISNegativeScroll)
             {
                 scaledScrollSpeed *= -1;
             }
@@ -172,6 +168,8 @@ namespace GazeToolBar
 
             deadZoneRect.TopBound = screenVerticalCenter - halfDeadZoneHeight;
             deadZoneRect.BottomBound = screenVerticalCenter + halfDeadZoneHeight;
+
+           // Console.WriteLine("top {0}, bottom {1}, left {2}, right {3}", deadZoneRect.TopBound, deadZoneRect.BottomBound, deadZoneRect.LeftBound, deadZoneRect.RightBound);
         
         }
 
