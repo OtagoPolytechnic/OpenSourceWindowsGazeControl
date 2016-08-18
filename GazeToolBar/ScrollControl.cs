@@ -102,8 +102,16 @@ namespace GazeToolBar
 
         private void updateGazeCoodinates(object o, GazePointEventArgs currentGaze)
         {
+
             currentGazeLocationX = currentGaze.X;
             currentGazeLocationY = currentGaze.Y;
+
+            if( currentGazeLocationX > ValueNeverChange.SCREEN_SIZE.Width || currentGazeLocationX < 0
+                || currentGazeLocationY > ValueNeverChange.PRIMARY_SCREEN.Height || currentGazeLocationY < 0)
+            {
+                stopScroll();
+            }
+
         }
 
         private int calculateScrollSpeed(double axisCoordinate, int scaleMin, int scaleMax, int scrollScalarValue, bool ISNegativeScroll)
