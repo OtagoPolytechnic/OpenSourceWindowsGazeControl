@@ -202,7 +202,6 @@ namespace GazeToolBar
                         SystemFlags.FixationRunning = true;
                     }
                     break;
-<<<<<<< HEAD
                 case SystemState.ApplyAction: //the fixation on the zoom lens has been detected
                     fixationPoint = fixationWorker.getXY();
                     zoomer.ResetZoomLens();//hide the lens
