@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GazeToolBar
 {
-    public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback }
-    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick }
+    public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback, ScrollWait }
+    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
 
     public static class SystemFlags
     {
+
         public static bool isKeyBoardUP { get; set; }
         public static bool actionButtonSelected { get; set; }
         public static ActionToBePerformed actionToBePerformed { get; set; }
@@ -22,11 +24,14 @@ namespace GazeToolBar
         public static bool timeOut { get; set; }
         public static bool FixationRunning { get; set; }
         public static bool HasSelectedButtonColourBeenReset { get; set; }
+        public static bool Scrolling { get; set; }
+        
     }
 
     public class StateManager
     {
         FixationDetection fixationWorker;
+        ScrollControl scrollWorker;
         Form1 toolbar;
         ZoomLens zoomer;
         Point fixationPoint;
@@ -41,11 +46,15 @@ namespace GazeToolBar
 
             fixationWorker = new FixationDetection();
 
+            scrollWorker = new ScrollControl(200, 50, 20);
+
             SystemFlags.currentState = SystemState.Wait;
 
             SystemFlags.HasSelectedButtonColourBeenReset = true;
 
             zoomer = new ZoomLens(fixationWorker);
+
+            Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound );
 
             Run();
         }
@@ -69,11 +78,12 @@ namespace GazeToolBar
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
+
                         SystemFlags.actionButtonSelected = false;
                     }
                     else if (SystemFlags.isKeyBoardUP) //Keyboard button is pressed
                     {
-                        currentState = //SystemState.DisplayFeedback;
+                           currentState = //SystemState.DisplayFeedback;
                             SystemState.Wait;
                     }
                     break;
@@ -93,12 +103,20 @@ namespace GazeToolBar
                     break;
                 case SystemState.Zooming:
                     Console.WriteLine("Zooming");
-                    currentState = SystemState.ZoomWait;
+
+                    if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
+                    {
+                        currentState = SystemState.ApplyAction;
+                    }
+                    else
+                    {
+                        currentState = SystemState.ZoomWait;
+                    }
                     break;
                 case SystemState.ZoomWait:
                     Console.WriteLine("ZoomWait");
                     
-                    if (SystemFlags.Gaze)//if the second zoomGazehashapped an action needs to be performed
+                    if (SystemFlags.Gaze)//if the second zoomGaze has happed an action needs to be performed
                     {
                         currentState = SystemState.ApplyAction;
                     }
@@ -109,12 +127,23 @@ namespace GazeToolBar
                         //get rid of zoom
                     }
                     break;
+                case SystemState.ScrollWait:
+
+                    Console.WriteLine(currentState);
+
+                    if (!SystemFlags.Scrolling)
+                        currentState = SystemState.Wait;
+                    break;
+
                 case SystemState.ApplyAction:
                     Console.WriteLine("ApplyAction");
                     //action is applied in action()
                     if (SystemFlags.isKeyBoardUP)
                     {
                         currentState = SystemState.KeyboardDisplayed;
+                    }else if (SystemFlags.Scrolling)
+                    {
+                        currentState = SystemState.ScrollWait;
                     }
                     else currentState = SystemState.Wait;
                     break;
@@ -173,7 +202,8 @@ namespace GazeToolBar
                         SystemFlags.FixationRunning = true;
                     }
                     break;
-                case SystemState.ApplyAction://the fixation on the zoom lens has been detected
+<<<<<<< HEAD
+                case SystemState.ApplyAction: //the fixation on the zoom lens has been detected
                     fixationPoint = fixationWorker.getXY();
                     zoomer.ResetZoomLens();//hide the lens
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);//translate the form coordinates to the desktop
@@ -202,6 +232,15 @@ namespace GazeToolBar
                         else if (SystemFlags.actionToBePerformed == ActionToBePerformed.DoubleClick)
                         {
                             VirtualMouse.LeftDoubleClick(fixationPoint.X, fixationPoint.Y);
+                        }
+                        else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
+                        {
+
+                            SystemFlags.currentState = SystemState.ScrollWait;
+                            SystemFlags.Scrolling = true;
+                            VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
+                            scrollWorker.startScroll();
+                           
                         }
                     }
 

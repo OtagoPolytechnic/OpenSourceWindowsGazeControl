@@ -244,6 +244,8 @@ _Pvt_Extensions
 .paket/paket.exe
 paket-files/
 
+
+
 # FAKE - F# Make
 .fake/
 
@@ -253,3 +255,6 @@ paket-files/
 
 # Compiled C# vs
 *.exe
+
+bmpScreenshot.bmp
+Thumbs.db
