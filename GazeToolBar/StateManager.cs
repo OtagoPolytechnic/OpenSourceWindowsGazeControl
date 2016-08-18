@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace GazeToolBar
 {
-    public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback }
+    public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback, ScrollWait }
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
 
     public static class SystemFlags
     {
+
         public static bool isKeyBoardUP { get; set; }
         public static bool actionButtonSelected { get; set; }
         public static ActionToBePerformed actionToBePerformed { get; set; }
@@ -23,6 +24,7 @@ namespace GazeToolBar
         public static bool timeOut { get; set; }
         public static bool FixationRunning { get; set; }
         public static bool HasSelectedButtonColourBeenReset { get; set; }
+        public static bool Scrolling { get; set; }
         
     }
 
@@ -83,7 +85,7 @@ namespace GazeToolBar
                     }
                     else if (SystemFlags.isKeyBoardUP) //Keyboard button is pressed
                     {
-                        currentState = //SystemState.DisplayFeedback;
+                           currentState = //SystemState.DisplayFeedback;
                             SystemState.Wait;
                     }
                     break;
@@ -116,7 +118,7 @@ namespace GazeToolBar
                 case SystemState.ZoomWait:
                     Console.WriteLine("ZoomWait");
                     
-                    if (SystemFlags.Gaze)//if the second zoomGazehashapped an action needs to be performed
+                    if (SystemFlags.Gaze)//if the second zoomGaze has happed an action needs to be performed
                     {
                         currentState = SystemState.ApplyAction;
                     }
@@ -127,12 +129,23 @@ namespace GazeToolBar
                         //get rid of zoom
                     }
                     break;
+                case SystemState.ScrollWait:
+
+                    Console.WriteLine(currentState);
+
+                    if (!SystemFlags.Scrolling)
+                        currentState = SystemState.Wait;
+                    break;
+
                 case SystemState.ApplyAction:
                     Console.WriteLine("ApplyAction");
                     //action is applied in action()
                     if (SystemFlags.isKeyBoardUP)
                     {
                         currentState = SystemState.KeyboardDisplayed;
+                    }else if (SystemFlags.Scrolling)
+                    {
+                        currentState = SystemState.ScrollWait;
                     }
                     else currentState = SystemState.Wait;
                     break;
@@ -193,6 +206,7 @@ namespace GazeToolBar
                         SystemFlags.FixationRunning = true;
                     }
                     break;
+
                 case SystemState.ApplyAction:
                     fixationPoint = fixationWorker.getXY();
                     zoomer.ResetZoomLens();
@@ -226,29 +240,12 @@ namespace GazeToolBar
                         }
                         else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
                         {
-                            
+
+                            SystemFlags.currentState = SystemState.ScrollWait;
+                            SystemFlags.Scrolling = true;
                             VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
                             scrollWorker.startScroll();
-                            //int waitTimetest = 100;
-                            //int vertScrollClicks = 2;
-
-
-                            //var watch = System.Diagnostics.Stopwatch.StartNew();
-                            //VirtualMouse.Scroll(vertScrollClicks, 0);
-                            //watch.Stop();
-                            //var elapsedMs = watch.ElapsedMilliseconds;
-                            //Console.WriteLine("elapsed time " + elapsedMs);
-                            //VirtualMouse.Scroll(vertScrollClicks, 0);
-                            //Thread.Sleep(waitTimetest);
-                            //VirtualMouse.Scroll(vertScrollClicks, 0);
-                            //Thread.Sleep(waitTimetest);
-                            //VirtualMouse.Scroll(vertScrollClicks, 0);
-                            //Thread.Sleep(waitTimetest);
-                            //VirtualMouse.Scroll(vertScrollClicks, 0);
-                            //Thread.Sleep(waitTimetest);
-                            //VirtualMouse.Scroll(vertScrollClicks, 0);
-                            //Thread.Sleep(waitTimetest);
-                            //VirtualMouse.Scroll(vertScrollClicks, 0);
+                           
                         }
                     }
 

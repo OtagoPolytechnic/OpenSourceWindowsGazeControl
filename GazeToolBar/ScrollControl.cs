@@ -141,6 +141,9 @@ namespace GazeToolBar
 
         public void startScroll()
         {
+            
+
+            Console.WriteLine(SystemFlags.Scrolling);
             SetDeadZoneBounds();
 
             scrollStepTimer.Start();
@@ -149,6 +152,8 @@ namespace GazeToolBar
 
         private void stopScroll()
         {
+            SystemFlags.Scrolling = false;
+
             scrollStepTimer.Stop();
         }
 
