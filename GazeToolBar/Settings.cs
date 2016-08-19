@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using ShellLib;
 using System.Drawing;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace GazeToolBar
 {
@@ -10,6 +12,20 @@ namespace GazeToolBar
         private Form1 form1;
         private bool OnTheRight;
         private bool[] onOff;
+        private GazeOrSwitch gazeOrSwitch;
+        private Sizes sizes;
+
+        public enum GazeOrSwitch
+        {
+            GAZE,
+            SWITCH
+        }
+
+        public enum Sizes
+        {
+            SMALL,
+            LARGE
+        }
 
         public Settings(Form1 form1)
         {
@@ -52,7 +68,7 @@ namespace GazeToolBar
 
         private void btnAutoStart_Click(object sender, EventArgs e)
         {
-           // AutoStart.setAutoStartOnOff(form1.Settings, form1.MenuItemStartOnOff);
+            // AutoStart.setAutoStartOnOff(form1.Settings, form1.MenuItemStartOnOff);
         }
 
         public Button BtnAutoStart
@@ -73,7 +89,7 @@ namespace GazeToolBar
 
         private void Settings_Shown(object sender, EventArgs e)
         {
-           // AutoStart.IsAutoStart(form1.Settings, form1.MenuItemStartOnOff);
+            // AutoStart.IsAutoStart(form1.Settings, form1.MenuItemStartOnOff);
         }
 
         private void tabControlMain_DrawItem(object sender, DrawItemEventArgs e)
@@ -89,13 +105,13 @@ namespace GazeToolBar
 
         public void ChangeButtonColor(Button button, bool onOff)
         {
-            button.BackColor = onOff ? ValueNeverChange.SettingButtonColor : ValueNeverChange.SelectedColor;
+            button.BackColor = onOff ? ValueNeverChange.SelectedColor : ValueNeverChange.SettingButtonColor;
         }
 
         private void btnGaze_Click(object sender, EventArgs e)
         {
-            onOff[0] = !onOff[0];
-            ChangeButtonColor(btnGaze, onOff[0]);
+            ChangeButtonColor(btnGaze, !onOff[0]);
+            ChangeButtonColor(btnSwitch, onOff[0]);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -105,8 +121,8 @@ namespace GazeToolBar
 
         private void btnSwitch_Click(object sender, EventArgs e)
         {
-            onOff[1] = !onOff[1];
-            ChangeButtonColor(btnSwitch, onOff[1]);
+            ChangeButtonColor(btnGaze, onOff[0]);
+            ChangeButtonColor(btnSwitch, !onOff[0]);
         }
 
         private void btnWordPredictionOnOff_Click(object sender, EventArgs e)
@@ -155,7 +171,26 @@ namespace GazeToolBar
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SettingJSON setting = new SettingJSON();
+                setting.language = lblCurrentLanguage.Text;
+                setting.position = lblIndicationLeftOrRight.Text.Substring(3);
+                setting.precision = trackBarPrecision.Value;
+                setting.selection = gazeOrSwitch.ToString();
+                setting.size = sizes.ToString();
+                setting.soundFeedback = onOff[1];
+                setting.speed = trackBarSpeed.Value;
+                setting.typingSpeed = trackBarGazeTypingSpeed.Value;
+                setting.wordPercision = onOff[0];
+                string settings = JsonConvert.SerializeObject(setting);
+                File.WriteAllText(Program.path, settings);
+                MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
