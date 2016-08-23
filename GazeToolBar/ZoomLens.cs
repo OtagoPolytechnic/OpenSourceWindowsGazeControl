@@ -37,7 +37,7 @@ namespace GazeToolBar
         }
         public int checkCorners(Point FixationPoint)
         {
-            int maxDistance = 100;
+            int maxDistance = 300;
             int screenWidth = Screen.FromControl(this).Bounds.Width;
             int screenHeight = Screen.FromControl(this).Bounds.Height;
 
@@ -59,14 +59,7 @@ namespace GazeToolBar
         }
         private int calculateCornerDistance(Point fixationPoint, Point corner)
         {
-            int a = fixationPoint.X - corner.X;
-            int aPower = a ^ 2;
-
-            int b = fixationPoint.Y - corner.Y;
-            int bPower = b ^ 2;
-
-            int final = aPower + bPower;
-            int returnInt = (int)Math.Sqrt(final);
+            int returnInt =  Math.Abs(fixationPoint.X - corner.X) + Math.Abs(fixationPoint.Y - corner.Y);
 
             //int retint = (int)Math.Sqrt(((corner.X - fixationPoint.X) ^ 2) + ((corner.Y - fixationPoint.Y) ^ 2));
             return returnInt;
@@ -85,18 +78,23 @@ namespace GazeToolBar
                 {
                     case 0:
                         this.DesktopLocation = new Point(0, 0);
+                        Console.WriteLine("TopLeft corner detected");
                         break;
                     case 1:
-                        this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - (this.Width / 2), (this.Height / 2));
+                        this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, 0);
+                        Console.WriteLine("TopRight corner detected");
                         break;
                     case 2:
-                        this.DesktopLocation = new Point((this.Width / 2), Screen.FromControl(this).Bounds.Height - (this.Height / 2));
+                        this.DesktopLocation = new Point(0, Screen.FromControl(this).Bounds.Height - this.Height);
+                        Console.WriteLine("BottomLeft corner detected");
                         break;
                     case 3:
-                        this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - (this.Width / 2), Screen.FromControl(this).Bounds.Height - (this.Height / 2));
+                        this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, Screen.FromControl(this).Bounds.Height - this.Height);
+                        Console.WriteLine("BottomRight corner detected");
                         break;
                     default:
-                        this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
+                        this.DesktopLocation = new Point(FixationPoint.X - this.Width, FixationPoint.Y - this.Height);
+                        Console.WriteLine("Default corner case reached");
                         break;
                 }
             }
@@ -119,6 +117,8 @@ namespace GazeToolBar
             //bmpScreenshot.Save("bmpScreenshot.bmp");
             pictureBox1.Image = bmpScreenshot;
             this.TopMost = true;
+            Console.WriteLine("ZoomLens.Bounds.X = " + this.Bounds.X);
+            Console.WriteLine("ZoomLens.Bounds.Y = " + this.Bounds.Y);
             Application.DoEvents();
         }
         public void ResetZoomLens()
