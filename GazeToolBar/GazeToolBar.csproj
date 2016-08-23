@@ -85,6 +85,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoStart.cs" />
     <Compile Include="FixationDetection.cs" />
     <Compile Include="Form1.BehavMap.cs">
       <SubType>Form</SubType>

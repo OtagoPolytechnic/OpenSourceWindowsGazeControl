@@ -15,7 +15,8 @@ namespace GazeToolBar
         private static FormsEyeXHost eyeXHost = new FormsEyeXHost();
 
         public static string path { get; set; }
-
+        public static SettingJSON readSettings { get; set; }
+        public static bool onStartUp { get; set; }
         public static FormsEyeXHost EyeXHost
         {
             get { return eyeXHost; }
@@ -29,6 +30,16 @@ namespace GazeToolBar
         {
             eyeXHost.Start();
             path = Application.StartupPath + "\\" + "Settings.json";
+            ReadWriteJson();
+            onStartUp = AutoStart.IsOn();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+            eyeXHost.Dispose();
+        }
+
+        public static void ReadWriteJson()
+        {
             if (!File.Exists(path))
             {
                 SettingJSON defaultSetting = new SettingJSON();
@@ -40,14 +51,15 @@ namespace GazeToolBar
                 defaultSetting.soundFeedback = false;
                 defaultSetting.speed = 0;
                 defaultSetting.typingSpeed = 0;
-                defaultSetting.wordPercision = false;
+                defaultSetting.wordPrediction = false;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
             }
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-            eyeXHost.Dispose();
+            else
+            {
+                string s = File.ReadAllText(path);
+                readSettings = JsonConvert.DeserializeObject<SettingJSON>(s);
+            }
         }
     }
 }

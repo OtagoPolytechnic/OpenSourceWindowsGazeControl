@@ -602,7 +602,7 @@ namespace GazeToolBar
             this.MinimizeBox = false;
             this.Name = "Settings";
             this.Text = "Settings";
-            this.Shown += new System.EventHandler(this.Settings_Shown);
+            this.Load += new System.EventHandler(this.Settings_Load);
             this.panelSelection.ResumeLayout(false);
             this.panelSelection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPrecision)).EndInit();

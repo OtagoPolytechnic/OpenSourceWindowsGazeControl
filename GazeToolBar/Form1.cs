@@ -64,6 +64,7 @@ namespace GazeToolBar
             contextMenu.MenuItems.Add(menuItemStartOnOff);
             contextMenu.MenuItems.Add(menuItemExit);
             notifyIcon.ContextMenu = contextMenu;
+            OnStartTextChange();
         }
 
         private void settingItem_Click(object sender, EventArgs e)
@@ -77,16 +78,18 @@ namespace GazeToolBar
             Application.Exit();
         }
 
-
-
         public MenuItem MenuItemStartOnOff { get { return menuItemStartOnOff; } }
 
-        public Settings Settings { get { return settings; }
-            
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Edge = AppBarEdges.Right;
+            if(Program.readSettings.position == "left")
+            {
+                Edge = AppBarEdges.Left;
+            }
+            else
+            {
+                Edge = AppBarEdges.Right;
+            }
             stateManager = new StateManager(this);
             timer2.Enabled = true;
         }
@@ -140,7 +143,17 @@ namespace GazeToolBar
             //Create logic to run left mouse down, update xy then left mouse up to simulate drag and drop
         }
 
-
+        public void OnStartTextChange()
+        {
+            if (Program.onStartUp)
+            {
+                menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_ON;
+            }
+            else
+            {
+                menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
+            }
+        }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
