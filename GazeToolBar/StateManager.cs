@@ -46,7 +46,7 @@ namespace GazeToolBar
 
             fixationWorker = new FixationDetection();
 
-            scrollWorker = new ScrollControl(200, 50, 20);
+            scrollWorker = new ScrollControl(200, 5, 50, 20);
 
             SystemFlags.currentState = SystemState.Wait;
 
@@ -125,6 +125,7 @@ namespace GazeToolBar
                         currentState = //SystemState.DisplayFeedback;
                             SystemState.Wait;
                         //get rid of zoom
+                        zoomer.ResetZoomLens();
                     }
                     break;
                 case SystemState.ScrollWait:
