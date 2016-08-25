@@ -21,10 +21,25 @@ namespace GazeToolBar
 {
     //State the Fixation detection can be in.
     public enum EFixationState { WaitingForFixationRequest, DetectingFixation };
+
+
     
     
     public class FixationDetection
     {
+
+       public delegate void FixationProgressEvent( object o, FixationProgressEventArgs e);
+
+       public event FixationProgressEvent currentProgress;
+
+       private double fixationProgressStartTimeStamp;
+
+       private double fixationProgressCurrentTimeStamp;
+
+       
+
+
+
         //Timer to measure if a how long it has been since the fixation started. 
         private Timer fixationTimer;
         private Timer timeOutTimer;
@@ -45,6 +60,9 @@ namespace GazeToolBar
 
 
 
+
+
+
         public FixationDetection()
         {
             fixationPointDataStream = Program.EyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
@@ -56,6 +74,7 @@ namespace GazeToolBar
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
             FixationDetectionTimeLength = 1000;
+
             FixationTimeOutLength = 5000;
 
             timeOutTimer = new Timer(FixationTimeOutLength);
@@ -82,11 +101,15 @@ namespace GazeToolBar
                 if(fixationDataBucket.EventType == FixationDataEventType.Begin)
                 {
                     fixationTimer.Start();
+
+                    fixationProgressStartTimeStamp = fixationDataBucket.Timestamp;
+
                     Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
                 
                 if(fixationDataBucket.EventType == FixationDataEventType.Data)
                 {
+                    calculateFixationProgressPercent(fixationDataBucket.Timestamp);
                     xPosFixation = (int)Math.Floor(fixationDataBucket.X);
                     yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
                 }
@@ -134,6 +157,33 @@ namespace GazeToolBar
         public Point getXY()
         {
             return new Point(xPosFixation, yPosFixation);
+        }
+
+
+        private void calculateFixationProgressPercent(double currentTimeStamp)
+        {
+
+            double currentFixationlength = currentTimeStamp - fixationProgressStartTimeStamp;
+
+            double progressPercent = (currentFixationlength / FixationDetectionTimeLength) * ValueNeverChange.ONE_HUNDERED;
+
+           
+            onFixationProgressEvent((int)progressPercent);
+        }
+
+
+        public void onFixationProgressEvent(int progressPercent )
+        {
+            FixationProgressEventArgs FPEA = new FixationProgressEventArgs(progressPercent);
+
+            Console.WriteLine("Fixation percentage " + progressPercent);
+
+            if(currentProgress != null)
+            {
+                currentProgress(this, FPEA);
+            }
+
+
         }
     }
 }
