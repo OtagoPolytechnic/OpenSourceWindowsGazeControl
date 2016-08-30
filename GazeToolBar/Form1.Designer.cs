@@ -47,6 +47,7 @@
             this.btnRightClick = new System.Windows.Forms.Button();
             this.bhavMapHLCurrentGazeOnBT = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.pnlHighLightDragAndDrop.SuspendLayout();
             this.pnlHighLightKeyboard.SuspendLayout();
             this.pnlHighLightScrol.SuspendLayout();
@@ -201,6 +202,12 @@
             this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "notifyIcon";
+            this.notifyIcon.Visible = true;
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -253,9 +260,7 @@
         private System.Windows.Forms.Panel pnlHighLightKeyboard;
         private System.Windows.Forms.Panel pnlHighLightScrol;
         private System.Windows.Forms.Timer timer2;
-
-
-
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 

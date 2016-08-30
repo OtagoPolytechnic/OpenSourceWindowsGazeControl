@@ -14,7 +14,10 @@ namespace GazeToolBar
     static class Program
     {
         private static FormsEyeXHost eyeXHost = new FormsEyeXHost();
+
         public static string path { get; set; }
+        public static SettingJSON readSettings { get; set; }
+        public static bool onStartUp { get; set; }
 
         public static FormsEyeXHost EyeXHost
         {
@@ -40,14 +43,42 @@ namespace GazeToolBar
                 defaultSetting.soundFeedback = false;
                 defaultSetting.speed = 0;
                 defaultSetting.typingSpeed = 0;
-                defaultSetting.wordPercision = false;
+                defaultSetting.wordPrediction = false;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
             }
+            ReadWriteJson();
+            onStartUp = AutoStart.IsOn();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
             eyeXHost.Dispose();
+
+        }
+
+        public static void ReadWriteJson()
+        {
+            if (!File.Exists(path))
+            {
+                SettingJSON defaultSetting = new SettingJSON();
+                defaultSetting.language = "    English\r\n(United States)";
+                defaultSetting.position = "Right";
+                defaultSetting.precision = 0;
+                defaultSetting.selection = "GAZE";
+                defaultSetting.size = "SMALL";
+                defaultSetting.soundFeedback = false;
+                defaultSetting.speed = 0;
+                defaultSetting.typingSpeed = 0;
+                defaultSetting.wordPrediction = false;
+                string JSONstr = JsonConvert.SerializeObject(defaultSetting);
+                File.AppendAllText(path, JSONstr);
+            }
+            else
+            {
+                string s = File.ReadAllText(path);
+                readSettings = JsonConvert.DeserializeObject<SettingJSON>(s);
+            }
         }
     }
 }
