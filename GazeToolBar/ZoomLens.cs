@@ -59,7 +59,7 @@ namespace GazeToolBar
         }
         private int calculateCornerDistance(Point fixationPoint, Point corner)
         {
-            int returnInt =  Math.Abs(fixationPoint.X - corner.X) + Math.Abs(fixationPoint.Y - corner.Y);
+            int returnInt = Math.Abs(fixationPoint.X - corner.X) + Math.Abs(fixationPoint.Y - corner.Y);
 
             //int retint = (int)Math.Sqrt(((corner.X - fixationPoint.X) ^ 2) + ((corner.Y - fixationPoint.Y) ^ 2));
             return returnInt;
@@ -67,6 +67,7 @@ namespace GazeToolBar
         public void CreateZoomLens(Point FixationPoint)
         {
             int corner = checkCorners(FixationPoint);
+            //lensPoint is the position the actual screenshot is taken
             Point lensPoint = new Point();
             Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
             if (corner != -1)
@@ -77,30 +78,26 @@ namespace GazeToolBar
                     case 0:
                         this.DesktopLocation = new Point(0, 0);
                         Console.WriteLine("TopLeft corner detected");
-                        lensPoint.X = 0;
-                        lensPoint.Y = 0;
-                        graphics.CopyFromScreen(lensPoint.X , lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
+                        lensPoint = SetLensPoint(0, 0);
+                        TakeScreenShot(lensPoint.X, lensPoint.Y);
                         break;
                     case 1:
                         this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, 0);
                         Console.WriteLine("TopRight corner detected");
-                        lensPoint.X = Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width;
-                        lensPoint.Y = 0;
-                        graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
+                        lensPoint = SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, 0);
+                        TakeScreenShot(lensPoint.X, lensPoint.Y); 
                         break;
                     case 2:
                         this.DesktopLocation = new Point(0, Screen.FromControl(this).Bounds.Height - this.Height);
                         Console.WriteLine("BottomLeft corner detected");
-                        lensPoint.X = 0;
-                        lensPoint.Y = Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height;
-                        graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
+                        lensPoint = SetLensPoint(0, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
+                        TakeScreenShot(lensPoint.X, lensPoint.Y); 
                         break;
                     case 3:
                         this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, Screen.FromControl(this).Bounds.Height - this.Height);
                         Console.WriteLine("BottomRight corner detected");
-                        lensPoint.X = Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width;
-                        lensPoint.Y = Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height;
-                        graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
+                        lensPoint = SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
+                        TakeScreenShot(lensPoint.X, lensPoint.Y); 
                         break;
                     default:
                         break;
@@ -110,30 +107,28 @@ namespace GazeToolBar
             {
                 //set the position of the lens and offset it by it's size /2 to center the lens on the location of the current event
                 this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
-                lensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);//this sets the position on the screen which is being zoomed in. 
-                lensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);
-                graphics.CopyFromScreen(lensPoint.X + this.Size.Width / 4, lensPoint.Y + this.Size.Height / 4, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
+                lensPoint = SetLensPoint(FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25),FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25));
+                //graphics.CopyFromScreen(lensPoint.X + this.Size.Width / 4, lensPoint.Y + this.Size.Height / 4, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
+                TakeScreenShot(lensPoint.X + this.Size.Width / 4, lensPoint.Y + this.Size.Height / 4);
             }
             this.Show();//make lens visible
-            
-            
-            Point empty = new Point(0, 0);
-            //lensPoint is the position the actual screenshot is taken
-            
-
-            
-            
-
-            //bmpScreenshot.Save("bmpScreenshot.bmp");
             pictureBox1.Image = bmpScreenshot;
             this.TopMost = true;
             Console.WriteLine("ZoomLens.Bounds.X = " + this.Bounds.X);
             Console.WriteLine("ZoomLens.Bounds.Y = " + this.Bounds.Y);
             Application.DoEvents();
         }
-        private void ZoomScreenshot(Point lensPoint)
+        private Point SetLensPoint(int x, int y)
         {
-            
+            Point lensPoint = new Point();
+            lensPoint.X = x;
+            lensPoint.Y = y;
+            return lensPoint;
+        }
+        private void TakeScreenShot(int x, int y)
+        {
+            Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
+            graphics.CopyFromScreen(x, y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
         }
         public void ResetZoomLens()
         {
@@ -153,6 +148,7 @@ namespace GazeToolBar
         }
         private Point TranslateToDesktop(int x, int y)//This method translates on form coordinates to desktop coordinates
         {
+            //somehow check if the user has looked in a corner or not, maybe a bool flag or something
             Point returnPoint = new Point();
 
             int halfHeight = this.Width / 2;
