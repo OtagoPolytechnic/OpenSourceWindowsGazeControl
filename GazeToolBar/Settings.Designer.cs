@@ -93,7 +93,7 @@ namespace GazeToolBar
             // 
             // btnAutoStart
             // 
-            this.btnAutoStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
+            this.btnAutoStart.BackColor = System.Drawing.Color.Black;
             this.btnAutoStart.FlatAppearance.BorderSize = 5;
             this.btnAutoStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAutoStart.Location = new System.Drawing.Point(287, 66);
@@ -105,7 +105,7 @@ namespace GazeToolBar
             // 
             // btnChangeSide
             // 
-            this.btnChangeSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
+            this.btnChangeSide.BackColor = System.Drawing.Color.Black;
             this.btnChangeSide.FlatAppearance.BorderSize = 5;
             this.btnChangeSide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangeSide.Location = new System.Drawing.Point(157, 66);
@@ -128,7 +128,7 @@ namespace GazeToolBar
             // 
             // btnGaze
             // 
-            this.btnGaze.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
+            this.btnGaze.BackColor = System.Drawing.Color.Black;
             this.btnGaze.FlatAppearance.BorderSize = 5;
             this.btnGaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGaze.Location = new System.Drawing.Point(156, 70);
@@ -140,7 +140,7 @@ namespace GazeToolBar
             // 
             // btnSwitch
             // 
-            this.btnSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
+            this.btnSwitch.BackColor = System.Drawing.Color.Black;
             this.btnSwitch.FlatAppearance.BorderSize = 5;
             this.btnSwitch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSwitch.Location = new System.Drawing.Point(255, 70);
@@ -318,7 +318,7 @@ namespace GazeToolBar
             // 
             // tabPageGeneral
             // 
-            this.tabPageGeneral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
+            this.tabPageGeneral.BackColor = System.Drawing.Color.Black;
             this.tabPageGeneral.Controls.Add(this.panelSelection);
             this.tabPageGeneral.Controls.Add(this.panelOther);
             this.tabPageGeneral.Controls.Add(this.panelPrecision);
@@ -334,7 +334,7 @@ namespace GazeToolBar
             // 
             // tabPageKeyboard
             // 
-            this.tabPageKeyboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
+            this.tabPageKeyboard.BackColor = System.Drawing.Color.Black;
             this.tabPageKeyboard.Controls.Add(this.panelGazeTypingSpeed);
             this.tabPageKeyboard.Controls.Add(this.panelSize);
             this.tabPageKeyboard.Controls.Add(this.panelLanguage);
@@ -592,7 +592,7 @@ namespace GazeToolBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(0)))), ((int)(((byte)(82)))));
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1634, 1053);
             this.Controls.Add(this.panelSaveAndCancel);
             this.Controls.Add(this.tabControlMain);
@@ -602,7 +602,7 @@ namespace GazeToolBar
             this.MinimizeBox = false;
             this.Name = "Settings";
             this.Text = "Settings";
-            this.Shown += new System.EventHandler(this.Settings_Shown);
+            this.Load += new System.EventHandler(this.Settings_Load);
             this.panelSelection.ResumeLayout(false);
             this.panelSelection.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPrecision)).EndInit();
