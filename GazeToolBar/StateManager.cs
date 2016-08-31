@@ -165,8 +165,9 @@ namespace GazeToolBar
                     //Point lensPoint = new Point();
                     //Point DesktopLocation = new Point();
                     zoomer.determineDesktopLocation(fixationPoint, corner);
-                    zoomer.TakeScreenShot(fixationPoint.X, fixationPoint.Y);
+                    zoomer.TakeScreenShot();
                     zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
+
                     SystemFlags.Gaze = false;
                     SystemFlags.FixationRunning = false;
                     break;

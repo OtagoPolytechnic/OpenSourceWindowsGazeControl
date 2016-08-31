@@ -89,19 +89,23 @@ namespace GazeToolBar
                 {
                     case 0:
                         this.DesktopLocation = new Point(0, 0);
-                        SetLensPoint(FixationPoint.X, FixationPoint.Y);
+                        SetLensPoint(0, 0);
+                        Console.WriteLine("Top left corner detected");
                         break;
                     case 1:
                         this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, 0);
-                        SetLensPoint(FixationPoint.X, FixationPoint.Y);
+                        SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, 0);
+                        Console.WriteLine("Top right corner detected");
                         break;
                     case 2:
                         this.DesktopLocation = new Point(0, Screen.FromControl(this).Bounds.Height - this.Height);
-                        SetLensPoint(FixationPoint.X, FixationPoint.Y);
+                        SetLensPoint(0, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
+                        Console.WriteLine("Bottom left corner detected");
                         break;
                     case 3:
                         this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, Screen.FromControl(this).Bounds.Height - this.Height);
-                        SetLensPoint(FixationPoint.X, FixationPoint.Y);
+                        SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
+                        Console.WriteLine("Bottom right corner detected");
                         break;
                 }
             }
@@ -111,16 +115,16 @@ namespace GazeToolBar
                 SetLensPoint(FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25), FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25));
             }
         }
-        private Point SetLensPoint(int x, int y)
+        private void SetLensPoint(int x, int y)
         {
             lensPoint.X = x;
             lensPoint.Y = y;
-            return lensPoint;
+            //return lensPoint;
         }
-        public void TakeScreenShot(int x, int y)
+        public void TakeScreenShot()
         {
             Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
-            graphics.CopyFromScreen(x, y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
+            graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
         }
         public void ResetZoomLens()
         {
