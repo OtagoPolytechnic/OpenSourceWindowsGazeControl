@@ -157,11 +157,15 @@ namespace GazeToolBar
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.FixationRunning = true;
                     }
-                    
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
                     fixationPoint = fixationWorker.getXY();//get the location the user looked
+                    int corner = zoomer.checkCorners(fixationPoint);
+                    //Point lensPoint = new Point();
+                    //Point DesktopLocation = new Point();
+                    zoomer.determineDesktopLocation(fixationPoint, corner);
+                    zoomer.TakeScreenShot(fixationPoint.X, fixationPoint.Y);
                     zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
                     SystemFlags.Gaze = false;
                     SystemFlags.FixationRunning = false;
@@ -204,7 +208,6 @@ namespace GazeToolBar
                             VirtualMouse.LeftDoubleClick(fixationPoint.X, fixationPoint.Y);
                         }
                     }
-
                     break;
                 case SystemState.DisplayFeedback:
                     //Inform the user that gazing has ended (maybe a sound tone, or changing the button's colour)
