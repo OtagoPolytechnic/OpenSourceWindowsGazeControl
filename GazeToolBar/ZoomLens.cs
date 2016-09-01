@@ -17,11 +17,18 @@ namespace GazeToolBar
         Graphics graphics;
         Bitmap bmpScreenshot;
         delegate void SetFormDelegate(int x, int y);
-
         FixationDetection fixdet;
+
+        GazeHighlight gazeHighlight;
+
+        
+
         public ZoomLens(FixationDetection FixDet)
         {
             InitializeComponent();
+
+            
+          
             this.Width = 500;//setting the lens size
             this.Height = 500;
             Console.WriteLine("This.width = " + this.Width);
@@ -29,16 +36,19 @@ namespace GazeToolBar
 
             bmpScreenshot = new Bitmap(this.Width / ZOOMLEVEL, this.Height / ZOOMLEVEL);//set bitmap to same size as the lens
             graphics = this.CreateGraphics();
-            graphics = Graphics.FromImage(bmpScreenshot);
+            //graphics = Graphics.FromImage(bmpScreenshot);
 
 
 
-            pictureBox1.Width = this.Width;//set picturebox to same size as form
-            pictureBox1.Height = this.Height;
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
+            //pictureBox1.Width = this.Width;//set picturebox to same size as form
+           // pictureBox1.Height = this.Height;
+           // pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
 
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = FixDet;
+
+            gazeHighlight = new GazeHighlight(FixDet, graphics, EHighlightShaderType.RedToGreen, this);
+
             
         }
         public void getRelativeCoords()
@@ -60,12 +70,14 @@ namespace GazeToolBar
             graphics.CopyFromScreen(lensPoint.X + this.Size.Width / 4, lensPoint.Y + this.Size.Height / 4, empty.X, empty.Y, zoomSize, CopyPixelOperation.SourceCopy);
 
             bmpScreenshot.Save("bmpScreenshot.bmp");
-            pictureBox1.Image = bmpScreenshot;
+            //pictureBox1.Image = bmpScreenshot;
             this.TopMost = true;
+            DrawTimer.Start();
             Application.DoEvents();
         }
         public void ResetZoomLens()
         {
+            DrawTimer.Stop();
             this.Hide();
         }
         public Point TranslateGazePoint(Point fixationPoint)
@@ -110,6 +122,18 @@ namespace GazeToolBar
             returnPoint.X = b + (x / ZOOMLEVEL);
             Console.WriteLine("returnPoint = " + returnPoint);
             return returnPoint;
+        }
+
+        private void DrawTimer_Tick(object sender, EventArgs e)
+        {
+            //graphics.DrawImage(bmpScreenshot, 0, 0);
+            graphics.Clear(Color.White);
+
+            gazeHighlight.drawHightlight();
+            Application.DoEvents();
+
+            //graphics.FillEllipse(new SolidBrush(Color.Black), 231, 240, 20, 20);
+
         }
     }
 }

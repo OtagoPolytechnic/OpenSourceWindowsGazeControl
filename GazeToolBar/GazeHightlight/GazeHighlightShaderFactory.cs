@@ -21,7 +21,7 @@ namespace GazeToolBar
             switch(shaderType)
             {
                 case EHighlightShaderType.RedToGreen:
-                    //Shadertogohere
+                    returnShader = new RedToGreenShader();
                     break;
             }
 

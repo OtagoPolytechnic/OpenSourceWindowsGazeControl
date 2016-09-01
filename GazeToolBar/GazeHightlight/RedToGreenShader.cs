@@ -14,11 +14,17 @@ namespace GazeToolBar
 
         }
 
-        public SolidBrush GenerateBrush(int scalarValue)
+        public SolidBrush GenerateBrush(int scalarValue, int transValue)
         {
+            int scalarPercent = scalarValue;
 
-            double R = scalarValue / 100;
-            double G = 1 - R;
+            if(scalarPercent > 100)
+            {
+                scalarPercent = 100;
+            }
+
+            double R = (double)scalarPercent / 100;
+            double G = (double)1 - R;
 
 
             int r = (int)Math.Floor(255 * R);
@@ -27,7 +33,7 @@ namespace GazeToolBar
 
             //create brush colour and return
             
-            return new SolidBrush(Color.FromArgb(r, g, b));
+            return new SolidBrush(Color.FromArgb(transValue,r, g, b));
             
         }
     }

@@ -16,14 +16,20 @@ namespace GazeToolBar
 
         Graphics canvas;
         int fixationPercent;
+        int transparentValue = 100;
         IGazeHighlightShader gazeShader;
         GazeHighlightShaderFactory shaderMachine;
-        PointF currentGaze;
+        Point currentGaze;
         GazePointDataStream gazeStream;
         Timer drawTimer;
+        Size highlightSize = new Size(20, 20);
+        ZoomLens lensForm;
 
-        public GazeHighlight(FixationDetection fixationWorker, Graphics zoomerCanvas, EHighlightShaderType shaderType)
+
+        public GazeHighlight(FixationDetection fixationWorker, Graphics zoomerCanvas, EHighlightShaderType shaderType, ZoomLens LensForm)
         {
+            lensForm = LensForm;
+
             fixationWorker.currentProgress += setPercent;
             
             gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
@@ -38,17 +44,51 @@ namespace GazeToolBar
 
             fixationPercent = 0;
 
-            currentGaze = new PointF();
+            currentGaze = new Point();
+
+            drawTimer = new Timer();
+
+           // drawTimer.Elapsed += drawHightlight;
+
+            drawTimer.Interval = 100;
+
+            drawTimer.AutoReset = true;
+
+           
         }
 
+        public void StartDrawingHighlight()
+        {
+            drawTimer.Start();
+        }
+
+        public void StopDrawingHighlight()
+        {
+            drawTimer.Stop();
+        }
+
+        public void drawHightlight()
+        {
+            SolidBrush highlightbrush = gazeShader.GenerateBrush(fixationPercent, transparentValue);
+
+            Point formCoordinates = lensForm.PointToClient(currentGaze);
+
+            int centerAdjustment = highlightSize.Height / 2;
+
+            formCoordinates.X = formCoordinates.X - centerAdjustment;
+            formCoordinates.Y = formCoordinates.Y - centerAdjustment;
+
+            canvas.FillEllipse(highlightbrush, formCoordinates.X, formCoordinates.Y, highlightSize.Width, highlightSize.Width);
+
+        }
 
 
 
          
         public void setCurrentGaze(object o , GazePointEventArgs currentGazePoint)
         {
-            currentGaze.X = (float)currentGazePoint.X;
-            currentGaze.Y = (float)currentGazePoint.Y;
+            currentGaze.X = (int)Math.Floor(currentGazePoint.X);
+            currentGaze.Y = (int)Math.Floor(currentGazePoint.Y);
         }
 
 
