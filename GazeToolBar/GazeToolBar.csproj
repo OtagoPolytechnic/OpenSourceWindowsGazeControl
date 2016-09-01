@@ -97,12 +97,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GazeHighlight.cs" />
+    <Compile Include="GazeHighlightShaderFactory.cs" />
+    <Compile Include="IGazeHighlightShader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReletiveSize.cs" />
-
     <Compile Include="ScrollControl.cs" />
-
     <Compile Include="SettingJSON.cs" />
     <Compile Include="Settings.BehavMap.cs">
       <SubType>Form</SubType>
