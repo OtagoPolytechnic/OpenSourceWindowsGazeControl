@@ -9,6 +9,6 @@ namespace GazeToolBar
 {
     public interface IGazeHighlightShader
     {
-        SolidBrush GenerateBrush(int scalarValue);
+        SolidBrush GenerateBrush(int scalarValue, int transValue);
     }
 }
