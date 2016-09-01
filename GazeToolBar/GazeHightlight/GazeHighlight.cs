@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EyeXFramework;
 using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
+using System.Timers;
 
 namespace GazeToolBar
 {
@@ -19,6 +20,7 @@ namespace GazeToolBar
         GazeHighlightShaderFactory shaderMachine;
         PointF currentGaze;
         GazePointDataStream gazeStream;
+        Timer drawTimer;
 
         public GazeHighlight(FixationDetection fixationWorker, Graphics zoomerCanvas, EHighlightShaderType shaderType)
         {
@@ -38,6 +40,7 @@ namespace GazeToolBar
 
             currentGaze = new PointF();
         }
+
 
 
 
