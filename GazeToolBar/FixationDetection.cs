@@ -34,7 +34,7 @@ namespace GazeToolBar
 
        private double fixationProgressStartTimeStamp;
 
-       private double fixationProgressCurrentTimeStamp;
+       
 
        
 
