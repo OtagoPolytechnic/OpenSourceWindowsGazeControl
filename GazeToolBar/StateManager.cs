@@ -162,8 +162,6 @@ namespace GazeToolBar
                 case SystemState.Zooming:
                     fixationPoint = fixationWorker.getXY();//get the location the user looked
                     int corner = zoomer.checkCorners(fixationPoint);
-                    //Point lensPoint = new Point();
-                    //Point DesktopLocation = new Point();
                     zoomer.determineDesktopLocation(fixationPoint, corner);
                     zoomer.TakeScreenShot();
                     zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location

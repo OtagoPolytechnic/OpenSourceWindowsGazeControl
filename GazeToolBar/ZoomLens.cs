@@ -112,7 +112,7 @@ namespace GazeToolBar
             else
             {
                 this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
-                SetLensPoint(FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25), FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25));
+                SetLensPoint(FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25 ), FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25 ));
             }
         }
         private void SetLensPoint(int x, int y)
@@ -139,9 +139,6 @@ namespace GazeToolBar
             {
                 return new Point(-1, -1);//cheap hack. If it is out of bound at all, this will return -1, -1. The statemanager will cancel the zoom
             }
-            //pass in the on form coordinates for calculation
-            //switch on corner
-            //offset by a certain amount based on which corner was triggerd
             return TranslateToDesktop(relativePoint.X, relativePoint.Y);
         }
         private Point TranslateToDesktop(int x, int y)//This method translates on form coordinates to desktop coordinates
