@@ -112,7 +112,13 @@ namespace GazeToolBar
             else
             {
                 this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
-                SetLensPoint(FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25 ), FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25 ));
+                Point newLensPoint = new Point();
+                /*Yeah this is pretty horrible*/
+                newLensPoint.X  = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
+                newLensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);
+                newLensPoint.X = newLensPoint.X + this.Size.Width / 4;
+                newLensPoint.Y = newLensPoint.Y + this.Size.Width / 4;
+                SetLensPoint(newLensPoint.X, newLensPoint.Y);
             }
         }
         private void SetLensPoint(int x, int y)
@@ -124,7 +130,7 @@ namespace GazeToolBar
         public void TakeScreenShot()
         {
             Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
-            graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
+            graphics.CopyFromScreen(lensPoint.X , lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
         }
         public void ResetZoomLens()
         {
