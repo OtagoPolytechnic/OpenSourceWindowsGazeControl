@@ -11,7 +11,7 @@ namespace GazeToolBar
 {
     public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback }
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick }
-
+    public enum Corner { NoCorner = -1, TopLeft, TopRight, BottomLeft, BottomRight }
     public static class SystemFlags
     {
         public static bool isKeyBoardUP { get; set; }
@@ -30,6 +30,7 @@ namespace GazeToolBar
         Form1 toolbar;
         ZoomLens zoomer;
         Point fixationPoint;
+        Corner corner;
         //optikey?
 
 
@@ -46,6 +47,8 @@ namespace GazeToolBar
             SystemFlags.HasSelectedButtonColourBeenReset = true;
 
             zoomer = new ZoomLens(fixationWorker);
+
+            corner = new Corner();
 
             Run();
         }
@@ -86,9 +89,9 @@ namespace GazeToolBar
                     }
                     else if (SystemFlags.timeOut)
                     {
-                            currentState = //SystemState.DisplayFeedback;
-                            SystemState.Wait;
-                            SystemFlags.timeOut = false;
+                        currentState = //SystemState.DisplayFeedback;
+                        SystemState.Wait;
+                        SystemFlags.timeOut = false;
                     }
                     break;
                 case SystemState.Zooming:
@@ -97,7 +100,7 @@ namespace GazeToolBar
                     break;
                 case SystemState.ZoomWait:
                     Console.WriteLine("ZoomWait");
-                    
+
                     if (SystemFlags.Gaze)//if the second zoomGazehashapped an action needs to be performed
                     {
                         currentState = SystemState.ApplyAction;
@@ -142,7 +145,7 @@ namespace GazeToolBar
                     SystemFlags.FixationRunning = false;
                     SystemFlags.Gaze = false;
                     SystemFlags.timeOut = false;
-                    if(SystemFlags.HasSelectedButtonColourBeenReset == false)
+                    if (SystemFlags.HasSelectedButtonColourBeenReset == false)
                     {
                         toolbar.resetButtonsColor();
                         SystemFlags.HasSelectedButtonColourBeenReset = true;
@@ -161,8 +164,8 @@ namespace GazeToolBar
                     break;
                 case SystemState.Zooming:
                     fixationPoint = fixationWorker.getXY();//get the location the user looked
-                    int corner = zoomer.checkCorners(fixationPoint);
-                    zoomer.determineDesktopLocation(fixationPoint, corner);
+                    corner = (Corner)zoomer.checkCorners(fixationPoint);
+                    zoomer.determineDesktopLocation(fixationPoint, (int)(corner));
                     zoomer.TakeScreenShot();
                     zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
 
@@ -180,6 +183,25 @@ namespace GazeToolBar
                     fixationPoint = fixationWorker.getXY();
                     zoomer.ResetZoomLens();//hide the lens
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);//translate the form coordinates to the desktop
+
+                    switch (corner)
+                    {
+                        case Corner.NoCorner:
+                            break;
+                        case Corner.TopLeft:
+                            // -
+                            //fixationPoint = fixationPoint
+                            break;
+                        case Corner.TopRight:
+                            break;
+                        case Corner.BottomLeft:
+                            break;
+                        case Corner.BottomRight:
+                            break;
+                        default:
+                            break;
+
+                    }
                     if (fixationPoint.X == -1)//check if it's out of bounds
                     {
                         if (SystemFlags.isKeyBoardUP)
@@ -193,7 +215,7 @@ namespace GazeToolBar
                     }
                     else
                     {
-                        
+
                         if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)
                         {
                             VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
