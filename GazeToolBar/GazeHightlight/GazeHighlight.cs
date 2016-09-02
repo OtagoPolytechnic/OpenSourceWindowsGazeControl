@@ -21,7 +21,6 @@ namespace GazeToolBar
         GazeHighlightShaderFactory shaderMachine;
         Point currentGaze;
         GazePointDataStream gazeStream;
-        Timer drawTimer;
         Size highlightSize = new Size(20, 20);
         ZoomLens lensForm;
 
@@ -46,26 +45,10 @@ namespace GazeToolBar
 
             currentGaze = new Point();
 
-            drawTimer = new Timer();
-
-           // drawTimer.Elapsed += drawHightlight;
-
-            drawTimer.Interval = 100;
-
-            drawTimer.AutoReset = true;
 
            
         }
 
-        public void StartDrawingHighlight()
-        {
-            drawTimer.Start();
-        }
-
-        public void StopDrawingHighlight()
-        {
-            drawTimer.Stop();
-        }
 
         public void drawHightlight()
         {

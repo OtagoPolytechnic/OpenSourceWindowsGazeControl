@@ -15,6 +15,9 @@ namespace GazeToolBar
     {
         const int ZOOMLEVEL = 3;// this is controls how far the lens will zoom in
         Graphics graphics;
+
+        Graphics highLightGraphics;
+
         Bitmap bmpScreenshot;
         delegate void SetFormDelegate(int x, int y);
         FixationDetection fixdet;
@@ -34,20 +37,22 @@ namespace GazeToolBar
             Console.WriteLine("This.width = " + this.Width);
             Console.WriteLine("This.width = " + this.Height);
 
+            highLightGraphics = this.CreateGraphics();
+
             bmpScreenshot = new Bitmap(this.Width / ZOOMLEVEL, this.Height / ZOOMLEVEL);//set bitmap to same size as the lens
             graphics = this.CreateGraphics();
-            //graphics = Graphics.FromImage(bmpScreenshot);
+            graphics = Graphics.FromImage(bmpScreenshot);
 
 
 
-            //pictureBox1.Width = this.Width;//set picturebox to same size as form
-           // pictureBox1.Height = this.Height;
+            pictureBox1.Width = 20;//set picturebox to same size as form
+            pictureBox1.Height = 20;
            // pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
 
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = FixDet;
 
-            gazeHighlight = new GazeHighlight(FixDet, graphics, EHighlightShaderType.RedToGreen, this);
+            gazeHighlight = new GazeHighlight(FixDet, highLightGraphics, EHighlightShaderType.RedToGreen, this);
 
             
         }
@@ -126,8 +131,8 @@ namespace GazeToolBar
 
         private void DrawTimer_Tick(object sender, EventArgs e)
         {
-            //graphics.DrawImage(bmpScreenshot, 0, 0);
-            graphics.Clear(Color.White);
+            highLightGraphics.DrawImage(bmpScreenshot, 0, 0);
+            //graphics.Clear(Color.White);
 
             gazeHighlight.drawHightlight();
             Application.DoEvents();
