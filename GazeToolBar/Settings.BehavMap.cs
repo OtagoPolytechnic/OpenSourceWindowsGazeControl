@@ -38,17 +38,17 @@ namespace GazeToolBar
 
         private void OnbtnSoundFeedback_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnSoundFeedback.PerformClick();
         }
 
         private void OnbtnSizeSmall_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnSizeSmall.PerformClick();
         }
 
         private void OnbtnWordPredictionOnOff_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnWordPredictionOnOff.PerformClick();
         }
 
         private void OntrackBarSpeed_Scroll(object sender, GazeAwareEventArgs e)
@@ -63,42 +63,42 @@ namespace GazeToolBar
 
         private void OnbtnSwitch_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnSwitch.PerformClick();
         }
 
         private void OnbtnSizeLarge_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnSizeLarge.PerformClick();
         }
 
         private void OnbtnChangeSide_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnChangeSide.PerformClick();
         }
 
         private void OnbtnChangeLanguage_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnChangeLanguage.PerformClick();
         }
 
         private void OnbtnCancel_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnCancel.PerformClick();
         }
 
         private void OnbtnSave_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnSave.PerformClick();
         }
 
         private void OnbtnGaze_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnGaze.PerformClick();
         }
 
         private void OnbtnAutoStart_Click(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            btnAutoStart.PerformClick();
         }
     }
 }

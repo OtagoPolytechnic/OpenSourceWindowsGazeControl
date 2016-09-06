@@ -30,7 +30,9 @@ namespace GazeToolBar
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
+            bhavSettingMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.btnAutoStart = new System.Windows.Forms.Button();
             this.btnChangeSide = new System.Windows.Forms.Button();
             this.lblSelection = new System.Windows.Forms.Label();
