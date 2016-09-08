@@ -10,8 +10,13 @@ using System.Windows.Forms;
 
 namespace GazeToolBar
 {
+<<<<<<< HEAD
     public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback, ScrollWait }
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
+=======
+    public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback }
+    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick }
+>>>>>>> 95d42e21cd8b8bb6bf586050b59206e65ef089dd
     public enum Corner { NoCorner = -1, TopLeft, TopRight, BottomLeft, BottomRight }
     public static class SystemFlags
     {
@@ -55,8 +60,11 @@ namespace GazeToolBar
 
             zoomer = new ZoomLens(fixationWorker);
 
+<<<<<<< HEAD
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound );
 
+=======
+>>>>>>> 95d42e21cd8b8bb6bf586050b59206e65ef089dd
             corner = new Corner();
 
             Run();
@@ -118,8 +126,13 @@ namespace GazeToolBar
                     break;
                 case SystemState.ZoomWait:
                     Console.WriteLine("ZoomWait");
+<<<<<<< HEAD
                     
                     if (SystemFlags.Gaze)//if the second zoomGaze has happed an action needs to be performed
+=======
+
+                    if (SystemFlags.Gaze)//if the second zoomGazehashapped an action needs to be performed
+>>>>>>> 95d42e21cd8b8bb6bf586050b59206e65ef089dd
                     {
                         currentState = SystemState.ApplyAction;
                     }
@@ -215,11 +228,15 @@ namespace GazeToolBar
 
                     switch (corner)
                     {
+<<<<<<< HEAD
                             /* Temp hack to make this work, need to do proper maths later*/
+=======
+>>>>>>> 95d42e21cd8b8bb6bf586050b59206e65ef089dd
                         case Corner.NoCorner:
                             break;
                         case Corner.TopLeft:
                             // -
+<<<<<<< HEAD
                             fixationPoint.X = fixationPoint.X - 170;
                             fixationPoint.Y = fixationPoint.Y - 170;
                             break;
@@ -234,6 +251,15 @@ namespace GazeToolBar
                         case Corner.BottomRight:
                             fixationPoint.X = fixationPoint.X + 170;
                             fixationPoint.Y = fixationPoint.Y + 170;
+=======
+                            //fixationPoint = fixationPoint
+                            break;
+                        case Corner.TopRight:
+                            break;
+                        case Corner.BottomLeft:
+                            break;
+                        case Corner.BottomRight:
+>>>>>>> 95d42e21cd8b8bb6bf586050b59206e65ef089dd
                             break;
                         default:
                             break;
@@ -265,6 +291,7 @@ namespace GazeToolBar
                         {
                             VirtualMouse.LeftDoubleClick(fixationPoint.X, fixationPoint.Y);
                         }
+<<<<<<< HEAD
                         else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
                         {
 
@@ -274,6 +301,8 @@ namespace GazeToolBar
                             scrollWorker.startScroll();
                            
                         }
+=======
+>>>>>>> 95d42e21cd8b8bb6bf586050b59206e65ef089dd
                     }
                     break;
                 case SystemState.DisplayFeedback:
