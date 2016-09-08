@@ -16,7 +16,7 @@ namespace GazeToolBar
         const int ZOOMLEVEL = 3;// this is controls how far the lens will zoom in
         const int ZOOMLENS_SIZE = 500;//setting the width & height of the ZoomLens
         Graphics graphics;
-        Bitmap bmpScreenshot;
+        public Bitmap bmpScreenshot;
         int corner;//this is used to determine if a user has looked at a corner section of the screen
         Point lensPoint;
 

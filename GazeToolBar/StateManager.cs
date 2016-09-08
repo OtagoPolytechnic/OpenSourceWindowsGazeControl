@@ -10,15 +10,9 @@ using System.Windows.Forms;
 
 namespace GazeToolBar
 {
-<<<<<<< 6dab79f07c105ba6b628052bdbc63059247941b9
     public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback, ScrollWait }
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
-
-=======
-    public enum SystemState { Setup, Wait, KeyboardDisplayed, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, DisplayFeedback }
-    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick }
     public enum Corner { NoCorner = -1, TopLeft, TopRight, BottomLeft, BottomRight }
->>>>>>> Zoomer is now accurate again. Added enum in SM to deal with corner zooms
     public static class SystemFlags
     {
 
@@ -61,11 +55,9 @@ namespace GazeToolBar
 
             zoomer = new ZoomLens(fixationWorker);
 
-<<<<<<< 6dab79f07c105ba6b628052bdbc63059247941b9
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound );
-=======
+
             corner = new Corner();
->>>>>>> Zoomer is now accurate again. Added enum in SM to deal with corner zooms
 
             Run();
         }
@@ -223,17 +215,25 @@ namespace GazeToolBar
 
                     switch (corner)
                     {
+                            /* Temp hack to make this work, need to do proper maths later*/
                         case Corner.NoCorner:
                             break;
                         case Corner.TopLeft:
                             // -
-                            //fixationPoint = fixationPoint
+                            fixationPoint.X = fixationPoint.X - 170;
+                            fixationPoint.Y = fixationPoint.Y - 170;
                             break;
                         case Corner.TopRight:
+                            fixationPoint.X = fixationPoint.X + 170;
+                            fixationPoint.Y = fixationPoint.Y - 170;
                             break;
                         case Corner.BottomLeft:
+                            fixationPoint.X = fixationPoint.X - 170;
+                            fixationPoint.Y = fixationPoint.Y + 170;
                             break;
                         case Corner.BottomRight:
+                            fixationPoint.X = fixationPoint.X + 170;
+                            fixationPoint.Y = fixationPoint.Y + 170;
                             break;
                         default:
                             break;
