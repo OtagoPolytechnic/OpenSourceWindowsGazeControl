@@ -192,10 +192,22 @@ namespace GazeToolBar
                 spacerBuffer += screenSectionSize;
             }
         }
+
         public System.Windows.Forms.NotifyIcon NotifyIcon
         {
             get { return notifyIcon; }
             set { notifyIcon = value; }
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F9)
+            {
+                MessageBox.Show(e.KeyCode.ToString());
+            }
+        }
+
+ 
+
     }
 }
