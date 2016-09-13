@@ -19,6 +19,7 @@ namespace GazeToolBar
         public static readonly int FIXED_WIDTH = 600;
         public static readonly Size SCREEN_SIZE = Screen.PrimaryScreen.WorkingArea.Size;
         public static readonly Rectangle PRIMARY_SCREEN = Screen.PrimaryScreen.Bounds;
+
         public static readonly Color SelectedColor = Color.White;
         public static readonly Color SettingButtonColor = Color.Black;
 

@@ -26,13 +26,14 @@ namespace GazeToolBar
     public class FixationDetection
     {
         //Timer to measure if a how long it has been since the fixation started. 
-        private static Timer fixationTimer;
-        public static Timer timeOutTimer;
+        private Timer fixationTimer;
+        private Timer timeOutTimer;
 
         //Fixation data stream, used to attached to fixation events.
         public static FixationDataStream fixationPointDataStream;
        
         public int FixationDetectionTimeLength { get; set; }
+        public int FixationTimeOutLength { get; set; }
         //State variable of FixationDetection class.
 
         private EFixationState fixationState;
@@ -55,8 +56,9 @@ namespace GazeToolBar
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
             FixationDetectionTimeLength = 1000;
+            FixationTimeOutLength = 5000;
 
-            timeOutTimer = new Timer(5000);
+            timeOutTimer = new Timer(FixationTimeOutLength);
 
             timeOutTimer.AutoReset = false;
 
@@ -101,6 +103,8 @@ namespace GazeToolBar
 
         public void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
         {
+            timeOutTimer.Stop();
+
             //Once the fixation has run, set the state of fixation detection back to waiting.
             fixationState = EFixationState.WaitingForFixationRequest;
             SystemFlags.Gaze = true;
@@ -110,6 +114,8 @@ namespace GazeToolBar
 
         public void FixationTimeOut(object o, ElapsedEventArgs e)
         {
+            fixationTimer.Stop();
+
             SystemFlags.timeOut = true;
             fixationState = EFixationState.WaitingForFixationRequest;
         }
@@ -122,6 +128,7 @@ namespace GazeToolBar
             //SelectedFixationAcion = inputActionToRun;
             Console.WriteLine("Start detection call");
             fixationState = EFixationState.DetectingFixation;
+            timeOutTimer.Start();
         }
 
         public Point getXY()
