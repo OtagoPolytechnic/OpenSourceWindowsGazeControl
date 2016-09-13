@@ -75,7 +75,7 @@ namespace GazeToolBar
             switch (currentState)
             {
                 case SystemState.Wait:
-                    Console.WriteLine("Wait State");
+                   // Console.WriteLine("Wait State");
                     // moved to apply action zoomer.ResetZoomLens();
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {

@@ -80,6 +80,7 @@
     <Reference Include="Tobii.EyeX.Client.Net20">
       <HintPath>..\..\lib\x64\Tobii.EyeX.Client.Net20.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
     <Reference Include="WindowsInput">
       <HintPath>..\..\lib\WindowsInput.dll</HintPath>
     </Reference>
@@ -96,12 +97,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HookedKeyboardEventArgs.cs" />
+    <Compile Include="Keyboardhook.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReletiveSize.cs" />
-
     <Compile Include="ScrollControl.cs" />
-
     <Compile Include="SettingJSON.cs" />
     <Compile Include="Settings.BehavMap.cs">
       <SubType>Form</SubType>

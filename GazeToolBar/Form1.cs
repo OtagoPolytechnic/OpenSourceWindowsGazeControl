@@ -24,6 +24,8 @@ namespace GazeToolBar
         private MenuItem settingsItem;
         public StateManager stateManager;
 
+        private Keyboardhook LowLevelKeyBoardHook;
+
         List<Panel> highlightPannerList;
 
         public Form1()
@@ -82,6 +84,14 @@ namespace GazeToolBar
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            LowLevelKeyBoardHook = new Keyboardhook();
+
+            LowLevelKeyBoardHook.OnKeyPressed += testHook;
+            
+            LowLevelKeyBoardHook.HookKeyboard();
+
+
             if(Program.readSettings.position == "left")
             {
                 Edge = AppBarEdges.Left;
@@ -136,16 +146,7 @@ namespace GazeToolBar
             SystemFlags.actionButtonSelected = true;
             SystemFlags.actionToBePerformed = ActionToBePerformed.Scroll;
 
-            /*This will have to be added to the action enum and the logic will have to someplace else, not sure where yet*/
 
-            //detect fixation, drop middle click where user fixates.
-
-            //move in to scroll mode.
-
-            //drop out of scroll mode if user looks outside screen bounds.
-            
-            //fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
-            //Add logic to scroll/pan with eyes after middle click
         }
 
         private void btnDragAndDrop_Click(object sender, EventArgs e)
@@ -193,13 +194,16 @@ namespace GazeToolBar
             }
         }
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        public void testHook(object o, HookedKeyboardEventArgs e)
         {
-            if(e.KeyCode == Keys.F9)
-            {
-                MessageBox.Show(e.KeyCode.ToString());
-            }
+            Console.WriteLine(e.KeyPressed.ToString());
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            LowLevelKeyBoardHook.UnHookKeyboard();
+        }
+
 
  
     }
