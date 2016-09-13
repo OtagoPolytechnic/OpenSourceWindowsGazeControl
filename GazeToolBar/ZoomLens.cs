@@ -114,7 +114,7 @@ namespace GazeToolBar
                 this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
                 Point newLensPoint = new Point();
                 /*Yeah this is pretty horrible*/
-                newLensPoint.X  = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
+                newLensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
                 newLensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);
                 newLensPoint.X = newLensPoint.X + this.Size.Width / 4;
                 newLensPoint.Y = newLensPoint.Y + this.Size.Width / 4;
@@ -130,7 +130,7 @@ namespace GazeToolBar
         public void TakeScreenShot()
         {
             Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
-            graphics.CopyFromScreen(lensPoint.X , lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
+            graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
         }
         public void ResetZoomLens()
         {
@@ -165,6 +165,32 @@ namespace GazeToolBar
             finalX = this.Left + finalX;
             returnPoint.X = finalX + (x / ZOOMLEVEL);
             return returnPoint;
+        }
+        public Point CornerOffset(Corner corner, Point fixationPoint)
+        {
+            int offset = 170;//need to get proper formula for determining offset amount. 170 works for now (only 1920X1080)
+            switch (corner)
+            {
+                case Corner.NoCorner:
+                    return fixationPoint;
+                case Corner.TopLeft:
+                    fixationPoint.X = fixationPoint.X - offset;
+                    fixationPoint.Y = fixationPoint.Y - offset;
+                    return fixationPoint;
+                case Corner.TopRight:
+                    fixationPoint.X = fixationPoint.X + offset;
+                    fixationPoint.Y = fixationPoint.Y - offset;
+                    return fixationPoint;
+                case Corner.BottomLeft:
+                    fixationPoint.X = fixationPoint.X - offset;
+                    fixationPoint.Y = fixationPoint.Y + offset;
+                    return fixationPoint;
+                case Corner.BottomRight:
+                    fixationPoint.X = fixationPoint.X + offset;
+                    fixationPoint.Y = fixationPoint.Y + offset;
+                    return fixationPoint;
+            }
+            return fixationPoint;
         }
     }
 }
