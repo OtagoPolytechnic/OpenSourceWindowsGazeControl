@@ -29,6 +29,9 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnSizeSmall, new GazeAwareBehavior(OnbtnSizeSmall_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSoundFeedback, new GazeAwareBehavior(OnbtnSoundFeedback_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(trackBarGazeTypingSpeed, new GazeAwareBehavior(OntrackBarGazeTypingSpeed_Scroll) { DelayMilliseconds = 100 });
+
+            bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSettingClick) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnKeyBoardSetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
         }
 
         private void OntrackBarGazeTypingSpeed_Scroll(object sender, GazeAwareEventArgs e)
@@ -99,6 +102,16 @@ namespace GazeToolBar
         private void OnbtnAutoStart_Click(object sender, GazeAwareEventArgs e)
         {
             btnAutoStart.PerformClick();
+        }
+
+        private void OnBtnGeneralSettingClick(object sender, GazeAwareEventArgs e)
+        {
+            btnGeneralSetting.PerformClick();
+        }
+
+        private void OnBtnKeyboardSettingClick(object sender, GazeAwareEventArgs e)
+        {
+            btnKeyBoardSetting.PerformClick();
         }
     }
 }

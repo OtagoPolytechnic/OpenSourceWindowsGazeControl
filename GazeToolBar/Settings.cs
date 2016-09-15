@@ -30,6 +30,8 @@ namespace GazeToolBar
         public Settings(Form1 form1)
         {
             InitializeComponent();
+            Controls.Add(pnlGeneral);
+            ChangeButtonColor(btnGeneralSetting, true, true);
             this.form1 = form1;
             //This code make setting form full screen
             FormBorderStyle = FormBorderStyle.None;
@@ -37,7 +39,7 @@ namespace GazeToolBar
             //End
             OnTheRight = true;
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
-            tabControlMain.Size = ReletiveSize.TabControlSize;
+            //tabControlMain.Size = ReletiveSize.TabControlSize;
             onOff = new bool[5];
             for (int i = 0; i < onOff.Length; i++)
             {
@@ -50,12 +52,12 @@ namespace GazeToolBar
             if (OnTheRight)
             {
                 changeSide("On left", ApplicationDesktopToolbar.AppBarEdges.Left, false);
-                ChangeButtonColor(btnChangeSide, true);
+                ChangeButtonColor(btnChangeSide, true, false);
             }
             else
             {
                 changeSide("On Right", ApplicationDesktopToolbar.AppBarEdges.Right, true);
-                ChangeButtonColor(btnChangeSide, false);
+                ChangeButtonColor(btnChangeSide, false, false);
             }
         }
 
@@ -73,14 +75,14 @@ namespace GazeToolBar
             {
                 AutoStart.SetOff();
                 Program.onStartUp = !Program.onStartUp;
-                ChangeButtonColor(btnAutoStart, false);
+                ChangeButtonColor(btnAutoStart, false, false);
             }
             else
             {
                 if (AutoStart.SetOn())
                 {
                     Program.onStartUp = !Program.onStartUp;
-                    ChangeButtonColor(btnAutoStart, true);
+                    ChangeButtonColor(btnAutoStart, true, false);
                 }
             }
 
@@ -88,22 +90,21 @@ namespace GazeToolBar
 
         }
 
-        private void tabControlMain_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            TabPage page = tabControlMain.TabPages[e.Index];
-            e.Graphics.FillRectangle(new SolidBrush(page.BackColor), e.Bounds);
-
-            Rectangle paddedBounds = e.Bounds;
-            int yOffset = (e.State == DrawItemState.Selected) ? -2 : 1;
-            paddedBounds.Offset(1, yOffset);
-            TextRenderer.DrawText(e.Graphics, page.Text, Font, paddedBounds, page.ForeColor);
-        }
-
-        public void ChangeButtonColor(Button button, bool onOff)
+        public void ChangeButtonColor(Button button, bool onOff, bool hasText)
         {
 
             button.BackColor = onOff ? ValueNeverChange.SelectedColor: ValueNeverChange.SettingButtonColor;
-
+            if (hasText)
+            {
+                if (onOff)
+                {
+                    button.ForeColor = Color.Black;
+                }
+                else
+                {
+                    button.ForeColor = Color.White;
+                }
+            }
         }
 
         private void btnGaze_Click(object sender, EventArgs e)
@@ -131,12 +132,12 @@ namespace GazeToolBar
             switch (gs)
             {
                 case GazeOrSwitch.GAZE:
-                    ChangeButtonColor(btnGaze, !onOff[0]);
-                    ChangeButtonColor(btnSwitch, onOff[0]);
+                    ChangeButtonColor(btnGaze, !onOff[0], false);
+                    ChangeButtonColor(btnSwitch, onOff[0], false);
                     break;
                 case GazeOrSwitch.SWITCH:
-                    ChangeButtonColor(btnGaze, onOff[0]);
-                    ChangeButtonColor(btnSwitch, !onOff[0]);
+                    ChangeButtonColor(btnGaze, onOff[0], false);
+                    ChangeButtonColor(btnSwitch, !onOff[0], false);
                     break;
             }
         }
@@ -146,12 +147,12 @@ namespace GazeToolBar
             switch (s)
             {
                 case Sizes.SMALL:
-                    ChangeButtonColor(btnSizeLarge, onOff[4]);
-                    ChangeButtonColor(btnSizeSmall, !onOff[4]);
+                    ChangeButtonColor(btnSizeLarge, onOff[4], false);
+                    ChangeButtonColor(btnSizeSmall, !onOff[4], false);
                     break;
                 case Sizes.LARGE:
-                    ChangeButtonColor(btnSizeLarge, !onOff[4]);
-                    ChangeButtonColor(btnSizeSmall, onOff[4]);
+                    ChangeButtonColor(btnSizeLarge, !onOff[4], false);
+                    ChangeButtonColor(btnSizeSmall, onOff[4], false);
                     break;
                 default:
                     break;
@@ -174,14 +175,14 @@ namespace GazeToolBar
         private void btnWordPredictionOnOff_Click(object sender, EventArgs e)
         {
             onOff[2] = !onOff[2];
-            ChangeButtonColor(btnWordPredictionOnOff, onOff[2]);
+            ChangeButtonColor(btnWordPredictionOnOff, onOff[2], false);
             lblOnOff(lblWordPredictionOnOffIndiction, onOff[2]);
         }
 
         private void btnSoundFeedback_Click(object sender, EventArgs e)
         {
             onOff[3] = !onOff[3];
-            ChangeButtonColor(btnSoundFeedback, onOff[3]);
+            ChangeButtonColor(btnSoundFeedback, onOff[3], false);
             lblOnOff(lblSoundFeedbackOnOff, onOff[3]);
         }
 
@@ -267,36 +268,36 @@ namespace GazeToolBar
             
             if (Program.onStartUp)
             {
-                ChangeButtonColor(btnAutoStart, true);
+                ChangeButtonColor(btnAutoStart, true, false);
             }
             else
             {
-                ChangeButtonColor(btnAutoStart, false);
+                ChangeButtonColor(btnAutoStart, false, false);
             }
 
             if (Program.readSettings.wordPrediction)
             {
                 onOff[2] = true;
-                ChangeButtonColor(btnWordPredictionOnOff, onOff[2]);
+                ChangeButtonColor(btnWordPredictionOnOff, onOff[2], false);
                 lblOnOff(lblWordPredictionOnOffIndiction, onOff[2]);
             }
             else
             {
                 onOff[2] = false;
-                ChangeButtonColor(btnWordPredictionOnOff, onOff[2]);
+                ChangeButtonColor(btnWordPredictionOnOff, onOff[2], false);
                 lblOnOff(lblWordPredictionOnOffIndiction, onOff[2]);
             }
 
             if (Program.readSettings.soundFeedback)
             {
                 onOff[3] = true;
-                ChangeButtonColor(btnSoundFeedback, onOff[3]);
+                ChangeButtonColor(btnSoundFeedback, onOff[3], false);
                 lblOnOff(lblSoundFeedbackOnOff, onOff[3]);
             }
             else
             {
                 onOff[3] = false;
-                ChangeButtonColor(btnSoundFeedback, onOff[3]);
+                ChangeButtonColor(btnSoundFeedback, onOff[3], false);
                 lblOnOff(lblSoundFeedbackOnOff, onOff[3]);
             }
 
@@ -325,13 +326,35 @@ namespace GazeToolBar
             if (Program.readSettings.position == "left")
             {
                 OnTheRight = false;
-                ChangeButtonColor(btnChangeSide, true);
+                ChangeButtonColor(btnChangeSide, true, false);
             }
             else
             {
                 OnTheRight = true;
             }
 
+        }
+
+        private void btnGeneralSetting_Click(object sender, EventArgs e)
+        {
+            if (!Controls.Contains(pnlGeneral))
+            {
+                Controls.Remove(pnlPageKeyboard);
+                ChangeButtonColor(btnKeyBoardSetting, false, true);
+                Controls.Add(pnlGeneral);
+                ChangeButtonColor(btnGeneralSetting, true, true);
+            }
+        }
+
+        private void btnKeyBoardSetting_Click(object sender, EventArgs e)
+        {
+            if (!Controls.Contains(pnlPageKeyboard))
+            {
+                Controls.Remove(pnlGeneral);
+                ChangeButtonColor(btnGeneralSetting, false, true);
+                Controls.Add(pnlPageKeyboard);
+                ChangeButtonColor(btnKeyBoardSetting, true, true);
+            }
         }
     }
 }
