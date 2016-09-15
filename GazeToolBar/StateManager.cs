@@ -26,8 +26,13 @@ namespace GazeToolBar
         public static bool FixationRunning { get; set; }
         public static bool HasSelectedButtonColourBeenReset { get; set; }
         public static bool Scrolling { get; set; }
+<<<<<<< e63b78540281f131a7fcb58f236a55ef39066afd
 
 
+=======
+        public static bool ShortCutKeyPressed { get; set; }
+        
+>>>>>>> key press working, need to make it dynamic
     }
 
     public class StateManager
@@ -37,9 +42,15 @@ namespace GazeToolBar
         Form1 toolbar;
         ZoomLens zoomer;
         Point fixationPoint;
+<<<<<<< e63b78540281f131a7fcb58f236a55ef39066afd
         Corner corner;
         SystemState currentState;
         //optikey?
+=======
+
+        ShortcutKeyWorker shortCutKeyWorker;
+        //optikey
+>>>>>>> key press working, need to make it dynamic
 
         /*Things that need to change in other classes
          * Toolbar must raise the actionbuttonselected flag when an action button is selected
@@ -48,7 +59,7 @@ namespace GazeToolBar
          * StateManger needs to save the x,y from the zoomer and it also needs to know which action was to be performed (Form will raise the flag based on what action was selected)
          * */
 
-        public StateManager(Form1 Toolbar)
+        public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker)
         {
             toolbar = Toolbar;
 
@@ -66,6 +77,8 @@ namespace GazeToolBar
 
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
             corner = new Corner();
+
+            this.shortCutKeyWorker = shortCutKeyWorker;
 
             Run();
         }
@@ -104,6 +117,11 @@ namespace GazeToolBar
                         EnterWaitState();
                         //currentState = //SystemState.DisplayFeedback;
                         // SystemState.Wait;
+                           currentState = SystemState.Wait; //SystemState.DisplayFeedback;
+                    
+                    }else if(SystemFlags.ShortCutKeyPressed)
+                    {
+                        currentState = SystemState.Zooming;
                     }
                     break;
                 case SystemState.ActionButtonSelected:
@@ -213,10 +231,26 @@ namespace GazeToolBar
                     zoomer.determineDesktopLocation(fixationPoint, (int)(corner));
                     zoomer.TakeScreenShot();
                     zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
+
+
+                    fixationPoint = fixationWorker.getXY();
+
+                    if(SystemFlags.ShortCutKeyPressed)
+                    {
+                        fixationPoint = shortCutKeyWorker.GetXY();
+                        SystemFlags.ShortCutKeyPressed = false;
+                    }
+                    
+                    zoomer.CreateZoomLens(fixationPoint);
+                    
+
                     SystemFlags.Gaze = false;
                     SystemFlags.FixationRunning = false;
 
                     break;
+
+
+
                 case SystemState.ZoomWait:
                     if (!SystemFlags.FixationRunning)
                     {
