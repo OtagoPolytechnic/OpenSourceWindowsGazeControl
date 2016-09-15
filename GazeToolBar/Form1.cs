@@ -25,6 +25,7 @@ namespace GazeToolBar
         public StateManager stateManager;
 
         private Keyboardhook LowLevelKeyBoardHook;
+        private ShortcutKeyWorker shortCutKeyWorker;
 
         List<Panel> highlightPannerList;
 
@@ -87,6 +88,8 @@ namespace GazeToolBar
 
             LowLevelKeyBoardHook = new Keyboardhook();
 
+            shortCutKeyWorker = new ShortcutKeyWorker(LowLevelKeyBoardHook);
+
             LowLevelKeyBoardHook.OnKeyPressed += testHook;
             
             LowLevelKeyBoardHook.HookKeyboard();
@@ -100,7 +103,10 @@ namespace GazeToolBar
             {
                 Edge = AppBarEdges.Right;
             }
-            stateManager = new StateManager(this);
+
+
+
+            stateManager = new StateManager(this, shortCutKeyWorker);
             timer2.Enabled = true;
         }
 

@@ -25,6 +25,7 @@ namespace GazeToolBar
         public static bool FixationRunning { get; set; }
         public static bool HasSelectedButtonColourBeenReset { get; set; }
         public static bool Scrolling { get; set; }
+        public static bool ShortCutKeyPressed { get; set; }
         
     }
 
@@ -35,6 +36,8 @@ namespace GazeToolBar
         Form1 toolbar;
         ZoomLens zoomer;
         Point fixationPoint;
+
+        ShortcutKeyWorker shortCutKeyWorker;
         //optikey
 
         /*Things that need to change in other classes
@@ -44,7 +47,7 @@ namespace GazeToolBar
          * StateManger needs to save the x,y from the zoomer and it also needs to know which action was to be performed (Form will raise the flag based on what action was selected)
          * */
 
-        public StateManager(Form1 Toolbar)
+        public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker)
         {
             toolbar = Toolbar;
 
@@ -61,6 +64,8 @@ namespace GazeToolBar
             zoomer = new ZoomLens(fixationWorker);
 
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound );
+
+            this.shortCutKeyWorker = shortCutKeyWorker;
 
             Run();
         }
@@ -87,6 +92,9 @@ namespace GazeToolBar
                     {
                            currentState = //SystemState.DisplayFeedback;
                             SystemState.Wait;
+                    }else if(SystemFlags.ShortCutKeyPressed)
+                    {
+                        currentState = SystemState.Zooming;
                     }
                     break;
                 case SystemState.ActionButtonSelected:
@@ -195,11 +203,24 @@ namespace GazeToolBar
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
+
+
                     fixationPoint = fixationWorker.getXY();
+
+                    if(SystemFlags.ShortCutKeyPressed)
+                    {
+                        fixationPoint = shortCutKeyWorker.GetXY();
+                        SystemFlags.ShortCutKeyPressed = false;
+                    }
+                    
                     zoomer.CreateZoomLens(fixationPoint);
+                    
                     SystemFlags.Gaze = false;
                     SystemFlags.FixationRunning = false;
                     break;
+
+
+
                 case SystemState.ZoomWait:
                     if (!SystemFlags.FixationRunning)
                     {
