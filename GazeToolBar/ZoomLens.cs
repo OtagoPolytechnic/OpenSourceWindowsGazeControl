@@ -143,7 +143,9 @@ namespace GazeToolBar
             //check to see if the user actually fixated on the ZoomLens
             if (relativePoint.X < 0 || relativePoint.Y < 0 || relativePoint.X > this.Width || relativePoint.Y > this.Height)
             {
+
                 return new Point(-1, -1);//cheap hack. If it is out of bound at all, this will return -1, -1. The statemanager will cancel the zoom
+
             }
             return TranslateToDesktop(relativePoint.X, relativePoint.Y);
         }
