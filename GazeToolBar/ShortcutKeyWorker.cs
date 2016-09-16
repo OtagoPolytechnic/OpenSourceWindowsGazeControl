@@ -62,7 +62,7 @@ namespace GazeToolBar
 
         }
 
-
+        //returns the users current gaze.
         public Point GetXY()
         {
             return new Point((int)currentGazeLocationX, (int)currentGazeLocationY);
