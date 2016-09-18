@@ -30,7 +30,9 @@ namespace GazeToolBar
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
+            this.bhavSettingMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.btnAutoStart = new System.Windows.Forms.Button();
             this.btnChangeSide = new System.Windows.Forms.Button();
             this.lblSelection = new System.Windows.Forms.Label();
@@ -50,9 +52,6 @@ namespace GazeToolBar
             this.label2 = new System.Windows.Forms.Label();
             this.lblIndicationLeftOrRight = new System.Windows.Forms.Label();
             this.panelOther = new System.Windows.Forms.Panel();
-            this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.tabPageGeneral = new System.Windows.Forms.TabPage();
-            this.tabPageKeyboard = new System.Windows.Forms.TabPage();
             this.panelGazeTypingSpeed = new System.Windows.Forms.Panel();
             this.trackBarGazeTypingSpeed = new System.Windows.Forms.TrackBar();
             this.lblGazeTypingSpeed = new System.Windows.Forms.Label();
@@ -75,20 +74,23 @@ namespace GazeToolBar
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panelSaveAndCancel = new System.Windows.Forms.Panel();
+            this.pnlPageKeyboard = new System.Windows.Forms.Panel();
+            this.pnlGeneral = new System.Windows.Forms.Panel();
+            this.btnGeneralSetting = new System.Windows.Forms.Button();
+            this.btnKeyBoardSetting = new System.Windows.Forms.Button();
             this.panelSelection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPrecision)).BeginInit();
             this.panelPrecision.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.panelSpeed.SuspendLayout();
             this.panelOther.SuspendLayout();
-            this.tabControlMain.SuspendLayout();
-            this.tabPageGeneral.SuspendLayout();
-            this.tabPageKeyboard.SuspendLayout();
             this.panelGazeTypingSpeed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGazeTypingSpeed)).BeginInit();
             this.panelSize.SuspendLayout();
             this.panelLanguage.SuspendLayout();
             this.panelSaveAndCancel.SuspendLayout();
+            this.pnlPageKeyboard.SuspendLayout();
+            this.pnlGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAutoStart
@@ -96,6 +98,7 @@ namespace GazeToolBar
             this.btnAutoStart.BackColor = System.Drawing.Color.Black;
             this.btnAutoStart.FlatAppearance.BorderSize = 5;
             this.btnAutoStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAutoStart.ForeColor = System.Drawing.Color.White;
             this.btnAutoStart.Location = new System.Drawing.Point(287, 66);
             this.btnAutoStart.Name = "btnAutoStart";
             this.btnAutoStart.Size = new System.Drawing.Size(55, 55);
@@ -108,6 +111,7 @@ namespace GazeToolBar
             this.btnChangeSide.BackColor = System.Drawing.Color.Black;
             this.btnChangeSide.FlatAppearance.BorderSize = 5;
             this.btnChangeSide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChangeSide.ForeColor = System.Drawing.Color.White;
             this.btnChangeSide.Location = new System.Drawing.Point(157, 66);
             this.btnChangeSide.Name = "btnChangeSide";
             this.btnChangeSide.Size = new System.Drawing.Size(55, 55);
@@ -131,6 +135,7 @@ namespace GazeToolBar
             this.btnGaze.BackColor = System.Drawing.Color.Black;
             this.btnGaze.FlatAppearance.BorderSize = 5;
             this.btnGaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGaze.ForeColor = System.Drawing.Color.White;
             this.btnGaze.Location = new System.Drawing.Point(156, 70);
             this.btnGaze.Name = "btnGaze";
             this.btnGaze.Size = new System.Drawing.Size(55, 55);
@@ -143,6 +148,7 @@ namespace GazeToolBar
             this.btnSwitch.BackColor = System.Drawing.Color.Black;
             this.btnSwitch.FlatAppearance.BorderSize = 5;
             this.btnSwitch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSwitch.ForeColor = System.Drawing.Color.White;
             this.btnSwitch.Location = new System.Drawing.Point(255, 70);
             this.btnSwitch.Name = "btnSwitch";
             this.btnSwitch.Size = new System.Drawing.Size(55, 55);
@@ -179,7 +185,7 @@ namespace GazeToolBar
             this.panelSelection.Controls.Add(this.lblSelection);
             this.panelSelection.Controls.Add(this.lblGaze);
             this.panelSelection.Controls.Add(this.btnGaze);
-            this.panelSelection.Location = new System.Drawing.Point(6, 6);
+            this.panelSelection.Location = new System.Drawing.Point(3, 3);
             this.panelSelection.Name = "panelSelection";
             this.panelSelection.Size = new System.Drawing.Size(341, 146);
             this.panelSelection.TabIndex = 10;
@@ -209,7 +215,7 @@ namespace GazeToolBar
             // 
             this.panelPrecision.Controls.Add(this.trackBarPrecision);
             this.panelPrecision.Controls.Add(this.lblPrecision);
-            this.panelPrecision.Location = new System.Drawing.Point(6, 170);
+            this.panelPrecision.Location = new System.Drawing.Point(3, 167);
             this.panelPrecision.Name = "panelPrecision";
             this.panelPrecision.Size = new System.Drawing.Size(1243, 115);
             this.panelPrecision.TabIndex = 13;
@@ -240,7 +246,7 @@ namespace GazeToolBar
             // 
             this.panelSpeed.Controls.Add(this.trackBarSpeed);
             this.panelSpeed.Controls.Add(this.lblSpeed);
-            this.panelSpeed.Location = new System.Drawing.Point(6, 303);
+            this.panelSpeed.Location = new System.Drawing.Point(3, 300);
             this.panelSpeed.Name = "panelSpeed";
             this.panelSpeed.Size = new System.Drawing.Size(1243, 118);
             this.panelSpeed.TabIndex = 16;
@@ -297,60 +303,17 @@ namespace GazeToolBar
             this.panelOther.Controls.Add(this.label2);
             this.panelOther.Controls.Add(this.lblOther);
             this.panelOther.Controls.Add(this.lblPosition);
-            this.panelOther.Location = new System.Drawing.Point(6, 443);
+            this.panelOther.Location = new System.Drawing.Point(3, 440);
             this.panelOther.Name = "panelOther";
             this.panelOther.Size = new System.Drawing.Size(421, 192);
             this.panelOther.TabIndex = 21;
-            // 
-            // tabControlMain
-            // 
-            this.tabControlMain.Controls.Add(this.tabPageGeneral);
-            this.tabControlMain.Controls.Add(this.tabPageKeyboard);
-            this.tabControlMain.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControlMain.Font = new System.Drawing.Font("SimSun", 19F);
-            this.tabControlMain.Location = new System.Drawing.Point(0, 0);
-            this.tabControlMain.Multiline = true;
-            this.tabControlMain.Name = "tabControlMain";
-            this.tabControlMain.SelectedIndex = 0;
-            this.tabControlMain.Size = new System.Drawing.Size(1610, 845);
-            this.tabControlMain.TabIndex = 22;
-            this.tabControlMain.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControlMain_DrawItem);
-            // 
-            // tabPageGeneral
-            // 
-            this.tabPageGeneral.BackColor = System.Drawing.Color.Black;
-            this.tabPageGeneral.Controls.Add(this.panelSelection);
-            this.tabPageGeneral.Controls.Add(this.panelOther);
-            this.tabPageGeneral.Controls.Add(this.panelPrecision);
-            this.tabPageGeneral.Controls.Add(this.panelSpeed);
-            this.tabPageGeneral.Font = new System.Drawing.Font("SimSun", 19F);
-            this.tabPageGeneral.ForeColor = System.Drawing.Color.White;
-            this.tabPageGeneral.Location = new System.Drawing.Point(4, 48);
-            this.tabPageGeneral.Name = "tabPageGeneral";
-            this.tabPageGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGeneral.Size = new System.Drawing.Size(1602, 793);
-            this.tabPageGeneral.TabIndex = 0;
-            this.tabPageGeneral.Text = "   General   ";
-            // 
-            // tabPageKeyboard
-            // 
-            this.tabPageKeyboard.BackColor = System.Drawing.Color.Black;
-            this.tabPageKeyboard.Controls.Add(this.panelGazeTypingSpeed);
-            this.tabPageKeyboard.Controls.Add(this.panelSize);
-            this.tabPageKeyboard.Controls.Add(this.panelLanguage);
-            this.tabPageKeyboard.ForeColor = System.Drawing.Color.White;
-            this.tabPageKeyboard.Location = new System.Drawing.Point(4, 48);
-            this.tabPageKeyboard.Name = "tabPageKeyboard";
-            this.tabPageKeyboard.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageKeyboard.Size = new System.Drawing.Size(1602, 793);
-            this.tabPageKeyboard.TabIndex = 1;
-            this.tabPageKeyboard.Text = "   Keyboard   ";
             // 
             // panelGazeTypingSpeed
             // 
             this.panelGazeTypingSpeed.Controls.Add(this.trackBarGazeTypingSpeed);
             this.panelGazeTypingSpeed.Controls.Add(this.lblGazeTypingSpeed);
-            this.panelGazeTypingSpeed.Location = new System.Drawing.Point(8, 479);
+            this.panelGazeTypingSpeed.ForeColor = System.Drawing.Color.White;
+            this.panelGazeTypingSpeed.Location = new System.Drawing.Point(14, 472);
             this.panelGazeTypingSpeed.Name = "panelGazeTypingSpeed";
             this.panelGazeTypingSpeed.Size = new System.Drawing.Size(1057, 105);
             this.panelGazeTypingSpeed.TabIndex = 18;
@@ -385,7 +348,8 @@ namespace GazeToolBar
             this.panelSize.Controls.Add(this.lblSizeSmall);
             this.panelSize.Controls.Add(this.lblLarge);
             this.panelSize.Controls.Add(this.btnSizeLarge);
-            this.panelSize.Location = new System.Drawing.Point(122, 233);
+            this.panelSize.ForeColor = System.Drawing.Color.White;
+            this.panelSize.Location = new System.Drawing.Point(128, 226);
             this.panelSize.Name = "panelSize";
             this.panelSize.Size = new System.Drawing.Size(929, 149);
             this.panelSize.TabIndex = 15;
@@ -482,7 +446,8 @@ namespace GazeToolBar
             this.panelLanguage.Controls.Add(this.btnWordPredictionOnOff);
             this.panelLanguage.Controls.Add(this.lblCurrentLanguage);
             this.panelLanguage.Controls.Add(this.lblWordPrediction);
-            this.panelLanguage.Location = new System.Drawing.Point(122, 16);
+            this.panelLanguage.ForeColor = System.Drawing.Color.White;
+            this.panelLanguage.Location = new System.Drawing.Point(128, 9);
             this.panelLanguage.Name = "panelLanguage";
             this.panelLanguage.Size = new System.Drawing.Size(929, 129);
             this.panelLanguage.TabIndex = 6;
@@ -514,6 +479,7 @@ namespace GazeToolBar
             // 
             this.lblLanguage.AutoSize = true;
             this.lblLanguage.Font = new System.Drawing.Font("SimSun", 12F);
+            this.lblLanguage.ForeColor = System.Drawing.Color.White;
             this.lblLanguage.Location = new System.Drawing.Point(15, 64);
             this.lblLanguage.Name = "lblLanguage";
             this.lblLanguage.Size = new System.Drawing.Size(106, 24);
@@ -588,14 +554,63 @@ namespace GazeToolBar
             this.panelSaveAndCancel.Size = new System.Drawing.Size(546, 100);
             this.panelSaveAndCancel.TabIndex = 25;
             // 
+            // pnlPageKeyboard
+            // 
+            this.pnlPageKeyboard.Controls.Add(this.panelLanguage);
+            this.pnlPageKeyboard.Controls.Add(this.panelGazeTypingSpeed);
+            this.pnlPageKeyboard.Controls.Add(this.panelSize);
+            this.pnlPageKeyboard.Location = new System.Drawing.Point(12, 84);
+            this.pnlPageKeyboard.Name = "pnlPageKeyboard";
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(1147, 589);
+            this.pnlPageKeyboard.TabIndex = 26;
+            // 
+            // pnlGeneral
+            // 
+            this.pnlGeneral.Controls.Add(this.panelSelection);
+            this.pnlGeneral.Controls.Add(this.panelSpeed);
+            this.pnlGeneral.Controls.Add(this.panelOther);
+            this.pnlGeneral.Controls.Add(this.panelPrecision);
+            this.pnlGeneral.Location = new System.Drawing.Point(12, 84);
+            this.pnlGeneral.Name = "pnlGeneral";
+            this.pnlGeneral.Size = new System.Drawing.Size(1260, 648);
+            this.pnlGeneral.TabIndex = 27;
+            // 
+            // btnGeneralSetting
+            // 
+            this.btnGeneralSetting.BackColor = System.Drawing.Color.Black;
+            this.btnGeneralSetting.FlatAppearance.BorderSize = 5;
+            this.btnGeneralSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGeneralSetting.ForeColor = System.Drawing.Color.White;
+            this.btnGeneralSetting.Location = new System.Drawing.Point(12, 12);
+            this.btnGeneralSetting.Name = "btnGeneralSetting";
+            this.btnGeneralSetting.Size = new System.Drawing.Size(220, 66);
+            this.btnGeneralSetting.TabIndex = 28;
+            this.btnGeneralSetting.Text = "General Setting";
+            this.btnGeneralSetting.UseVisualStyleBackColor = false;
+            this.btnGeneralSetting.Click += new System.EventHandler(this.btnGeneralSetting_Click);
+            // 
+            // btnKeyBoardSetting
+            // 
+            this.btnKeyBoardSetting.FlatAppearance.BorderSize = 5;
+            this.btnKeyBoardSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnKeyBoardSetting.ForeColor = System.Drawing.Color.White;
+            this.btnKeyBoardSetting.Location = new System.Drawing.Point(238, 12);
+            this.btnKeyBoardSetting.Name = "btnKeyBoardSetting";
+            this.btnKeyBoardSetting.Size = new System.Drawing.Size(220, 66);
+            this.btnKeyBoardSetting.TabIndex = 29;
+            this.btnKeyBoardSetting.Text = "Keyboard Setting";
+            this.btnKeyBoardSetting.UseVisualStyleBackColor = true;
+            this.btnKeyBoardSetting.Click += new System.EventHandler(this.btnKeyBoardSetting_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1634, 1053);
+            this.ClientSize = new System.Drawing.Size(1756, 1023);
+            this.Controls.Add(this.btnKeyBoardSetting);
+            this.Controls.Add(this.btnGeneralSetting);
             this.Controls.Add(this.panelSaveAndCancel);
-            this.Controls.Add(this.tabControlMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -613,9 +628,6 @@ namespace GazeToolBar
             this.panelSpeed.PerformLayout();
             this.panelOther.ResumeLayout(false);
             this.panelOther.PerformLayout();
-            this.tabControlMain.ResumeLayout(false);
-            this.tabPageGeneral.ResumeLayout(false);
-            this.tabPageKeyboard.ResumeLayout(false);
             this.panelGazeTypingSpeed.ResumeLayout(false);
             this.panelGazeTypingSpeed.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarGazeTypingSpeed)).EndInit();
@@ -624,6 +636,8 @@ namespace GazeToolBar
             this.panelLanguage.ResumeLayout(false);
             this.panelLanguage.PerformLayout();
             this.panelSaveAndCancel.ResumeLayout(false);
+            this.pnlPageKeyboard.ResumeLayout(false);
+            this.pnlGeneral.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -649,9 +663,6 @@ namespace GazeToolBar
         private Label label2;
         private Label lblIndicationLeftOrRight;
         private Panel panelOther;
-        private TabPage tabPageGeneral;
-        private TabPage tabPageKeyboard;
-        private TabControl tabControlMain;
         private Label lblLarge;
         private Button btnSizeLarge;
         private Label lblSizeSmall;
@@ -675,5 +686,9 @@ namespace GazeToolBar
         private Button btnCancel;
         private Panel panelSaveAndCancel;
         private EyeXFramework.Forms.BehaviorMap bhavSettingMap;
+        private Panel pnlPageKeyboard;
+        private Panel pnlGeneral;
+        private Button btnGeneralSetting;
+        private Button btnKeyBoardSetting;
     }
 }

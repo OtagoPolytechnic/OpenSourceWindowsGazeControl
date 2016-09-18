@@ -75,7 +75,7 @@ namespace GazeToolBar
 
         private void menuItemExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         public MenuItem MenuItemStartOnOff { get { return menuItemStartOnOff; } }
@@ -191,6 +191,11 @@ namespace GazeToolBar
 
                 spacerBuffer += screenSectionSize;
             }
+        }
+        public System.Windows.Forms.NotifyIcon NotifyIcon
+        {
+            get { return notifyIcon; }
+            set { notifyIcon = value; }
         }
     }
 }
