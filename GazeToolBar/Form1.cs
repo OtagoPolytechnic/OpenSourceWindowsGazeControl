@@ -197,5 +197,6 @@ namespace GazeToolBar
             get { return notifyIcon; }
             set { notifyIcon = value; }
         }
+
     }
 }
