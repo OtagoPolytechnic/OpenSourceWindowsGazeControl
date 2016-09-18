@@ -17,7 +17,6 @@ namespace GazeToolBar
         //Fields
         GazePointDataStream gazeStream;
 
-
         double currentGazeLocationX;
         double currentGazeLocationY;
 
@@ -40,14 +39,15 @@ namespace GazeToolBar
 
         }
 
-
+        //Test functionality, tests ok, next step is to allow the user to program in and assign different keys to different gazetoolbar functions via the settings form.
         public void RunKeyFunction(object o, HookedKeyboardEventArgs pressedKey)
         {
             switch(pressedKey.KeyPressed){
                 case Key.F2:
-                    //SystemFlags.actionButtonSelected = true;//raise action button flag
+                    //signal to state manager the action to be performed.
                     SystemFlags.ShortCutKeyPressed = true;
                     SystemFlags.actionToBePerformed = ActionToBePerformed.LeftClick;
+
             break;
 
             }
@@ -56,13 +56,13 @@ namespace GazeToolBar
 
         private void updateGazeCoodinates(object o, GazePointEventArgs currentGaze)
         {
-            //Save the users gaze to a field that has global access in this class.
+            //Save the users current gaze location.
             currentGazeLocationX = currentGaze.X;
             currentGazeLocationY = currentGaze.Y;
 
         }
 
-        //returns the users current gaze.
+        //returns the users current gaze as a point.
         public Point GetXY()
         {
             return new Point((int)currentGazeLocationX, (int)currentGazeLocationY);

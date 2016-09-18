@@ -24,6 +24,7 @@ namespace GazeToolBar
         private MenuItem settingsItem;
         public StateManager stateManager;
 
+        //Allocate memory location for KeyboardHook and worker.
         private Keyboardhook LowLevelKeyBoardHook;
         private ShortcutKeyWorker shortCutKeyWorker;
 
@@ -86,12 +87,12 @@ namespace GazeToolBar
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            //Instantiate keyboard hook and pass into worker class.
             LowLevelKeyBoardHook = new Keyboardhook();
 
             shortCutKeyWorker = new ShortcutKeyWorker(LowLevelKeyBoardHook);
 
-            LowLevelKeyBoardHook.OnKeyPressed += testHook;
-            
+            //Start monitoring key presses.
             LowLevelKeyBoardHook.HookKeyboard();
 
 
@@ -105,8 +106,9 @@ namespace GazeToolBar
             }
 
 
-
+            //Instantiate stare manager, pass shortCutKey working in.
             stateManager = new StateManager(this, shortCutKeyWorker);
+
             timer2.Enabled = true;
         }
 
@@ -200,13 +202,9 @@ namespace GazeToolBar
             }
         }
 
-        public void testHook(object o, HookedKeyboardEventArgs e)
-        {
-            Console.WriteLine(e.KeyPressed.ToString());
-        }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
+        {//Remove KeyboardHook on closing form.
             LowLevelKeyBoardHook.UnHookKeyboard();
         }
 
