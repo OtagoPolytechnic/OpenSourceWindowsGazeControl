@@ -26,13 +26,8 @@ namespace GazeToolBar
         public static bool FixationRunning { get; set; }
         public static bool HasSelectedButtonColourBeenReset { get; set; }
         public static bool Scrolling { get; set; }
-<<<<<<< e63b78540281f131a7fcb58f236a55ef39066afd
-
-
-=======
         public static bool ShortCutKeyPressed { get; set; }
         
->>>>>>> key press working, need to make it dynamic
     }
 
     public class StateManager
@@ -42,15 +37,13 @@ namespace GazeToolBar
         Form1 toolbar;
         ZoomLens zoomer;
         Point fixationPoint;
-<<<<<<< e63b78540281f131a7fcb58f236a55ef39066afd
+
         Corner corner;
         SystemState currentState;
         //optikey?
-=======
 
         ShortcutKeyWorker shortCutKeyWorker;
-        //optikey
->>>>>>> key press working, need to make it dynamic
+
 
         /*Things that need to change in other classes
          * Toolbar must raise the actionbuttonselected flag when an action button is selected
@@ -80,6 +73,8 @@ namespace GazeToolBar
 
             this.shortCutKeyWorker = shortCutKeyWorker;
 
+            this.shortCutKeyWorker = shortCutKeyWorker;
+
             Run();
         }
         public void Run()
@@ -105,6 +100,7 @@ namespace GazeToolBar
             {
                 case SystemState.Wait:
                     Console.WriteLine("Wait State");
+
                    // Console.WriteLine("Wait State");
                     // moved to apply action zoomer.ResetZoomLens();
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
@@ -118,7 +114,6 @@ namespace GazeToolBar
                         //currentState = //SystemState.DisplayFeedback;
                         // SystemState.Wait;
                            currentState = SystemState.Wait; //SystemState.DisplayFeedback;
-                    
                     }else if(SystemFlags.ShortCutKeyPressed)
                     {
                         currentState = SystemState.Zooming;
@@ -243,7 +238,6 @@ namespace GazeToolBar
                     
                     zoomer.CreateZoomLens(fixationPoint);
                     
-
                     SystemFlags.Gaze = false;
                     SystemFlags.FixationRunning = false;
 

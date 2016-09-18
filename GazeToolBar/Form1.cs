@@ -202,25 +202,18 @@ namespace GazeToolBar
             }
         }
 
-<<<<<<< 17de44b55a22cecc5a564905e6c3eac06f7ed316
 
         public System.Windows.Forms.NotifyIcon NotifyIcon
         {
             get { return notifyIcon; }
             set { notifyIcon = value; }
         }
-=======
->>>>>>> added some comments
-
-
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {//Remove KeyboardHook on closing form.
             LowLevelKeyBoardHook.UnHookKeyboard();
         }
 
-
- 
 
     }
 }
