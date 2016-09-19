@@ -14,9 +14,11 @@ namespace GazeToolBar
     public partial class ZoomLens : Form
     {
         const int ZOOMLEVEL = 3;// this is controls how far the lens will zoom in
-        Graphics graphics;
-
-        Graphics highLightGraphics;
+        Graphics screenshotGraphics;
+        Graphics highLightGraphicsOffScreen;
+        Graphics mainCanvas;
+        Bitmap offscreenBitmap;
+            
 
         Bitmap bmpScreenshot;
         delegate void SetFormDelegate(int x, int y);
@@ -30,29 +32,27 @@ namespace GazeToolBar
         {
             InitializeComponent();
 
-            
-          
             this.Width = 500;//setting the lens size
             this.Height = 500;
+
             Console.WriteLine("This.width = " + this.Width);
             Console.WriteLine("This.width = " + this.Height);
 
-            highLightGraphics = this.CreateGraphics();
+            offscreenBitmap = new Bitmap(this.Width, this.Height);
+
+            highLightGraphicsOffScreen = Graphics.FromImage(offscreenBitmap);
+
+            mainCanvas = this.CreateGraphics();
 
             bmpScreenshot = new Bitmap(this.Width / ZOOMLEVEL, this.Height / ZOOMLEVEL);//set bitmap to same size as the lens
-            graphics = this.CreateGraphics();
-            graphics = Graphics.FromImage(bmpScreenshot);
 
-
-
-            pictureBox1.Width = 20;//set picturebox to same size as form
-            pictureBox1.Height = 20;
-           // pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
+            screenshotGraphics = Graphics.FromImage(bmpScreenshot);
 
             this.FormBorderStyle = FormBorderStyle.None;
+            
             fixdet = FixDet;
 
-            gazeHighlight = new GazeHighlight(FixDet, highLightGraphics, EHighlightShaderType.RedToGreen, this);
+            gazeHighlight = new GazeHighlight(FixDet, highLightGraphicsOffScreen, EHighlightShaderType.RedToGreen, this);
 
             
         }
@@ -72,19 +72,25 @@ namespace GazeToolBar
             lensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) *1.25);
 
             Size zoomSize = new Size(this.Size.Width /2 , this.Size.Height / 2);
-            graphics.CopyFromScreen(lensPoint.X + this.Size.Width / 4, lensPoint.Y + this.Size.Height / 4, empty.X, empty.Y, zoomSize, CopyPixelOperation.SourceCopy);
 
-            bmpScreenshot.Save("bmpScreenshot.bmp");
+            screenshotGraphics.CopyFromScreen(lensPoint.X + this.Size.Width / 4, lensPoint.Y + this.Size.Height / 4, empty.X, empty.Y, zoomSize, CopyPixelOperation.SourceCopy);
+
+            //bmpScreenshot.Save("bmpScreenshot.bmp");
             //pictureBox1.Image = bmpScreenshot;
+
             this.TopMost = true;
+            
             DrawTimer.Start();
+
             Application.DoEvents();
         }
+
         public void ResetZoomLens()
         {
             DrawTimer.Stop();
             this.Hide();
         }
+
         public Point TranslateGazePoint(Point fixationPoint)
         {
             Point relativePoint = this.PointToClient(fixationPoint);
@@ -99,16 +105,7 @@ namespace GazeToolBar
             return TranslateToDesktop(relativePoint.X, relativePoint.Y);
         }
 
-        public Bitmap Zoom(Bitmap bmpScreenshot)//old method not needed for magnify version
-        {
-            //RectangleF destinationRect = new RectangleF(150, 20, 1.3f * bmpScreenshot.Width, 1.3f * bmpScreenshot.Height);
-            RectangleF cropArea = new RectangleF(0, 0, .5f * bmpScreenshot.Width, .5f * bmpScreenshot.Height);
-
-
-            //Rectangle cropArea = new Rectangle(ZOOMLEVEL, ZOOMLEVEL, bmpScreenshot.Width - (ZOOMLEVEL * 2), bmpScreenshot.Height - (ZOOMLEVEL * 2));
-            Bitmap bmpImage = new Bitmap(bmpScreenshot);
-            return bmpImage.Clone(cropArea, bmpImage.PixelFormat);
-        }
+        
         public Point TranslateToDesktop(int x, int y)//This method translate on form coordinates to desktop coordinates
         {
             Point returnPoint = new Point();
@@ -131,13 +128,13 @@ namespace GazeToolBar
 
         private void DrawTimer_Tick(object sender, EventArgs e)
         {
-            highLightGraphics.DrawImage(bmpScreenshot, 0, 0);
-            //graphics.Clear(Color.White);
+            highLightGraphicsOffScreen.DrawImage(bmpScreenshot, 0, 0, this.Width, this.Height);
 
             gazeHighlight.drawHightlight();
-            Application.DoEvents();
 
-            //graphics.FillEllipse(new SolidBrush(Color.Black), 231, 240, 20, 20);
+            mainCanvas.DrawImage(offscreenBitmap, 0, 0);
+
+           // Application.DoEvents();
 
         }
     }
