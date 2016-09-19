@@ -32,11 +32,12 @@ namespace GazeToolBar
 
             bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSettingClick) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnKeyBoardSetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
+            
         }
 
         private void OntrackBarGazeTypingSpeed_Scroll(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void OnbtnSoundFeedback_Click(object sender, GazeAwareEventArgs e)
@@ -56,12 +57,13 @@ namespace GazeToolBar
 
         private void OntrackBarSpeed_Scroll(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            //trackBarSpeed.
+            //throw new NotImplementedException();
         }
 
         private void OntrackBarPrecision_Scroll(object sender, GazeAwareEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void OnbtnSwitch_Click(object sender, GazeAwareEventArgs e)
