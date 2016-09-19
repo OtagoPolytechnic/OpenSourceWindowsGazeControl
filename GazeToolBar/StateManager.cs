@@ -26,6 +26,7 @@ namespace GazeToolBar
         public static bool FixationRunning { get; set; }
         public static bool HasSelectedButtonColourBeenReset { get; set; }
         public static bool Scrolling { get; set; }
+        public static bool ShortCutKeyPressed {get; set;}
 
 
     }
@@ -39,6 +40,9 @@ namespace GazeToolBar
         Point fixationPoint;
         Corner corner;
         SystemState currentState;
+
+        ShortcutKeyWorker shortCutKeyWorker;
+
         //optikey?
 
         /*Things that need to change in other classes
@@ -48,7 +52,7 @@ namespace GazeToolBar
          * StateManger needs to save the x,y from the zoomer and it also needs to know which action was to be performed (Form will raise the flag based on what action was selected)
          * */
 
-        public StateManager(Form1 Toolbar)
+        public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker)
         {
             toolbar = Toolbar;
 
@@ -66,6 +70,8 @@ namespace GazeToolBar
 
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
             corner = new Corner();
+
+            this.shortCutKeyWorker = shortCutKeyWorker;
 
             Run();
         }
@@ -102,6 +108,9 @@ namespace GazeToolBar
                         EnterWaitState();
                         //currentState = //SystemState.DisplayFeedback;
                         // SystemState.Wait;
+                    }else if(SystemFlags.ShortCutKeyPressed)
+                    {
+                        currentState = SystemState.Zooming;
                     }
                     break;
                 case SystemState.ActionButtonSelected:
@@ -206,7 +215,18 @@ namespace GazeToolBar
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
-                    fixationPoint = fixationWorker.getXY();//get the location the user looked
+
+                    if(SystemFlags.ShortCutKeyPressed)
+                    {
+                        fixationPoint = shortCutKeyWorker.GetXY();
+                        SystemFlags.ShortCutKeyPressed = false;
+                    }else{
+
+                        fixationPoint = fixationWorker.getXY();//get the location the user looked
+
+                    }
+
+                    
                     corner = (Corner)zoomer.checkCorners(fixationPoint);
                     zoomer.determineDesktopLocation(fixationPoint, (int)(corner));
                     zoomer.TakeScreenShot();

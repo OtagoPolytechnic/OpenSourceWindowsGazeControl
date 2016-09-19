@@ -212,7 +212,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(120, 1092);
+            this.ClientSize = new System.Drawing.Size(120, 780);
             this.ControlBox = false;
             this.Controls.Add(this.pnlHighLightDragAndDrop);
             this.Controls.Add(this.pnlHighLightKeyboard);
@@ -229,6 +229,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnlHighLightDragAndDrop.ResumeLayout(false);
             this.pnlHighLightKeyboard.ResumeLayout(false);

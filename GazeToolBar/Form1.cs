@@ -24,6 +24,10 @@ namespace GazeToolBar
         private MenuItem settingsItem;
         public StateManager stateManager;
 
+        //Allocate memory location for KeyboardHook and worker.
+        private Keyboardhook LowLevelKeyBoardHook;
+        private ShortcutKeyWorker shortCutKeyWorker;
+
         List<Panel> highlightPannerList;
 
         public Form1()
@@ -82,6 +86,15 @@ namespace GazeToolBar
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            //Instantiate keyboard hook and pass into worker class.
+            LowLevelKeyBoardHook = new Keyboardhook();
+
+            shortCutKeyWorker = new ShortcutKeyWorker(LowLevelKeyBoardHook);
+
+            //Start monitoring key presses.
+            LowLevelKeyBoardHook.HookKeyboard();
+
             if(Program.readSettings.position == "left")
             {
                 Edge = AppBarEdges.Left;
@@ -90,7 +103,7 @@ namespace GazeToolBar
             {
                 Edge = AppBarEdges.Right;
             }
-            stateManager = new StateManager(this);
+            stateManager = new StateManager(this, shortCutKeyWorker);
             timer2.Enabled = true;
         }
 
@@ -196,6 +209,12 @@ namespace GazeToolBar
         {
             get { return notifyIcon; }
             set { notifyIcon = value; }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Remove KeyboardHook on closing form.
+            LowLevelKeyBoardHook.UnHookKeyboard();
         }
 
     }
