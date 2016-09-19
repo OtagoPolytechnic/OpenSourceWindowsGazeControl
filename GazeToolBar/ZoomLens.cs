@@ -17,11 +17,12 @@ namespace GazeToolBar
         Graphics screenshotGraphics;
         Graphics highLightGraphicsOffScreen;
         Graphics mainCanvas;
-        Bitmap offscreenBitmap;
-            
-
+        Bitmap offScreenBitmap;
         Bitmap bmpScreenshot;
+
+        
         delegate void SetFormDelegate(int x, int y);
+
         FixationDetection fixdet;
 
         GazeHighlight gazeHighlight;
@@ -38,9 +39,9 @@ namespace GazeToolBar
             Console.WriteLine("This.width = " + this.Width);
             Console.WriteLine("This.width = " + this.Height);
 
-            offscreenBitmap = new Bitmap(this.Width, this.Height);
+            offScreenBitmap = new Bitmap(this.Width, this.Height);
 
-            highLightGraphicsOffScreen = Graphics.FromImage(offscreenBitmap);
+            highLightGraphicsOffScreen = Graphics.FromImage(offScreenBitmap);
 
             mainCanvas = this.CreateGraphics();
 
@@ -74,9 +75,6 @@ namespace GazeToolBar
             Size zoomSize = new Size(this.Size.Width /2 , this.Size.Height / 2);
 
             screenshotGraphics.CopyFromScreen(lensPoint.X + this.Size.Width / 4, lensPoint.Y + this.Size.Height / 4, empty.X, empty.Y, zoomSize, CopyPixelOperation.SourceCopy);
-
-            //bmpScreenshot.Save("bmpScreenshot.bmp");
-            //pictureBox1.Image = bmpScreenshot;
 
             this.TopMost = true;
             
@@ -132,9 +130,7 @@ namespace GazeToolBar
 
             gazeHighlight.drawHightlight();
 
-            mainCanvas.DrawImage(offscreenBitmap, 0, 0);
-
-           // Application.DoEvents();
+            mainCanvas.DrawImage(offScreenBitmap, 0, 0);
 
         }
     }
