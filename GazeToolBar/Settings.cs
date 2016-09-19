@@ -14,6 +14,8 @@ namespace GazeToolBar
         private bool[] onOff;
         private GazeOrSwitch gazeOrSwitch;
         private Sizes sizes;
+        private bool pnlKeyboardIsShow;
+        private bool pnlGeneralIsShow;
 
         public enum GazeOrSwitch
         {
@@ -30,7 +32,7 @@ namespace GazeToolBar
         public Settings(Form1 form1)
         {
             InitializeComponent();
-            Controls.Add(pnlGeneral);
+            pnlPageKeyboard.Hide();
             ChangeButtonColor(btnGeneralSetting, true, true);
             this.form1 = form1;
             //This code make setting form full screen
@@ -45,6 +47,8 @@ namespace GazeToolBar
             {
                 onOff[i] = false;
             }
+            pnlGeneralIsShow = true;
+            pnlKeyboardIsShow = false;
         }
 
         private void btnChangeSide_Click(object sender, EventArgs e)
@@ -332,29 +336,37 @@ namespace GazeToolBar
             {
                 OnTheRight = true;
             }
-
         }
 
         private void btnGeneralSetting_Click(object sender, EventArgs e)
         {
-            if (!Controls.Contains(pnlGeneral))
+            if (!pnlGeneralIsShow)
             {
-                Controls.Remove(pnlPageKeyboard);
+                pnlPageKeyboard.Hide();
                 ChangeButtonColor(btnKeyBoardSetting, false, true);
-                Controls.Add(pnlGeneral);
+                pnlGeneral.Show();
                 ChangeButtonColor(btnGeneralSetting, true, true);
+                pnlKeyboardIsShow = false;
+                pnlGeneralIsShow = true;
             }
         }
 
         private void btnKeyBoardSetting_Click(object sender, EventArgs e)
         {
-            if (!Controls.Contains(pnlPageKeyboard))
+            if (!pnlKeyboardIsShow)
             {
-                Controls.Remove(pnlGeneral);
+                pnlGeneral.Hide();
                 ChangeButtonColor(btnGeneralSetting, false, true);
-                Controls.Add(pnlPageKeyboard);
+                pnlPageKeyboard.Show();
                 ChangeButtonColor(btnKeyBoardSetting, true, true);
+                pnlKeyboardIsShow = true;
+                pnlGeneralIsShow = false;
             }
+        }
+
+        private void Settings_Shown(object sender, EventArgs e)
+        {
+            connectBehaveMap();
         }
     }
 }
