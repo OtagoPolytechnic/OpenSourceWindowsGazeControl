@@ -617,6 +617,7 @@ namespace GazeToolBar
             this.Controls.Add(this.btnGeneralSetting);
             this.Controls.Add(this.panelSaveAndCancel);
             this.Controls.Add(this.pnlGeneral);
+            this.Controls.Add(this.pnlPageKeyboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
