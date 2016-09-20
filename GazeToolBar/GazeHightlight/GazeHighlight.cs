@@ -16,7 +16,7 @@ namespace GazeToolBar
 
         Graphics canvas;
         int fixationPercent;
-        int transparentValue = 100;
+        int transparentValue = 50;
         IGazeHighlightShader gazeShader;
         GazeHighlightShaderFactory shaderMachine;
         Point currentGaze;
@@ -30,8 +30,8 @@ namespace GazeToolBar
             lensForm = LensForm;
 
             fixationWorker.currentProgress += setPercent;
-            
-            gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+
+            gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);//GazePointDataMode.LightlyFiltered);
 
             gazeStream.Next += setCurrentGaze;
             
