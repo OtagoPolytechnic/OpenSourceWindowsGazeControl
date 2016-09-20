@@ -22,6 +22,7 @@ namespace GazeToolBar
         public static readonly Color SelectedColor = Color.White;
         public static readonly Color SettingButtonColor = Color.Black;
         public static readonly Point pnlLocation = new Point(12, 84);
+        public const int ONE_HUNDERED = 100;
 
     }
 }

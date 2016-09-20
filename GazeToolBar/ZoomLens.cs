@@ -16,27 +16,41 @@ namespace GazeToolBar
         const int ZOOMLEVEL = 3;// this is controls how far the lens will zoom in
         const int ZOOMLENS_SIZE = 500;//setting the width & height of the ZoomLens
         Graphics graphics;
+        Graphics offScreenGraphics;
+        Graphics mainCanvas;
         public Bitmap bmpScreenshot;
+        Bitmap offScreenBitmap;
         int corner;//this is used to determine if a user has looked at a corner section of the screen
         Point lensPoint;
 
         FixationDetection fixdet;
+
+        GazeHighlight gazeHighlight;
+
         public ZoomLens(FixationDetection FixDet)
         {
             InitializeComponent();
             lensPoint = new Point();
             this.Width = ZOOMLENS_SIZE;
             this.Height = ZOOMLENS_SIZE;
+            offScreenBitmap = new Bitmap(this.Width, this.Height);
             //This bitmap is the zoomed in area. It's the bit of the screen that gets magnified
             bmpScreenshot = new Bitmap(this.Width / ZOOMLEVEL, this.Height / ZOOMLEVEL);
-            graphics = this.CreateGraphics();
+           // graphics = this.CreateGraphics();
+
+            //DrawToScreen = this.CreateGraphics();
+            mainCanvas = this.CreateGraphics();
+            offScreenGraphics = Graphics.FromImage(offScreenBitmap);
             graphics = Graphics.FromImage(bmpScreenshot);
+
             //This picturebox is what displays the zoomed in screenshot
-            pictureBox1.Width = this.Width;
-            pictureBox1.Height = this.Height;
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
+            //pictureBox1.Width = this.Width;
+            //pictureBox1.Height = this.Height;
+            //pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = FixDet;
+
+            gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen, this);
         }
         public int checkCorners(Point FixationPoint)
         {
@@ -75,10 +89,12 @@ namespace GazeToolBar
             Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
 
             this.Show();//make lens visible
-            pictureBox1.Image = bmpScreenshot;
+            //pictureBox1.Image = bmpScreenshot;
+            offScreenGraphics.DrawImage(bmpScreenshot, 0, 0,500,500);
             this.TopMost = true;
             Console.WriteLine("ZoomLens.Bounds.X = " + this.Bounds.X);
             Console.WriteLine("ZoomLens.Bounds.Y = " + this.Bounds.Y);
+            DrawTimer.Start();
             Application.DoEvents();
         }
         public void determineDesktopLocation(Point FixationPoint, int corner)
@@ -134,6 +150,7 @@ namespace GazeToolBar
         }
         public void ResetZoomLens()
         {
+            DrawTimer.Stop();
             this.Hide();
         }
         //This method takes a point on the zoomed-in form and translates it to the equivalent desktop coordinates
@@ -193,6 +210,15 @@ namespace GazeToolBar
                     return fixationPoint;
             }
             return fixationPoint;
+        }
+
+        private void DrawTimer_Tick(object sender, EventArgs e)
+        {
+            offScreenGraphics.DrawImage(bmpScreenshot, 0, 0, 500, 500);
+            
+            gazeHighlight.drawHightlight();
+
+            mainCanvas.DrawImage(offScreenBitmap,0,0);
         }
     }
 }
