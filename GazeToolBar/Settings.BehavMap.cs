@@ -9,6 +9,9 @@ namespace GazeToolBar
 {
     partial class Settings 
     {
+
+        int buttonClickDelay = 500;
+
         private void connectBehaveMap()
         {
             Program.EyeXHost.Connect(bhavSettingMap);
@@ -19,16 +22,26 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnGaze, new GazeAwareBehavior(OnbtnGaze_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSave, new GazeAwareBehavior(OnbtnSave_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnCancel, new GazeAwareBehavior(OnbtnCancel_Click) { DelayMilliseconds = 100 });
-            
             bhavSettingMap.Add(btnChangeSide, new GazeAwareBehavior(OnbtnChangeSide_Click) { DelayMilliseconds = 100 });
-            
             bhavSettingMap.Add(btnSwitch, new GazeAwareBehavior(OnbtnSwitch_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(trackBarPrecision, new GazeAwareBehavior(OntrackBarPrecision_Scroll) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(trackBarSpeed, new GazeAwareBehavior(OntrackBarSpeed_Scroll) { DelayMilliseconds = 100 });
-            
-
             bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSettingClick) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnShortCutKeySetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
+
+            bhavSettingMap.Add(btFKeyLeftClick, new GazeAwareBehavior(btFKeyLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btFKeyRightClick, new GazeAwareBehavior(btFKeyRightClick_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btFKeyDoubleClick, new GazeAwareBehavior(btFKeyDoubleClick_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btFKeyScroll, new GazeAwareBehavior(btFKeyScroll_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btFKeyDrapAndDrop, new GazeAwareBehavior(btFKeyLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
+
+            bhavSettingMap.Add(btClearFKeyLeftClick, new GazeAwareBehavior(btClearFKeyLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btClearFKeyRightClick, new GazeAwareBehavior(btClearFKeyRightClick_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btClearFKeyDoubleClick, new GazeAwareBehavior(btClearFKeyDoubleClick_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btClearFKeyScroll, new GazeAwareBehavior(btClearFKeyScroll_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btClearFKeyDrapAndDrop, new GazeAwareBehavior(btClearFKeyLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
+
+
             
         }
 
@@ -96,6 +109,66 @@ namespace GazeToolBar
         private void OnBtnKeyboardSettingClick(object sender, GazeAwareEventArgs e)
         {
             btnShortCutKeySetting.PerformClick();
+        }
+
+
+
+        //====================================================================================
+
+
+              //Shortcut keys panel buy button event methods. 
+
+
+        //====================================================================================
+
+        private void btFKeyLeftClick_Click(object sender, EventArgs e)
+        {
+            Console.Write(sender.ToString());
+        }
+
+        private void btFKeyRightClick_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btFKeyDoubleClick_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btFKeyScroll_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btFKeyDrapAndDrop_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btClearFKeyLeftClick_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btClearFKeyRightClick_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btClearFKeyDoubleClick_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btClearFKeyScroll_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btClearFKeyDrapAndDrop_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

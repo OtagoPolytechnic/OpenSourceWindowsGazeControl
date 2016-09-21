@@ -56,35 +56,35 @@ namespace GazeToolBar
             this.btnCancel = new System.Windows.Forms.Button();
             this.panelSaveAndCancel = new System.Windows.Forms.Panel();
             this.pnlPageKeyboard = new System.Windows.Forms.Panel();
-            this.pnlGeneral = new System.Windows.Forms.Panel();
-            this.btnGeneralSetting = new System.Windows.Forms.Button();
-            this.btnShortCutKeySetting = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btFKeyLeftClick = new System.Windows.Forms.Button();
-            this.btClearFKeyLeftClick = new System.Windows.Forms.Button();
-            this.lbLeft = new System.Windows.Forms.Label();
+            this.lbFKeyFeedback = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbRight = new System.Windows.Forms.Label();
             this.btClearFKeyRightClick = new System.Windows.Forms.Button();
             this.btFKeyRightClick = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lbDouble = new System.Windows.Forms.Label();
             this.btClearFKeyDoubleClick = new System.Windows.Forms.Button();
             this.btFKeyDoubleClick = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbScoll = new System.Windows.Forms.Label();
             this.btClearFKeyScroll = new System.Windows.Forms.Button();
             this.btFKeyScroll = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lbDragAndDrop = new System.Windows.Forms.Label();
             this.btClearFKeyDrapAndDrop = new System.Windows.Forms.Button();
             this.btFKeyDrapAndDrop = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbLeft = new System.Windows.Forms.Label();
+            this.btClearFKeyLeftClick = new System.Windows.Forms.Button();
+            this.btFKeyLeftClick = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbFKeyFeedback = new System.Windows.Forms.Label();
+            this.pnlGeneral = new System.Windows.Forms.Panel();
+            this.btnGeneralSetting = new System.Windows.Forms.Button();
+            this.btnShortCutKeySetting = new System.Windows.Forms.Button();
             this.panelSelection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPrecision)).BeginInit();
             this.panelPrecision.SuspendLayout();
@@ -93,17 +93,17 @@ namespace GazeToolBar
             this.panelOther.SuspendLayout();
             this.panelSaveAndCancel.SuspendLayout();
             this.pnlPageKeyboard.SuspendLayout();
-            this.pnlGeneral.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlGeneral.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAutoStart
@@ -372,6 +372,271 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Size = new System.Drawing.Size(1147, 589);
             this.pnlPageKeyboard.TabIndex = 26;
             // 
+            // lbFKeyFeedback
+            // 
+            this.lbFKeyFeedback.AutoSize = true;
+            this.lbFKeyFeedback.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbFKeyFeedback.Location = new System.Drawing.Point(521, 484);
+            this.lbFKeyFeedback.Name = "lbFKeyFeedback";
+            this.lbFKeyFeedback.Size = new System.Drawing.Size(35, 13);
+            this.lbFKeyFeedback.TabIndex = 5;
+            this.lbFKeyFeedback.Text = "label7";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lbRight);
+            this.panel2.Controls.Add(this.btClearFKeyRightClick);
+            this.panel2.Controls.Add(this.btFKeyRightClick);
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Location = new System.Drawing.Point(270, 114);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(175, 312);
+            this.panel2.TabIndex = 4;
+            // 
+            // lbRight
+            // 
+            this.lbRight.AutoSize = true;
+            this.lbRight.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbRight.Location = new System.Drawing.Point(64, 243);
+            this.lbRight.Name = "lbRight";
+            this.lbRight.Size = new System.Drawing.Size(35, 13);
+            this.lbRight.TabIndex = 3;
+            this.lbRight.Text = "label3";
+            // 
+            // btClearFKeyRightClick
+            // 
+            this.btClearFKeyRightClick.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyRightClick.Name = "btClearFKeyRightClick";
+            this.btClearFKeyRightClick.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyRightClick.TabIndex = 2;
+            this.btClearFKeyRightClick.Text = "Clear";
+            this.btClearFKeyRightClick.UseVisualStyleBackColor = true;
+            this.btClearFKeyRightClick.Click += new System.EventHandler(this.btClearFKeyRightClick_Click);
+            // 
+            // btFKeyRightClick
+            // 
+            this.btFKeyRightClick.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyRightClick.Name = "btFKeyRightClick";
+            this.btFKeyRightClick.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyRightClick.TabIndex = 1;
+            this.btFKeyRightClick.Text = "Set";
+            this.btFKeyRightClick.UseVisualStyleBackColor = true;
+            this.btFKeyRightClick.Click += new System.EventHandler(this.btFKeyRightClick_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GazeToolBar.Properties.Resources.Right_Click_icon;
+            this.pictureBox2.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.lbDouble);
+            this.panel3.Controls.Add(this.btClearFKeyDoubleClick);
+            this.panel3.Controls.Add(this.btFKeyDoubleClick);
+            this.panel3.Controls.Add(this.pictureBox3);
+            this.panel3.Location = new System.Drawing.Point(486, 114);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(175, 312);
+            this.panel3.TabIndex = 4;
+            // 
+            // lbDouble
+            // 
+            this.lbDouble.AutoSize = true;
+            this.lbDouble.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbDouble.Location = new System.Drawing.Point(64, 243);
+            this.lbDouble.Name = "lbDouble";
+            this.lbDouble.Size = new System.Drawing.Size(35, 13);
+            this.lbDouble.TabIndex = 3;
+            this.lbDouble.Text = "label4";
+            // 
+            // btClearFKeyDoubleClick
+            // 
+            this.btClearFKeyDoubleClick.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyDoubleClick.Name = "btClearFKeyDoubleClick";
+            this.btClearFKeyDoubleClick.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyDoubleClick.TabIndex = 2;
+            this.btClearFKeyDoubleClick.Text = "Clear";
+            this.btClearFKeyDoubleClick.UseVisualStyleBackColor = true;
+            this.btClearFKeyDoubleClick.Click += new System.EventHandler(this.btClearFKeyDoubleClick_Click);
+            // 
+            // btFKeyDoubleClick
+            // 
+            this.btFKeyDoubleClick.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyDoubleClick.Name = "btFKeyDoubleClick";
+            this.btFKeyDoubleClick.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyDoubleClick.TabIndex = 1;
+            this.btFKeyDoubleClick.Text = "Set";
+            this.btFKeyDoubleClick.UseVisualStyleBackColor = true;
+            this.btFKeyDoubleClick.Click += new System.EventHandler(this.btFKeyDoubleClick_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lbScoll);
+            this.panel4.Controls.Add(this.btClearFKeyScroll);
+            this.panel4.Controls.Add(this.btFKeyScroll);
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Location = new System.Drawing.Point(703, 114);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(175, 312);
+            this.panel4.TabIndex = 4;
+            // 
+            // lbScoll
+            // 
+            this.lbScoll.AutoSize = true;
+            this.lbScoll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbScoll.Location = new System.Drawing.Point(64, 243);
+            this.lbScoll.Name = "lbScoll";
+            this.lbScoll.Size = new System.Drawing.Size(35, 13);
+            this.lbScoll.TabIndex = 3;
+            this.lbScoll.Text = "label5";
+            // 
+            // btClearFKeyScroll
+            // 
+            this.btClearFKeyScroll.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyScroll.Name = "btClearFKeyScroll";
+            this.btClearFKeyScroll.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyScroll.TabIndex = 2;
+            this.btClearFKeyScroll.Text = "Clear";
+            this.btClearFKeyScroll.UseVisualStyleBackColor = true;
+            this.btClearFKeyScroll.Click += new System.EventHandler(this.btClearFKeyScroll_Click);
+            // 
+            // btFKeyScroll
+            // 
+            this.btFKeyScroll.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyScroll.Name = "btFKeyScroll";
+            this.btFKeyScroll.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyScroll.TabIndex = 1;
+            this.btFKeyScroll.Text = "Set";
+            this.btFKeyScroll.UseVisualStyleBackColor = true;
+            this.btFKeyScroll.Click += new System.EventHandler(this.btFKeyScroll_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.lbDragAndDrop);
+            this.panel5.Controls.Add(this.btClearFKeyDrapAndDrop);
+            this.panel5.Controls.Add(this.btFKeyDrapAndDrop);
+            this.panel5.Controls.Add(this.pictureBox5);
+            this.panel5.Location = new System.Drawing.Point(918, 114);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(175, 312);
+            this.panel5.TabIndex = 4;
+            // 
+            // lbDragAndDrop
+            // 
+            this.lbDragAndDrop.AutoSize = true;
+            this.lbDragAndDrop.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbDragAndDrop.Location = new System.Drawing.Point(64, 243);
+            this.lbDragAndDrop.Name = "lbDragAndDrop";
+            this.lbDragAndDrop.Size = new System.Drawing.Size(35, 13);
+            this.lbDragAndDrop.TabIndex = 3;
+            this.lbDragAndDrop.Text = "label6";
+            // 
+            // btClearFKeyDrapAndDrop
+            // 
+            this.btClearFKeyDrapAndDrop.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyDrapAndDrop.Name = "btClearFKeyDrapAndDrop";
+            this.btClearFKeyDrapAndDrop.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyDrapAndDrop.TabIndex = 2;
+            this.btClearFKeyDrapAndDrop.Text = "Clear";
+            this.btClearFKeyDrapAndDrop.UseVisualStyleBackColor = true;
+            this.btClearFKeyDrapAndDrop.Click += new System.EventHandler(this.btClearFKeyDrapAndDrop_Click);
+            // 
+            // btFKeyDrapAndDrop
+            // 
+            this.btFKeyDrapAndDrop.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyDrapAndDrop.Name = "btFKeyDrapAndDrop";
+            this.btFKeyDrapAndDrop.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyDrapAndDrop.TabIndex = 1;
+            this.btFKeyDrapAndDrop.Text = "Set";
+            this.btFKeyDrapAndDrop.UseVisualStyleBackColor = true;
+            this.btFKeyDrapAndDrop.Click += new System.EventHandler(this.btFKeyDrapAndDrop_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lbLeft);
+            this.panel1.Controls.Add(this.btClearFKeyLeftClick);
+            this.panel1.Controls.Add(this.btFKeyLeftClick);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(44, 114);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(175, 312);
+            this.panel1.TabIndex = 0;
+            // 
+            // lbLeft
+            // 
+            this.lbLeft.AutoSize = true;
+            this.lbLeft.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbLeft.Location = new System.Drawing.Point(64, 243);
+            this.lbLeft.Name = "lbLeft";
+            this.lbLeft.Size = new System.Drawing.Size(35, 13);
+            this.lbLeft.TabIndex = 3;
+            this.lbLeft.Text = "label1";
+            // 
+            // btClearFKeyLeftClick
+            // 
+            this.btClearFKeyLeftClick.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyLeftClick.Name = "btClearFKeyLeftClick";
+            this.btClearFKeyLeftClick.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyLeftClick.TabIndex = 2;
+            this.btClearFKeyLeftClick.Text = "Clear";
+            this.btClearFKeyLeftClick.UseVisualStyleBackColor = true;
+            this.btClearFKeyLeftClick.Click += new System.EventHandler(this.btClearFKeyLeftClick_Click);
+            // 
+            // btFKeyLeftClick
+            // 
+            this.btFKeyLeftClick.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyLeftClick.Name = "btFKeyLeftClick";
+            this.btFKeyLeftClick.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyLeftClick.TabIndex = 1;
+            this.btFKeyLeftClick.Text = "Set";
+            this.btFKeyLeftClick.UseVisualStyleBackColor = true;
+            this.btFKeyLeftClick.Click += new System.EventHandler(this.btFKeyLeftClick_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // pnlGeneral
             // 
             this.pnlGeneral.Controls.Add(this.panelSelection);
@@ -412,261 +677,6 @@ namespace GazeToolBar
             this.btnShortCutKeySetting.UseVisualStyleBackColor = true;
             this.btnShortCutKeySetting.Click += new System.EventHandler(this.btnKeyBoardSetting_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.lbLeft);
-            this.panel1.Controls.Add(this.btClearFKeyLeftClick);
-            this.panel1.Controls.Add(this.btFKeyLeftClick);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(44, 114);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(175, 312);
-            this.panel1.TabIndex = 0;
-            // 
-            // btFKeyLeftClick
-            // 
-            this.btFKeyLeftClick.Location = new System.Drawing.Point(50, 146);
-            this.btFKeyLeftClick.Name = "btFKeyLeftClick";
-            this.btFKeyLeftClick.Size = new System.Drawing.Size(75, 23);
-            this.btFKeyLeftClick.TabIndex = 1;
-            this.btFKeyLeftClick.Text = "Set";
-            this.btFKeyLeftClick.UseVisualStyleBackColor = true;
-            // 
-            // btClearFKeyLeftClick
-            // 
-            this.btClearFKeyLeftClick.Location = new System.Drawing.Point(50, 191);
-            this.btClearFKeyLeftClick.Name = "btClearFKeyLeftClick";
-            this.btClearFKeyLeftClick.Size = new System.Drawing.Size(75, 23);
-            this.btClearFKeyLeftClick.TabIndex = 2;
-            this.btClearFKeyLeftClick.Text = "Clear";
-            this.btClearFKeyLeftClick.UseVisualStyleBackColor = true;
-            // 
-            // lbLeft
-            // 
-            this.lbLeft.AutoSize = true;
-            this.lbLeft.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbLeft.Location = new System.Drawing.Point(64, 243);
-            this.lbLeft.Name = "lbLeft";
-            this.lbLeft.Size = new System.Drawing.Size(35, 13);
-            this.lbLeft.TabIndex = 3;
-            this.lbLeft.Text = "label1";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.lbRight);
-            this.panel2.Controls.Add(this.btClearFKeyRightClick);
-            this.panel2.Controls.Add(this.btFKeyRightClick);
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Location = new System.Drawing.Point(270, 114);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(175, 312);
-            this.panel2.TabIndex = 4;
-            // 
-            // lbRight
-            // 
-            this.lbRight.AutoSize = true;
-            this.lbRight.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbRight.Location = new System.Drawing.Point(64, 243);
-            this.lbRight.Name = "lbRight";
-            this.lbRight.Size = new System.Drawing.Size(35, 13);
-            this.lbRight.TabIndex = 3;
-            this.lbRight.Text = "label3";
-            // 
-            // btClearFKeyRightClick
-            // 
-            this.btClearFKeyRightClick.Location = new System.Drawing.Point(50, 191);
-            this.btClearFKeyRightClick.Name = "btClearFKeyRightClick";
-            this.btClearFKeyRightClick.Size = new System.Drawing.Size(75, 23);
-            this.btClearFKeyRightClick.TabIndex = 2;
-            this.btClearFKeyRightClick.Text = "Clear";
-            this.btClearFKeyRightClick.UseVisualStyleBackColor = true;
-            // 
-            // btFKeyRightClick
-            // 
-            this.btFKeyRightClick.Location = new System.Drawing.Point(50, 146);
-            this.btFKeyRightClick.Name = "btFKeyRightClick";
-            this.btFKeyRightClick.Size = new System.Drawing.Size(75, 23);
-            this.btFKeyRightClick.TabIndex = 1;
-            this.btFKeyRightClick.Text = "Set";
-            this.btFKeyRightClick.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.lbDouble);
-            this.panel3.Controls.Add(this.btClearFKeyDoubleClick);
-            this.panel3.Controls.Add(this.btFKeyDoubleClick);
-            this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Location = new System.Drawing.Point(486, 114);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(175, 312);
-            this.panel3.TabIndex = 4;
-            // 
-            // lbDouble
-            // 
-            this.lbDouble.AutoSize = true;
-            this.lbDouble.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDouble.Location = new System.Drawing.Point(64, 243);
-            this.lbDouble.Name = "lbDouble";
-            this.lbDouble.Size = new System.Drawing.Size(35, 13);
-            this.lbDouble.TabIndex = 3;
-            this.lbDouble.Text = "label4";
-            // 
-            // btClearFKeyDoubleClick
-            // 
-            this.btClearFKeyDoubleClick.Location = new System.Drawing.Point(50, 191);
-            this.btClearFKeyDoubleClick.Name = "btClearFKeyDoubleClick";
-            this.btClearFKeyDoubleClick.Size = new System.Drawing.Size(75, 23);
-            this.btClearFKeyDoubleClick.TabIndex = 2;
-            this.btClearFKeyDoubleClick.Text = "Clear";
-            this.btClearFKeyDoubleClick.UseVisualStyleBackColor = true;
-            // 
-            // btFKeyDoubleClick
-            // 
-            this.btFKeyDoubleClick.Location = new System.Drawing.Point(50, 146);
-            this.btFKeyDoubleClick.Name = "btFKeyDoubleClick";
-            this.btFKeyDoubleClick.Size = new System.Drawing.Size(75, 23);
-            this.btFKeyDoubleClick.TabIndex = 1;
-            this.btFKeyDoubleClick.Text = "Set";
-            this.btFKeyDoubleClick.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.lbScoll);
-            this.panel4.Controls.Add(this.btClearFKeyScroll);
-            this.panel4.Controls.Add(this.btFKeyScroll);
-            this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Location = new System.Drawing.Point(703, 114);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(175, 312);
-            this.panel4.TabIndex = 4;
-            // 
-            // lbScoll
-            // 
-            this.lbScoll.AutoSize = true;
-            this.lbScoll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbScoll.Location = new System.Drawing.Point(64, 243);
-            this.lbScoll.Name = "lbScoll";
-            this.lbScoll.Size = new System.Drawing.Size(35, 13);
-            this.lbScoll.TabIndex = 3;
-            this.lbScoll.Text = "label5";
-            // 
-            // btClearFKeyScroll
-            // 
-            this.btClearFKeyScroll.Location = new System.Drawing.Point(50, 191);
-            this.btClearFKeyScroll.Name = "btClearFKeyScroll";
-            this.btClearFKeyScroll.Size = new System.Drawing.Size(75, 23);
-            this.btClearFKeyScroll.TabIndex = 2;
-            this.btClearFKeyScroll.Text = "Clear";
-            this.btClearFKeyScroll.UseVisualStyleBackColor = true;
-            // 
-            // btFKeyScroll
-            // 
-            this.btFKeyScroll.Location = new System.Drawing.Point(50, 146);
-            this.btFKeyScroll.Name = "btFKeyScroll";
-            this.btFKeyScroll.Size = new System.Drawing.Size(75, 23);
-            this.btFKeyScroll.TabIndex = 1;
-            this.btFKeyScroll.Text = "Set";
-            this.btFKeyScroll.UseVisualStyleBackColor = true;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.lbDragAndDrop);
-            this.panel5.Controls.Add(this.btClearFKeyDrapAndDrop);
-            this.panel5.Controls.Add(this.btFKeyDrapAndDrop);
-            this.panel5.Controls.Add(this.pictureBox5);
-            this.panel5.Location = new System.Drawing.Point(918, 114);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(175, 312);
-            this.panel5.TabIndex = 4;
-            // 
-            // lbDragAndDrop
-            // 
-            this.lbDragAndDrop.AutoSize = true;
-            this.lbDragAndDrop.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDragAndDrop.Location = new System.Drawing.Point(64, 243);
-            this.lbDragAndDrop.Name = "lbDragAndDrop";
-            this.lbDragAndDrop.Size = new System.Drawing.Size(35, 13);
-            this.lbDragAndDrop.TabIndex = 3;
-            this.lbDragAndDrop.Text = "label6";
-            // 
-            // btClearFKeyDrapAndDrop
-            // 
-            this.btClearFKeyDrapAndDrop.Location = new System.Drawing.Point(50, 191);
-            this.btClearFKeyDrapAndDrop.Name = "btClearFKeyDrapAndDrop";
-            this.btClearFKeyDrapAndDrop.Size = new System.Drawing.Size(75, 23);
-            this.btClearFKeyDrapAndDrop.TabIndex = 2;
-            this.btClearFKeyDrapAndDrop.Text = "Clear";
-            this.btClearFKeyDrapAndDrop.UseVisualStyleBackColor = true;
-            // 
-            // btFKeyDrapAndDrop
-            // 
-            this.btFKeyDrapAndDrop.Location = new System.Drawing.Point(50, 146);
-            this.btFKeyDrapAndDrop.Name = "btFKeyDrapAndDrop";
-            this.btFKeyDrapAndDrop.Size = new System.Drawing.Size(75, 23);
-            this.btFKeyDrapAndDrop.TabIndex = 1;
-            this.btFKeyDrapAndDrop.Text = "Set";
-            this.btFKeyDrapAndDrop.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::GazeToolBar.Properties.Resources.Right_Click_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(38, 27);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 83);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::GazeToolBar.Properties.Resources.Double_Click_icon;
-            this.pictureBox3.Location = new System.Drawing.Point(38, 27);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 83);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::GazeToolBar.Properties.Resources.Scroll_icon;
-            this.pictureBox4.Location = new System.Drawing.Point(38, 27);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 83);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::GazeToolBar.Properties.Resources.Drag_and_drop_icon;
-            this.pictureBox5.Location = new System.Drawing.Point(38, 27);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(100, 83);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(38, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 83);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // lbFKeyFeedback
-            // 
-            this.lbFKeyFeedback.AutoSize = true;
-            this.lbFKeyFeedback.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbFKeyFeedback.Location = new System.Drawing.Point(521, 484);
-            this.lbFKeyFeedback.Name = "lbFKeyFeedback";
-            this.lbFKeyFeedback.Size = new System.Drawing.Size(35, 13);
-            this.lbFKeyFeedback.TabIndex = 5;
-            this.lbFKeyFeedback.Text = "label7";
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -676,8 +686,8 @@ namespace GazeToolBar
             this.Controls.Add(this.btnShortCutKeySetting);
             this.Controls.Add(this.btnGeneralSetting);
             this.Controls.Add(this.panelSaveAndCancel);
-            this.Controls.Add(this.pnlPageKeyboard);
             this.Controls.Add(this.pnlGeneral);
+            this.Controls.Add(this.pnlPageKeyboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -700,22 +710,22 @@ namespace GazeToolBar
             this.panelSaveAndCancel.ResumeLayout(false);
             this.pnlPageKeyboard.ResumeLayout(false);
             this.pnlPageKeyboard.PerformLayout();
-            this.pnlGeneral.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlGeneral.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

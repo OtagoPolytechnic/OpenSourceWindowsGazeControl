@@ -293,5 +293,7 @@ namespace GazeToolBar
         {
             connectBehaveMap();
         }
+
+       
     }
 }
