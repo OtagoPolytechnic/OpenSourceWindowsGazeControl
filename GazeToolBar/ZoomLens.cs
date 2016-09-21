@@ -36,7 +36,7 @@ namespace GazeToolBar
             offScreenBitmap = new Bitmap(this.Width, this.Height);
             //This bitmap is the zoomed in area. It's the bit of the screen that gets magnified
             bmpScreenshot = new Bitmap(this.Width / ZOOMLEVEL, this.Height / ZOOMLEVEL);
-           // graphics = this.CreateGraphics();
+            // graphics = this.CreateGraphics();
 
             //DrawToScreen = this.CreateGraphics();
             mainCanvas = this.CreateGraphics();
@@ -90,7 +90,7 @@ namespace GazeToolBar
 
             this.Show();//make lens visible
             //pictureBox1.Image = bmpScreenshot;
-            offScreenGraphics.DrawImage(bmpScreenshot, 0, 0,500,500);
+            offScreenGraphics.DrawImage(bmpScreenshot, 0, 0, 500, 500);
             this.TopMost = true;
             Console.WriteLine("ZoomLens.Bounds.X = " + this.Bounds.X);
             Console.WriteLine("ZoomLens.Bounds.Y = " + this.Bounds.Y);
@@ -130,11 +130,11 @@ namespace GazeToolBar
                 this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
                 Point newLensPoint = new Point();
                 /*Yeah this is pretty horrible*/
-                newLensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
-                newLensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);
-                newLensPoint.X = newLensPoint.X + this.Size.Width / 4;
-                newLensPoint.Y = newLensPoint.Y + this.Size.Width / 4;
-                SetLensPoint(newLensPoint.X, newLensPoint.Y);
+                //newLensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
+                //newLensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);
+                //newLensPoint.X = newLensPoint.X + this.Size.Width / 4;
+                //newLensPoint.Y = newLensPoint.Y + this.Size.Width / 4;
+                SetLensPoint((this.Width / ZOOMLEVEL) / 2, (this.Height / ZOOMLEVEL) / 2);
             }
         }
         private void SetLensPoint(int x, int y)
@@ -215,10 +215,10 @@ namespace GazeToolBar
         private void DrawTimer_Tick(object sender, EventArgs e)
         {
             offScreenGraphics.DrawImage(bmpScreenshot, 0, 0, 500, 500);
-            
+
             gazeHighlight.drawHightlight();
 
-            mainCanvas.DrawImage(offScreenBitmap,0,0);
+            mainCanvas.DrawImage(offScreenBitmap, 0, 0);
         }
     }
 }
