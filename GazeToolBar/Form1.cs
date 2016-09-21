@@ -187,10 +187,15 @@ namespace GazeToolBar
         private void setButtonPanelHight(List<Panel> panelList)
         {
             int screenHeight = ValueNeverChange.SCREEN_SIZE.Height;
+           
             int amountOfPanels = panelList.Count;
+           
             int panelHight = panelList[0].Height;
+            
             int screenSectionSize = screenHeight / amountOfPanels;
+           
             int spacer = screenSectionSize - panelHight;
+            
             int spacerBuffer = spacer / 2;
 
             foreach(Panel currentPanel in panelList)

@@ -52,45 +52,58 @@ namespace GazeToolBar
             this.label2 = new System.Windows.Forms.Label();
             this.lblIndicationLeftOrRight = new System.Windows.Forms.Label();
             this.panelOther = new System.Windows.Forms.Panel();
-            this.panelGazeTypingSpeed = new System.Windows.Forms.Panel();
-            this.trackBarGazeTypingSpeed = new System.Windows.Forms.TrackBar();
-            this.lblGazeTypingSpeed = new System.Windows.Forms.Label();
-            this.panelSize = new System.Windows.Forms.Panel();
-            this.btnSoundFeedback = new System.Windows.Forms.Button();
-            this.lblSoundFeedbackOnOff = new System.Windows.Forms.Label();
-            this.lblSize = new System.Windows.Forms.Label();
-            this.btnSizeSmall = new System.Windows.Forms.Button();
-            this.lblSoundFeedback = new System.Windows.Forms.Label();
-            this.lblSizeSmall = new System.Windows.Forms.Label();
-            this.lblLarge = new System.Windows.Forms.Label();
-            this.btnSizeLarge = new System.Windows.Forms.Button();
-            this.panelLanguage = new System.Windows.Forms.Panel();
-            this.btnChangeLanguage = new System.Windows.Forms.Button();
-            this.lblWordPredictionOnOffIndiction = new System.Windows.Forms.Label();
-            this.lblLanguage = new System.Windows.Forms.Label();
-            this.btnWordPredictionOnOff = new System.Windows.Forms.Button();
-            this.lblCurrentLanguage = new System.Windows.Forms.Label();
-            this.lblWordPrediction = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panelSaveAndCancel = new System.Windows.Forms.Panel();
             this.pnlPageKeyboard = new System.Windows.Forms.Panel();
             this.pnlGeneral = new System.Windows.Forms.Panel();
             this.btnGeneralSetting = new System.Windows.Forms.Button();
-            this.btnKeyBoardSetting = new System.Windows.Forms.Button();
+            this.btnShortCutKeySetting = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btFKeyLeftClick = new System.Windows.Forms.Button();
+            this.btClearFKeyLeftClick = new System.Windows.Forms.Button();
+            this.lbLeft = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbRight = new System.Windows.Forms.Label();
+            this.btClearFKeyRightClick = new System.Windows.Forms.Button();
+            this.btFKeyRightClick = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lbDouble = new System.Windows.Forms.Label();
+            this.btClearFKeyDoubleClick = new System.Windows.Forms.Button();
+            this.btFKeyDoubleClick = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lbScoll = new System.Windows.Forms.Label();
+            this.btClearFKeyScroll = new System.Windows.Forms.Button();
+            this.btFKeyScroll = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lbDragAndDrop = new System.Windows.Forms.Label();
+            this.btClearFKeyDrapAndDrop = new System.Windows.Forms.Button();
+            this.btFKeyDrapAndDrop = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbFKeyFeedback = new System.Windows.Forms.Label();
             this.panelSelection.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPrecision)).BeginInit();
             this.panelPrecision.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.panelSpeed.SuspendLayout();
             this.panelOther.SuspendLayout();
-            this.panelGazeTypingSpeed.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGazeTypingSpeed)).BeginInit();
-            this.panelSize.SuspendLayout();
-            this.panelLanguage.SuspendLayout();
             this.panelSaveAndCancel.SuspendLayout();
             this.pnlPageKeyboard.SuspendLayout();
             this.pnlGeneral.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAutoStart
@@ -308,217 +321,6 @@ namespace GazeToolBar
             this.panelOther.Size = new System.Drawing.Size(421, 192);
             this.panelOther.TabIndex = 21;
             // 
-            // panelGazeTypingSpeed
-            // 
-            this.panelGazeTypingSpeed.Controls.Add(this.trackBarGazeTypingSpeed);
-            this.panelGazeTypingSpeed.Controls.Add(this.lblGazeTypingSpeed);
-            this.panelGazeTypingSpeed.ForeColor = System.Drawing.Color.White;
-            this.panelGazeTypingSpeed.Location = new System.Drawing.Point(14, 472);
-            this.panelGazeTypingSpeed.Name = "panelGazeTypingSpeed";
-            this.panelGazeTypingSpeed.Size = new System.Drawing.Size(1057, 105);
-            this.panelGazeTypingSpeed.TabIndex = 18;
-            // 
-            // trackBarGazeTypingSpeed
-            // 
-            this.trackBarGazeTypingSpeed.Location = new System.Drawing.Point(245, 23);
-            this.trackBarGazeTypingSpeed.Maximum = 8;
-            this.trackBarGazeTypingSpeed.Name = "trackBarGazeTypingSpeed";
-            this.trackBarGazeTypingSpeed.Size = new System.Drawing.Size(798, 45);
-            this.trackBarGazeTypingSpeed.TabIndex = 17;
-            this.trackBarGazeTypingSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarGazeTypingSpeed.Scroll += new System.EventHandler(this.trackBarGazeTypingSpeed_Scroll);
-            // 
-            // lblGazeTypingSpeed
-            // 
-            this.lblGazeTypingSpeed.AutoSize = true;
-            this.lblGazeTypingSpeed.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblGazeTypingSpeed.Location = new System.Drawing.Point(21, 42);
-            this.lblGazeTypingSpeed.Name = "lblGazeTypingSpeed";
-            this.lblGazeTypingSpeed.Size = new System.Drawing.Size(144, 16);
-            this.lblGazeTypingSpeed.TabIndex = 16;
-            this.lblGazeTypingSpeed.Text = "Gaze Typing Speed";
-            // 
-            // panelSize
-            // 
-            this.panelSize.Controls.Add(this.btnSoundFeedback);
-            this.panelSize.Controls.Add(this.lblSoundFeedbackOnOff);
-            this.panelSize.Controls.Add(this.lblSize);
-            this.panelSize.Controls.Add(this.btnSizeSmall);
-            this.panelSize.Controls.Add(this.lblSoundFeedback);
-            this.panelSize.Controls.Add(this.lblSizeSmall);
-            this.panelSize.Controls.Add(this.lblLarge);
-            this.panelSize.Controls.Add(this.btnSizeLarge);
-            this.panelSize.ForeColor = System.Drawing.Color.White;
-            this.panelSize.Location = new System.Drawing.Point(128, 226);
-            this.panelSize.Name = "panelSize";
-            this.panelSize.Size = new System.Drawing.Size(929, 149);
-            this.panelSize.TabIndex = 15;
-            // 
-            // btnSoundFeedback
-            // 
-            this.btnSoundFeedback.FlatAppearance.BorderSize = 5;
-            this.btnSoundFeedback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSoundFeedback.Font = new System.Drawing.Font("SimSun", 12F);
-            this.btnSoundFeedback.Location = new System.Drawing.Point(845, 72);
-            this.btnSoundFeedback.Name = "btnSoundFeedback";
-            this.btnSoundFeedback.Size = new System.Drawing.Size(55, 55);
-            this.btnSoundFeedback.TabIndex = 13;
-            this.btnSoundFeedback.UseVisualStyleBackColor = true;
-            this.btnSoundFeedback.Click += new System.EventHandler(this.btnSoundFeedback_Click);
-            // 
-            // lblSoundFeedbackOnOff
-            // 
-            this.lblSoundFeedbackOnOff.AutoSize = true;
-            this.lblSoundFeedbackOnOff.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblSoundFeedbackOnOff.Location = new System.Drawing.Point(848, 26);
-            this.lblSoundFeedbackOnOff.Name = "lblSoundFeedbackOnOff";
-            this.lblSoundFeedbackOnOff.Size = new System.Drawing.Size(32, 16);
-            this.lblSoundFeedbackOnOff.TabIndex = 14;
-            this.lblSoundFeedbackOnOff.Text = "Off";
-            // 
-            // lblSize
-            // 
-            this.lblSize.AutoSize = true;
-            this.lblSize.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblSize.Location = new System.Drawing.Point(63, 92);
-            this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(40, 16);
-            this.lblSize.TabIndex = 7;
-            this.lblSize.Text = "Size";
-            // 
-            // btnSizeSmall
-            // 
-            this.btnSizeSmall.FlatAppearance.BorderSize = 5;
-            this.btnSizeSmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSizeSmall.Location = new System.Drawing.Point(236, 72);
-            this.btnSizeSmall.Name = "btnSizeSmall";
-            this.btnSizeSmall.Size = new System.Drawing.Size(55, 55);
-            this.btnSizeSmall.TabIndex = 8;
-            this.btnSizeSmall.UseVisualStyleBackColor = true;
-            this.btnSizeSmall.Click += new System.EventHandler(this.btnSizeSmall_Click);
-            // 
-            // lblSoundFeedback
-            // 
-            this.lblSoundFeedback.AutoSize = true;
-            this.lblSoundFeedback.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblSoundFeedback.Location = new System.Drawing.Point(618, 92);
-            this.lblSoundFeedback.Name = "lblSoundFeedback";
-            this.lblSoundFeedback.Size = new System.Drawing.Size(120, 16);
-            this.lblSoundFeedback.TabIndex = 12;
-            this.lblSoundFeedback.Text = "Sound Feedback";
-            // 
-            // lblSizeSmall
-            // 
-            this.lblSizeSmall.AutoSize = true;
-            this.lblSizeSmall.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblSizeSmall.Location = new System.Drawing.Point(232, 26);
-            this.lblSizeSmall.Name = "lblSizeSmall";
-            this.lblSizeSmall.Size = new System.Drawing.Size(48, 16);
-            this.lblSizeSmall.TabIndex = 9;
-            this.lblSizeSmall.Text = "Small";
-            // 
-            // lblLarge
-            // 
-            this.lblLarge.AutoSize = true;
-            this.lblLarge.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblLarge.Location = new System.Drawing.Point(416, 26);
-            this.lblLarge.Name = "lblLarge";
-            this.lblLarge.Size = new System.Drawing.Size(48, 16);
-            this.lblLarge.TabIndex = 11;
-            this.lblLarge.Text = "Large";
-            // 
-            // btnSizeLarge
-            // 
-            this.btnSizeLarge.FlatAppearance.BorderSize = 5;
-            this.btnSizeLarge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSizeLarge.Location = new System.Drawing.Point(420, 72);
-            this.btnSizeLarge.Name = "btnSizeLarge";
-            this.btnSizeLarge.Size = new System.Drawing.Size(55, 55);
-            this.btnSizeLarge.TabIndex = 10;
-            this.btnSizeLarge.UseVisualStyleBackColor = true;
-            this.btnSizeLarge.Click += new System.EventHandler(this.btnSizeLarge_Click);
-            // 
-            // panelLanguage
-            // 
-            this.panelLanguage.Controls.Add(this.btnChangeLanguage);
-            this.panelLanguage.Controls.Add(this.lblWordPredictionOnOffIndiction);
-            this.panelLanguage.Controls.Add(this.lblLanguage);
-            this.panelLanguage.Controls.Add(this.btnWordPredictionOnOff);
-            this.panelLanguage.Controls.Add(this.lblCurrentLanguage);
-            this.panelLanguage.Controls.Add(this.lblWordPrediction);
-            this.panelLanguage.ForeColor = System.Drawing.Color.White;
-            this.panelLanguage.Location = new System.Drawing.Point(128, 9);
-            this.panelLanguage.Name = "panelLanguage";
-            this.panelLanguage.Size = new System.Drawing.Size(929, 129);
-            this.panelLanguage.TabIndex = 6;
-            // 
-            // btnChangeLanguage
-            // 
-            this.btnChangeLanguage.FlatAppearance.BorderSize = 2;
-            this.btnChangeLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChangeLanguage.Font = new System.Drawing.Font("SimSun", 12F);
-            this.btnChangeLanguage.Location = new System.Drawing.Point(323, 41);
-            this.btnChangeLanguage.Name = "btnChangeLanguage";
-            this.btnChangeLanguage.Size = new System.Drawing.Size(152, 71);
-            this.btnChangeLanguage.TabIndex = 2;
-            this.btnChangeLanguage.Text = "Change";
-            this.btnChangeLanguage.UseVisualStyleBackColor = true;
-            this.btnChangeLanguage.Click += new System.EventHandler(this.btnChangeLanguage_Click);
-            // 
-            // lblWordPredictionOnOffIndiction
-            // 
-            this.lblWordPredictionOnOffIndiction.AutoSize = true;
-            this.lblWordPredictionOnOffIndiction.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblWordPredictionOnOffIndiction.Location = new System.Drawing.Point(848, 10);
-            this.lblWordPredictionOnOffIndiction.Name = "lblWordPredictionOnOffIndiction";
-            this.lblWordPredictionOnOffIndiction.Size = new System.Drawing.Size(32, 16);
-            this.lblWordPredictionOnOffIndiction.TabIndex = 5;
-            this.lblWordPredictionOnOffIndiction.Text = "Off";
-            // 
-            // lblLanguage
-            // 
-            this.lblLanguage.AutoSize = true;
-            this.lblLanguage.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblLanguage.ForeColor = System.Drawing.Color.White;
-            this.lblLanguage.Location = new System.Drawing.Point(15, 64);
-            this.lblLanguage.Name = "lblLanguage";
-            this.lblLanguage.Size = new System.Drawing.Size(72, 16);
-            this.lblLanguage.TabIndex = 0;
-            this.lblLanguage.Text = "Language";
-            // 
-            // btnWordPredictionOnOff
-            // 
-            this.btnWordPredictionOnOff.FlatAppearance.BorderSize = 5;
-            this.btnWordPredictionOnOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWordPredictionOnOff.Font = new System.Drawing.Font("SimSun", 12F);
-            this.btnWordPredictionOnOff.Location = new System.Drawing.Point(845, 49);
-            this.btnWordPredictionOnOff.Name = "btnWordPredictionOnOff";
-            this.btnWordPredictionOnOff.Size = new System.Drawing.Size(55, 55);
-            this.btnWordPredictionOnOff.TabIndex = 4;
-            this.btnWordPredictionOnOff.UseVisualStyleBackColor = true;
-            this.btnWordPredictionOnOff.Click += new System.EventHandler(this.btnWordPredictionOnOff_Click);
-            // 
-            // lblCurrentLanguage
-            // 
-            this.lblCurrentLanguage.AutoSize = true;
-            this.lblCurrentLanguage.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblCurrentLanguage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.lblCurrentLanguage.Location = new System.Drawing.Point(127, 52);
-            this.lblCurrentLanguage.Name = "lblCurrentLanguage";
-            this.lblCurrentLanguage.Size = new System.Drawing.Size(128, 32);
-            this.lblCurrentLanguage.TabIndex = 1;
-            this.lblCurrentLanguage.Text = "    English\r\n(United States)";
-            // 
-            // lblWordPrediction
-            // 
-            this.lblWordPrediction.AutoSize = true;
-            this.lblWordPrediction.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblWordPrediction.Location = new System.Drawing.Point(606, 64);
-            this.lblWordPrediction.Name = "lblWordPrediction";
-            this.lblWordPrediction.Size = new System.Drawing.Size(128, 16);
-            this.lblWordPrediction.TabIndex = 3;
-            this.lblWordPrediction.Text = "Word Prediction";
-            // 
             // btnSave
             // 
             this.btnSave.FlatAppearance.BorderSize = 3;
@@ -559,9 +361,12 @@ namespace GazeToolBar
             // 
             // pnlPageKeyboard
             // 
-            this.pnlPageKeyboard.Controls.Add(this.panelLanguage);
-            this.pnlPageKeyboard.Controls.Add(this.panelGazeTypingSpeed);
-            this.pnlPageKeyboard.Controls.Add(this.panelSize);
+            this.pnlPageKeyboard.Controls.Add(this.lbFKeyFeedback);
+            this.pnlPageKeyboard.Controls.Add(this.panel2);
+            this.pnlPageKeyboard.Controls.Add(this.panel3);
+            this.pnlPageKeyboard.Controls.Add(this.panel4);
+            this.pnlPageKeyboard.Controls.Add(this.panel5);
+            this.pnlPageKeyboard.Controls.Add(this.panel1);
             this.pnlPageKeyboard.Location = new System.Drawing.Point(12, 84);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
             this.pnlPageKeyboard.Size = new System.Drawing.Size(1147, 589);
@@ -593,19 +398,274 @@ namespace GazeToolBar
             this.btnGeneralSetting.UseVisualStyleBackColor = false;
             this.btnGeneralSetting.Click += new System.EventHandler(this.btnGeneralSetting_Click);
             // 
-            // btnKeyBoardSetting
+            // btnShortCutKeySetting
             // 
-            this.btnKeyBoardSetting.FlatAppearance.BorderSize = 5;
-            this.btnKeyBoardSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnKeyBoardSetting.ForeColor = System.Drawing.Color.White;
-            this.btnKeyBoardSetting.Location = new System.Drawing.Point(159, 9);
-            this.btnKeyBoardSetting.Margin = new System.Windows.Forms.Padding(2);
-            this.btnKeyBoardSetting.Name = "btnKeyBoardSetting";
-            this.btnKeyBoardSetting.Size = new System.Drawing.Size(147, 48);
-            this.btnKeyBoardSetting.TabIndex = 29;
-            this.btnKeyBoardSetting.Text = "Keyboard Setting";
-            this.btnKeyBoardSetting.UseVisualStyleBackColor = true;
-            this.btnKeyBoardSetting.Click += new System.EventHandler(this.btnKeyBoardSetting_Click);
+            this.btnShortCutKeySetting.FlatAppearance.BorderSize = 5;
+            this.btnShortCutKeySetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShortCutKeySetting.ForeColor = System.Drawing.Color.White;
+            this.btnShortCutKeySetting.Location = new System.Drawing.Point(159, 9);
+            this.btnShortCutKeySetting.Margin = new System.Windows.Forms.Padding(2);
+            this.btnShortCutKeySetting.Name = "btnShortCutKeySetting";
+            this.btnShortCutKeySetting.Size = new System.Drawing.Size(147, 48);
+            this.btnShortCutKeySetting.TabIndex = 29;
+            this.btnShortCutKeySetting.Text = "Shortcut Keys";
+            this.btnShortCutKeySetting.UseVisualStyleBackColor = true;
+            this.btnShortCutKeySetting.Click += new System.EventHandler(this.btnKeyBoardSetting_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lbLeft);
+            this.panel1.Controls.Add(this.btClearFKeyLeftClick);
+            this.panel1.Controls.Add(this.btFKeyLeftClick);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(44, 114);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(175, 312);
+            this.panel1.TabIndex = 0;
+            // 
+            // btFKeyLeftClick
+            // 
+            this.btFKeyLeftClick.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyLeftClick.Name = "btFKeyLeftClick";
+            this.btFKeyLeftClick.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyLeftClick.TabIndex = 1;
+            this.btFKeyLeftClick.Text = "Set";
+            this.btFKeyLeftClick.UseVisualStyleBackColor = true;
+            // 
+            // btClearFKeyLeftClick
+            // 
+            this.btClearFKeyLeftClick.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyLeftClick.Name = "btClearFKeyLeftClick";
+            this.btClearFKeyLeftClick.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyLeftClick.TabIndex = 2;
+            this.btClearFKeyLeftClick.Text = "Clear";
+            this.btClearFKeyLeftClick.UseVisualStyleBackColor = true;
+            // 
+            // lbLeft
+            // 
+            this.lbLeft.AutoSize = true;
+            this.lbLeft.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbLeft.Location = new System.Drawing.Point(64, 243);
+            this.lbLeft.Name = "lbLeft";
+            this.lbLeft.Size = new System.Drawing.Size(35, 13);
+            this.lbLeft.TabIndex = 3;
+            this.lbLeft.Text = "label1";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lbRight);
+            this.panel2.Controls.Add(this.btClearFKeyRightClick);
+            this.panel2.Controls.Add(this.btFKeyRightClick);
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Location = new System.Drawing.Point(270, 114);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(175, 312);
+            this.panel2.TabIndex = 4;
+            // 
+            // lbRight
+            // 
+            this.lbRight.AutoSize = true;
+            this.lbRight.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbRight.Location = new System.Drawing.Point(64, 243);
+            this.lbRight.Name = "lbRight";
+            this.lbRight.Size = new System.Drawing.Size(35, 13);
+            this.lbRight.TabIndex = 3;
+            this.lbRight.Text = "label3";
+            // 
+            // btClearFKeyRightClick
+            // 
+            this.btClearFKeyRightClick.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyRightClick.Name = "btClearFKeyRightClick";
+            this.btClearFKeyRightClick.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyRightClick.TabIndex = 2;
+            this.btClearFKeyRightClick.Text = "Clear";
+            this.btClearFKeyRightClick.UseVisualStyleBackColor = true;
+            // 
+            // btFKeyRightClick
+            // 
+            this.btFKeyRightClick.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyRightClick.Name = "btFKeyRightClick";
+            this.btFKeyRightClick.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyRightClick.TabIndex = 1;
+            this.btFKeyRightClick.Text = "Set";
+            this.btFKeyRightClick.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.lbDouble);
+            this.panel3.Controls.Add(this.btClearFKeyDoubleClick);
+            this.panel3.Controls.Add(this.btFKeyDoubleClick);
+            this.panel3.Controls.Add(this.pictureBox3);
+            this.panel3.Location = new System.Drawing.Point(486, 114);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(175, 312);
+            this.panel3.TabIndex = 4;
+            // 
+            // lbDouble
+            // 
+            this.lbDouble.AutoSize = true;
+            this.lbDouble.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbDouble.Location = new System.Drawing.Point(64, 243);
+            this.lbDouble.Name = "lbDouble";
+            this.lbDouble.Size = new System.Drawing.Size(35, 13);
+            this.lbDouble.TabIndex = 3;
+            this.lbDouble.Text = "label4";
+            // 
+            // btClearFKeyDoubleClick
+            // 
+            this.btClearFKeyDoubleClick.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyDoubleClick.Name = "btClearFKeyDoubleClick";
+            this.btClearFKeyDoubleClick.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyDoubleClick.TabIndex = 2;
+            this.btClearFKeyDoubleClick.Text = "Clear";
+            this.btClearFKeyDoubleClick.UseVisualStyleBackColor = true;
+            // 
+            // btFKeyDoubleClick
+            // 
+            this.btFKeyDoubleClick.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyDoubleClick.Name = "btFKeyDoubleClick";
+            this.btFKeyDoubleClick.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyDoubleClick.TabIndex = 1;
+            this.btFKeyDoubleClick.Text = "Set";
+            this.btFKeyDoubleClick.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lbScoll);
+            this.panel4.Controls.Add(this.btClearFKeyScroll);
+            this.panel4.Controls.Add(this.btFKeyScroll);
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Location = new System.Drawing.Point(703, 114);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(175, 312);
+            this.panel4.TabIndex = 4;
+            // 
+            // lbScoll
+            // 
+            this.lbScoll.AutoSize = true;
+            this.lbScoll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbScoll.Location = new System.Drawing.Point(64, 243);
+            this.lbScoll.Name = "lbScoll";
+            this.lbScoll.Size = new System.Drawing.Size(35, 13);
+            this.lbScoll.TabIndex = 3;
+            this.lbScoll.Text = "label5";
+            // 
+            // btClearFKeyScroll
+            // 
+            this.btClearFKeyScroll.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyScroll.Name = "btClearFKeyScroll";
+            this.btClearFKeyScroll.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyScroll.TabIndex = 2;
+            this.btClearFKeyScroll.Text = "Clear";
+            this.btClearFKeyScroll.UseVisualStyleBackColor = true;
+            // 
+            // btFKeyScroll
+            // 
+            this.btFKeyScroll.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyScroll.Name = "btFKeyScroll";
+            this.btFKeyScroll.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyScroll.TabIndex = 1;
+            this.btFKeyScroll.Text = "Set";
+            this.btFKeyScroll.UseVisualStyleBackColor = true;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.lbDragAndDrop);
+            this.panel5.Controls.Add(this.btClearFKeyDrapAndDrop);
+            this.panel5.Controls.Add(this.btFKeyDrapAndDrop);
+            this.panel5.Controls.Add(this.pictureBox5);
+            this.panel5.Location = new System.Drawing.Point(918, 114);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(175, 312);
+            this.panel5.TabIndex = 4;
+            // 
+            // lbDragAndDrop
+            // 
+            this.lbDragAndDrop.AutoSize = true;
+            this.lbDragAndDrop.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbDragAndDrop.Location = new System.Drawing.Point(64, 243);
+            this.lbDragAndDrop.Name = "lbDragAndDrop";
+            this.lbDragAndDrop.Size = new System.Drawing.Size(35, 13);
+            this.lbDragAndDrop.TabIndex = 3;
+            this.lbDragAndDrop.Text = "label6";
+            // 
+            // btClearFKeyDrapAndDrop
+            // 
+            this.btClearFKeyDrapAndDrop.Location = new System.Drawing.Point(50, 191);
+            this.btClearFKeyDrapAndDrop.Name = "btClearFKeyDrapAndDrop";
+            this.btClearFKeyDrapAndDrop.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyDrapAndDrop.TabIndex = 2;
+            this.btClearFKeyDrapAndDrop.Text = "Clear";
+            this.btClearFKeyDrapAndDrop.UseVisualStyleBackColor = true;
+            // 
+            // btFKeyDrapAndDrop
+            // 
+            this.btFKeyDrapAndDrop.Location = new System.Drawing.Point(50, 146);
+            this.btFKeyDrapAndDrop.Name = "btFKeyDrapAndDrop";
+            this.btFKeyDrapAndDrop.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyDrapAndDrop.TabIndex = 1;
+            this.btFKeyDrapAndDrop.Text = "Set";
+            this.btFKeyDrapAndDrop.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GazeToolBar.Properties.Resources.Right_Click_icon;
+            this.pictureBox2.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::GazeToolBar.Properties.Resources.Double_Click_icon;
+            this.pictureBox3.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox3.TabIndex = 0;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::GazeToolBar.Properties.Resources.Scroll_icon;
+            this.pictureBox4.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox4.TabIndex = 0;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::GazeToolBar.Properties.Resources.Drag_and_drop_icon;
+            this.pictureBox5.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lbFKeyFeedback
+            // 
+            this.lbFKeyFeedback.AutoSize = true;
+            this.lbFKeyFeedback.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbFKeyFeedback.Location = new System.Drawing.Point(521, 484);
+            this.lbFKeyFeedback.Name = "lbFKeyFeedback";
+            this.lbFKeyFeedback.Size = new System.Drawing.Size(35, 13);
+            this.lbFKeyFeedback.TabIndex = 5;
+            this.lbFKeyFeedback.Text = "label7";
             // 
             // Settings
             // 
@@ -613,11 +673,11 @@ namespace GazeToolBar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1171, 739);
-            this.Controls.Add(this.btnKeyBoardSetting);
+            this.Controls.Add(this.btnShortCutKeySetting);
             this.Controls.Add(this.btnGeneralSetting);
             this.Controls.Add(this.panelSaveAndCancel);
-            this.Controls.Add(this.pnlGeneral);
             this.Controls.Add(this.pnlPageKeyboard);
+            this.Controls.Add(this.pnlGeneral);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -637,16 +697,25 @@ namespace GazeToolBar
             this.panelSpeed.PerformLayout();
             this.panelOther.ResumeLayout(false);
             this.panelOther.PerformLayout();
-            this.panelGazeTypingSpeed.ResumeLayout(false);
-            this.panelGazeTypingSpeed.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarGazeTypingSpeed)).EndInit();
-            this.panelSize.ResumeLayout(false);
-            this.panelSize.PerformLayout();
-            this.panelLanguage.ResumeLayout(false);
-            this.panelLanguage.PerformLayout();
             this.panelSaveAndCancel.ResumeLayout(false);
             this.pnlPageKeyboard.ResumeLayout(false);
+            this.pnlPageKeyboard.PerformLayout();
             this.pnlGeneral.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -672,25 +741,6 @@ namespace GazeToolBar
         private Label label2;
         private Label lblIndicationLeftOrRight;
         private Panel panelOther;
-        private Label lblLarge;
-        private Button btnSizeLarge;
-        private Label lblSizeSmall;
-        private Button btnSizeSmall;
-        private Label lblSize;
-        private Panel panelLanguage;
-        private Button btnChangeLanguage;
-        private Label lblWordPredictionOnOffIndiction;
-        private Label lblLanguage;
-        private Button btnWordPredictionOnOff;
-        private Label lblCurrentLanguage;
-        private Label lblWordPrediction;
-        private Panel panelGazeTypingSpeed;
-        private TrackBar trackBarGazeTypingSpeed;
-        private Label lblGazeTypingSpeed;
-        private Panel panelSize;
-        private Button btnSoundFeedback;
-        private Label lblSoundFeedbackOnOff;
-        private Label lblSoundFeedback;
         private Button btnSave;
         private Button btnCancel;
         private Panel panelSaveAndCancel;
@@ -698,6 +748,32 @@ namespace GazeToolBar
         private Panel pnlPageKeyboard;
         private Panel pnlGeneral;
         private Button btnGeneralSetting;
-        private Button btnKeyBoardSetting;
+        private Button btnShortCutKeySetting;
+        private Panel panel1;
+        private Label lbLeft;
+        private Button btClearFKeyLeftClick;
+        private Button btFKeyLeftClick;
+        private PictureBox pictureBox1;
+        private Panel panel2;
+        private Label lbRight;
+        private Button btClearFKeyRightClick;
+        private Button btFKeyRightClick;
+        private PictureBox pictureBox2;
+        private Panel panel3;
+        private Label lbDouble;
+        private Button btClearFKeyDoubleClick;
+        private Button btFKeyDoubleClick;
+        private PictureBox pictureBox3;
+        private Panel panel4;
+        private Label lbScoll;
+        private Button btClearFKeyScroll;
+        private Button btFKeyScroll;
+        private PictureBox pictureBox4;
+        private Panel panel5;
+        private Label lbDragAndDrop;
+        private Button btClearFKeyDrapAndDrop;
+        private Button btFKeyDrapAndDrop;
+        private PictureBox pictureBox5;
+        private Label lbFKeyFeedback;
     }
 }

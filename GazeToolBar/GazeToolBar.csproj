@@ -196,6 +196,7 @@
     <None Include="Images\Scroll-icon.png" />
     <Content Include="Images\settings-icon-selected.fw.png" />
     <Content Include="Images\settings-icon.png" />
+    <None Include="Resources\Image1.bmp" />
     <Content Include="Tobii.EyeX.Client.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

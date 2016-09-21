@@ -19,19 +19,16 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnGaze, new GazeAwareBehavior(OnbtnGaze_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSave, new GazeAwareBehavior(OnbtnSave_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnCancel, new GazeAwareBehavior(OnbtnCancel_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnChangeLanguage, new GazeAwareBehavior(OnbtnChangeLanguage_Click) { DelayMilliseconds = 100 });
+            
             bhavSettingMap.Add(btnChangeSide, new GazeAwareBehavior(OnbtnChangeSide_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnSizeLarge, new GazeAwareBehavior(OnbtnSizeLarge_Click) { DelayMilliseconds = 100 });
+            
             bhavSettingMap.Add(btnSwitch, new GazeAwareBehavior(OnbtnSwitch_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(trackBarPrecision, new GazeAwareBehavior(OntrackBarPrecision_Scroll) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(trackBarSpeed, new GazeAwareBehavior(OntrackBarSpeed_Scroll) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnWordPredictionOnOff, new GazeAwareBehavior(OnbtnWordPredictionOnOff_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnSizeSmall, new GazeAwareBehavior(OnbtnSizeSmall_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnSoundFeedback, new GazeAwareBehavior(OnbtnSoundFeedback_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarGazeTypingSpeed, new GazeAwareBehavior(OntrackBarGazeTypingSpeed_Scroll) { DelayMilliseconds = 100 });
+            
 
             bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSettingClick) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnKeyBoardSetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnShortCutKeySetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
             
         }
 
@@ -40,20 +37,11 @@ namespace GazeToolBar
             //throw new NotImplementedException();
         }
 
-        private void OnbtnSoundFeedback_Click(object sender, GazeAwareEventArgs e)
-        {
-            btnSoundFeedback.PerformClick();
-        }
 
-        private void OnbtnSizeSmall_Click(object sender, GazeAwareEventArgs e)
-        {
-            btnSizeSmall.PerformClick();
-        }
 
-        private void OnbtnWordPredictionOnOff_Click(object sender, GazeAwareEventArgs e)
-        {
-            btnWordPredictionOnOff.PerformClick();
-        }
+
+
+
 
         private void OntrackBarSpeed_Scroll(object sender, GazeAwareEventArgs e)
         {
@@ -71,20 +59,14 @@ namespace GazeToolBar
             btnSwitch.PerformClick();
         }
 
-        private void OnbtnSizeLarge_Click(object sender, GazeAwareEventArgs e)
-        {
-            btnSizeLarge.PerformClick();
-        }
+
 
         private void OnbtnChangeSide_Click(object sender, GazeAwareEventArgs e)
         {
             btnChangeSide.PerformClick();
         }
 
-        private void OnbtnChangeLanguage_Click(object sender, GazeAwareEventArgs e)
-        {
-            btnChangeLanguage.PerformClick();
-        }
+
 
         private void OnbtnCancel_Click(object sender, GazeAwareEventArgs e)
         {
@@ -113,7 +95,7 @@ namespace GazeToolBar
 
         private void OnBtnKeyboardSettingClick(object sender, GazeAwareEventArgs e)
         {
-            btnKeyBoardSetting.PerformClick();
+            btnShortCutKeySetting.PerformClick();
         }
     }
 }
