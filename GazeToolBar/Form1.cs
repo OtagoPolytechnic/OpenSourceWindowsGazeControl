@@ -26,7 +26,7 @@ namespace GazeToolBar
 
         //Allocate memory location for KeyboardHook and worker.
         private Keyboardhook LowLevelKeyBoardHook;
-        private ShortcutKeyWorker shortCutKeyWorker;
+        public ShortcutKeyWorker shortCutKeyWorker;
 
         List<Panel> highlightPannerList;
 
