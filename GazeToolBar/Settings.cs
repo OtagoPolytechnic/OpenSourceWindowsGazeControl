@@ -229,11 +229,11 @@ namespace GazeToolBar
                 SettingJSON setting = new SettingJSON();
                 setting.language = lblCurrentLanguage.Text;
                 setting.position = lblIndicationLeftOrRight.Text.Substring(3);
-                setting.precision = trackBarPrecision.Value;
+                setting.precision = trackBarFixTimeLength.Value;
                 setting.selection = gazeOrSwitch.ToString();
                 setting.size = sizes.ToString();
                 setting.soundFeedback = onOff[3];
-                setting.speed = trackBarSpeed.Value;
+                setting.speed = trackBarFixTimeOut.Value;
                 setting.typingSpeed = trackBarGazeTypingSpeed.Value;
                 setting.wordPrediction = onOff[2];
                 string settings = JsonConvert.SerializeObject(setting);
@@ -264,8 +264,8 @@ namespace GazeToolBar
         private void Settings_Load(object sender, EventArgs e)
         {
             Program.ReadWriteJson();
-            trackBarPrecision.Value = Program.readSettings.precision;
-            trackBarSpeed.Value = Program.readSettings.speed;
+            trackBarFixTimeLength.Value = Program.readSettings.precision;
+            trackBarFixTimeOut.Value = Program.readSettings.speed;
             trackBarGazeTypingSpeed.Value = Program.readSettings.typingSpeed;
             lblCurrentLanguage.Text = Program.readSettings.language;
             lblIndicationLeftOrRight.Text = lblIndicationLeftOrRight.Text.Remove(3) + Program.readSettings.position;
@@ -364,9 +364,43 @@ namespace GazeToolBar
             }
         }
 
+        private void changeTrackBarValue(TrackBar trackbar, String IncrementOrDecrement)
+        {
+            switch (IncrementOrDecrement)
+            {
+                case "I":
+                    trackbar.Value = ++trackbar.Value;
+                    break;
+                case "D":
+                    trackbar.Value = --trackbar.Value;
+                    break;
+            }
+            trackbar.Update();
+        }
+
         private void Settings_Shown(object sender, EventArgs e)
         {
             connectBehaveMap();
+        }
+
+        private void btnFixTimeLengthMins_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarFixTimeLength, "D");
+        }
+
+        private void btnFixTimeLengthPlus_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarFixTimeLength, "I");
+        }
+
+        private void btnFixTimeOutMins_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarFixTimeOut, "D");
+        }
+
+        private void btnFixTimeOutPlus_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarFixTimeOut, "I");
         }
     }
 }

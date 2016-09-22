@@ -13,9 +13,7 @@ namespace GazeToolBar
         public int speed { get; set; } 
         public string position { get; set; }
         public string language { get; set; }
-
         public bool wordPrediction { get; set; }
-
         public string size { get; set; }
         public bool soundFeedback { get; set; }
         public int typingSpeed { get; set; }

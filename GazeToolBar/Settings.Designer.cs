@@ -41,11 +41,11 @@ namespace GazeToolBar
             this.lblGaze = new System.Windows.Forms.Label();
             this.lblSwitch = new System.Windows.Forms.Label();
             this.panelSelection = new System.Windows.Forms.Panel();
-            this.lblPrecision = new System.Windows.Forms.Label();
-            this.trackBarPrecision = new System.Windows.Forms.TrackBar();
+            this.lblFixationDetectionTimeLength = new System.Windows.Forms.Label();
+            this.trackBarFixTimeLength = new System.Windows.Forms.TrackBar();
             this.panelPrecision = new System.Windows.Forms.Panel();
             this.lblSpeed = new System.Windows.Forms.Label();
-            this.trackBarSpeed = new System.Windows.Forms.TrackBar();
+            this.trackBarFixTimeOut = new System.Windows.Forms.TrackBar();
             this.panelSpeed = new System.Windows.Forms.Panel();
             this.lblOther = new System.Windows.Forms.Label();
             this.lblPosition = new System.Windows.Forms.Label();
@@ -78,10 +78,14 @@ namespace GazeToolBar
             this.pnlGeneral = new System.Windows.Forms.Panel();
             this.btnGeneralSetting = new System.Windows.Forms.Button();
             this.btnKeyBoardSetting = new System.Windows.Forms.Button();
+            this.btnFixTimeLengthPlus = new System.Windows.Forms.Button();
+            this.btnFixTimeOutPlus = new System.Windows.Forms.Button();
+            this.btnFixTimeLengthMins = new System.Windows.Forms.Button();
+            this.btnFixTimeOutMins = new System.Windows.Forms.Button();
             this.panelSelection.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPrecision)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeLength)).BeginInit();
             this.panelPrecision.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeOut)).BeginInit();
             this.panelSpeed.SuspendLayout();
             this.panelOther.SuspendLayout();
             this.panelGazeTypingSpeed.SuspendLayout();
@@ -99,9 +103,10 @@ namespace GazeToolBar
             this.btnAutoStart.FlatAppearance.BorderSize = 5;
             this.btnAutoStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAutoStart.ForeColor = System.Drawing.Color.White;
-            this.btnAutoStart.Location = new System.Drawing.Point(287, 66);
+            this.btnAutoStart.Location = new System.Drawing.Point(430, 91);
+            this.btnAutoStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAutoStart.Name = "btnAutoStart";
-            this.btnAutoStart.Size = new System.Drawing.Size(55, 55);
+            this.btnAutoStart.Size = new System.Drawing.Size(82, 76);
             this.btnAutoStart.TabIndex = 4;
             this.btnAutoStart.UseVisualStyleBackColor = false;
             this.btnAutoStart.Click += new System.EventHandler(this.btnAutoStart_Click);
@@ -112,9 +117,10 @@ namespace GazeToolBar
             this.btnChangeSide.FlatAppearance.BorderSize = 5;
             this.btnChangeSide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangeSide.ForeColor = System.Drawing.Color.White;
-            this.btnChangeSide.Location = new System.Drawing.Point(157, 66);
+            this.btnChangeSide.Location = new System.Drawing.Point(236, 91);
+            this.btnChangeSide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChangeSide.Name = "btnChangeSide";
-            this.btnChangeSide.Size = new System.Drawing.Size(55, 55);
+            this.btnChangeSide.Size = new System.Drawing.Size(82, 76);
             this.btnChangeSide.TabIndex = 3;
             this.btnChangeSide.UseVisualStyleBackColor = false;
             this.btnChangeSide.Click += new System.EventHandler(this.btnChangeSide_Click);
@@ -124,9 +130,10 @@ namespace GazeToolBar
             this.lblSelection.AutoSize = true;
             this.lblSelection.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblSelection.ForeColor = System.Drawing.Color.White;
-            this.lblSelection.Location = new System.Drawing.Point(14, 82);
+            this.lblSelection.Location = new System.Drawing.Point(21, 114);
+            this.lblSelection.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelection.Name = "lblSelection";
-            this.lblSelection.Size = new System.Drawing.Size(80, 16);
+            this.lblSelection.Size = new System.Drawing.Size(118, 24);
             this.lblSelection.TabIndex = 5;
             this.lblSelection.Text = "Selection";
             // 
@@ -136,9 +143,10 @@ namespace GazeToolBar
             this.btnGaze.FlatAppearance.BorderSize = 5;
             this.btnGaze.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGaze.ForeColor = System.Drawing.Color.White;
-            this.btnGaze.Location = new System.Drawing.Point(156, 70);
+            this.btnGaze.Location = new System.Drawing.Point(234, 97);
+            this.btnGaze.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGaze.Name = "btnGaze";
-            this.btnGaze.Size = new System.Drawing.Size(55, 55);
+            this.btnGaze.Size = new System.Drawing.Size(82, 76);
             this.btnGaze.TabIndex = 6;
             this.btnGaze.UseVisualStyleBackColor = false;
             this.btnGaze.Click += new System.EventHandler(this.btnGaze_Click);
@@ -149,9 +157,10 @@ namespace GazeToolBar
             this.btnSwitch.FlatAppearance.BorderSize = 5;
             this.btnSwitch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSwitch.ForeColor = System.Drawing.Color.White;
-            this.btnSwitch.Location = new System.Drawing.Point(255, 70);
+            this.btnSwitch.Location = new System.Drawing.Point(382, 97);
+            this.btnSwitch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSwitch.Name = "btnSwitch";
-            this.btnSwitch.Size = new System.Drawing.Size(55, 55);
+            this.btnSwitch.Size = new System.Drawing.Size(82, 76);
             this.btnSwitch.TabIndex = 7;
             this.btnSwitch.UseVisualStyleBackColor = false;
             this.btnSwitch.Click += new System.EventHandler(this.btnSwitch_Click);
@@ -161,9 +170,10 @@ namespace GazeToolBar
             this.lblGaze.AutoSize = true;
             this.lblGaze.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblGaze.ForeColor = System.Drawing.Color.White;
-            this.lblGaze.Location = new System.Drawing.Point(153, 19);
+            this.lblGaze.Location = new System.Drawing.Point(230, 26);
+            this.lblGaze.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGaze.Name = "lblGaze";
-            this.lblGaze.Size = new System.Drawing.Size(40, 16);
+            this.lblGaze.Size = new System.Drawing.Size(58, 24);
             this.lblGaze.TabIndex = 8;
             this.lblGaze.Text = "Gaze";
             // 
@@ -172,9 +182,10 @@ namespace GazeToolBar
             this.lblSwitch.AutoSize = true;
             this.lblSwitch.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblSwitch.ForeColor = System.Drawing.Color.White;
-            this.lblSwitch.Location = new System.Drawing.Point(241, 17);
+            this.lblSwitch.Location = new System.Drawing.Point(362, 24);
+            this.lblSwitch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSwitch.Name = "lblSwitch";
-            this.lblSwitch.Size = new System.Drawing.Size(56, 16);
+            this.lblSwitch.Size = new System.Drawing.Size(82, 24);
             this.lblSwitch.TabIndex = 9;
             this.lblSwitch.Text = "Switch";
             // 
@@ -185,39 +196,45 @@ namespace GazeToolBar
             this.panelSelection.Controls.Add(this.lblSelection);
             this.panelSelection.Controls.Add(this.lblGaze);
             this.panelSelection.Controls.Add(this.btnGaze);
-            this.panelSelection.Location = new System.Drawing.Point(3, 3);
+            this.panelSelection.Location = new System.Drawing.Point(4, 4);
+            this.panelSelection.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSelection.Name = "panelSelection";
-            this.panelSelection.Size = new System.Drawing.Size(341, 146);
+            this.panelSelection.Size = new System.Drawing.Size(512, 202);
             this.panelSelection.TabIndex = 10;
             // 
-            // lblPrecision
+            // lblFixationDetectionTimeLength
             // 
-            this.lblPrecision.AutoSize = true;
-            this.lblPrecision.Font = new System.Drawing.Font("SimSun", 12F);
-            this.lblPrecision.ForeColor = System.Drawing.Color.White;
-            this.lblPrecision.Location = new System.Drawing.Point(14, 49);
-            this.lblPrecision.Name = "lblPrecision";
-            this.lblPrecision.Size = new System.Drawing.Size(80, 16);
-            this.lblPrecision.TabIndex = 11;
-            this.lblPrecision.Text = "Precision";
+            this.lblFixationDetectionTimeLength.AutoSize = true;
+            this.lblFixationDetectionTimeLength.Font = new System.Drawing.Font("SimSun", 12F);
+            this.lblFixationDetectionTimeLength.ForeColor = System.Drawing.Color.White;
+            this.lblFixationDetectionTimeLength.Location = new System.Drawing.Point(21, 46);
+            this.lblFixationDetectionTimeLength.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFixationDetectionTimeLength.Name = "lblFixationDetectionTimeLength";
+            this.lblFixationDetectionTimeLength.Size = new System.Drawing.Size(142, 48);
+            this.lblFixationDetectionTimeLength.TabIndex = 11;
+            this.lblFixationDetectionTimeLength.Text = "Fixation \r\nTime Length";
             // 
-            // trackBarPrecision
+            // trackBarFixTimeLength
             // 
-            this.trackBarPrecision.Location = new System.Drawing.Point(156, 31);
-            this.trackBarPrecision.Maximum = 8;
-            this.trackBarPrecision.Name = "trackBarPrecision";
-            this.trackBarPrecision.Size = new System.Drawing.Size(1074, 45);
-            this.trackBarPrecision.TabIndex = 12;
-            this.trackBarPrecision.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarPrecision.Scroll += new System.EventHandler(this.trackBarPrecision_Scroll);
+            this.trackBarFixTimeLength.Location = new System.Drawing.Point(382, 46);
+            this.trackBarFixTimeLength.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBarFixTimeLength.Maximum = 8;
+            this.trackBarFixTimeLength.Name = "trackBarFixTimeLength";
+            this.trackBarFixTimeLength.Size = new System.Drawing.Size(964, 69);
+            this.trackBarFixTimeLength.TabIndex = 12;
+            this.trackBarFixTimeLength.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarFixTimeLength.Scroll += new System.EventHandler(this.trackBarPrecision_Scroll);
             // 
             // panelPrecision
             // 
-            this.panelPrecision.Controls.Add(this.trackBarPrecision);
-            this.panelPrecision.Controls.Add(this.lblPrecision);
-            this.panelPrecision.Location = new System.Drawing.Point(3, 167);
+            this.panelPrecision.Controls.Add(this.btnFixTimeLengthMins);
+            this.panelPrecision.Controls.Add(this.btnFixTimeLengthPlus);
+            this.panelPrecision.Controls.Add(this.trackBarFixTimeLength);
+            this.panelPrecision.Controls.Add(this.lblFixationDetectionTimeLength);
+            this.panelPrecision.Location = new System.Drawing.Point(4, 231);
+            this.panelPrecision.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelPrecision.Name = "panelPrecision";
-            this.panelPrecision.Size = new System.Drawing.Size(1243, 115);
+            this.panelPrecision.Size = new System.Drawing.Size(1864, 159);
             this.panelPrecision.TabIndex = 13;
             // 
             // lblSpeed
@@ -225,30 +242,35 @@ namespace GazeToolBar
             this.lblSpeed.AutoSize = true;
             this.lblSpeed.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblSpeed.ForeColor = System.Drawing.Color.White;
-            this.lblSpeed.Location = new System.Drawing.Point(62, 43);
+            this.lblSpeed.Location = new System.Drawing.Point(45, 30);
+            this.lblSpeed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpeed.Name = "lblSpeed";
-            this.lblSpeed.Size = new System.Drawing.Size(48, 16);
+            this.lblSpeed.Size = new System.Drawing.Size(118, 48);
             this.lblSpeed.TabIndex = 14;
-            this.lblSpeed.Text = "Speed";
+            this.lblSpeed.Text = "Fixation \r\nTime Out";
             // 
-            // trackBarSpeed
+            // trackBarFixTimeOut
             // 
-            this.trackBarSpeed.Location = new System.Drawing.Point(156, 22);
-            this.trackBarSpeed.Maximum = 8;
-            this.trackBarSpeed.Name = "trackBarSpeed";
-            this.trackBarSpeed.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBarSpeed.Size = new System.Drawing.Size(1074, 45);
-            this.trackBarSpeed.TabIndex = 15;
-            this.trackBarSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarSpeed.Scroll += new System.EventHandler(this.trackBarSpeed_Scroll);
+            this.trackBarFixTimeOut.Location = new System.Drawing.Point(382, 30);
+            this.trackBarFixTimeOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBarFixTimeOut.Maximum = 8;
+            this.trackBarFixTimeOut.Name = "trackBarFixTimeOut";
+            this.trackBarFixTimeOut.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.trackBarFixTimeOut.Size = new System.Drawing.Size(964, 69);
+            this.trackBarFixTimeOut.TabIndex = 15;
+            this.trackBarFixTimeOut.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarFixTimeOut.Scroll += new System.EventHandler(this.trackBarSpeed_Scroll);
             // 
             // panelSpeed
             // 
-            this.panelSpeed.Controls.Add(this.trackBarSpeed);
+            this.panelSpeed.Controls.Add(this.btnFixTimeOutMins);
+            this.panelSpeed.Controls.Add(this.btnFixTimeOutPlus);
+            this.panelSpeed.Controls.Add(this.trackBarFixTimeOut);
             this.panelSpeed.Controls.Add(this.lblSpeed);
-            this.panelSpeed.Location = new System.Drawing.Point(3, 300);
+            this.panelSpeed.Location = new System.Drawing.Point(4, 415);
+            this.panelSpeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSpeed.Name = "panelSpeed";
-            this.panelSpeed.Size = new System.Drawing.Size(1243, 118);
+            this.panelSpeed.Size = new System.Drawing.Size(1864, 163);
             this.panelSpeed.TabIndex = 16;
             // 
             // lblOther
@@ -256,9 +278,10 @@ namespace GazeToolBar
             this.lblOther.AutoSize = true;
             this.lblOther.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblOther.ForeColor = System.Drawing.Color.White;
-            this.lblOther.Location = new System.Drawing.Point(62, 78);
+            this.lblOther.Location = new System.Drawing.Point(93, 108);
+            this.lblOther.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOther.Name = "lblOther";
-            this.lblOther.Size = new System.Drawing.Size(48, 16);
+            this.lblOther.Size = new System.Drawing.Size(70, 24);
             this.lblOther.TabIndex = 17;
             this.lblOther.Text = "Other";
             // 
@@ -267,9 +290,10 @@ namespace GazeToolBar
             this.lblPosition.AutoSize = true;
             this.lblPosition.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblPosition.ForeColor = System.Drawing.Color.White;
-            this.lblPosition.Location = new System.Drawing.Point(140, 9);
+            this.lblPosition.Location = new System.Drawing.Point(210, 12);
+            this.lblPosition.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(72, 16);
+            this.lblPosition.Size = new System.Drawing.Size(106, 24);
             this.lblPosition.TabIndex = 18;
             this.lblPosition.Text = "Position";
             // 
@@ -278,9 +302,10 @@ namespace GazeToolBar
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 12F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(273, 9);
+            this.label2.Location = new System.Drawing.Point(410, 12);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 16);
+            this.label2.Size = new System.Drawing.Size(130, 24);
             this.label2.TabIndex = 19;
             this.label2.Text = "Auto start";
             // 
@@ -289,9 +314,10 @@ namespace GazeToolBar
             this.lblIndicationLeftOrRight.AutoSize = true;
             this.lblIndicationLeftOrRight.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblIndicationLeftOrRight.ForeColor = System.Drawing.Color.White;
-            this.lblIndicationLeftOrRight.Location = new System.Drawing.Point(140, 150);
+            this.lblIndicationLeftOrRight.Location = new System.Drawing.Point(210, 208);
+            this.lblIndicationLeftOrRight.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIndicationLeftOrRight.Name = "lblIndicationLeftOrRight";
-            this.lblIndicationLeftOrRight.Size = new System.Drawing.Size(72, 16);
+            this.lblIndicationLeftOrRight.Size = new System.Drawing.Size(106, 24);
             this.lblIndicationLeftOrRight.TabIndex = 20;
             this.lblIndicationLeftOrRight.Text = "On Right";
             // 
@@ -303,9 +329,10 @@ namespace GazeToolBar
             this.panelOther.Controls.Add(this.label2);
             this.panelOther.Controls.Add(this.lblOther);
             this.panelOther.Controls.Add(this.lblPosition);
-            this.panelOther.Location = new System.Drawing.Point(3, 440);
+            this.panelOther.Location = new System.Drawing.Point(4, 609);
+            this.panelOther.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelOther.Name = "panelOther";
-            this.panelOther.Size = new System.Drawing.Size(421, 192);
+            this.panelOther.Size = new System.Drawing.Size(632, 266);
             this.panelOther.TabIndex = 21;
             // 
             // panelGazeTypingSpeed
@@ -323,7 +350,7 @@ namespace GazeToolBar
             this.trackBarGazeTypingSpeed.Location = new System.Drawing.Point(245, 23);
             this.trackBarGazeTypingSpeed.Maximum = 8;
             this.trackBarGazeTypingSpeed.Name = "trackBarGazeTypingSpeed";
-            this.trackBarGazeTypingSpeed.Size = new System.Drawing.Size(798, 45);
+            this.trackBarGazeTypingSpeed.Size = new System.Drawing.Size(798, 69);
             this.trackBarGazeTypingSpeed.TabIndex = 17;
             this.trackBarGazeTypingSpeed.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trackBarGazeTypingSpeed.Scroll += new System.EventHandler(this.trackBarGazeTypingSpeed_Scroll);
@@ -334,7 +361,7 @@ namespace GazeToolBar
             this.lblGazeTypingSpeed.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblGazeTypingSpeed.Location = new System.Drawing.Point(21, 42);
             this.lblGazeTypingSpeed.Name = "lblGazeTypingSpeed";
-            this.lblGazeTypingSpeed.Size = new System.Drawing.Size(144, 16);
+            this.lblGazeTypingSpeed.Size = new System.Drawing.Size(214, 24);
             this.lblGazeTypingSpeed.TabIndex = 16;
             this.lblGazeTypingSpeed.Text = "Gaze Typing Speed";
             // 
@@ -372,7 +399,7 @@ namespace GazeToolBar
             this.lblSoundFeedbackOnOff.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblSoundFeedbackOnOff.Location = new System.Drawing.Point(848, 26);
             this.lblSoundFeedbackOnOff.Name = "lblSoundFeedbackOnOff";
-            this.lblSoundFeedbackOnOff.Size = new System.Drawing.Size(32, 16);
+            this.lblSoundFeedbackOnOff.Size = new System.Drawing.Size(46, 24);
             this.lblSoundFeedbackOnOff.TabIndex = 14;
             this.lblSoundFeedbackOnOff.Text = "Off";
             // 
@@ -382,7 +409,7 @@ namespace GazeToolBar
             this.lblSize.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblSize.Location = new System.Drawing.Point(63, 92);
             this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(40, 16);
+            this.lblSize.Size = new System.Drawing.Size(58, 24);
             this.lblSize.TabIndex = 7;
             this.lblSize.Text = "Size";
             // 
@@ -403,7 +430,7 @@ namespace GazeToolBar
             this.lblSoundFeedback.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblSoundFeedback.Location = new System.Drawing.Point(618, 92);
             this.lblSoundFeedback.Name = "lblSoundFeedback";
-            this.lblSoundFeedback.Size = new System.Drawing.Size(120, 16);
+            this.lblSoundFeedback.Size = new System.Drawing.Size(178, 24);
             this.lblSoundFeedback.TabIndex = 12;
             this.lblSoundFeedback.Text = "Sound Feedback";
             // 
@@ -413,7 +440,7 @@ namespace GazeToolBar
             this.lblSizeSmall.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblSizeSmall.Location = new System.Drawing.Point(232, 26);
             this.lblSizeSmall.Name = "lblSizeSmall";
-            this.lblSizeSmall.Size = new System.Drawing.Size(48, 16);
+            this.lblSizeSmall.Size = new System.Drawing.Size(70, 24);
             this.lblSizeSmall.TabIndex = 9;
             this.lblSizeSmall.Text = "Small";
             // 
@@ -423,7 +450,7 @@ namespace GazeToolBar
             this.lblLarge.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblLarge.Location = new System.Drawing.Point(416, 26);
             this.lblLarge.Name = "lblLarge";
-            this.lblLarge.Size = new System.Drawing.Size(48, 16);
+            this.lblLarge.Size = new System.Drawing.Size(70, 24);
             this.lblLarge.TabIndex = 11;
             this.lblLarge.Text = "Large";
             // 
@@ -471,7 +498,7 @@ namespace GazeToolBar
             this.lblWordPredictionOnOffIndiction.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblWordPredictionOnOffIndiction.Location = new System.Drawing.Point(848, 10);
             this.lblWordPredictionOnOffIndiction.Name = "lblWordPredictionOnOffIndiction";
-            this.lblWordPredictionOnOffIndiction.Size = new System.Drawing.Size(32, 16);
+            this.lblWordPredictionOnOffIndiction.Size = new System.Drawing.Size(46, 24);
             this.lblWordPredictionOnOffIndiction.TabIndex = 5;
             this.lblWordPredictionOnOffIndiction.Text = "Off";
             // 
@@ -482,7 +509,7 @@ namespace GazeToolBar
             this.lblLanguage.ForeColor = System.Drawing.Color.White;
             this.lblLanguage.Location = new System.Drawing.Point(15, 64);
             this.lblLanguage.Name = "lblLanguage";
-            this.lblLanguage.Size = new System.Drawing.Size(72, 16);
+            this.lblLanguage.Size = new System.Drawing.Size(106, 24);
             this.lblLanguage.TabIndex = 0;
             this.lblLanguage.Text = "Language";
             // 
@@ -505,7 +532,7 @@ namespace GazeToolBar
             this.lblCurrentLanguage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.lblCurrentLanguage.Location = new System.Drawing.Point(127, 52);
             this.lblCurrentLanguage.Name = "lblCurrentLanguage";
-            this.lblCurrentLanguage.Size = new System.Drawing.Size(128, 32);
+            this.lblCurrentLanguage.Size = new System.Drawing.Size(190, 48);
             this.lblCurrentLanguage.TabIndex = 1;
             this.lblCurrentLanguage.Text = "    English\r\n(United States)";
             // 
@@ -515,7 +542,7 @@ namespace GazeToolBar
             this.lblWordPrediction.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblWordPrediction.Location = new System.Drawing.Point(606, 64);
             this.lblWordPrediction.Name = "lblWordPrediction";
-            this.lblWordPrediction.Size = new System.Drawing.Size(128, 16);
+            this.lblWordPrediction.Size = new System.Drawing.Size(190, 24);
             this.lblWordPrediction.TabIndex = 3;
             this.lblWordPrediction.Text = "Word Prediction";
             // 
@@ -524,10 +551,9 @@ namespace GazeToolBar
             this.btnSave.FlatAppearance.BorderSize = 3;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(17, 17);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSave.Location = new System.Drawing.Point(26, 24);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(131, 40);
+            this.btnSave.Size = new System.Drawing.Size(196, 55);
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -538,10 +564,9 @@ namespace GazeToolBar
             this.btnCancel.FlatAppearance.BorderSize = 3;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(217, 17);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Location = new System.Drawing.Point(326, 24);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(131, 40);
+            this.btnCancel.Size = new System.Drawing.Size(196, 55);
             this.btnCancel.TabIndex = 24;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -551,10 +576,9 @@ namespace GazeToolBar
             // 
             this.panelSaveAndCancel.Controls.Add(this.btnSave);
             this.panelSaveAndCancel.Controls.Add(this.btnCancel);
-            this.panelSaveAndCancel.Location = new System.Drawing.Point(309, 638);
-            this.panelSaveAndCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.panelSaveAndCancel.Location = new System.Drawing.Point(464, 883);
             this.panelSaveAndCancel.Name = "panelSaveAndCancel";
-            this.panelSaveAndCancel.Size = new System.Drawing.Size(364, 72);
+            this.panelSaveAndCancel.Size = new System.Drawing.Size(546, 100);
             this.panelSaveAndCancel.TabIndex = 25;
             // 
             // pnlPageKeyboard
@@ -573,9 +597,10 @@ namespace GazeToolBar
             this.pnlGeneral.Controls.Add(this.panelSpeed);
             this.pnlGeneral.Controls.Add(this.panelOther);
             this.pnlGeneral.Controls.Add(this.panelPrecision);
-            this.pnlGeneral.Location = new System.Drawing.Point(12, 84);
+            this.pnlGeneral.Location = new System.Drawing.Point(18, 116);
+            this.pnlGeneral.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(1260, 648);
+            this.pnlGeneral.Size = new System.Drawing.Size(1989, 897);
             this.pnlGeneral.TabIndex = 27;
             // 
             // btnGeneralSetting
@@ -584,10 +609,9 @@ namespace GazeToolBar
             this.btnGeneralSetting.FlatAppearance.BorderSize = 5;
             this.btnGeneralSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGeneralSetting.ForeColor = System.Drawing.Color.White;
-            this.btnGeneralSetting.Location = new System.Drawing.Point(8, 9);
-            this.btnGeneralSetting.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGeneralSetting.Location = new System.Drawing.Point(12, 12);
             this.btnGeneralSetting.Name = "btnGeneralSetting";
-            this.btnGeneralSetting.Size = new System.Drawing.Size(147, 48);
+            this.btnGeneralSetting.Size = new System.Drawing.Size(220, 66);
             this.btnGeneralSetting.TabIndex = 28;
             this.btnGeneralSetting.Text = "General Setting";
             this.btnGeneralSetting.UseVisualStyleBackColor = false;
@@ -598,29 +622,78 @@ namespace GazeToolBar
             this.btnKeyBoardSetting.FlatAppearance.BorderSize = 5;
             this.btnKeyBoardSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKeyBoardSetting.ForeColor = System.Drawing.Color.White;
-            this.btnKeyBoardSetting.Location = new System.Drawing.Point(159, 9);
-            this.btnKeyBoardSetting.Margin = new System.Windows.Forms.Padding(2);
+            this.btnKeyBoardSetting.Location = new System.Drawing.Point(238, 12);
             this.btnKeyBoardSetting.Name = "btnKeyBoardSetting";
-            this.btnKeyBoardSetting.Size = new System.Drawing.Size(147, 48);
+            this.btnKeyBoardSetting.Size = new System.Drawing.Size(220, 66);
             this.btnKeyBoardSetting.TabIndex = 29;
             this.btnKeyBoardSetting.Text = "Keyboard Setting";
             this.btnKeyBoardSetting.UseVisualStyleBackColor = true;
             this.btnKeyBoardSetting.Click += new System.EventHandler(this.btnKeyBoardSetting_Click);
             // 
+            // btnFixTimeLengthPlus
+            // 
+            this.btnFixTimeLengthPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFixTimeLengthPlus.Font = new System.Drawing.Font("SimSun", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFixTimeLengthPlus.ForeColor = System.Drawing.Color.White;
+            this.btnFixTimeLengthPlus.Location = new System.Drawing.Point(1353, 46);
+            this.btnFixTimeLengthPlus.Name = "btnFixTimeLengthPlus";
+            this.btnFixTimeLengthPlus.Size = new System.Drawing.Size(62, 57);
+            this.btnFixTimeLengthPlus.TabIndex = 13;
+            this.btnFixTimeLengthPlus.Text = "+";
+            this.btnFixTimeLengthPlus.UseVisualStyleBackColor = true;
+            this.btnFixTimeLengthPlus.Click += new System.EventHandler(this.btnFixTimeLengthPlus_Click);
+            // 
+            // btnFixTimeOutPlus
+            // 
+            this.btnFixTimeOutPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFixTimeOutPlus.Font = new System.Drawing.Font("SimSun", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFixTimeOutPlus.ForeColor = System.Drawing.Color.White;
+            this.btnFixTimeOutPlus.Location = new System.Drawing.Point(1353, 30);
+            this.btnFixTimeOutPlus.Name = "btnFixTimeOutPlus";
+            this.btnFixTimeOutPlus.Size = new System.Drawing.Size(62, 57);
+            this.btnFixTimeOutPlus.TabIndex = 16;
+            this.btnFixTimeOutPlus.Text = "+";
+            this.btnFixTimeOutPlus.UseVisualStyleBackColor = true;
+            this.btnFixTimeOutPlus.Click += new System.EventHandler(this.btnFixTimeOutPlus_Click);
+            // 
+            // btnFixTimeLengthMins
+            // 
+            this.btnFixTimeLengthMins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFixTimeLengthMins.Font = new System.Drawing.Font("SimSun", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFixTimeLengthMins.ForeColor = System.Drawing.Color.White;
+            this.btnFixTimeLengthMins.Location = new System.Drawing.Point(313, 46);
+            this.btnFixTimeLengthMins.Name = "btnFixTimeLengthMins";
+            this.btnFixTimeLengthMins.Size = new System.Drawing.Size(62, 57);
+            this.btnFixTimeLengthMins.TabIndex = 14;
+            this.btnFixTimeLengthMins.Text = "-";
+            this.btnFixTimeLengthMins.UseVisualStyleBackColor = true;
+            this.btnFixTimeLengthMins.Click += new System.EventHandler(this.btnFixTimeLengthMins_Click);
+            // 
+            // btnFixTimeOutMins
+            // 
+            this.btnFixTimeOutMins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFixTimeOutMins.Font = new System.Drawing.Font("SimSun", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFixTimeOutMins.ForeColor = System.Drawing.Color.White;
+            this.btnFixTimeOutMins.Location = new System.Drawing.Point(313, 30);
+            this.btnFixTimeOutMins.Name = "btnFixTimeOutMins";
+            this.btnFixTimeOutMins.Size = new System.Drawing.Size(62, 57);
+            this.btnFixTimeOutMins.TabIndex = 17;
+            this.btnFixTimeOutMins.Text = "-";
+            this.btnFixTimeOutMins.UseVisualStyleBackColor = true;
+            this.btnFixTimeOutMins.Click += new System.EventHandler(this.btnFixTimeOutMins_Click);
+            // 
             // Settings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1171, 739);
+            this.ClientSize = new System.Drawing.Size(2020, 1141);
             this.Controls.Add(this.btnKeyBoardSetting);
             this.Controls.Add(this.btnGeneralSetting);
             this.Controls.Add(this.panelSaveAndCancel);
             this.Controls.Add(this.pnlGeneral);
-            this.Controls.Add(this.pnlPageKeyboard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Settings";
@@ -629,10 +702,10 @@ namespace GazeToolBar
             this.Shown += new System.EventHandler(this.Settings_Shown);
             this.panelSelection.ResumeLayout(false);
             this.panelSelection.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarPrecision)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeLength)).EndInit();
             this.panelPrecision.ResumeLayout(false);
             this.panelPrecision.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeOut)).EndInit();
             this.panelSpeed.ResumeLayout(false);
             this.panelSpeed.PerformLayout();
             this.panelOther.ResumeLayout(false);
@@ -661,11 +734,11 @@ namespace GazeToolBar
         private Label lblGaze;
         private Label lblSwitch;
         private Panel panelSelection;
-        private Label lblPrecision;
-        private TrackBar trackBarPrecision;
+        private Label lblFixationDetectionTimeLength;
+        private TrackBar trackBarFixTimeLength;
         private Panel panelPrecision;
         private Label lblSpeed;
-        private TrackBar trackBarSpeed;
+        private TrackBar trackBarFixTimeOut;
         private Panel panelSpeed;
         private Label lblOther;
         private Label lblPosition;
@@ -699,5 +772,9 @@ namespace GazeToolBar
         private Panel pnlGeneral;
         private Button btnGeneralSetting;
         private Button btnKeyBoardSetting;
+        private Button btnFixTimeLengthMins;
+        private Button btnFixTimeLengthPlus;
+        private Button btnFixTimeOutMins;
+        private Button btnFixTimeOutPlus;
     }
 }

@@ -23,21 +23,13 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnChangeSide, new GazeAwareBehavior(OnbtnChangeSide_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSizeLarge, new GazeAwareBehavior(OnbtnSizeLarge_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSwitch, new GazeAwareBehavior(OnbtnSwitch_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarPrecision, new GazeAwareBehavior(OntrackBarPrecision_Scroll) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarSpeed, new GazeAwareBehavior(OntrackBarSpeed_Scroll) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnWordPredictionOnOff, new GazeAwareBehavior(OnbtnWordPredictionOnOff_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSizeSmall, new GazeAwareBehavior(OnbtnSizeSmall_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSoundFeedback, new GazeAwareBehavior(OnbtnSoundFeedback_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarGazeTypingSpeed, new GazeAwareBehavior(OntrackBarGazeTypingSpeed_Scroll) { DelayMilliseconds = 100 });
 
             bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSettingClick) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnKeyBoardSetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
             
-        }
-
-        private void OntrackBarGazeTypingSpeed_Scroll(object sender, GazeAwareEventArgs e)
-        {
-            //throw new NotImplementedException();
         }
 
         private void OnbtnSoundFeedback_Click(object sender, GazeAwareEventArgs e)
@@ -53,17 +45,6 @@ namespace GazeToolBar
         private void OnbtnWordPredictionOnOff_Click(object sender, GazeAwareEventArgs e)
         {
             btnWordPredictionOnOff.PerformClick();
-        }
-
-        private void OntrackBarSpeed_Scroll(object sender, GazeAwareEventArgs e)
-        {
-            //trackBarSpeed.
-            //throw new NotImplementedException();
-        }
-
-        private void OntrackBarPrecision_Scroll(object sender, GazeAwareEventArgs e)
-        {
-            //throw new NotImplementedException();
         }
 
         private void OnbtnSwitch_Click(object sender, GazeAwareEventArgs e)
