@@ -25,8 +25,11 @@ namespace GazeToolBar
         public StateManager stateManager;
 
         //Allocate memory location for KeyboardHook and worker.
-        private Keyboardhook LowLevelKeyBoardHook;
+        public Keyboardhook LowLevelKeyBoardHook;
         public ShortcutKeyWorker shortCutKeyWorker;
+
+
+        public Dictionary<ActionToBePerformed, String> FKeyMapDictionary;
 
         List<Panel> highlightPannerList;
 
@@ -49,6 +52,9 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHighLightKeyboard);
             highlightPannerList.Add(pnlHighLightSettings);
             setButtonPanelHight(highlightPannerList);
+
+            
+
 
             connectBehaveMap();
         }
@@ -86,11 +92,18 @@ namespace GazeToolBar
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            FKeyMapDictionary = new Dictionary<ActionToBePerformed, string>();
+
+            FKeyMapDictionary.Add(ActionToBePerformed.DoubleClick, "Key not assigned");
+            FKeyMapDictionary.Add(ActionToBePerformed.LeftClick, "Key not assigned");
+            FKeyMapDictionary.Add(ActionToBePerformed.Scroll, "Key not assigned");
+            FKeyMapDictionary.Add(ActionToBePerformed.RightClick, "Key not assigned");
+
 
             //Instantiate keyboard hook and pass into worker class.
             LowLevelKeyBoardHook = new Keyboardhook();
 
-            shortCutKeyWorker = new ShortcutKeyWorker(LowLevelKeyBoardHook);
+            shortCutKeyWorker = new ShortcutKeyWorker(LowLevelKeyBoardHook, FKeyMapDictionary);
 
             //Start monitoring key presses.
             LowLevelKeyBoardHook.HookKeyboard();

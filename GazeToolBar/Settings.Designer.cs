@@ -72,7 +72,7 @@ namespace GazeToolBar
             this.pnlFKeyHighlight6 = new System.Windows.Forms.Panel();
             this.btClearFKeyDoubleClick = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.lbScoll = new System.Windows.Forms.Label();
+            this.lbScroll = new System.Windows.Forms.Label();
             this.pnlFKeyHighlight8 = new System.Windows.Forms.Panel();
             this.btClearFKeyScroll = new System.Windows.Forms.Button();
             this.pnlFKeyHighlight7 = new System.Windows.Forms.Panel();
@@ -538,7 +538,7 @@ namespace GazeToolBar
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.lbScoll);
+            this.panel4.Controls.Add(this.lbScroll);
             this.panel4.Controls.Add(this.pnlFKeyHighlight8);
             this.panel4.Controls.Add(this.pnlFKeyHighlight7);
             this.panel4.Controls.Add(this.pictureBox4);
@@ -547,15 +547,15 @@ namespace GazeToolBar
             this.panel4.Size = new System.Drawing.Size(175, 312);
             this.panel4.TabIndex = 4;
             // 
-            // lbScoll
+            // lbScroll
             // 
-            this.lbScoll.AutoSize = true;
-            this.lbScoll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbScoll.Location = new System.Drawing.Point(64, 243);
-            this.lbScoll.Name = "lbScoll";
-            this.lbScoll.Size = new System.Drawing.Size(35, 13);
-            this.lbScoll.TabIndex = 3;
-            this.lbScoll.Text = "label5";
+            this.lbScroll.AutoSize = true;
+            this.lbScroll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbScroll.Location = new System.Drawing.Point(64, 243);
+            this.lbScroll.Name = "lbScroll";
+            this.lbScroll.Size = new System.Drawing.Size(35, 13);
+            this.lbScroll.TabIndex = 3;
+            this.lbScroll.Text = "label5";
             // 
             // pnlFKeyHighlight8
             // 
@@ -885,7 +885,7 @@ namespace GazeToolBar
         private Button btFKeyDoubleClick;
         private PictureBox pictureBox3;
         private Panel panel4;
-        private Label lbScoll;
+        private Label lbScroll;
         private Button btClearFKeyScroll;
         private Button btFKeyScroll;
         private PictureBox pictureBox4;

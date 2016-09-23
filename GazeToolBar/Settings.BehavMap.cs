@@ -144,9 +144,14 @@ namespace GazeToolBar
 
         //====================================================================================
 
+        ActionToBePerformed actionToAssignKey;
+
         private void btFKeyLeftClick_Click(object sender, EventArgs e)
         {
-            Console.Write(sender.ToString());
+            WaitForUserKeyPress = true;
+            actionToAssignKey = ActionToBePerformed.LeftClick;
+            lbFKeyFeedback.Text = "please press a key";
+            
         }
 
         private void btFKeyRightClick_Click(object sender, EventArgs e)
@@ -169,29 +174,38 @@ namespace GazeToolBar
 
         }
 
+        String notAssigned = "Key not assigned";
+        //Clear key map
+
         private void btClearFKeyLeftClick_Click(object sender, EventArgs e)
         {
-
+            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = notAssigned;
+            lbLeft.Text = notAssigned;
         }
 
         private void btClearFKeyRightClick_Click(object sender, EventArgs e)
         {
-
+            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.RightClick] = notAssigned;
+            lbRight.Text = notAssigned;
         }
 
         private void btClearFKeyDoubleClick_Click(object sender, EventArgs e)
         {
-
+            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = notAssigned;
+            lbDouble.Text = notAssigned;
         }
 
         private void btClearFKeyScroll_Click(object sender, EventArgs e)
         {
-
+            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.Scroll] = notAssigned;
+            lbScroll.Text = notAssigned;
         }
 
         private void btClearFKeyDrapAndDrop_Click(object sender, EventArgs e)
         {
 
         }
+
+
     }
 }

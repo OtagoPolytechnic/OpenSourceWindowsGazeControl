@@ -49,6 +49,16 @@ namespace GazeToolBar
             }
             pnlGeneralIsShow = true;
             pnlKeyboardIsShow = false;
+
+
+
+            lbDouble.Text = form1.FKeyMapDictionary[ActionToBePerformed.DoubleClick];
+            lbRight.Text = form1.FKeyMapDictionary[ActionToBePerformed.RightClick];
+            lbLeft.Text = form1.FKeyMapDictionary[ActionToBePerformed.LeftClick];
+            lbScroll.Text = form1.FKeyMapDictionary[ActionToBePerformed.Scroll];
+
+            form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;
+
         }
 
         private void btnChangeSide_Click(object sender, EventArgs e)
@@ -294,8 +304,31 @@ namespace GazeToolBar
             connectBehaveMap();
         }
 
-        
 
-       
+
+        bool WaitForUserKeyPress = false;
+
+       // private void Settings_KeyPress(object sender, KeyPressEventArgs e)
+        public void GetKeyPress(object o, HookedKeyboardEventArgs pressedKey)
+
+        {
+             if(WaitForUserKeyPress)
+            {
+                form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = pressedKey.KeyPressed.ToString();
+                updateLabel(pressedKey.KeyPressed.ToString(), actionToAssignKey);
+                WaitForUserKeyPress = false;
+            }
+        }
+
+
+        void updateLabel(String newKey, ActionToBePerformed functiontoAssign)
+        {
+            switch (functiontoAssign)
+            {
+                case ActionToBePerformed.LeftClick:
+                    lbLeft.Text = newKey;
+                    break;
+            }
+        }
     }
 }

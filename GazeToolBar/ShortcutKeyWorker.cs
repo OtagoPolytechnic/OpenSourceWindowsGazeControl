@@ -24,15 +24,15 @@ namespace GazeToolBar
         double currentGazeLocationX;
         double currentGazeLocationY;
 
-        Dictionary<ActionToBePerformed, String> keyAssignments;
+       public  Dictionary<ActionToBePerformed, String> keyAssignments { get; set; }
 
         Keyboardhook keyBoardHook;
-        public ShortcutKeyWorker(Keyboardhook KeyboardObserver)//, Dictionary<EToolBarFunction, String> KeyAssignments)
+        public ShortcutKeyWorker(Keyboardhook KeyboardObserver, Dictionary<ActionToBePerformed, String> KeyAssignments)//, Dictionary<EToolBarFunction, String> KeyAssignments)
         {
             keyBoardHook = KeyboardObserver;
             keyBoardHook.OnKeyPressed += RunKeyFunction;
 
-            //keyAssignments = KeyAssignments;
+            keyAssignments = KeyAssignments;
 
             //Connect to eyeX engine gaze stream. 
             gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
