@@ -57,35 +57,35 @@ namespace GazeToolBar
             this.panelSaveAndCancel = new System.Windows.Forms.Panel();
             this.pnlPageKeyboard = new System.Windows.Forms.Panel();
             this.lbFKeyFeedback = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlRightClick = new System.Windows.Forms.Panel();
             this.lbRight = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlFKeyHighlight3 = new System.Windows.Forms.Panel();
             this.btFKeyRightClick = new System.Windows.Forms.Button();
             this.pnlFKeyHighlight4 = new System.Windows.Forms.Panel();
             this.btClearFKeyRightClick = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlDoubleClick = new System.Windows.Forms.Panel();
             this.lbDouble = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pnlFKeyHighlight5 = new System.Windows.Forms.Panel();
             this.btFKeyDoubleClick = new System.Windows.Forms.Button();
             this.pnlFKeyHighlight6 = new System.Windows.Forms.Panel();
             this.btClearFKeyDoubleClick = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pnlScroll = new System.Windows.Forms.Panel();
             this.lbScroll = new System.Windows.Forms.Label();
             this.pnlFKeyHighlight8 = new System.Windows.Forms.Panel();
             this.btClearFKeyScroll = new System.Windows.Forms.Button();
             this.pnlFKeyHighlight7 = new System.Windows.Forms.Panel();
             this.btFKeyScroll = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.pnlDragAndDrop = new System.Windows.Forms.Panel();
             this.pnlFKeyHighlight10 = new System.Windows.Forms.Panel();
             this.btClearFKeyDrapAndDrop = new System.Windows.Forms.Button();
             this.lbDragAndDrop = new System.Windows.Forms.Label();
             this.pnlFKeyHighlight9 = new System.Windows.Forms.Panel();
             this.btFKeyDrapAndDrop = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlLeftClick = new System.Windows.Forms.Panel();
             this.pnlFKeyHighlight2 = new System.Windows.Forms.Panel();
             this.btClearFKeyLeftClick = new System.Windows.Forms.Button();
             this.pnlFKeyHighlight1 = new System.Windows.Forms.Panel();
@@ -103,23 +103,23 @@ namespace GazeToolBar
             this.panelOther.SuspendLayout();
             this.panelSaveAndCancel.SuspendLayout();
             this.pnlPageKeyboard.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlRightClick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlFKeyHighlight3.SuspendLayout();
             this.pnlFKeyHighlight4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlDoubleClick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnlFKeyHighlight5.SuspendLayout();
             this.pnlFKeyHighlight6.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.pnlScroll.SuspendLayout();
             this.pnlFKeyHighlight8.SuspendLayout();
             this.pnlFKeyHighlight7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel5.SuspendLayout();
+            this.pnlDragAndDrop.SuspendLayout();
             this.pnlFKeyHighlight10.SuspendLayout();
             this.pnlFKeyHighlight9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlLeftClick.SuspendLayout();
             this.pnlFKeyHighlight2.SuspendLayout();
             this.pnlFKeyHighlight1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -382,53 +382,55 @@ namespace GazeToolBar
             // pnlPageKeyboard
             // 
             this.pnlPageKeyboard.Controls.Add(this.lbFKeyFeedback);
-            this.pnlPageKeyboard.Controls.Add(this.panel2);
-            this.pnlPageKeyboard.Controls.Add(this.panel3);
-            this.pnlPageKeyboard.Controls.Add(this.panel4);
-            this.pnlPageKeyboard.Controls.Add(this.panel5);
-            this.pnlPageKeyboard.Controls.Add(this.panel1);
-            this.pnlPageKeyboard.Location = new System.Drawing.Point(12, 84);
+            this.pnlPageKeyboard.Controls.Add(this.pnlRightClick);
+            this.pnlPageKeyboard.Controls.Add(this.pnlDoubleClick);
+            this.pnlPageKeyboard.Controls.Add(this.pnlScroll);
+            this.pnlPageKeyboard.Controls.Add(this.pnlDragAndDrop);
+            this.pnlPageKeyboard.Controls.Add(this.pnlLeftClick);
+            this.pnlPageKeyboard.Location = new System.Drawing.Point(0, 84);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
-            this.pnlPageKeyboard.Size = new System.Drawing.Size(1147, 589);
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(1900, 589);
             this.pnlPageKeyboard.TabIndex = 26;
             // 
             // lbFKeyFeedback
             // 
             this.lbFKeyFeedback.AutoSize = true;
+            this.lbFKeyFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFKeyFeedback.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbFKeyFeedback.Location = new System.Drawing.Point(521, 484);
+            this.lbFKeyFeedback.Location = new System.Drawing.Point(681, 506);
             this.lbFKeyFeedback.Name = "lbFKeyFeedback";
-            this.lbFKeyFeedback.Size = new System.Drawing.Size(35, 13);
+            this.lbFKeyFeedback.Size = new System.Drawing.Size(60, 24);
             this.lbFKeyFeedback.TabIndex = 5;
             this.lbFKeyFeedback.Text = "label7";
             // 
-            // panel2
+            // pnlRightClick
             // 
-            this.panel2.Controls.Add(this.lbRight);
-            this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.pnlFKeyHighlight3);
-            this.panel2.Controls.Add(this.pnlFKeyHighlight4);
-            this.panel2.Location = new System.Drawing.Point(270, 114);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(175, 312);
-            this.panel2.TabIndex = 4;
+            this.pnlRightClick.Controls.Add(this.lbRight);
+            this.pnlRightClick.Controls.Add(this.pictureBox2);
+            this.pnlRightClick.Controls.Add(this.pnlFKeyHighlight3);
+            this.pnlRightClick.Controls.Add(this.pnlFKeyHighlight4);
+            this.pnlRightClick.Location = new System.Drawing.Point(362, 114);
+            this.pnlRightClick.Name = "pnlRightClick";
+            this.pnlRightClick.Size = new System.Drawing.Size(222, 351);
+            this.pnlRightClick.TabIndex = 4;
             // 
             // lbRight
             // 
             this.lbRight.AutoSize = true;
+            this.lbRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRight.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbRight.Location = new System.Drawing.Point(64, 243);
+            this.lbRight.Location = new System.Drawing.Point(19, 318);
             this.lbRight.Name = "lbRight";
-            this.lbRight.Size = new System.Drawing.Size(35, 13);
+            this.lbRight.Size = new System.Drawing.Size(60, 24);
             this.lbRight.TabIndex = 3;
             this.lbRight.Text = "label3";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::GazeToolBar.Properties.Resources.Right_Click_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox2.Location = new System.Drawing.Point(20, 31);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox2.Size = new System.Drawing.Size(171, 106);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -436,16 +438,16 @@ namespace GazeToolBar
             // pnlFKeyHighlight3
             // 
             this.pnlFKeyHighlight3.Controls.Add(this.btFKeyRightClick);
-            this.pnlFKeyHighlight3.Location = new System.Drawing.Point(38, 139);
+            this.pnlFKeyHighlight3.Location = new System.Drawing.Point(20, 146);
             this.pnlFKeyHighlight3.Name = "pnlFKeyHighlight3";
-            this.pnlFKeyHighlight3.Size = new System.Drawing.Size(100, 39);
+            this.pnlFKeyHighlight3.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight3.TabIndex = 6;
             // 
             // btFKeyRightClick
             // 
-            this.btFKeyRightClick.Location = new System.Drawing.Point(12, 8);
+            this.btFKeyRightClick.Location = new System.Drawing.Point(3, 4);
             this.btFKeyRightClick.Name = "btFKeyRightClick";
-            this.btFKeyRightClick.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyRightClick.Size = new System.Drawing.Size(168, 63);
             this.btFKeyRightClick.TabIndex = 1;
             this.btFKeyRightClick.Text = "Set";
             this.btFKeyRightClick.UseVisualStyleBackColor = true;
@@ -454,48 +456,49 @@ namespace GazeToolBar
             // pnlFKeyHighlight4
             // 
             this.pnlFKeyHighlight4.Controls.Add(this.btClearFKeyRightClick);
-            this.pnlFKeyHighlight4.Location = new System.Drawing.Point(38, 191);
+            this.pnlFKeyHighlight4.Location = new System.Drawing.Point(20, 229);
             this.pnlFKeyHighlight4.Name = "pnlFKeyHighlight4";
-            this.pnlFKeyHighlight4.Size = new System.Drawing.Size(100, 38);
+            this.pnlFKeyHighlight4.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight4.TabIndex = 7;
             // 
             // btClearFKeyRightClick
             // 
-            this.btClearFKeyRightClick.Location = new System.Drawing.Point(12, 7);
+            this.btClearFKeyRightClick.Location = new System.Drawing.Point(3, 3);
             this.btClearFKeyRightClick.Name = "btClearFKeyRightClick";
-            this.btClearFKeyRightClick.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyRightClick.Size = new System.Drawing.Size(168, 63);
             this.btClearFKeyRightClick.TabIndex = 2;
             this.btClearFKeyRightClick.Text = "Clear";
             this.btClearFKeyRightClick.UseVisualStyleBackColor = true;
             this.btClearFKeyRightClick.Click += new System.EventHandler(this.btClearFKeyRightClick_Click);
             // 
-            // panel3
+            // pnlDoubleClick
             // 
-            this.panel3.Controls.Add(this.lbDouble);
-            this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Controls.Add(this.pnlFKeyHighlight5);
-            this.panel3.Controls.Add(this.pnlFKeyHighlight6);
-            this.panel3.Location = new System.Drawing.Point(486, 114);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(175, 312);
-            this.panel3.TabIndex = 4;
+            this.pnlDoubleClick.Controls.Add(this.lbDouble);
+            this.pnlDoubleClick.Controls.Add(this.pictureBox3);
+            this.pnlDoubleClick.Controls.Add(this.pnlFKeyHighlight5);
+            this.pnlDoubleClick.Controls.Add(this.pnlFKeyHighlight6);
+            this.pnlDoubleClick.Location = new System.Drawing.Point(590, 114);
+            this.pnlDoubleClick.Name = "pnlDoubleClick";
+            this.pnlDoubleClick.Size = new System.Drawing.Size(222, 351);
+            this.pnlDoubleClick.TabIndex = 4;
             // 
             // lbDouble
             // 
             this.lbDouble.AutoSize = true;
+            this.lbDouble.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDouble.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDouble.Location = new System.Drawing.Point(64, 243);
+            this.lbDouble.Location = new System.Drawing.Point(23, 318);
             this.lbDouble.Name = "lbDouble";
-            this.lbDouble.Size = new System.Drawing.Size(35, 13);
+            this.lbDouble.Size = new System.Drawing.Size(60, 24);
             this.lbDouble.TabIndex = 3;
             this.lbDouble.Text = "label4";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox3.Location = new System.Drawing.Point(24, 31);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox3.Size = new System.Drawing.Size(171, 106);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -503,16 +506,16 @@ namespace GazeToolBar
             // pnlFKeyHighlight5
             // 
             this.pnlFKeyHighlight5.Controls.Add(this.btFKeyDoubleClick);
-            this.pnlFKeyHighlight5.Location = new System.Drawing.Point(38, 139);
+            this.pnlFKeyHighlight5.Location = new System.Drawing.Point(24, 150);
             this.pnlFKeyHighlight5.Name = "pnlFKeyHighlight5";
-            this.pnlFKeyHighlight5.Size = new System.Drawing.Size(100, 39);
+            this.pnlFKeyHighlight5.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight5.TabIndex = 8;
             // 
             // btFKeyDoubleClick
             // 
-            this.btFKeyDoubleClick.Location = new System.Drawing.Point(13, 8);
+            this.btFKeyDoubleClick.Location = new System.Drawing.Point(3, 3);
             this.btFKeyDoubleClick.Name = "btFKeyDoubleClick";
-            this.btFKeyDoubleClick.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyDoubleClick.Size = new System.Drawing.Size(168, 63);
             this.btFKeyDoubleClick.TabIndex = 1;
             this.btFKeyDoubleClick.Text = "Set";
             this.btFKeyDoubleClick.UseVisualStyleBackColor = true;
@@ -521,55 +524,56 @@ namespace GazeToolBar
             // pnlFKeyHighlight6
             // 
             this.pnlFKeyHighlight6.Controls.Add(this.btClearFKeyDoubleClick);
-            this.pnlFKeyHighlight6.Location = new System.Drawing.Point(38, 191);
+            this.pnlFKeyHighlight6.Location = new System.Drawing.Point(24, 229);
             this.pnlFKeyHighlight6.Name = "pnlFKeyHighlight6";
-            this.pnlFKeyHighlight6.Size = new System.Drawing.Size(100, 38);
+            this.pnlFKeyHighlight6.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight6.TabIndex = 9;
             // 
             // btClearFKeyDoubleClick
             // 
-            this.btClearFKeyDoubleClick.Location = new System.Drawing.Point(13, 7);
+            this.btClearFKeyDoubleClick.Location = new System.Drawing.Point(3, 3);
             this.btClearFKeyDoubleClick.Name = "btClearFKeyDoubleClick";
-            this.btClearFKeyDoubleClick.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyDoubleClick.Size = new System.Drawing.Size(168, 63);
             this.btClearFKeyDoubleClick.TabIndex = 2;
             this.btClearFKeyDoubleClick.Text = "Clear";
             this.btClearFKeyDoubleClick.UseVisualStyleBackColor = true;
             this.btClearFKeyDoubleClick.Click += new System.EventHandler(this.btClearFKeyDoubleClick_Click);
             // 
-            // panel4
+            // pnlScroll
             // 
-            this.panel4.Controls.Add(this.lbScroll);
-            this.panel4.Controls.Add(this.pnlFKeyHighlight8);
-            this.panel4.Controls.Add(this.pnlFKeyHighlight7);
-            this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Location = new System.Drawing.Point(703, 114);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(175, 312);
-            this.panel4.TabIndex = 4;
+            this.pnlScroll.Controls.Add(this.lbScroll);
+            this.pnlScroll.Controls.Add(this.pnlFKeyHighlight8);
+            this.pnlScroll.Controls.Add(this.pnlFKeyHighlight7);
+            this.pnlScroll.Controls.Add(this.pictureBox4);
+            this.pnlScroll.Location = new System.Drawing.Point(818, 114);
+            this.pnlScroll.Name = "pnlScroll";
+            this.pnlScroll.Size = new System.Drawing.Size(222, 351);
+            this.pnlScroll.TabIndex = 4;
             // 
             // lbScroll
             // 
             this.lbScroll.AutoSize = true;
+            this.lbScroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbScroll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbScroll.Location = new System.Drawing.Point(64, 243);
+            this.lbScroll.Location = new System.Drawing.Point(31, 318);
             this.lbScroll.Name = "lbScroll";
-            this.lbScroll.Size = new System.Drawing.Size(35, 13);
+            this.lbScroll.Size = new System.Drawing.Size(60, 24);
             this.lbScroll.TabIndex = 3;
             this.lbScroll.Text = "label5";
             // 
             // pnlFKeyHighlight8
             // 
             this.pnlFKeyHighlight8.Controls.Add(this.btClearFKeyScroll);
-            this.pnlFKeyHighlight8.Location = new System.Drawing.Point(38, 185);
+            this.pnlFKeyHighlight8.Location = new System.Drawing.Point(32, 229);
             this.pnlFKeyHighlight8.Name = "pnlFKeyHighlight8";
-            this.pnlFKeyHighlight8.Size = new System.Drawing.Size(100, 38);
+            this.pnlFKeyHighlight8.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight8.TabIndex = 9;
             // 
             // btClearFKeyScroll
             // 
-            this.btClearFKeyScroll.Location = new System.Drawing.Point(12, 6);
+            this.btClearFKeyScroll.Location = new System.Drawing.Point(3, 3);
             this.btClearFKeyScroll.Name = "btClearFKeyScroll";
-            this.btClearFKeyScroll.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyScroll.Size = new System.Drawing.Size(168, 63);
             this.btClearFKeyScroll.TabIndex = 2;
             this.btClearFKeyScroll.Text = "Clear";
             this.btClearFKeyScroll.UseVisualStyleBackColor = true;
@@ -578,16 +582,16 @@ namespace GazeToolBar
             // pnlFKeyHighlight7
             // 
             this.pnlFKeyHighlight7.Controls.Add(this.btFKeyScroll);
-            this.pnlFKeyHighlight7.Location = new System.Drawing.Point(38, 133);
+            this.pnlFKeyHighlight7.Location = new System.Drawing.Point(29, 150);
             this.pnlFKeyHighlight7.Name = "pnlFKeyHighlight7";
-            this.pnlFKeyHighlight7.Size = new System.Drawing.Size(100, 39);
+            this.pnlFKeyHighlight7.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight7.TabIndex = 8;
             // 
             // btFKeyScroll
             // 
-            this.btFKeyScroll.Location = new System.Drawing.Point(12, 6);
+            this.btFKeyScroll.Location = new System.Drawing.Point(3, 3);
             this.btFKeyScroll.Name = "btFKeyScroll";
-            this.btFKeyScroll.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyScroll.Size = new System.Drawing.Size(168, 63);
             this.btFKeyScroll.TabIndex = 1;
             this.btFKeyScroll.Text = "Set";
             this.btFKeyScroll.UseVisualStyleBackColor = true;
@@ -596,37 +600,37 @@ namespace GazeToolBar
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox4.Location = new System.Drawing.Point(29, 31);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox4.Size = new System.Drawing.Size(171, 106);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             // 
-            // panel5
+            // pnlDragAndDrop
             // 
-            this.panel5.Controls.Add(this.pnlFKeyHighlight10);
-            this.panel5.Controls.Add(this.lbDragAndDrop);
-            this.panel5.Controls.Add(this.pnlFKeyHighlight9);
-            this.panel5.Controls.Add(this.pictureBox5);
-            this.panel5.Location = new System.Drawing.Point(918, 114);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(175, 312);
-            this.panel5.TabIndex = 4;
+            this.pnlDragAndDrop.Controls.Add(this.pnlFKeyHighlight10);
+            this.pnlDragAndDrop.Controls.Add(this.lbDragAndDrop);
+            this.pnlDragAndDrop.Controls.Add(this.pnlFKeyHighlight9);
+            this.pnlDragAndDrop.Controls.Add(this.pictureBox5);
+            this.pnlDragAndDrop.Location = new System.Drawing.Point(1067, 114);
+            this.pnlDragAndDrop.Name = "pnlDragAndDrop";
+            this.pnlDragAndDrop.Size = new System.Drawing.Size(224, 351);
+            this.pnlDragAndDrop.TabIndex = 4;
             // 
             // pnlFKeyHighlight10
             // 
             this.pnlFKeyHighlight10.Controls.Add(this.btClearFKeyDrapAndDrop);
-            this.pnlFKeyHighlight10.Location = new System.Drawing.Point(42, 191);
+            this.pnlFKeyHighlight10.Location = new System.Drawing.Point(31, 229);
             this.pnlFKeyHighlight10.Name = "pnlFKeyHighlight10";
-            this.pnlFKeyHighlight10.Size = new System.Drawing.Size(100, 38);
+            this.pnlFKeyHighlight10.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight10.TabIndex = 9;
             // 
             // btClearFKeyDrapAndDrop
             // 
-            this.btClearFKeyDrapAndDrop.Location = new System.Drawing.Point(12, 7);
+            this.btClearFKeyDrapAndDrop.Location = new System.Drawing.Point(3, 4);
             this.btClearFKeyDrapAndDrop.Name = "btClearFKeyDrapAndDrop";
-            this.btClearFKeyDrapAndDrop.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyDrapAndDrop.Size = new System.Drawing.Size(168, 63);
             this.btClearFKeyDrapAndDrop.TabIndex = 2;
             this.btClearFKeyDrapAndDrop.Text = "Clear";
             this.btClearFKeyDrapAndDrop.UseVisualStyleBackColor = true;
@@ -635,26 +639,27 @@ namespace GazeToolBar
             // lbDragAndDrop
             // 
             this.lbDragAndDrop.AutoSize = true;
+            this.lbDragAndDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDragAndDrop.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDragAndDrop.Location = new System.Drawing.Point(78, 243);
+            this.lbDragAndDrop.Location = new System.Drawing.Point(30, 318);
             this.lbDragAndDrop.Name = "lbDragAndDrop";
-            this.lbDragAndDrop.Size = new System.Drawing.Size(35, 13);
+            this.lbDragAndDrop.Size = new System.Drawing.Size(60, 24);
             this.lbDragAndDrop.TabIndex = 3;
             this.lbDragAndDrop.Text = "label6";
             // 
             // pnlFKeyHighlight9
             // 
             this.pnlFKeyHighlight9.Controls.Add(this.btFKeyDrapAndDrop);
-            this.pnlFKeyHighlight9.Location = new System.Drawing.Point(42, 139);
+            this.pnlFKeyHighlight9.Location = new System.Drawing.Point(28, 150);
             this.pnlFKeyHighlight9.Name = "pnlFKeyHighlight9";
-            this.pnlFKeyHighlight9.Size = new System.Drawing.Size(100, 39);
+            this.pnlFKeyHighlight9.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight9.TabIndex = 8;
             // 
             // btFKeyDrapAndDrop
             // 
-            this.btFKeyDrapAndDrop.Location = new System.Drawing.Point(12, 8);
+            this.btFKeyDrapAndDrop.Location = new System.Drawing.Point(3, 3);
             this.btFKeyDrapAndDrop.Name = "btFKeyDrapAndDrop";
-            this.btFKeyDrapAndDrop.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyDrapAndDrop.Size = new System.Drawing.Size(168, 63);
             this.btFKeyDrapAndDrop.TabIndex = 1;
             this.btFKeyDrapAndDrop.Text = "Set";
             this.btFKeyDrapAndDrop.UseVisualStyleBackColor = true;
@@ -663,37 +668,37 @@ namespace GazeToolBar
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox5.Location = new System.Drawing.Point(28, 31);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox5.Size = new System.Drawing.Size(171, 98);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             // 
-            // panel1
+            // pnlLeftClick
             // 
-            this.panel1.Controls.Add(this.pnlFKeyHighlight2);
-            this.panel1.Controls.Add(this.pnlFKeyHighlight1);
-            this.panel1.Controls.Add(this.lbLeft);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(44, 114);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(175, 312);
-            this.panel1.TabIndex = 0;
+            this.pnlLeftClick.Controls.Add(this.pnlFKeyHighlight2);
+            this.pnlLeftClick.Controls.Add(this.pnlFKeyHighlight1);
+            this.pnlLeftClick.Controls.Add(this.lbLeft);
+            this.pnlLeftClick.Controls.Add(this.pictureBox1);
+            this.pnlLeftClick.Location = new System.Drawing.Point(131, 114);
+            this.pnlLeftClick.Name = "pnlLeftClick";
+            this.pnlLeftClick.Size = new System.Drawing.Size(222, 351);
+            this.pnlLeftClick.TabIndex = 0;
             // 
             // pnlFKeyHighlight2
             // 
             this.pnlFKeyHighlight2.Controls.Add(this.btClearFKeyLeftClick);
-            this.pnlFKeyHighlight2.Location = new System.Drawing.Point(38, 191);
+            this.pnlFKeyHighlight2.Location = new System.Drawing.Point(27, 229);
             this.pnlFKeyHighlight2.Name = "pnlFKeyHighlight2";
-            this.pnlFKeyHighlight2.Size = new System.Drawing.Size(100, 38);
+            this.pnlFKeyHighlight2.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight2.TabIndex = 5;
             // 
             // btClearFKeyLeftClick
             // 
-            this.btClearFKeyLeftClick.Location = new System.Drawing.Point(12, 7);
+            this.btClearFKeyLeftClick.Location = new System.Drawing.Point(2, 4);
             this.btClearFKeyLeftClick.Name = "btClearFKeyLeftClick";
-            this.btClearFKeyLeftClick.Size = new System.Drawing.Size(75, 23);
+            this.btClearFKeyLeftClick.Size = new System.Drawing.Size(168, 63);
             this.btClearFKeyLeftClick.TabIndex = 2;
             this.btClearFKeyLeftClick.Text = "Clear";
             this.btClearFKeyLeftClick.UseVisualStyleBackColor = true;
@@ -702,16 +707,16 @@ namespace GazeToolBar
             // pnlFKeyHighlight1
             // 
             this.pnlFKeyHighlight1.Controls.Add(this.btFKeyLeftClick);
-            this.pnlFKeyHighlight1.Location = new System.Drawing.Point(38, 139);
+            this.pnlFKeyHighlight1.Location = new System.Drawing.Point(24, 146);
             this.pnlFKeyHighlight1.Name = "pnlFKeyHighlight1";
-            this.pnlFKeyHighlight1.Size = new System.Drawing.Size(100, 39);
+            this.pnlFKeyHighlight1.Size = new System.Drawing.Size(174, 70);
             this.pnlFKeyHighlight1.TabIndex = 4;
             // 
             // btFKeyLeftClick
             // 
-            this.btFKeyLeftClick.Location = new System.Drawing.Point(12, 8);
+            this.btFKeyLeftClick.Location = new System.Drawing.Point(3, 4);
             this.btFKeyLeftClick.Name = "btFKeyLeftClick";
-            this.btFKeyLeftClick.Size = new System.Drawing.Size(75, 23);
+            this.btFKeyLeftClick.Size = new System.Drawing.Size(168, 63);
             this.btFKeyLeftClick.TabIndex = 1;
             this.btFKeyLeftClick.Text = "Set";
             this.btFKeyLeftClick.UseVisualStyleBackColor = true;
@@ -720,19 +725,20 @@ namespace GazeToolBar
             // lbLeft
             // 
             this.lbLeft.AutoSize = true;
+            this.lbLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLeft.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbLeft.Location = new System.Drawing.Point(64, 243);
+            this.lbLeft.Location = new System.Drawing.Point(25, 318);
             this.lbLeft.Name = "lbLeft";
-            this.lbLeft.Size = new System.Drawing.Size(35, 13);
+            this.lbLeft.Size = new System.Drawing.Size(60, 24);
             this.lbLeft.TabIndex = 3;
             this.lbLeft.Text = "label1";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(24, 31);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 83);
+            this.pictureBox1.Size = new System.Drawing.Size(174, 106);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -782,7 +788,7 @@ namespace GazeToolBar
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1171, 739);
+            this.ClientSize = new System.Drawing.Size(1904, 1042);
             this.Controls.Add(this.btnShortCutKeySetting);
             this.Controls.Add(this.btnGeneralSetting);
             this.Controls.Add(this.panelSaveAndCancel);
@@ -795,6 +801,7 @@ namespace GazeToolBar
             this.MinimizeBox = false;
             this.Name = "Settings";
             this.Text = "Settings";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Settings_Load);
             this.Shown += new System.EventHandler(this.Settings_Shown);
             this.panelSelection.ResumeLayout(false);
@@ -810,28 +817,28 @@ namespace GazeToolBar
             this.panelSaveAndCancel.ResumeLayout(false);
             this.pnlPageKeyboard.ResumeLayout(false);
             this.pnlPageKeyboard.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.pnlRightClick.ResumeLayout(false);
+            this.pnlRightClick.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlFKeyHighlight3.ResumeLayout(false);
             this.pnlFKeyHighlight4.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlDoubleClick.ResumeLayout(false);
+            this.pnlDoubleClick.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnlFKeyHighlight5.ResumeLayout(false);
             this.pnlFKeyHighlight6.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.pnlScroll.ResumeLayout(false);
+            this.pnlScroll.PerformLayout();
             this.pnlFKeyHighlight8.ResumeLayout(false);
             this.pnlFKeyHighlight7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.pnlDragAndDrop.ResumeLayout(false);
+            this.pnlDragAndDrop.PerformLayout();
             this.pnlFKeyHighlight10.ResumeLayout(false);
             this.pnlFKeyHighlight9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlLeftClick.ResumeLayout(false);
+            this.pnlLeftClick.PerformLayout();
             this.pnlFKeyHighlight2.ResumeLayout(false);
             this.pnlFKeyHighlight1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -869,27 +876,27 @@ namespace GazeToolBar
         private Panel pnlGeneral;
         private Button btnGeneralSetting;
         private Button btnShortCutKeySetting;
-        private Panel panel1;
+        private Panel pnlLeftClick;
         private Label lbLeft;
         private Button btClearFKeyLeftClick;
         private Button btFKeyLeftClick;
         private PictureBox pictureBox1;
-        private Panel panel2;
+        private Panel pnlRightClick;
         private Label lbRight;
         private Button btClearFKeyRightClick;
         private Button btFKeyRightClick;
         private PictureBox pictureBox2;
-        private Panel panel3;
+        private Panel pnlDoubleClick;
         private Label lbDouble;
         private Button btClearFKeyDoubleClick;
         private Button btFKeyDoubleClick;
         private PictureBox pictureBox3;
-        private Panel panel4;
+        private Panel pnlScroll;
         private Label lbScroll;
         private Button btClearFKeyScroll;
         private Button btFKeyScroll;
         private PictureBox pictureBox4;
-        private Panel panel5;
+        private Panel pnlDragAndDrop;
         private Label lbDragAndDrop;
         private Button btClearFKeyDrapAndDrop;
         private Button btFKeyDrapAndDrop;

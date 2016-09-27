@@ -13,6 +13,7 @@ namespace GazeToolBar
     {
 
         int buttonClickDelay = 500;
+        String notAssigned = "Key not assigned";
 
         private void connectBehaveMap()
         {
@@ -156,17 +157,23 @@ namespace GazeToolBar
 
         private void btFKeyRightClick_Click(object sender, EventArgs e)
         {
-
+            WaitForUserKeyPress = true;
+            actionToAssignKey = ActionToBePerformed.RightClick;
+            lbFKeyFeedback.Text = "please press a key";
         }
 
         private void btFKeyDoubleClick_Click(object sender, EventArgs e)
         {
-
+            WaitForUserKeyPress = true;
+            actionToAssignKey = ActionToBePerformed.DoubleClick;
+            lbFKeyFeedback.Text = "please press a key";
         }
 
         private void btFKeyScroll_Click(object sender, EventArgs e)
         {
-
+            WaitForUserKeyPress = true;
+            actionToAssignKey = ActionToBePerformed.Scroll;
+            lbFKeyFeedback.Text = "please press a key";
         }
 
         private void btFKeyDrapAndDrop_Click(object sender, EventArgs e)
@@ -174,7 +181,7 @@ namespace GazeToolBar
 
         }
 
-        String notAssigned = "Key not assigned";
+       
         //Clear key map
 
         private void btClearFKeyLeftClick_Click(object sender, EventArgs e)

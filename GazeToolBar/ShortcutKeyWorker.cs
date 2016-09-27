@@ -56,20 +56,24 @@ namespace GazeToolBar
             if (keyString == keyAssignments[ActionToBePerformed.LeftClick])
             {
                 SystemFlags.ShortCutKeyPressed = true;
+                
                 SystemFlags.actionToBePerformed = ActionToBePerformed.LeftClick;
             }
             else if (keyString == keyAssignments[ActionToBePerformed.RightClick])
             {
                 SystemFlags.ShortCutKeyPressed = true;
+                
                 SystemFlags.actionToBePerformed = ActionToBePerformed.RightClick;
             }
             else if (keyString == keyAssignments[ActionToBePerformed.DoubleClick])
             {
                 SystemFlags.ShortCutKeyPressed = true;
+       
                 SystemFlags.actionToBePerformed = ActionToBePerformed.DoubleClick;
             }
             else if (keyString == keyAssignments[ActionToBePerformed.Scroll])
             {
+                
                 SystemFlags.ShortCutKeyPressed = true;
                 SystemFlags.actionToBePerformed = ActionToBePerformed.Scroll;
             }

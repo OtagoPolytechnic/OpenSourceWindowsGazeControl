@@ -4,6 +4,7 @@ using ShellLib;
 using System.Drawing;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections.Generic;
 
 namespace GazeToolBar
 {
@@ -16,6 +17,8 @@ namespace GazeToolBar
         private Sizes sizes;
         private bool pnlKeyboardIsShow;
         private bool pnlGeneralIsShow;
+
+        private List<Panel> fKeyPannels;
 
         public enum GazeOrSwitch
         {
@@ -41,6 +44,8 @@ namespace GazeToolBar
             //End
             OnTheRight = true;
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
+            lbFKeyFeedback.Location = new Point((ValueNeverChange.SCREEN_SIZE.Width / 2) - (lbFKeyFeedback.Width / 2), lbFKeyFeedback.Location.Y);
+            
             //tabControlMain.Size = ReletiveSize.TabControlSize;
             onOff = new bool[5];
             for (int i = 0; i < onOff.Length; i++)
@@ -50,6 +55,10 @@ namespace GazeToolBar
             pnlGeneralIsShow = true;
             pnlKeyboardIsShow = false;
 
+            pnlPageKeyboard.Width = ValueNeverChange.SCREEN_SIZE.Width - 20;
+            fKeyPannels = new List<Panel>() { pnlLeftClick, pnlRightClick, pnlDoubleClick, pnlScroll, pnlDragAndDrop };
+            
+            setFkeyPanelWidth(fKeyPannels);
 
 
             lbDouble.Text = form1.FKeyMapDictionary[ActionToBePerformed.DoubleClick];
@@ -308,7 +317,6 @@ namespace GazeToolBar
 
         bool WaitForUserKeyPress = false;
 
-       // private void Settings_KeyPress(object sender, KeyPressEventArgs e)
         public void GetKeyPress(object o, HookedKeyboardEventArgs pressedKey)
 
         {
@@ -317,6 +325,7 @@ namespace GazeToolBar
                 form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = pressedKey.KeyPressed.ToString();
                 updateLabel(pressedKey.KeyPressed.ToString(), actionToAssignKey);
                 WaitForUserKeyPress = false;
+                lbFKeyFeedback.Text = "";
             }
         }
 
@@ -328,7 +337,48 @@ namespace GazeToolBar
                 case ActionToBePerformed.LeftClick:
                     lbLeft.Text = newKey;
                     break;
+                case ActionToBePerformed.RightClick:
+                    lbRight.Text = newKey;
+                    break;
+                case ActionToBePerformed.Scroll:
+                    lbScroll.Text = newKey;
+                    break;
+                case ActionToBePerformed.DoubleClick:
+                    lbDouble.Text = newKey;
+                    break;
             }
         }
+
+
+
+
+
+        private void setFkeyPanelWidth(List<Panel> panelList)
+        {
+            int screenWidth = ValueNeverChange.SCREEN_SIZE.Width;
+
+            int amountOfPanels = panelList.Count;
+
+            int panelWidth = panelList[0].Width;
+
+            int screenSectionSize = screenWidth / amountOfPanels;
+
+            int spacer = screenSectionSize - panelWidth;
+
+            int spacerBuffer = spacer / 2;
+
+            foreach (Panel currentPanel in panelList)
+            {
+                Point panelLocation = new Point(spacerBuffer, currentPanel.Location.Y);
+
+                Console.WriteLine(screenWidth);
+                Console.WriteLine(panelLocation.X);
+
+                currentPanel.Location = panelLocation;
+
+                spacerBuffer += screenSectionSize;
+            }
+        }
+
     }
 }
