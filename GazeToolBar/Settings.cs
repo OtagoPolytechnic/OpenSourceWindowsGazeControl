@@ -17,6 +17,8 @@ namespace GazeToolBar
         private Sizes sizes;
         private bool pnlKeyboardIsShow;
         private bool pnlGeneralIsShow;
+        private bool WaitForUserKeyPress;
+
 
         private List<Panel> fKeyPannels;
 
@@ -44,7 +46,8 @@ namespace GazeToolBar
             //End
             OnTheRight = true;
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
-            lbFKeyFeedback.Location = new Point((ValueNeverChange.SCREEN_SIZE.Width / 2) - (lbFKeyFeedback.Width / 2), lbFKeyFeedback.Location.Y);
+            
+            
             
             //tabControlMain.Size = ReletiveSize.TabControlSize;
             onOff = new bool[5];
@@ -55,16 +58,23 @@ namespace GazeToolBar
             pnlGeneralIsShow = true;
             pnlKeyboardIsShow = false;
 
+            //Set Short cut key assignment panel to the viable width of the form
             pnlPageKeyboard.Width = ValueNeverChange.SCREEN_SIZE.Width - 20;
+
+            //Set feed back label to the center of the screen.
+            lbFKeyFeedback.Location = new Point((pnlPageKeyboard.Width / 2) - (lbFKeyFeedback.Width / 2), lbFKeyFeedback.Location.Y);
+            //Store reference to short cut assignment panels in a list so they can be iterated over and set their on screen positions relative form size.
             fKeyPannels = new List<Panel>() { pnlLeftClick, pnlRightClick, pnlDoubleClick, pnlScroll, pnlDragAndDrop };
-            
+            //Set panel positions.
             setFkeyPanelWidth(fKeyPannels);
 
-
+            //set initial values of mapped keys to on screen label.
             lbDouble.Text = form1.FKeyMapDictionary[ActionToBePerformed.DoubleClick];
             lbRight.Text = form1.FKeyMapDictionary[ActionToBePerformed.RightClick];
             lbLeft.Text = form1.FKeyMapDictionary[ActionToBePerformed.LeftClick];
             lbScroll.Text = form1.FKeyMapDictionary[ActionToBePerformed.Scroll];
+
+            WaitForUserKeyPress = false;
 
             form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;
 
@@ -314,18 +324,27 @@ namespace GazeToolBar
         }
 
 
-
-        bool WaitForUserKeyPress = false;
-
+        //Method to assign key when for function short cut. Waits until WaitForUserKeyPress is set to true, the next key that is pressed
+        //is assign to the function stored in actionToAssignKey.
         public void GetKeyPress(object o, HookedKeyboardEventArgs pressedKey)
 
         {
+
+            String keyPressed = pressedKey.KeyPressed.ToString();
+
              if(WaitForUserKeyPress)
             {
-                form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = pressedKey.KeyPressed.ToString();
-                updateLabel(pressedKey.KeyPressed.ToString(), actionToAssignKey);
-                WaitForUserKeyPress = false;
-                lbFKeyFeedback.Text = "";
+                if (form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] == keyPressed)
+                {
+                    lbFKeyFeedback.Text = keyPressed + " already assigned.";
+                }
+                else
+                {
+                    form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = keyPressed;
+                    updateLabel(pressedKey.KeyPressed.ToString(), actionToAssignKey);
+                    WaitForUserKeyPress = false;
+                    lbFKeyFeedback.Text = "";
+                }
             }
         }
 
@@ -352,10 +371,9 @@ namespace GazeToolBar
 
 
 
-
         private void setFkeyPanelWidth(List<Panel> panelList)
         {
-            int screenWidth = ValueNeverChange.SCREEN_SIZE.Width;
+            int screenWidth = pnlPageKeyboard.Width;
 
             int amountOfPanels = panelList.Count;
 
