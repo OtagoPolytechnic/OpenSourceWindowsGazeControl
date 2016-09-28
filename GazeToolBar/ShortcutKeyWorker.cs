@@ -20,6 +20,7 @@ namespace GazeToolBar
 
         //Fields
         GazePointDataStream gazeStream;
+        EventHandler<GazePointEventArgs> gazeDel;
 
         double currentGazeLocationX;
         double currentGazeLocationY;
@@ -37,14 +38,18 @@ namespace GazeToolBar
             //Connect to eyeX engine gaze stream. 
             gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             //Create gate points event handler delegate
-            EventHandler<GazePointEventArgs> gazeDel = new EventHandler<GazePointEventArgs>(updateGazeCoodinates);
+            gazeDel = new EventHandler<GazePointEventArgs>(updateGazeCoodinates);
             //register delegate with gaze data stream next event.
             gazeStream.Next += gazeDel;
 
+        }
 
-
-
-
+        public void StopKeyboardWorker()
+        {
+            keyBoardHook.OnKeyPressed -= RunKeyFunction;
+        }
+        public void StartKeyBoardWorker(){
+            keyBoardHook.OnKeyPressed += RunKeyFunction;
         }
 
         //Test functionality, tests ok, next step is to allow the user to program in and assign different keys to different gazetoolbar functions via the settings form.

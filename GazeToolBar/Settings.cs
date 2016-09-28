@@ -78,6 +78,9 @@ namespace GazeToolBar
 
             form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;
 
+
+           
+
         }
 
         private void btnChangeSide_Click(object sender, EventArgs e)
@@ -302,6 +305,8 @@ namespace GazeToolBar
                 ChangeButtonColor(btnGeneralSetting, true, true);
                 pnlKeyboardIsShow = false;
                 pnlGeneralIsShow = true;
+
+                WaitForUserKeyPress = false;
             }
         }
 
@@ -315,12 +320,15 @@ namespace GazeToolBar
                 ChangeButtonColor(btnShortCutKeySetting, true, true);
                 pnlKeyboardIsShow = true;
                 pnlGeneralIsShow = false;
+
+                lbFKeyFeedback.Text = "";
             }
         }
 
         private void Settings_Shown(object sender, EventArgs e)
         {
             connectBehaveMap();
+            form1.shortCutKeyWorker.StopKeyboardWorker();
         }
 
 
@@ -334,7 +342,8 @@ namespace GazeToolBar
 
              if(WaitForUserKeyPress)
             {
-                if (form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] == keyPressed)
+
+                if (checkIfKeyIsAssignedAlready(keyPressed, form1.shortCutKeyWorker.keyAssignments))
                 {
                     lbFKeyFeedback.Text = keyPressed + " already assigned.";
                 }
@@ -348,6 +357,20 @@ namespace GazeToolBar
             }
         }
 
+
+        private bool checkIfKeyIsAssignedAlready(String ValueToCheck, Dictionary<ActionToBePerformed, String> KeyAssignedDict)
+        {
+            
+            foreach (KeyValuePair<ActionToBePerformed, String> currentKVP in KeyAssignedDict)
+            { 
+                if(currentKVP.Value == ValueToCheck)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         void updateLabel(String newKey, ActionToBePerformed functiontoAssign)
         {
@@ -397,6 +420,13 @@ namespace GazeToolBar
                 spacerBuffer += screenSectionSize;
             }
         }
+
+        private void Settings_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            form1.shortCutKeyWorker.StartKeyBoardWorker();
+            WaitForUserKeyPress = false;
+        }
+
 
     }
 }

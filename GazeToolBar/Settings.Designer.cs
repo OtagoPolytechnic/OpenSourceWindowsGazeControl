@@ -445,6 +445,9 @@ namespace GazeToolBar
             // 
             // btFKeyRightClick
             // 
+            this.btFKeyRightClick.FlatAppearance.BorderSize = 5;
+            this.btFKeyRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFKeyRightClick.ForeColor = System.Drawing.Color.White;
             this.btFKeyRightClick.Location = new System.Drawing.Point(3, 4);
             this.btFKeyRightClick.Name = "btFKeyRightClick";
             this.btFKeyRightClick.Size = new System.Drawing.Size(168, 63);
@@ -463,6 +466,9 @@ namespace GazeToolBar
             // 
             // btClearFKeyRightClick
             // 
+            this.btClearFKeyRightClick.FlatAppearance.BorderSize = 5;
+            this.btClearFKeyRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFKeyRightClick.ForeColor = System.Drawing.Color.White;
             this.btClearFKeyRightClick.Location = new System.Drawing.Point(3, 3);
             this.btClearFKeyRightClick.Name = "btClearFKeyRightClick";
             this.btClearFKeyRightClick.Size = new System.Drawing.Size(168, 63);
@@ -513,6 +519,9 @@ namespace GazeToolBar
             // 
             // btFKeyDoubleClick
             // 
+            this.btFKeyDoubleClick.FlatAppearance.BorderSize = 5;
+            this.btFKeyDoubleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFKeyDoubleClick.ForeColor = System.Drawing.Color.White;
             this.btFKeyDoubleClick.Location = new System.Drawing.Point(3, 3);
             this.btFKeyDoubleClick.Name = "btFKeyDoubleClick";
             this.btFKeyDoubleClick.Size = new System.Drawing.Size(168, 63);
@@ -531,6 +540,9 @@ namespace GazeToolBar
             // 
             // btClearFKeyDoubleClick
             // 
+            this.btClearFKeyDoubleClick.FlatAppearance.BorderSize = 5;
+            this.btClearFKeyDoubleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFKeyDoubleClick.ForeColor = System.Drawing.Color.White;
             this.btClearFKeyDoubleClick.Location = new System.Drawing.Point(3, 3);
             this.btClearFKeyDoubleClick.Name = "btClearFKeyDoubleClick";
             this.btClearFKeyDoubleClick.Size = new System.Drawing.Size(168, 63);
@@ -571,6 +583,9 @@ namespace GazeToolBar
             // 
             // btClearFKeyScroll
             // 
+            this.btClearFKeyScroll.FlatAppearance.BorderSize = 5;
+            this.btClearFKeyScroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFKeyScroll.ForeColor = System.Drawing.Color.White;
             this.btClearFKeyScroll.Location = new System.Drawing.Point(3, 3);
             this.btClearFKeyScroll.Name = "btClearFKeyScroll";
             this.btClearFKeyScroll.Size = new System.Drawing.Size(168, 63);
@@ -589,6 +604,9 @@ namespace GazeToolBar
             // 
             // btFKeyScroll
             // 
+            this.btFKeyScroll.FlatAppearance.BorderSize = 5;
+            this.btFKeyScroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFKeyScroll.ForeColor = System.Drawing.Color.White;
             this.btFKeyScroll.Location = new System.Drawing.Point(3, 3);
             this.btFKeyScroll.Name = "btFKeyScroll";
             this.btFKeyScroll.Size = new System.Drawing.Size(168, 63);
@@ -628,6 +646,9 @@ namespace GazeToolBar
             // 
             // btClearFKeyDrapAndDrop
             // 
+            this.btClearFKeyDrapAndDrop.FlatAppearance.BorderSize = 5;
+            this.btClearFKeyDrapAndDrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFKeyDrapAndDrop.ForeColor = System.Drawing.Color.White;
             this.btClearFKeyDrapAndDrop.Location = new System.Drawing.Point(3, 4);
             this.btClearFKeyDrapAndDrop.Name = "btClearFKeyDrapAndDrop";
             this.btClearFKeyDrapAndDrop.Size = new System.Drawing.Size(168, 63);
@@ -657,6 +678,9 @@ namespace GazeToolBar
             // 
             // btFKeyDrapAndDrop
             // 
+            this.btFKeyDrapAndDrop.FlatAppearance.BorderSize = 5;
+            this.btFKeyDrapAndDrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFKeyDrapAndDrop.ForeColor = System.Drawing.Color.White;
             this.btFKeyDrapAndDrop.Location = new System.Drawing.Point(3, 3);
             this.btFKeyDrapAndDrop.Name = "btFKeyDrapAndDrop";
             this.btFKeyDrapAndDrop.Size = new System.Drawing.Size(168, 63);
@@ -696,6 +720,9 @@ namespace GazeToolBar
             // 
             // btClearFKeyLeftClick
             // 
+            this.btClearFKeyLeftClick.FlatAppearance.BorderSize = 5;
+            this.btClearFKeyLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFKeyLeftClick.ForeColor = System.Drawing.Color.White;
             this.btClearFKeyLeftClick.Location = new System.Drawing.Point(2, 4);
             this.btClearFKeyLeftClick.Name = "btClearFKeyLeftClick";
             this.btClearFKeyLeftClick.Size = new System.Drawing.Size(168, 63);
@@ -714,6 +741,9 @@ namespace GazeToolBar
             // 
             // btFKeyLeftClick
             // 
+            this.btFKeyLeftClick.FlatAppearance.BorderSize = 5;
+            this.btFKeyLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFKeyLeftClick.ForeColor = System.Drawing.Color.White;
             this.btFKeyLeftClick.Location = new System.Drawing.Point(3, 4);
             this.btFKeyLeftClick.Name = "btFKeyLeftClick";
             this.btFKeyLeftClick.Size = new System.Drawing.Size(168, 63);
@@ -802,6 +832,7 @@ namespace GazeToolBar
             this.Name = "Settings";
             this.Text = "Settings";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Settings_FormClosed);
             this.Load += new System.EventHandler(this.Settings_Load);
             this.Shown += new System.EventHandler(this.Settings_Shown);
             this.panelSelection.ResumeLayout(false);

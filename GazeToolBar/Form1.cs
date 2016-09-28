@@ -69,7 +69,7 @@ namespace GazeToolBar
             menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
             menuItemExit.Click += new EventHandler(menuItemExit_Click);
             settingsItem.Text = "Setting";
-            settingsItem.Click += new EventHandler(settingItem_Click);
+           // settingsItem.Click += new EventHandler(settingItem_Click);
             contextMenu.MenuItems.Add(settingsItem);
             contextMenu.MenuItems.Add(menuItemStartOnOff);
             contextMenu.MenuItems.Add(menuItemExit);
@@ -77,11 +77,12 @@ namespace GazeToolBar
             OnStartTextChange();
         }
 
-        private void settingItem_Click(object sender, EventArgs e)
-        {
-            settings = new Settings(this);
-            settings.Show();
-        }
+        //private void settingItem_Click(object sender, EventArgs e)
+        //{
+        //    //settings = new Settings(this);
+        //    //LowLevelKeyBoardHook.UnHookKeyboard();
+        //    //settings.Show();
+        //}
 
         private void menuItemExit_Click(object sender, EventArgs e)
         {
