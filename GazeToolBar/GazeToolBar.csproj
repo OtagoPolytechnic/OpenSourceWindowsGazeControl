@@ -103,6 +103,7 @@
     <Compile Include="HookedKeyboardEventArgs.cs" />
     <Compile Include="GazeHightlight\IGazeHighlightShader.cs" />
     <Compile Include="Keyboardhook.cs" />
+    <Compile Include="PointSmoother.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GazeHightlight\RedToGreenShader.cs" />

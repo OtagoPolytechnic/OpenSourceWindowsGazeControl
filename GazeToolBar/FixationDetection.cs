@@ -59,7 +59,8 @@ namespace GazeToolBar
 
 
 
-
+        private PointSmoother pointSmootherWorker;
+        private int pointSmootherBufferSize = 100;
 
 
 
@@ -73,7 +74,7 @@ namespace GazeToolBar
 
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
-            FixationDetectionTimeLength = 1000;
+            FixationDetectionTimeLength = 2000;
 
             FixationTimeOutLength = 5000;
 
@@ -98,24 +99,57 @@ namespace GazeToolBar
             if(fixationState == EFixationState.DetectingFixation)
             {
 
+                SmoothPoint currentSmoothPoint;
+
+
+
                 if(fixationDataBucket.EventType == FixationDataEventType.Begin)
                 {
                     fixationTimer.Start();
 
                     fixationProgressStartTimeStamp = fixationDataBucket.Timestamp;
 
+                    pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
+
+                    //currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
+                    //xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
+                    //yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
+
+                    //calculateFixationProgressPercent(fixationDataBucket.Timestamp);
+
                     Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
                 
                 if(fixationDataBucket.EventType == FixationDataEventType.Data)
                 {
+
+                    //xPosFixation = (int)Math.Floor(fixationDataBucket.X);
+                    //yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
+
+                    //Console.WriteLine("unsmooth X " + fixationDataBucket.X);
+                    //Console.WriteLine("unsmooth Y " + fixationDataBucket.Y);
+
+
+
+                    currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
+                    xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
+                    yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
+
+                    //Console.WriteLine("smooth X " + currentSmoothPoint.x);
+                    //Console.WriteLine("smooth Y " + currentSmoothPoint.y);
+
                     calculateFixationProgressPercent(fixationDataBucket.Timestamp);
-                    xPosFixation = (int)Math.Floor(fixationDataBucket.X);
-                    yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
                 }
                 
                 if(fixationDataBucket.EventType == FixationDataEventType.End)
                 {
+
+                    //currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
+                    //xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
+                    //yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
+
+                    //calculateFixationProgressPercent(fixationDataBucket.Timestamp);
+
                     fixationTimer.Stop();
                     //Debug
                     Console.WriteLine("Fixation Stopped due to end datatype");
@@ -149,6 +183,8 @@ namespace GazeToolBar
         public void StartDetectingFixation()
         {
             //SelectedFixationAcion = inputActionToRun;
+            pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
+
             Console.WriteLine("Start detection call");
             fixationState = EFixationState.DetectingFixation;
             timeOutTimer.Start();
