@@ -21,7 +21,7 @@ namespace GazeToolBar
         GazeHighlightShaderFactory shaderMachine;
         Point currentGaze;
         GazePointDataStream gazeStream;
-        Size highlightSize = new Size(20, 20);
+        Size highlightSize = new Size(40, 40);
         ZoomLens lensForm;
 
 

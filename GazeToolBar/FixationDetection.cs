@@ -22,8 +22,6 @@ namespace GazeToolBar
     //State the Fixation detection can be in.
     public enum EFixationState { WaitingForFixationRequest, DetectingFixation };
 
-
-    
     
     public class FixationDetection
     {
@@ -35,11 +33,6 @@ namespace GazeToolBar
        private double fixationProgressStartTimeStamp;
 
        
-
-       
-
-
-
         //Timer to measure if a how long it has been since the fixation started. 
         private Timer fixationTimer;
         private Timer timeOutTimer;
@@ -102,7 +95,6 @@ namespace GazeToolBar
                 SmoothPoint currentSmoothPoint;
 
 
-
                 if(fixationDataBucket.EventType == FixationDataEventType.Begin)
                 {
                     fixationTimer.Start();
@@ -110,46 +102,24 @@ namespace GazeToolBar
                     fixationProgressStartTimeStamp = fixationDataBucket.Timestamp;
 
                     pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
-
-                    //currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
-                    //xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
-                    //yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
-
-                    //calculateFixationProgressPercent(fixationDataBucket.Timestamp);
+;
 
                     Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
                 
                 if(fixationDataBucket.EventType == FixationDataEventType.Data)
                 {
-
-                    //xPosFixation = (int)Math.Floor(fixationDataBucket.X);
-                    //yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
-
-                    //Console.WriteLine("unsmooth X " + fixationDataBucket.X);
-                    //Console.WriteLine("unsmooth Y " + fixationDataBucket.Y);
-
-
-
+                   
                     currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
+                    
                     xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
                     yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
-
-                    //Console.WriteLine("smooth X " + currentSmoothPoint.x);
-                    //Console.WriteLine("smooth Y " + currentSmoothPoint.y);
 
                     calculateFixationProgressPercent(fixationDataBucket.Timestamp);
                 }
                 
                 if(fixationDataBucket.EventType == FixationDataEventType.End)
                 {
-
-                    //currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
-                    //xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
-                    //yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
-
-                    //calculateFixationProgressPercent(fixationDataBucket.Timestamp);
-
                     fixationTimer.Stop();
                     //Debug
                     Console.WriteLine("Fixation Stopped due to end datatype");

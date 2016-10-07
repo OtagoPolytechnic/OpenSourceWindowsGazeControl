@@ -89,7 +89,7 @@ namespace GazeToolBar
 
             returnSmoothPoint.x = xTotal / bufferFullIndex;
             returnSmoothPoint.y  = yTotal / bufferFullIndex;
-            Console.WriteLine("fulindex " + bufferFullIndex);
+    
             return returnSmoothPoint;
         }
 
