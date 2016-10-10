@@ -26,10 +26,33 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnWordPredictionOnOff, new GazeAwareBehavior(OnbtnWordPredictionOnOff_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSizeSmall, new GazeAwareBehavior(OnbtnSizeSmall_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSoundFeedback, new GazeAwareBehavior(OnbtnSoundFeedback_Click) { DelayMilliseconds = 100 });
-
+            bhavSettingMap.Add(btnFixTimeLengthMins, new GazeAwareBehavior(OnbtnFixTimeLengthMins_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeLengthPlus, new GazeAwareBehavior(OnbtnFixTimeLengthPlus_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeOutMins, new GazeAwareBehavior(OnbtnFixTimeOutMins_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeOutPlus, new GazeAwareBehavior(OnbtnFixTimeOutPlus_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSettingClick) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnKeyBoardSetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
             
+        }
+
+        private void OnbtnFixTimeOutPlus_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnFixTimeOutPlus.PerformClick();
+        }
+
+        private void OnbtnFixTimeOutMins_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnFixTimeOutMins.PerformClick();
+        }
+
+        private void OnbtnFixTimeLengthPlus_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnFixTimeLengthPlus.PerformClick();
+        }
+
+        private void OnbtnFixTimeLengthMins_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnFixTimeLengthMins.PerformClick();
         }
 
         private void OnbtnSoundFeedback_Click(object sender, GazeAwareEventArgs e)

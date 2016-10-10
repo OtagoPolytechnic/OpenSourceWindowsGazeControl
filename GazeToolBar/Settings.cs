@@ -369,10 +369,10 @@ namespace GazeToolBar
             switch (IncrementOrDecrement)
             {
                 case "I":
-                    trackbar.Value = ++trackbar.Value;
+                    if (trackbar.Value != trackbar.Maximum) { trackbar.Value = ++trackbar.Value; }
                     break;
                 case "D":
-                    trackbar.Value = --trackbar.Value;
+                    if (trackbar.Value != trackbar.Minimum) { trackbar.Value = --trackbar.Value; }
                     break;
             }
             trackbar.Update();
@@ -401,6 +401,16 @@ namespace GazeToolBar
         private void btnFixTimeOutPlus_Click(object sender, EventArgs e)
         {
             changeTrackBarValue(trackBarFixTimeOut, "I");
+        }
+
+        private void btnGzeTypingSpeedPlus_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarGazeTypingSpeed, "I");
+        }
+
+        private void btnGzeTypingSpeedMins_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarGazeTypingSpeed, "D");
         }
     }
 }
