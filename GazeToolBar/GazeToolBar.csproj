@@ -87,7 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoStart.cs" />
+    <Compile Include="CustomFixationDataStream.cs" />
     <Compile Include="FixationDetection.cs" />
+    <Compile Include="CustomFixationEventArgs.cs" />
     <Compile Include="FixationProgressEventArgs.cs" />
     <Compile Include="Form1.BehavMap.cs">
       <SubType>Form</SubType>

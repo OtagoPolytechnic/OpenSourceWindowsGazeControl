@@ -39,6 +39,7 @@ namespace GazeToolBar
 
         //Fixation data stream, used to attached to fixation events.
         public static FixationDataStream fixationPointDataStream;
+        EventHandler<FixationEventArgs> FixationEventStreamDelegate;
        
         public int FixationDetectionTimeLength { get; set; }
         public int FixationTimeOutLength { get; set; }
@@ -57,17 +58,24 @@ namespace GazeToolBar
 
 
 
+        CustomFixationDataStream testfixStream;
+
+
+
         public FixationDetection()
         {
+
+            testfixStream = new CustomFixationDataStream();
+
             fixationPointDataStream = Program.EyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
             
-            EventHandler<FixationEventArgs> FixationEventStreamDelegate = new EventHandler<FixationEventArgs>(DetectFixation);
+            FixationEventStreamDelegate = new EventHandler<FixationEventArgs>(DetectFixation);
             
             fixationPointDataStream.Next += FixationEventStreamDelegate;
 
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
-            FixationDetectionTimeLength = 2000;
+            FixationDetectionTimeLength = 1200;
 
             FixationTimeOutLength = 5000;
 
@@ -102,7 +110,6 @@ namespace GazeToolBar
                     fixationProgressStartTimeStamp = fixationDataBucket.Timestamp;
 
                     pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
-;
 
                     Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
@@ -116,6 +123,7 @@ namespace GazeToolBar
                     yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
 
                     calculateFixationProgressPercent(fixationDataBucket.Timestamp);
+
                 }
                 
                 if(fixationDataBucket.EventType == FixationDataEventType.End)
@@ -130,6 +138,7 @@ namespace GazeToolBar
 
         public void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
         {
+            
             timeOutTimer.Stop();
 
             //Once the fixation has run, set the state of fixation detection back to waiting.
@@ -152,7 +161,7 @@ namespace GazeToolBar
         //which sets logic in RunSelectedActionAtFixation to run on fixationPointDataStream.Next events.
         public void StartDetectingFixation()
         {
-            //SelectedFixationAcion = inputActionToRun;
+          
             pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
 
             Console.WriteLine("Start detection call");
