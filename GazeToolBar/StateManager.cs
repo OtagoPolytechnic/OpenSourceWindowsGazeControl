@@ -97,7 +97,7 @@ namespace GazeToolBar
             switch (currentState)
             {
                 case SystemState.Wait:
-                    Console.WriteLine("Wait State");
+                   // Console.WriteLine("Wait State");
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
@@ -114,7 +114,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.ActionButtonSelected:
-                    Console.WriteLine("ActionButtonSelected");
+                   // Console.WriteLine("ActionButtonSelected");
                     SystemFlags.HasSelectedButtonColourBeenReset = false;
                     if (SystemFlags.Gaze)
                     {
@@ -129,7 +129,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.Zooming:
-                    Console.WriteLine("Zooming");
+                   // Console.WriteLine("Zooming");
 
                     if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
                     {
@@ -141,7 +141,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.ZoomWait:
-                    Console.WriteLine("ZoomWait");
+                   // Console.WriteLine("ZoomWait");
                     if (SystemFlags.Gaze)//if the second zoomGaze has happed an action needs to be performed
                     {
                         currentState = SystemState.ApplyAction;
@@ -165,7 +165,7 @@ namespace GazeToolBar
                         //currentState = SystemState.Wait;
                     break;
                 case SystemState.ApplyAction:
-                    Console.WriteLine("ApplyAction");
+                  //  Console.WriteLine("ApplyAction");
                     //action is applied in action()
                     if (SystemFlags.isKeyBoardUP)
                     {
