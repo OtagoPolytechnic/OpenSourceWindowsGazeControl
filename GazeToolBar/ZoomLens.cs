@@ -170,7 +170,6 @@ namespace GazeToolBar
 
             int offset = (int)(ZOOMLENS_SIZE * 0.34);/*This used to calculate the offset based on zoomlevel etc, but was lost in a git accident. RIP. This version works but only
                                                    * for zoom level 3*/
-            //int offset = (int)offsetD;
             switch (corner)
             {
                 case Corner.NoCorner:
