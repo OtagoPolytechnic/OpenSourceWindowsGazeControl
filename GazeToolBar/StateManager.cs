@@ -26,7 +26,9 @@ namespace GazeToolBar
         public static bool FixationRunning { get; set; }
         public static bool HasSelectedButtonColourBeenReset { get; set; }
         public static bool Scrolling { get; set; }
-        
+        public static bool ShortCutKeyPressed {get; set;}
+
+
     }
 
     public class StateManager
@@ -37,10 +39,20 @@ namespace GazeToolBar
         ZoomLens zoomer;
         Point fixationPoint;
         Corner corner;
+        SystemState currentState;
+
+        ShortcutKeyWorker shortCutKeyWorker;
+
         //optikey?
 
+        /*Things that need to change in other classes
+         * Toolbar must raise the actionbuttonselected flag when an action button is selected
+         * FixationDetection must raise flag when a timeout happens
+         * Zoomer needs to accept a fixation point from the StateManager or it needs to figure out it's second point and return it to the StateManager
+         * StateManger needs to save the x,y from the zoomer and it also needs to know which action was to be performed (Form will raise the flag based on what action was selected)
+         * */
 
-        public StateManager(Form1 Toolbar)
+        public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker)
         {
             toolbar = Toolbar;
 
@@ -48,7 +60,7 @@ namespace GazeToolBar
 
             fixationWorker = new FixationDetection();
 
-            scrollWorker = new ScrollControl(200, 50, 20);
+            scrollWorker = new ScrollControl(200, 5, 50, 20);
 
             SystemFlags.currentState = SystemState.Wait;
 
@@ -56,8 +68,10 @@ namespace GazeToolBar
 
             zoomer = new ZoomLens(fixationWorker);
 
-            Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound );
+            Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
             corner = new Corner();
+
+            this.shortCutKeyWorker = shortCutKeyWorker;
 
             Run();
         }
@@ -66,28 +80,37 @@ namespace GazeToolBar
             UpdateState();
             Action();
         }
-
-        /*The statemanager works by running the update state, which determines what state the system needs to be in.
-         * Then the state action method is run, this method will run the appropriate code based on what state the system is in.
-         */
+        public void EnterWaitState()
+        {
+            //these flags are here so that they get reset before anything else happens in the SM
+            //these were previously in the action method but that causes issues because the update state is run again before all of the flags are reset.
+            SystemFlags.FixationRunning = false;
+            SystemFlags.actionButtonSelected = false;
+            SystemFlags.FixationRunning = false;
+            SystemFlags.Gaze = false;
+            SystemFlags.timeOut = false;
+            currentState = SystemState.Wait;
+        }
         public void UpdateState()
         {
-            SystemState currentState = SystemFlags.currentState;
+            currentState = SystemFlags.currentState;
             switch (currentState)
             {
                 case SystemState.Wait:
                     Console.WriteLine("Wait State");
-                    // moved to apply action zoomer.ResetZoomLens();
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
-
                         SystemFlags.actionButtonSelected = false;
                     }
                     else if (SystemFlags.isKeyBoardUP) //Keyboard button is pressed
                     {
-                           currentState = //SystemState.DisplayFeedback;
-                            SystemState.Wait;
+                        EnterWaitState();
+                        //currentState = //SystemState.DisplayFeedback;
+                        // SystemState.Wait;
+                    }else if(SystemFlags.ShortCutKeyPressed)
+                    {
+                        currentState = SystemState.Zooming;
                     }
                     break;
                 case SystemState.ActionButtonSelected:
@@ -99,8 +122,9 @@ namespace GazeToolBar
                     }
                     else if (SystemFlags.timeOut)
                     {
-                        currentState = //SystemState.DisplayFeedback;
-                        SystemState.Wait;
+                        EnterWaitState();
+                        //currentState = //SystemState.DisplayFeedback;
+                        //SystemState.Wait;
                         SystemFlags.timeOut = false;
                     }
                     break;
@@ -124,30 +148,34 @@ namespace GazeToolBar
                     }
                     else if (SystemFlags.timeOut)
                     {
-                        currentState = //SystemState.DisplayFeedback;
-                            SystemState.Wait;
+                        EnterWaitState();
+                        //currentState = //SystemState.DisplayFeedback;
+                        //    SystemState.Wait;
                         //get rid of zoom
+                        zoomer.ResetZoomLens();
                     }
+
                     break;
                 case SystemState.ScrollWait:
 
                     Console.WriteLine(currentState);
 
                     if (!SystemFlags.Scrolling)
-                        currentState = SystemState.Wait;
+                        EnterWaitState();
+                        //currentState = SystemState.Wait;
                     break;
-
                 case SystemState.ApplyAction:
                     Console.WriteLine("ApplyAction");
                     //action is applied in action()
                     if (SystemFlags.isKeyBoardUP)
                     {
                         currentState = SystemState.KeyboardDisplayed;
-                    }else if (SystemFlags.Scrolling)
+                    }
+                    else if (SystemFlags.Scrolling)
                     {
                         currentState = SystemState.ScrollWait;
                     }
-                    else currentState = SystemState.Wait;
+                    else EnterWaitState();//currentState = SystemState.Wait;
                     break;
                 case SystemState.DisplayFeedback:
                     //feedback has been applied by action()
@@ -155,7 +183,7 @@ namespace GazeToolBar
                     {
                         currentState = SystemState.KeyboardDisplayed;
                     }
-                    else currentState = SystemState.Wait;
+                    else EnterWaitState();//currentState = SystemState.Wait;
                     break;
             }
             SystemFlags.currentState = currentState;
@@ -165,19 +193,15 @@ namespace GazeToolBar
             switch (SystemFlags.currentState)
             {
                 case SystemState.Setup:
-                    break;//no action
+                    break;
                 case SystemState.Wait:
-                    //turn reset state to wait mode
-                    SystemFlags.FixationRunning = false;
-                    SystemFlags.actionButtonSelected = false;
-                    SystemFlags.FixationRunning = false;
-                    SystemFlags.Gaze = false;
-                    SystemFlags.timeOut = false;
+
                     if (SystemFlags.HasSelectedButtonColourBeenReset == false)
                     {
                         toolbar.resetButtonsColor();
                         SystemFlags.HasSelectedButtonColourBeenReset = true;
                     }
+                    //set toolbar buttons to active
                     break;
                 case SystemState.KeyboardDisplayed:
                     //set keyboard toolbar buttons to active
@@ -191,23 +215,36 @@ namespace GazeToolBar
                     //turn off form buttons
                     break;
                 case SystemState.Zooming:
-                    fixationPoint = fixationWorker.getXY();//get the location the user looked
+
+                    if(SystemFlags.ShortCutKeyPressed)
+                    {
+                        fixationPoint = shortCutKeyWorker.GetXY();
+                        SystemFlags.ShortCutKeyPressed = false;
+                    }else{
+
+                        fixationPoint = fixationWorker.getXY();//get the location the user looked
+
+                    }
+
+                    
                     corner = (Corner)zoomer.checkCorners(fixationPoint);
                     zoomer.determineDesktopLocation(fixationPoint, (int)(corner));
                     zoomer.TakeScreenShot();
                     zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
-
                     SystemFlags.Gaze = false;
                     SystemFlags.FixationRunning = false;
+
                     break;
-                case SystemState.ZoomWait://waiting for the fixation on the zoom window
+                case SystemState.ZoomWait:
                     if (!SystemFlags.FixationRunning)
                     {
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.FixationRunning = true;
                     }
                     break;
+
                 case SystemState.ApplyAction: //the fixation on the zoom lens has been detected
+
                     fixationPoint = fixationWorker.getXY();
                     zoomer.ResetZoomLens();//hide the lens
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);//translate the form coordinates to the desktop
@@ -220,12 +257,11 @@ namespace GazeToolBar
                         }
                         else
                         {
-                            SystemFlags.currentState = SystemState.Wait;
+                            EnterWaitState();//SystemFlags.currentState = SystemState.Wait;
                         }
                     }
                     else
                     {
-
                         if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)
                         {
                             VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
@@ -245,7 +281,7 @@ namespace GazeToolBar
                             SystemFlags.Scrolling = true;
                             VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
                             scrollWorker.startScroll();
-                           
+
                         }
                     }
                     break;

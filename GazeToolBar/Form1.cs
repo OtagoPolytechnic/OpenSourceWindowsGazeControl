@@ -21,7 +21,15 @@ namespace GazeToolBar
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
         private MenuItem menuItemStartOnOff;
+        private MenuItem settingsItem;
         public StateManager stateManager;
+
+        //Allocate memory location for KeyboardHook and worker.
+        public Keyboardhook LowLevelKeyBoardHook;
+        public ShortcutKeyWorker shortCutKeyWorker;
+
+
+        public Dictionary<ActionToBePerformed, String> FKeyMapDictionary;
 
         List<Panel> highlightPannerList;
 
@@ -32,6 +40,7 @@ namespace GazeToolBar
             contextMenu = new ContextMenu();
             menuItemExit = new MenuItem();
             menuItemStartOnOff = new MenuItem();
+            settingsItem = new MenuItem();
             initMenuItem();
             
             highlightPannerList = new List<Panel>();
@@ -44,6 +53,9 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHighLightSettings);
             setButtonPanelHight(highlightPannerList);
 
+            
+
+
             connectBehaveMap();
         }
 
@@ -55,28 +67,57 @@ namespace GazeToolBar
         {
             menuItemExit.Text = "Exit";
             menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
-            menuItemExit.Click += new EventHandler(menuItemExit_Click);         
+            menuItemExit.Click += new EventHandler(menuItemExit_Click);
+            settingsItem.Text = "Setting";
+           // settingsItem.Click += new EventHandler(settingItem_Click);
+            contextMenu.MenuItems.Add(settingsItem);
             contextMenu.MenuItems.Add(menuItemStartOnOff);
             contextMenu.MenuItems.Add(menuItemExit);
+            notifyIcon.ContextMenu = contextMenu;
+            OnStartTextChange();
         }
 
+        //private void settingItem_Click(object sender, EventArgs e)
+        //{
+        //    //settings = new Settings(this);
+        //    //LowLevelKeyBoardHook.UnHookKeyboard();
+        //    //settings.Show();
+        //}
 
         private void menuItemExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
-
-
 
         public MenuItem MenuItemStartOnOff { get { return menuItemStartOnOff; } }
 
-        public Settings Settings { get { return settings; }
-            
-        }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Edge = AppBarEdges.Right;
-            stateManager = new StateManager(this);
+            FKeyMapDictionary = new Dictionary<ActionToBePerformed, string>();
+
+            FKeyMapDictionary.Add(ActionToBePerformed.DoubleClick, "Key not assigned");
+            FKeyMapDictionary.Add(ActionToBePerformed.LeftClick, "Key not assigned");
+            FKeyMapDictionary.Add(ActionToBePerformed.Scroll, "Key not assigned");
+            FKeyMapDictionary.Add(ActionToBePerformed.RightClick, "Key not assigned");
+
+
+            //Instantiate keyboard hook and pass into worker class.
+            LowLevelKeyBoardHook = new Keyboardhook();
+
+            shortCutKeyWorker = new ShortcutKeyWorker(LowLevelKeyBoardHook, FKeyMapDictionary);
+
+            //Start monitoring key presses.
+            LowLevelKeyBoardHook.HookKeyboard();
+
+            if(Program.readSettings.position == "left")
+            {
+                Edge = AppBarEdges.Left;
+            }
+            else
+            {
+                Edge = AppBarEdges.Right;
+            }
+            stateManager = new StateManager(this, shortCutKeyWorker);
             timer2.Enabled = true;
         }
 
@@ -122,16 +163,6 @@ namespace GazeToolBar
             SystemFlags.actionButtonSelected = true;
             SystemFlags.actionToBePerformed = ActionToBePerformed.Scroll;
 
-            /*This will have to be added to the action enum and the logic will have to someplace else, not sure where yet*/
-
-            //detect fixation, drop middle click where user fixates.
-
-            //move in to scroll mode.
-
-            //drop out of scroll mode if user looks outside screen bounds.
-            
-            //fixationWorker.SetupSelectedFixationAction(VirtualMouse.MiddleMouseButton);
-            //Add logic to scroll/pan with eyes after middle click
         }
 
         private void btnDragAndDrop_Click(object sender, EventArgs e)
@@ -139,7 +170,17 @@ namespace GazeToolBar
             //Create logic to run left mouse down, update xy then left mouse up to simulate drag and drop
         }
 
-
+        public void OnStartTextChange()
+        {
+            if (Program.onStartUp)
+            {
+                menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_ON;
+            }
+            else
+            {
+                menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
+            }
+        }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -150,10 +191,15 @@ namespace GazeToolBar
         private void setButtonPanelHight(List<Panel> panelList)
         {
             int screenHeight = ValueNeverChange.SCREEN_SIZE.Height;
+           
             int amountOfPanels = panelList.Count;
+           
             int panelHight = panelList[0].Height;
+            
             int screenSectionSize = screenHeight / amountOfPanels;
+           
             int spacer = screenSectionSize - panelHight;
+            
             int spacerBuffer = spacer / 2;
 
             foreach(Panel currentPanel in panelList)
@@ -167,8 +213,18 @@ namespace GazeToolBar
 
                 spacerBuffer += screenSectionSize;
             }
-
-
         }
+        public System.Windows.Forms.NotifyIcon NotifyIcon
+        {
+            get { return notifyIcon; }
+            set { notifyIcon = value; }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Remove KeyboardHook on closing form.
+            LowLevelKeyBoardHook.UnHookKeyboard();
+        }
+
     }
 }

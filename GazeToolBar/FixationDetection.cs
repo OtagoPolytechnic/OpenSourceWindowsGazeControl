@@ -21,18 +21,27 @@ namespace GazeToolBar
 {
     //State the Fixation detection can be in.
     public enum EFixationState { WaitingForFixationRequest, DetectingFixation };
-    
+
     
     public class FixationDetection
     {
+
+       public delegate void FixationProgressEvent( object o, FixationProgressEventArgs e);
+
+       public event FixationProgressEvent currentProgress;
+
+       private double fixationProgressStartTimeStamp;
+
+       
         //Timer to measure if a how long it has been since the fixation started. 
-        private static Timer fixationTimer;
-        public static Timer timeOutTimer;
+        private Timer fixationTimer;
+        private Timer timeOutTimer;
 
         //Fixation data stream, used to attached to fixation events.
         public static FixationDataStream fixationPointDataStream;
        
         public int FixationDetectionTimeLength { get; set; }
+        public int FixationTimeOutLength { get; set; }
         //State variable of FixationDetection class.
 
         private EFixationState fixationState;
@@ -41,6 +50,10 @@ namespace GazeToolBar
         private int xPosFixation = 0;
         private int yPosFixation = 0;
 
+
+
+        private PointSmoother pointSmootherWorker;
+        private int pointSmootherBufferSize = 100;
 
 
 
@@ -54,9 +67,11 @@ namespace GazeToolBar
 
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
-            FixationDetectionTimeLength = 1000;
+            FixationDetectionTimeLength = 2000;
 
-            timeOutTimer = new Timer(5000);
+            FixationTimeOutLength = 5000;
+
+            timeOutTimer = new Timer(FixationTimeOutLength);
 
             timeOutTimer.AutoReset = false;
 
@@ -77,16 +92,30 @@ namespace GazeToolBar
             if(fixationState == EFixationState.DetectingFixation)
             {
 
+                SmoothPoint currentSmoothPoint;
+
+
                 if(fixationDataBucket.EventType == FixationDataEventType.Begin)
                 {
                     fixationTimer.Start();
+
+                    fixationProgressStartTimeStamp = fixationDataBucket.Timestamp;
+
+                    pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
+;
+
                     Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
                 
                 if(fixationDataBucket.EventType == FixationDataEventType.Data)
                 {
-                    xPosFixation = (int)Math.Floor(fixationDataBucket.X);
-                    yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
+                   
+                    currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
+                    
+                    xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
+                    yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
+
+                    calculateFixationProgressPercent(fixationDataBucket.Timestamp);
                 }
                 
                 if(fixationDataBucket.EventType == FixationDataEventType.End)
@@ -101,6 +130,8 @@ namespace GazeToolBar
 
         public void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
         {
+            timeOutTimer.Stop();
+
             //Once the fixation has run, set the state of fixation detection back to waiting.
             fixationState = EFixationState.WaitingForFixationRequest;
             SystemFlags.Gaze = true;
@@ -110,6 +141,8 @@ namespace GazeToolBar
 
         public void FixationTimeOut(object o, ElapsedEventArgs e)
         {
+            fixationTimer.Stop();
+
             SystemFlags.timeOut = true;
             fixationState = EFixationState.WaitingForFixationRequest;
         }
@@ -120,13 +153,43 @@ namespace GazeToolBar
         public void StartDetectingFixation()
         {
             //SelectedFixationAcion = inputActionToRun;
+            pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
+
             Console.WriteLine("Start detection call");
             fixationState = EFixationState.DetectingFixation;
+            timeOutTimer.Start();
         }
 
         public Point getXY()
         {
             return new Point(xPosFixation, yPosFixation);
+        }
+
+
+        private void calculateFixationProgressPercent(double currentTimeStamp)
+        {
+
+            double currentFixationlength = currentTimeStamp - fixationProgressStartTimeStamp;
+
+            double progressPercent = (currentFixationlength / FixationDetectionTimeLength) * ValueNeverChange.ONE_HUNDERED;
+
+           
+            onFixationProgressEvent((int)progressPercent);
+        }
+
+
+        public void onFixationProgressEvent(int progressPercent )
+        {
+            FixationProgressEventArgs FPEA = new FixationProgressEventArgs(progressPercent);
+
+            Console.WriteLine("Fixation percentage " + progressPercent);
+
+            if(currentProgress != null)
+            {
+                currentProgress(this, FPEA);
+            }
+
+
         }
     }
 }
