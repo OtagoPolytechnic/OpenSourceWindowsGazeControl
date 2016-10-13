@@ -17,7 +17,6 @@ namespace GazeToolBar
         const int ZOOMLENS_SIZE = 500;//setting the width & height of the ZoomLens
         Graphics graphics;
         public Bitmap bmpScreenshot;
-        int corner;//this is used to determine if a user has looked at a corner section of the screen
         Point lensPoint;
 
         FixationDetection fixdet;
@@ -40,7 +39,7 @@ namespace GazeToolBar
         }
         public int checkCorners(Point FixationPoint)
         {
-            int maxDistance = 300;
+            int maxDistance = bmpScreenshot.Size.Width;
             int screenWidth = Screen.FromControl(this).Bounds.Width;
             int screenHeight = Screen.FromControl(this).Bounds.Height;
 
@@ -168,7 +167,10 @@ namespace GazeToolBar
         }
         public Point CornerOffset(Corner corner, Point fixationPoint)
         {
-            int offset = 170;//need to get proper formula for determining offset amount. 170 works for now (only 1920X1080)
+
+            int offset = (int)(ZOOMLENS_SIZE * 0.34);/*This used to calculate the offset based on zoomlevel etc, but was lost in a git accident. RIP. This version works but only
+                                                   * for zoom level 3*/
+            //int offset = (int)offsetD;
             switch (corner)
             {
                 case Corner.NoCorner:
