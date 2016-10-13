@@ -36,7 +36,7 @@ namespace GazeToolBar
             offScreenBitmap = new Bitmap(this.Width, this.Height);
             //This bitmap is the zoomed in area. It's the bit of the screen that gets magnified
             bmpScreenshot = new Bitmap(this.Width / ZOOMLEVEL, this.Height / ZOOMLEVEL);
-           // graphics = this.CreateGraphics();
+            // graphics = this.CreateGraphics();
 
             //DrawToScreen = this.CreateGraphics();
             mainCanvas = this.CreateGraphics();
@@ -54,7 +54,7 @@ namespace GazeToolBar
         }
         public int checkCorners(Point FixationPoint)
         {
-            int maxDistance = 300;
+            int maxDistance = bmpScreenshot.Size.Width;
             int screenWidth = Screen.FromControl(this).Bounds.Width;
             int screenHeight = Screen.FromControl(this).Bounds.Height;
 
@@ -90,7 +90,7 @@ namespace GazeToolBar
 
             this.Show();//make lens visible
             //pictureBox1.Image = bmpScreenshot;
-            offScreenGraphics.DrawImage(bmpScreenshot, 0, 0,500,500);
+            offScreenGraphics.DrawImage(bmpScreenshot, 0, 0, 500, 500);
             this.TopMost = true;
             Console.WriteLine("ZoomLens.Bounds.X = " + this.Bounds.X);
             Console.WriteLine("ZoomLens.Bounds.Y = " + this.Bounds.Y);
@@ -187,7 +187,8 @@ namespace GazeToolBar
         }
         public Point CornerOffset(Corner corner, Point fixationPoint)
         {
-            int offset = 170;//need to get proper formula for determining offset amount. 170 works for now (only 1920X1080)
+            int offset = (int)(ZOOMLENS_SIZE * 0.34);/*This used to calculate the offset based on zoomlevel etc, but was lost in a git accident. RIP. This version works but only
+                                                    * for zoom level 3*/
             switch (corner)
             {
                 case Corner.NoCorner:
@@ -215,10 +216,10 @@ namespace GazeToolBar
         private void DrawTimer_Tick(object sender, EventArgs e)
         {
             offScreenGraphics.DrawImage(bmpScreenshot, 0, 0, 500, 500);
-            
+
             gazeHighlight.drawHightlight();
 
-            mainCanvas.DrawImage(offScreenBitmap,0,0);
+            mainCanvas.DrawImage(offScreenBitmap, 0, 0);
         }
     }
 }

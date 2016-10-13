@@ -67,7 +67,7 @@ namespace GazeToolBar
 
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
-            FixationDetectionTimeLength = 2000;
+            FixationDetectionTimeLength = 1200;
 
             FixationTimeOutLength = 5000;
 
