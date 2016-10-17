@@ -160,10 +160,13 @@ namespace GazeToolBar
                 if (fixationDataBucket.Status == EFixationStreamEventType.middle)
                 {
 
-                    currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
+                    //currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
 
-                    xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
-                    yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
+                    //xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
+                    //yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
+
+                    xPosFixation = (int)Math.Floor(fixationDataBucket.X);
+                    yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
 
                     calculateFixationProgressPercent(fixationDataBucket.TimeStamp);
 
