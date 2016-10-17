@@ -100,7 +100,7 @@ namespace GazeToolBar
             if(fixationState == EFixationState.DetectingFixation)
             {
 
-                SmoothPoint currentSmoothPoint;
+                GazePoint currentSmoothPoint;
 
 
                 if(fixationDataBucket.EventType == FixationDataEventType.Begin)

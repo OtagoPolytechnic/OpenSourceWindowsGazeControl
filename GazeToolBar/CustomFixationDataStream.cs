@@ -16,9 +16,21 @@ namespace GazeToolBar
         int bufferSize = 60;
         int bufferCurrentIndex = 0;
         int bufferFullIndex = 0;
+
+        double xFixationThreashold = 1;
+        double yFixationThreashold = 1;
+
         double[] xBuffer;
         double[] yBuffer;
 
+        EFixationStreamEventType fixationState;
+
+        GazePoint gPAverage;
+
+
+        public delegate void CustomFixationEventHandler(object o, CustomFixationEventArgs e);
+
+        public event CustomFixationEventHandler next;
 
 
         public CustomFixationDataStream()
@@ -29,8 +41,12 @@ namespace GazeToolBar
             //register delegate with gaze data stream next event.
             gazeStream.Next += gazeDel;
 
+            gPAverage = new GazePoint();
+
             xBuffer = new double[bufferSize];
             yBuffer = new double[bufferSize];
+
+            fixationState = EFixationStreamEventType.waiting;
 
         }
 
@@ -43,10 +59,54 @@ namespace GazeToolBar
             //currentGazeLocationY = currentGaze.Y;
 
             addCoordinateToBuffer(currentGaze.X, currentGaze.Y);
-            calculateVariance();
+
+            gPAverage = average();
+
+            generateFixationState(calculateVariance(), currentGaze.Timestamp);
     
+        }
+
+
+          private void generateFixationState(GazePoint gazeVariation, double timestamp)
+        {
+              //Set pointer to next fixation data bucket.
+            CustomFixationEventArgs cpe = null;
+
+
+              //Check gaze data variation and raise appropriate event.
+            if (fixationState == EFixationStreamEventType.waiting && (gazeVariation.x < xFixationThreashold || gazeVariation.y < yFixationThreashold))
+            {
+                cpe = new CustomFixationEventArgs(EFixationStreamEventType.start, timestamp, gPAverage.x, gPAverage.y);
+                fixationState = EFixationStreamEventType.middle;
+            }
+            else if (fixationState == EFixationStreamEventType.middle && (gazeVariation.x > xFixationThreashold || gazeVariation.y > yFixationThreashold))
+            {
+                cpe = new CustomFixationEventArgs(EFixationStreamEventType.end, timestamp, gPAverage.x, gPAverage.y);
+                fixationState = EFixationStreamEventType.waiting;
+            }
+            else if (fixationState == EFixationStreamEventType.middle)
+            {
+                cpe = new CustomFixationEventArgs(EFixationStreamEventType.middle, timestamp, gPAverage.x, gPAverage.y);
+            }
+
+
+            if( cpe != null)
+            {
+                OnFixationStateChange(cpe);
+            }
+
 
         }
+
+
+        private void OnFixationStateChange(CustomFixationEventArgs newFixation)
+        {
+            if(next != null)
+            {
+                next(this, newFixation);
+            }
+        }
+
 
 
         //add coordinates to ring buffer, check and reset array index when at end of array, increment bufferfullindex to indicate when buffer has been full at least once.
@@ -69,12 +129,12 @@ namespace GazeToolBar
             bufferCurrentIndex++;
         }
 
-        private void calculateVariance()
+        private GazePoint calculateVariance()
         {
             double xTotal = 0;
             double yTotal = 0;
 
-            SmoothPoint averageOfPoints = average();
+           
 
             for (int arrayIndex = 0; arrayIndex < bufferFullIndex; arrayIndex++)
             {
@@ -88,19 +148,25 @@ namespace GazeToolBar
             xTotal = Math.Sqrt(xTotal);
             yTotal = Math.Sqrt(yTotal);
 
-            xTotal = xTotal - averageOfPoints.x;
-            yTotal = yTotal - averageOfPoints.y;
+            xTotal = xTotal - gPAverage.x;
+            yTotal = yTotal - gPAverage.y;
 
-            Console.WriteLine("x sd " + xTotal );
-            Console.WriteLine("y sd " + yTotal );
+
+
+            Console.WriteLine("x sd " + xTotal);
+            Console.WriteLine("y sd " + yTotal);
+
+            return new GazePoint(xTotal, yTotal);
+
         }
 
 
-        private SmoothPoint average()
+        private GazePoint average()
         {
             double xTotal = 0;
             double yTotal = 0;
-            SmoothPoint returnSmoothPoint;
+            
+            GazePoint returnSmoothPoint;
 
             for (int arrayIndex = 0; arrayIndex < bufferFullIndex; arrayIndex++)
             {

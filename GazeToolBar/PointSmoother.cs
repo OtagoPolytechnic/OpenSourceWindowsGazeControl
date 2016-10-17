@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace GazeToolBar
 {
 
-    public struct SmoothPoint
+    public struct GazePoint
     {
        public double x;
        public double y;
 
-        public SmoothPoint(double X, double Y)
+        public GazePoint(double X, double Y)
         {
             x = X;
             y = Y;
@@ -46,7 +46,7 @@ namespace GazeToolBar
 
 
         //Add a coordinate to the buffer and return the most recently calculated smoothed coordinate.
-        public SmoothPoint UpdateAndGetSmoothPoint(double X, double Y)
+        public GazePoint UpdateAndGetSmoothPoint(double X, double Y)
         {
             addCoordinateToBuffer(X, Y);
 
@@ -75,11 +75,11 @@ namespace GazeToolBar
         }
 
         //work out average point location from current buffer contents.
-        private SmoothPoint SmoothPointsFromBuffer()
+        private GazePoint SmoothPointsFromBuffer()
         {
             double xTotal = 0;
             double yTotal = 0;
-            SmoothPoint returnSmoothPoint;
+            GazePoint returnSmoothPoint;
 
             for (int arrayIndex = 0; arrayIndex < bufferFullIndex; arrayIndex++)
             {
