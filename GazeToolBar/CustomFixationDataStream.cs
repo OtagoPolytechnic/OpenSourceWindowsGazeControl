@@ -13,7 +13,7 @@ namespace GazeToolBar
     {
         GazePointDataStream gazeStream;
 
-        int bufferSize = 60;
+        int bufferSize = 30;
         int bufferCurrentIndex = 0;
         int bufferFullIndex = 0;
 
@@ -153,11 +153,16 @@ namespace GazeToolBar
 
 
 
-            Console.WriteLine("x sd " + xTotal);
-            Console.WriteLine("y sd " + yTotal);
+           // Console.WriteLine("x sd " + xTotal);
+           // Console.WriteLine("y sd " + yTotal);
 
             return new GazePoint(xTotal, yTotal);
 
+        }
+
+        public void ResetFixationDetectionState()
+        {
+            fixationState = EFixationStreamEventType.waiting;
         }
 
 
