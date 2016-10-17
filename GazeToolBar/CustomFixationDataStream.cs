@@ -8,6 +8,7 @@ using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Threading;
 
+
 namespace GazeToolBar
 {
     public class CustomFixationDataStream
@@ -170,6 +171,7 @@ namespace GazeToolBar
             yBuffer = new double[bufferSize];
             Thread.Sleep(100);
         }
+
 
 
         private GazePoint average()
