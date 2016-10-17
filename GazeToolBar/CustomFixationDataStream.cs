@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EyeXFramework;
 using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
+using System.Threading;
 
 namespace GazeToolBar
 {
@@ -17,8 +18,8 @@ namespace GazeToolBar
         int bufferCurrentIndex = 0;
         int bufferFullIndex = 0;
 
-        double xFixationThreashold = 1.5;
-        double yFixationThreashold = 1.5;
+        double xFixationThreashold = 1;
+        double yFixationThreashold = 1;
 
         double[] xBuffer;
         double[] yBuffer;
@@ -167,6 +168,7 @@ namespace GazeToolBar
             bufferFullIndex = 0;
             xBuffer = new double[bufferSize];
             yBuffer = new double[bufferSize];
+            Thread.Sleep(100);
         }
 
 
