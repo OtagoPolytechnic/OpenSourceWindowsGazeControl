@@ -13,12 +13,12 @@ namespace GazeToolBar
     {
         GazePointDataStream gazeStream;
 
-        int bufferSize = 30;
+        int bufferSize = 60;
         int bufferCurrentIndex = 0;
         int bufferFullIndex = 0;
 
-        double xFixationThreashold = 1;
-        double yFixationThreashold = 1;
+        double xFixationThreashold = 1.5;
+        double yFixationThreashold = 1.5;
 
         double[] xBuffer;
         double[] yBuffer;
@@ -74,12 +74,12 @@ namespace GazeToolBar
 
 
               //Check gaze data variation and raise appropriate event.
-            if (fixationState == EFixationStreamEventType.waiting && (gazeVariation.x < xFixationThreashold || gazeVariation.y < yFixationThreashold))
+            if (fixationState == EFixationStreamEventType.waiting && gazeVariation.x < xFixationThreashold && gazeVariation.y < yFixationThreashold)
             {
                 cpe = new CustomFixationEventArgs(EFixationStreamEventType.start, timestamp, gPAverage.x, gPAverage.y);
                 fixationState = EFixationStreamEventType.middle;
             }
-            else if (fixationState == EFixationStreamEventType.middle && (gazeVariation.x > xFixationThreashold || gazeVariation.y > yFixationThreashold))
+            else if (fixationState == EFixationStreamEventType.middle && gazeVariation.x > xFixationThreashold && gazeVariation.y > yFixationThreashold)
             {
                 cpe = new CustomFixationEventArgs(EFixationStreamEventType.end, timestamp, gPAverage.x, gPAverage.y);
                 fixationState = EFixationStreamEventType.waiting;
@@ -163,6 +163,10 @@ namespace GazeToolBar
         public void ResetFixationDetectionState()
         {
             fixationState = EFixationStreamEventType.waiting;
+            bufferCurrentIndex = 0;
+            bufferFullIndex = 0;
+            xBuffer = new double[bufferSize];
+            yBuffer = new double[bufferSize];
         }
 
 
