@@ -38,8 +38,8 @@ namespace GazeToolBar
         private Timer timeOutTimer;
 
         //Fixation data stream, used to attached to fixation events.
-        public static FixationDataStream fixationPointDataStream;
-        EventHandler<FixationEventArgs> FixationEventStreamDelegate;
+      //  public static FixationDataStream fixationPointDataStream;
+       // EventHandler<FixationEventArgs> FixationEventStreamDelegate;
        
         public int FixationDetectionTimeLength { get; set; }
         public int FixationTimeOutLength { get; set; }
@@ -58,20 +58,22 @@ namespace GazeToolBar
 
 
 
-        CustomFixationDataStream testfixStream;
+        CustomFixationDataStream customfixStream;
 
 
 
         public FixationDetection()
         {
 
-            testfixStream = new CustomFixationDataStream();
+            customfixStream = new CustomFixationDataStream();
 
-            fixationPointDataStream = Program.EyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
+            customfixStream.next += DetectFixation;
+
+            //fixationPointDataStream = Program.EyeXHost.CreateFixationDataStream(FixationDataMode.Slow);
             
-            FixationEventStreamDelegate = new EventHandler<FixationEventArgs>(DetectFixation);
+            //FixationEventStreamDelegate = new EventHandler<FixationEventArgs>(DetectFixation);
             
-            fixationPointDataStream.Next += FixationEventStreamDelegate;
+            //fixationPointDataStream.Next += FixationEventStreamDelegate;
 
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
@@ -94,39 +96,80 @@ namespace GazeToolBar
         }
 
         //This method of is run on gaze events, checks if it is the beginning or end of a fixation and runs appropriate code.
-        private void DetectFixation(object o, FixationEventArgs fixationDataBucket)
-        {
+        //private void DetectFixation(object o, FixationEventArgs fixationDataBucket)
+        //{
          
-            if(fixationState == EFixationState.DetectingFixation)
+        //    if(fixationState == EFixationState.DetectingFixation)
+        //    {
+
+        //        GazePoint currentSmoothPoint;
+
+
+        //        if(fixationDataBucket.EventType == FixationDataEventType.Begin)
+        //        {
+        //            fixationTimer.Start();
+
+        //            fixationProgressStartTimeStamp = fixationDataBucket.Timestamp;
+
+        //            pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
+
+        //            Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
+        //        }
+                
+        //        if(fixationDataBucket.EventType == FixationDataEventType.Data)
+        //        {
+                   
+        //            currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
+                    
+        //            xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
+        //            yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
+
+        //            calculateFixationProgressPercent(fixationDataBucket.Timestamp);
+
+        //        }
+                
+        //        if(fixationDataBucket.EventType == FixationDataEventType.End)
+        //        {
+        //            fixationTimer.Stop();
+        //            //Debug
+        //            Console.WriteLine("Fixation Stopped due to end datatype");
+        //        }
+        //    }
+        //}
+
+        private void DetectFixation(object o, CustomFixationEventArgs fixationDataBucket)
+        {
+
+            if (fixationState == EFixationState.DetectingFixation)
             {
 
                 GazePoint currentSmoothPoint;
 
 
-                if(fixationDataBucket.EventType == FixationDataEventType.Begin)
+                if (fixationDataBucket.Status == EFixationStreamEventType.start)
                 {
                     fixationTimer.Start();
 
-                    fixationProgressStartTimeStamp = fixationDataBucket.Timestamp;
+                    fixationProgressStartTimeStamp = fixationDataBucket.TimeStamp;
 
                     pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
 
                     Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
-                
-                if(fixationDataBucket.EventType == FixationDataEventType.Data)
+
+                if (fixationDataBucket.Status == EFixationStreamEventType.middle)
                 {
-                   
+
                     currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
-                    
+
                     xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
                     yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
 
-                    calculateFixationProgressPercent(fixationDataBucket.Timestamp);
+                    calculateFixationProgressPercent(fixationDataBucket.TimeStamp);
 
                 }
-                
-                if(fixationDataBucket.EventType == FixationDataEventType.End)
+
+                if (fixationDataBucket.Status == EFixationStreamEventType.end)
                 {
                     fixationTimer.Stop();
                     //Debug
@@ -150,6 +193,8 @@ namespace GazeToolBar
 
         public void FixationTimeOut(object o, ElapsedEventArgs e)
         {
+            customfixStream.ResetFixationDetectionState();
+
             fixationTimer.Stop();
 
             SystemFlags.timeOut = true;
@@ -161,6 +206,7 @@ namespace GazeToolBar
         //which sets logic in RunSelectedActionAtFixation to run on fixationPointDataStream.Next events.
         public void StartDetectingFixation()
         {
+            customfixStream.ResetFixationDetectionState();
           
             pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
 
