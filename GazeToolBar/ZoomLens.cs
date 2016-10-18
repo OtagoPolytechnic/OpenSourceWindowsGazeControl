@@ -73,24 +73,38 @@ namespace GazeToolBar
             }
             return -1;
         }
-        public void checkEdge()
+        public bool checkEdge(Point fixationPoint)
         {
+            bool hitEdge = false;
             if (this.Top < 0)
             {
                 this.DesktopLocation = new Point(this.DesktopLocation.X, 0);
+                SetLensPoint(calculateLensPointX(fixationPoint.X), 0);
+                hitEdge = true;
             }
             if (this.Left < 0)
             {
                 this.DesktopLocation = new Point(0, this.DesktopLocation.Y);
+                SetLensPoint(0, calculateLensPointY(fixationPoint.Y));
+                hitEdge = true;
             }
             if (this.Top + this.Height > Screen.PrimaryScreen.Bounds.Size.Height)
             {
                 this.DesktopLocation = new Point(this.DesktopLocation.X, Screen.PrimaryScreen.Bounds.Size.Height - this.Height);
+                SetLensPoint(calculateLensPointX(fixationPoint.X), Screen.PrimaryScreen.Bounds.Size.Height - bmpScreenshot.Height);
+                hitEdge = true;
             }
             if (this.Left + this.Width > Screen.PrimaryScreen.Bounds.Size.Width)
             {
                 this.DesktopLocation = new Point(Screen.PrimaryScreen.Bounds.Size.Width - this.Width, this.DesktopLocation.Y);
+                SetLensPoint(Screen.PrimaryScreen.Bounds.Size.Width - bmpScreenshot.Width, calculateLensPointX(fixationPoint.X));
+                hitEdge = true;
             }
+            if (hitEdge)
+            {
+                return true;
+            }
+            return false;
         }
         private int calculateCornerDistance(Point fixationPoint, Point corner)
         {
@@ -146,22 +160,34 @@ namespace GazeToolBar
             else
             {
                 this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
-                checkEdge();
-                Point newLensPoint = new Point();
-
-                /*Yeah this is pretty horrible*/
-                newLensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
-                newLensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);
-                newLensPoint.X = newLensPoint.X + this.Size.Width / 4;
-                newLensPoint.Y = newLensPoint.Y + this.Size.Width / 4;
-                SetLensPoint(newLensPoint.X, newLensPoint.Y);
+                if (!checkEdge(FixationPoint))
+                {
+                    Point newLensPoint = new Point();
+                    /*Yeah this is pretty horrible*/
+                    newLensPoint.X = calculateLensPointX(FixationPoint.X);
+                    newLensPoint.Y = calculateLensPointY(FixationPoint.Y);
+                    SetLensPoint(newLensPoint.X, newLensPoint.Y);
+                }
             }
+        }
+        private int calculateLensPointX(int fixationX)
+        {
+            int x;
+            x = fixationX - (int)((this.Width / ZOOMLEVEL) * 1.25);
+            x = x + this.Size.Width / 4;
+            return x;
+        }
+        private int calculateLensPointY(int fixationY)
+        {
+            int y;
+            y = fixationY - (int)((this.Height / ZOOMLEVEL) * 1.25);
+            y = y + this.Size.Height / 4;
+            return y;
         }
         private void SetLensPoint(int x, int y)
         {
             lensPoint.X = x;
             lensPoint.Y = y;
-            //return lensPoint;
         }
         public void TakeScreenShot()
         {
