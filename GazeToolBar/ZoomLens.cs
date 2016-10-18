@@ -20,7 +20,6 @@ namespace GazeToolBar
         Graphics mainCanvas;
         public Bitmap bmpScreenshot;
         Bitmap offScreenBitmap;
-        int corner;//this is used to determine if a user has looked at a corner section of the screen
         Point lensPoint;
 
         FixationDetection fixdet;
@@ -54,7 +53,7 @@ namespace GazeToolBar
         }
         public int checkCorners(Point FixationPoint)
         {
-            int maxDistance = bmpScreenshot.Size.Width;
+            int maxDistance = bmpScreenshot.Width;
             int screenWidth = Screen.FromControl(this).Bounds.Width;
             int screenHeight = Screen.FromControl(this).Bounds.Height;
 
@@ -73,6 +72,25 @@ namespace GazeToolBar
                 }
             }
             return -1;
+        }
+        public void checkEdge()
+        {
+            if (this.Top < 0)
+            {
+                this.DesktopLocation = new Point(this.DesktopLocation.X, 0);
+            }
+            if (this.Left < 0)
+            {
+                this.DesktopLocation = new Point(0, this.DesktopLocation.Y);
+            }
+            if (this.Top + this.Height > Screen.PrimaryScreen.Bounds.Size.Height)
+            {
+                this.DesktopLocation = new Point(this.DesktopLocation.X, Screen.PrimaryScreen.Bounds.Size.Height - this.Height);
+            }
+            if (this.Left + this.Width > Screen.PrimaryScreen.Bounds.Size.Width)
+            {
+                this.DesktopLocation = new Point(Screen.PrimaryScreen.Bounds.Size.Width - this.Width, this.DesktopLocation.Y);
+            }
         }
         private int calculateCornerDistance(Point fixationPoint, Point corner)
         {
@@ -128,7 +146,9 @@ namespace GazeToolBar
             else
             {
                 this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
+                checkEdge();
                 Point newLensPoint = new Point();
+
                 /*Yeah this is pretty horrible*/
                 newLensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
                 newLensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);

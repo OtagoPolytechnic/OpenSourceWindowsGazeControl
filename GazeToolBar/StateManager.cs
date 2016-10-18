@@ -14,6 +14,7 @@ namespace GazeToolBar
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
 
     public enum Corner { NoCorner = -1, TopLeft, TopRight, BottomLeft, BottomRight }
+    public enum Edge { Top, Right, Bottom, Left }
     public static class SystemFlags
     {
 
@@ -26,7 +27,7 @@ namespace GazeToolBar
         public static bool FixationRunning { get; set; }
         public static bool HasSelectedButtonColourBeenReset { get; set; }
         public static bool Scrolling { get; set; }
-        public static bool ShortCutKeyPressed {get; set;}
+        public static bool ShortCutKeyPressed { get; set; }
 
 
     }
@@ -39,6 +40,7 @@ namespace GazeToolBar
         ZoomLens zoomer;
         Point fixationPoint;
         Corner corner;
+        Edge edge;
         SystemState currentState;
 
         ShortcutKeyWorker shortCutKeyWorker;
@@ -108,7 +110,8 @@ namespace GazeToolBar
                         EnterWaitState();
                         //currentState = //SystemState.DisplayFeedback;
                         // SystemState.Wait;
-                    }else if(SystemFlags.ShortCutKeyPressed)
+                    }
+                    else if (SystemFlags.ShortCutKeyPressed)
                     {
                         currentState = SystemState.Zooming;
                     }
@@ -162,7 +165,7 @@ namespace GazeToolBar
 
                     if (!SystemFlags.Scrolling)
                         EnterWaitState();
-                        //currentState = SystemState.Wait;
+                    //currentState = SystemState.Wait;
                     break;
                 case SystemState.ApplyAction:
                     Console.WriteLine("ApplyAction");
@@ -216,19 +219,23 @@ namespace GazeToolBar
                     break;
                 case SystemState.Zooming:
 
-                    if(SystemFlags.ShortCutKeyPressed)
+                    if (SystemFlags.ShortCutKeyPressed)
                     {
                         fixationPoint = shortCutKeyWorker.GetXY();
                         SystemFlags.ShortCutKeyPressed = false;
-                    }else{
+                    }
+                    else
+                    {
 
                         fixationPoint = fixationWorker.getXY();//get the location the user looked
 
                     }
 
-                    
+
                     corner = (Corner)zoomer.checkCorners(fixationPoint);
+                    //zoomer.checkEdge();
                     zoomer.determineDesktopLocation(fixationPoint, (int)(corner));
+                    
                     zoomer.TakeScreenShot();
                     zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
                     SystemFlags.Gaze = false;
