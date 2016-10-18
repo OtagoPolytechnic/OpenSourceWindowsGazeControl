@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace GazeToolBar
 {
-
+    /// <summary>
+    /// Struct GazePoint custom coordinate representation.
+    /// </summary>
     public struct GazePoint
     {
        public double x;
@@ -18,6 +20,8 @@ namespace GazeToolBar
             y = Y;
         }
     }
+
+
 
     public class PointSmoother
     {
@@ -92,13 +96,6 @@ namespace GazeToolBar
     
             return returnSmoothPoint;
         }
-
-
-
-
-        
-
-
 
     }
 }
