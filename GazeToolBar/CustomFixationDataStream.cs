@@ -11,32 +11,41 @@ using System.Threading;
 
 namespace GazeToolBar
 {
+    /// <summary>
+    /// Custom fixation datastream, Monitors stream of XY coordinates of a users gaze, and from this data calculates the standard deviation variance from the gaze average. IT then raises
+    /// appropriate events when the users gaze is moving less than a specified threshold.
+    /// </summary>
     public class CustomFixationDataStream
     {
+        //Gaze Data stream to subscribe to.
         GazePointDataStream gazeStream;
 
+        //Ring buffer size
         int bufferSize = 60;
         int bufferCurrentIndex = 0;
         int bufferFullIndex = 0;
 
+        //Fixation variance threshold
         double xFixationThreashold = 1;
         double yFixationThreashold = 1;
 
+        //ring buffer arrays.
         double[] xBuffer;
         double[] yBuffer;
 
         EFixationStreamEventType fixationState;
 
+        //Global variable containing the current gaze average location.
         GazePoint gPAverage;
 
-
+        //Deceleration of event that is raised when fixation occurs.
         public delegate void CustomFixationEventHandler(object o, CustomFixationEventArgs e);
-
         public event CustomFixationEventHandler next;
 
-
+        //Constructor
         public CustomFixationDataStream()
         {
+
             gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             //Create gate points event handler delegate
             EventHandler<GazePointEventArgs> gazeDel = new EventHandler<GazePointEventArgs>(updateGazeCoodinates);
@@ -53,12 +62,13 @@ namespace GazeToolBar
         }
 
 
-
+        /// <summary>
+        /// Method get subscribed to eye tracker gaze event data stream, then runs methods that convert users current gaze into fixation events.
+        /// </summary>
+        /// <param name="o"></param>
+        /// <param name="currentGaze"></param>
         private void updateGazeCoodinates(object o, GazePointEventArgs currentGaze)
         {
-            //Save the users gaze to a field that has global access in this class.
-            //currentGazeLocationX = currentGaze.X;
-            //currentGazeLocationY = currentGaze.Y;
 
             addCoordinateToBuffer(currentGaze.X, currentGaze.Y);
 
@@ -69,13 +79,18 @@ namespace GazeToolBar
         }
 
 
+        /// <summary>
+        /// Checks input data from variance calculation and raises appropriate event depending on this data and the CustomfixationDetectionStreams current state
+        /// </summary>
+        /// <param name="gazeVariation"></param>
+        /// <param name="timestamp"></param>
           private void generateFixationState(GazePoint gazeVariation, double timestamp)
         {
               //Set pointer to next fixation data bucket.
             CustomFixationEventArgs cpe = null;
 
 
-              //Check gaze data variation and raise appropriate event.
+              //Check gaze data variation, current state and create appropriate event. Then set the CustomfixationDetectionStreams state.
             if (fixationState == EFixationStreamEventType.waiting && gazeVariation.x < xFixationThreashold && gazeVariation.y < yFixationThreashold)
             {
                 cpe = new CustomFixationEventArgs(EFixationStreamEventType.start, timestamp, gPAverage.x, gPAverage.y);
@@ -92,6 +107,7 @@ namespace GazeToolBar
             }
 
 
+              //raise the event.
             if( cpe != null)
             {
                 OnFixationStateChange(cpe);
@@ -100,7 +116,7 @@ namespace GazeToolBar
 
         }
 
-
+        //Method that raises fixation event.
         private void OnFixationStateChange(CustomFixationEventArgs newFixation)
         {
             if(next != null)
@@ -111,7 +127,7 @@ namespace GazeToolBar
 
 
 
-        //add coordinates to ring buffer, check and reset array index when at end of array, increment bufferfullindex to indicate when buffer has been full at least once.
+        //add coordinates to ring buffer, check and reset array index when at end of array, increment bufferfullindex to indicate when buffer has been full for the first time, then overwrite previous data.
         private void addCoordinateToBuffer(double x, double y)
         {
 
@@ -155,13 +171,14 @@ namespace GazeToolBar
 
 
 
-           // Console.WriteLine("x sd " + xTotal);
-           // Console.WriteLine("y sd " + yTotal);
-
             return new GazePoint(xTotal, yTotal);
 
         }
 
+
+        /// <summary>
+        /// Reset fixation data stream to its waiting state, this solves and issue when fixations are in close proximity, by stopping the stream getting stuck in the middle stae of a fixation. 
+        /// </summary>
         public void ResetFixationDetectionState()
         {
             fixationState = EFixationStreamEventType.waiting;
@@ -172,7 +189,10 @@ namespace GazeToolBar
             Thread.Sleep(100);
         }
 
-
+        /// <summary>
+        /// Calculates the average location of the users gaze, could be combined into calculateVariance() method.
+        /// </summary>
+        /// <returns></returns>
 
         private GazePoint average()
         {
