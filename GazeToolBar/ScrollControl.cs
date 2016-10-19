@@ -192,7 +192,7 @@ namespace GazeToolBar
 
 
        //Public method for the sate machine to start scroll control running.
-        public void startScroll()
+        public void StartScroll()
         {
             SetDeadZoneBounds();
 

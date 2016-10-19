@@ -77,13 +77,6 @@ namespace GazeToolBar
             OnStartTextChange();
         }
 
-        //private void settingItem_Click(object sender, EventArgs e)
-        //{
-        //    //settings = new Settings(this);
-        //    //LowLevelKeyBoardHook.UnHookKeyboard();
-        //    //settings.Show();
-        //}
-
         private void menuItemExit_Click(object sender, EventArgs e)
         {
             Close();

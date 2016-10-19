@@ -217,7 +217,7 @@ namespace GazeToolBar
         {
             offScreenGraphics.DrawImage(bmpScreenshot, 0, 0, 500, 500);
 
-            gazeHighlight.drawHightlight();
+            gazeHighlight.DrawHightlight();
 
             mainCanvas.DrawImage(offScreenBitmap, 0, 0);
         }

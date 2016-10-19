@@ -110,14 +110,14 @@ namespace GazeToolBar
               //raise the event.
             if( cpe != null)
             {
-                OnFixationStateChange(cpe);
+                onFixationStateChange(cpe);
             }
 
 
         }
 
         //Method that raises fixation event.
-        private void OnFixationStateChange(CustomFixationEventArgs newFixation)
+        private void onFixationStateChange(CustomFixationEventArgs newFixation)
         {
             if(next != null)
             {

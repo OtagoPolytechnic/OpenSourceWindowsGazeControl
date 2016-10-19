@@ -280,7 +280,7 @@ namespace GazeToolBar
                             SystemFlags.currentState = SystemState.ScrollWait;
                             SystemFlags.Scrolling = true;
                             VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
-                            scrollWorker.startScroll();
+                            scrollWorker.StartScroll();
 
                         }
                     }

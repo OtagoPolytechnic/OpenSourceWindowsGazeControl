@@ -33,7 +33,8 @@ namespace GazeToolBar
        //Deceleration of event used to drive Gaze highlight, event contains data that shows the percentage through the current fixation.
        public delegate void FixationProgressEvent( object o, FixationProgressEventArgs e);
        public event FixationProgressEvent currentProgress;
-       private double fixationProgressStartTimeStamp;
+       
+        private double fixationProgressStartTimeStamp;
 
        
         //Timer to measure if a how long it has been since the fixation started. 
@@ -41,8 +42,8 @@ namespace GazeToolBar
         private Timer timeOutTimer;
 
         //Fixation data stream, used to attached to fixation events.
-      //  public static FixationDataStream fixationPointDataStream;
-       // EventHandler<FixationEventArgs> FixationEventStreamDelegate;
+        //public static FixationDataStream fixationPointDataStream;
+        //EventHandler<FixationEventArgs> FixationEventStreamDelegate;
        
         public int FixationDetectionTimeLength { get; set; }
         public int FixationTimeOutLength { get; set; }
@@ -67,7 +68,7 @@ namespace GazeToolBar
 
             customfixStream = new CustomFixationDataStream();
 
-            customfixStream.next += DetectFixation;
+            customfixStream.next += detectFixation;
 
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
@@ -79,7 +80,7 @@ namespace GazeToolBar
 
             timeOutTimer.AutoReset = false;
 
-            timeOutTimer.Elapsed += FixationTimeOut;
+            timeOutTimer.Elapsed += fixationTimeOut;
 
 
             fixationTimer = new System.Timers.Timer(FixationDetectionTimeLength);
@@ -97,7 +98,7 @@ namespace GazeToolBar
         /// </summary>
         /// <param name="o"></param>
         /// <param name="fixationDataBucket"></param>
-        private void DetectFixation(object o, CustomFixationEventArgs fixationDataBucket)
+        private void detectFixation(object o, CustomFixationEventArgs fixationDataBucket)
         {
             //Check if FixationDetection needs to be monitoring CustomFixation data stream.
             if (fixationState == EFixationState.DetectingFixation)
@@ -153,7 +154,7 @@ namespace GazeToolBar
         /// </summary>
         /// <param name="o"></param>
         /// <param name="e"></param>
-        public void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
+        private void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
         {
             timeOutTimer.Stop();
             //Once the fixation has run, set the state of fixation detection back to waiting.
@@ -164,13 +165,13 @@ namespace GazeToolBar
         }
 
         /// <summary>
-        /// Method run on tiemOutTimer elapse event.
+        /// Method run on timeOutTimer elapse event.
         /// Used to reset FixationDetection back to its initial waiting state if a user does not successfully fixate on the screen before the time specified by FixationTimeOutLength.
         /// it also signals to the State manager that con fixation completed by raising the SystemFlags.timeOut flag.
         /// </summary>
         /// <param name="o"></param>
         /// <param name="e"></param>
-        public void FixationTimeOut(object o, ElapsedEventArgs e)
+        private void fixationTimeOut(object o, ElapsedEventArgs e)
         {
             customfixStream.ResetFixationDetectionState();
 
@@ -225,7 +226,7 @@ namespace GazeToolBar
         /// Raises event to advertise current fixations progress.
         /// </summary>
         /// <param name="progressPercent"></param>
-        public void onFixationProgressEvent(int progressPercent )
+        private void onFixationProgressEvent(int progressPercent )
         {
             FixationProgressEventArgs FPEA = new FixationProgressEventArgs(progressPercent);
 

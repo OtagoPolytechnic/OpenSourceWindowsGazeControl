@@ -54,7 +54,7 @@ namespace GazeToolBar
         {
             addCoordinateToBuffer(X, Y);
 
-            return SmoothPointsFromBuffer();
+            return smoothPointsFromBuffer();
         }
 
 
@@ -79,7 +79,7 @@ namespace GazeToolBar
         }
 
         //work out average point location from current buffer contents.
-        private GazePoint SmoothPointsFromBuffer()
+        private GazePoint smoothPointsFromBuffer()
         {
             double xTotal = 0;
             double yTotal = 0;
