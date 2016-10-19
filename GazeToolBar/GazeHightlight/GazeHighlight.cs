@@ -8,6 +8,7 @@ using EyeXFramework;
 using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Timers;
+using EyeXFramework.Forms;
 
 namespace GazeToolBar
 {
@@ -25,13 +26,13 @@ namespace GazeToolBar
         ZoomLens lensForm;
 
 
-        public GazeHighlight(FixationDetection fixationWorker, Graphics zoomerCanvas, EHighlightShaderType shaderType, ZoomLens LensForm)
+        public GazeHighlight(FixationDetection fixationWorker, Graphics zoomerCanvas, EHighlightShaderType shaderType, ZoomLens LensForm, FormsEyeXHost EyeXHost)
         {
             lensForm = LensForm;
 
             fixationWorker.currentProgress += setPercent;
 
-            gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+            gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
 
             gazeStream.Next += SetCurrentGaze;
             

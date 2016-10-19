@@ -8,6 +8,7 @@ using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Timers;
 using System.Drawing;
+using EyeXFramework.Forms;
 
 /*
  *  Class: FixationDetection
@@ -63,10 +64,10 @@ namespace GazeToolBar
         //Fixation data stream.
         CustomFixationDataStream customfixStream;
 
-        public FixationDetection()
+        public FixationDetection(FormsEyeXHost EyeXHost)
         {
 
-            customfixStream = new CustomFixationDataStream();
+            customfixStream = new CustomFixationDataStream(EyeXHost);
 
             customfixStream.next += detectFixation;
 

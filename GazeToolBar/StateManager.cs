@@ -1,4 +1,5 @@
 ﻿using EyeXFramework;
+using EyeXFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -40,6 +41,7 @@ namespace GazeToolBar
         Point fixationPoint;
         Corner corner;
         SystemState currentState;
+        FormsEyeXHost eyeXHost;
 
         ShortcutKeyWorker shortCutKeyWorker;
 
@@ -52,21 +54,22 @@ namespace GazeToolBar
          * StateManger needs to save the x,y from the zoomer and it also needs to know which action was to be performed (Form will raise the flag based on what action was selected)
          * */
 
-        public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker)
+        public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker, FormsEyeXHost EyeXHost)
         {
+            eyeXHost = EyeXHost;
             toolbar = Toolbar;
 
             SystemFlags.currentState = SystemState.Setup;
 
-            fixationWorker = new FixationDetection();
+            fixationWorker = new FixationDetection(eyeXHost);
 
-            scrollWorker = new ScrollControl(200, 5, 50, 20);
+            scrollWorker = new ScrollControl(200, 5, 50, 20, eyeXHost);
 
             SystemFlags.currentState = SystemState.Wait;
 
             SystemFlags.HasSelectedButtonColourBeenReset = true;
 
-            zoomer = new ZoomLens(fixationWorker);
+            zoomer = new ZoomLens(fixationWorker, eyeXHost);
 
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
             corner = new Corner();

@@ -17,7 +17,7 @@ namespace GazeToolBar
 
         private void connectBehaveMap()
         {
-            Program.EyeXHost.Connect(bhavSettingMap);
+            eyeXHost.Connect(bhavSettingMap);
 
             //Temp for 100 
             //Will change later

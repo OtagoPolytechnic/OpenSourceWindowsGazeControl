@@ -1,4 +1,5 @@
 ﻿using EyeXFramework;
+using EyeXFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,7 +28,7 @@ namespace GazeToolBar
 
         GazeHighlight gazeHighlight;
 
-        public ZoomLens(FixationDetection FixDet)
+        public ZoomLens(FixationDetection FixDet, FormsEyeXHost EyeXHost)
         {
             InitializeComponent();
             lensPoint = new Point();
@@ -50,7 +51,7 @@ namespace GazeToolBar
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = FixDet;
 
-            gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen, this);
+            gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen, this, EyeXHost);
         }
         public int checkCorners(Point FixationPoint)
         {

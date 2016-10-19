@@ -7,6 +7,7 @@ using EyeXFramework;
 using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Threading;
+using EyeXFramework.Forms;
 
 
 namespace GazeToolBar
@@ -43,10 +44,10 @@ namespace GazeToolBar
         public event CustomFixationEventHandler next;
 
         //Constructor
-        public CustomFixationDataStream()
+        public CustomFixationDataStream(FormsEyeXHost EyeXHost)
         {
 
-            gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+            gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             //Create gate points event handler delegate
             EventHandler<GazePointEventArgs> gazeDel = new EventHandler<GazePointEventArgs>(updateGazeCoodinates);
             //register delegate with gaze data stream next event.

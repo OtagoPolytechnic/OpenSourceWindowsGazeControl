@@ -13,16 +13,16 @@ namespace GazeToolBar
 {
     static class Program
     {
-        private static FormsEyeXHost eyeXHost = new FormsEyeXHost();
+       // private static FormsEyeXHost eyeXHost = new FormsEyeXHost();
 
         public static string path { get; set; }
         public static SettingJSON readSettings { get; set; }
         public static bool onStartUp { get; set; }
 
-        public static FormsEyeXHost EyeXHost
-        {
-            get { return eyeXHost; }
-        }
+        //public static FormsEyeXHost EyeXHost
+        //{
+        //    get { return eyeXHost; }
+        //}
         
         /// <summary>
         /// The main entry point for the application.
@@ -30,7 +30,7 @@ namespace GazeToolBar
         [STAThread]
         static void Main()
         {
-            eyeXHost.Start();
+            //eyeXHost.Start();
             path = Application.StartupPath + "\\" + "Settings.json";
             if (!File.Exists(path))
             {
@@ -53,7 +53,7 @@ namespace GazeToolBar
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            eyeXHost.Dispose();
+            //eyeXHost.Dispose();
 
         }
 

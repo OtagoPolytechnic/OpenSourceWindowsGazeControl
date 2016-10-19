@@ -8,6 +8,7 @@ using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Windows.Input;
 using System.Drawing;
+using EyeXFramework.Forms;
 
 namespace GazeToolBar
 {
@@ -28,7 +29,7 @@ namespace GazeToolBar
        public  Dictionary<ActionToBePerformed, String> keyAssignments { get; set; }
 
         Keyboardhook keyBoardHook;
-        public ShortcutKeyWorker(Keyboardhook KeyboardObserver, Dictionary<ActionToBePerformed, String> KeyAssignments)//, Dictionary<EToolBarFunction, String> KeyAssignments)
+        public ShortcutKeyWorker(Keyboardhook KeyboardObserver, Dictionary<ActionToBePerformed, String> KeyAssignments, FormsEyeXHost EyeXHost)//, Dictionary<EToolBarFunction, String> KeyAssignments)
         {
             keyBoardHook = KeyboardObserver;
             keyBoardHook.OnKeyPressed += RunKeyFunction;
@@ -36,7 +37,7 @@ namespace GazeToolBar
             keyAssignments = KeyAssignments;
 
             //Connect to eyeX engine gaze stream. 
-            gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+            gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             //Create gate points event handler delegate
             gazeDel = new EventHandler<GazePointEventArgs>(updateGazeCoodinates);
             //register delegate with gaze data stream next event.

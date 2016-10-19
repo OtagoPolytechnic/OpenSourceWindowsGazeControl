@@ -6,6 +6,7 @@ using Tobii;
 using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
+using EyeXFramework.Forms;
 
 
 namespace GazeToolBar
@@ -22,7 +23,8 @@ namespace GazeToolBar
         private MenuItem menuItemExit;
         private MenuItem menuItemStartOnOff;
         private MenuItem settingsItem;
-        public StateManager stateManager;
+        public StateManager stateManager; 
+        private static FormsEyeXHost eyeXHost; 
 
         //Allocate memory location for KeyboardHook and worker.
         public Keyboardhook LowLevelKeyBoardHook;
@@ -53,8 +55,9 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHighLightSettings);
             setButtonPanelHight(highlightPannerList);
 
-            
 
+            eyeXHost = new FormsEyeXHost();
+            eyeXHost.Start();
 
             connectBehaveMap();
         }
@@ -86,8 +89,9 @@ namespace GazeToolBar
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            FKeyMapDictionary = new Dictionary<ActionToBePerformed, string>();
 
+
+            FKeyMapDictionary = new Dictionary<ActionToBePerformed, string>();
             FKeyMapDictionary.Add(ActionToBePerformed.DoubleClick, "Key not assigned");
             FKeyMapDictionary.Add(ActionToBePerformed.LeftClick, "Key not assigned");
             FKeyMapDictionary.Add(ActionToBePerformed.Scroll, "Key not assigned");
@@ -97,7 +101,7 @@ namespace GazeToolBar
             //Instantiate keyboard hook and pass into worker class.
             LowLevelKeyBoardHook = new Keyboardhook();
 
-            shortCutKeyWorker = new ShortcutKeyWorker(LowLevelKeyBoardHook, FKeyMapDictionary);
+            shortCutKeyWorker = new ShortcutKeyWorker(LowLevelKeyBoardHook, FKeyMapDictionary, eyeXHost);
 
             //Start monitoring key presses.
             LowLevelKeyBoardHook.HookKeyboard();
@@ -110,13 +114,13 @@ namespace GazeToolBar
             {
                 Edge = AppBarEdges.Right;
             }
-            stateManager = new StateManager(this, shortCutKeyWorker);
+            stateManager = new StateManager(this, shortCutKeyWorker, eyeXHost);
             timer2.Enabled = true;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            settings = new Settings(this);
+            settings = new Settings(this, eyeXHost);
             settings.Show();
         }
 
@@ -217,6 +221,7 @@ namespace GazeToolBar
         {
             //Remove KeyboardHook on closing form.
             LowLevelKeyBoardHook.UnHookKeyboard();
+            eyeXHost.Dispose();
         }
 
     }

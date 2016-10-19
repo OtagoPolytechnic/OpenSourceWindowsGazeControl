@@ -5,6 +5,7 @@ using System.Drawing;
 using Newtonsoft.Json;
 using System.IO;
 using System.Collections.Generic;
+using EyeXFramework.Forms;
 
 namespace GazeToolBar
 {
@@ -18,6 +19,7 @@ namespace GazeToolBar
         private bool pnlKeyboardIsShow;
         private bool pnlGeneralIsShow;
         private bool WaitForUserKeyPress;
+        private static FormsEyeXHost eyeXHost;
 
 
         private List<Panel> fKeyPannels;
@@ -34,8 +36,9 @@ namespace GazeToolBar
             LARGE
         }
 
-        public Settings(Form1 form1)
+        public Settings(Form1 form1, FormsEyeXHost EyeXHost)
         {
+            eyeXHost = EyeXHost;
             InitializeComponent();
             pnlPageKeyboard.Hide();
             ChangeButtonColor(btnGeneralSetting, true, true);
