@@ -26,15 +26,11 @@ namespace GazeToolBar
         ZoomLens lensForm;
 
 
-        public GazeHighlight(FixationDetection fixationWorker, Graphics zoomerCanvas, EHighlightShaderType shaderType, ZoomLens LensForm, FormsEyeXHost EyeXHost)
+        public GazeHighlight(FixationDetection fixationWorker, Graphics zoomerCanvas, EHighlightShaderType shaderType, ZoomLens LensForm)
         {
             lensForm = LensForm;
 
             fixationWorker.currentProgress += setPercent;
-
-            gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
-
-            //gazeStream.Next += SetCurrentGaze;
             
             canvas = zoomerCanvas;
 
@@ -68,12 +64,7 @@ namespace GazeToolBar
 
 
 
-         
-        public void SetCurrentGaze(object o , GazePointEventArgs currentGazePoint)
-        {
-            currentGaze.X = (int)Math.Floor(currentGazePoint.X);
-            currentGaze.Y = (int)Math.Floor(currentGazePoint.Y);
-        }
+      
 
 
         private void setPercent(object o, FixationProgressEventArgs progress)

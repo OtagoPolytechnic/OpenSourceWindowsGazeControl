@@ -51,7 +51,7 @@ namespace GazeToolBar
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = FixDet;
 
-            gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen, this, EyeXHost);
+            gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen,this);
         }
         public int checkCorners(Point FixationPoint)
         {
