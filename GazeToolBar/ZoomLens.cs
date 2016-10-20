@@ -289,21 +289,38 @@ namespace GazeToolBar
         }
         public Point edgeOffset(Edge edge, Point fixationPoint)
         {
+            int offset = (int)(ZOOMLENS_SIZE * 0.34);
             switch (edge)
             {
                 case Edge.NoEdge:
                     return fixationPoint;
                 case Edge.Top:
-                    fixationPoint.Y = this.Height / 2;
+                    fixationPoint.Y = fixationPoint.Y - offset;
                     break;
                 case Edge.Right:
-                    fixationPoint.X = Screen.PrimaryScreen.Bounds.Size.Width - this.Width / 2;
+                    fixationPoint.X = fixationPoint.X + offset;
                     break;
                 case Edge.Bottom:
-                    fixationPoint.Y = Screen.PrimaryScreen.Bounds.Size.Height - this.Height / 2;
+                    fixationPoint.Y = fixationPoint.Y + offset;
                     break;
                 case Edge.Left:
-                    fixationPoint.X = this.Width / 2;
+                    fixationPoint.X = fixationPoint.X - offset;
+                    break;
+                case Edge.TopLeft:
+                    fixationPoint.X = fixationPoint.X - offset;
+                    fixationPoint.Y = fixationPoint.Y - offset;
+                    break;
+                case Edge.TopRight:
+                    fixationPoint.X = fixationPoint.X + offset;
+                    fixationPoint.Y = fixationPoint.Y - offset;
+                    break;
+                case Edge.BottomLeft:
+                    fixationPoint.X = fixationPoint.X - offset;
+                    fixationPoint.Y = fixationPoint.Y + offset;
+                    break;
+                case Edge.BottomRight:
+                    fixationPoint.X = fixationPoint.X + offset;
+                    fixationPoint.Y = fixationPoint.Y + offset;
                     break;
             }
             return fixationPoint;

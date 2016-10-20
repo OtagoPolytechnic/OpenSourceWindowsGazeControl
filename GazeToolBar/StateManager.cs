@@ -260,8 +260,9 @@ namespace GazeToolBar
 
                     fixationPoint = fixationWorker.getXY();
                     zoomer.ResetZoomLens();//hide the lens
-                    fixationPoint = zoomer.edgeOffset(edge, fixationPoint);
+                    
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);//translate the form coordinates to the desktop
+                    fixationPoint = zoomer.edgeOffset(edge, fixationPoint);
                     //fixationPoint = zoomer.CornerOffset(corner, fixationPoint);//account for corner offset (this method only does anything if the user has looked in a corner zone)
 
 
