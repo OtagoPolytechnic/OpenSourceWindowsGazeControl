@@ -40,7 +40,73 @@ namespace GazeToolBar
         public static Point panelSaveAndCancel(int width, int height)
         {
             int i = (ValueNeverChange.SCREEN_SIZE.Width - width) / 2;
-            return new Point((ValueNeverChange.SCREEN_SIZE.Width - width) / 2, ValueNeverChange.SCREEN_SIZE.Height - height);
+            return new Point(i, ValueNeverChange.SCREEN_SIZE.Height - height);
+        }
+
+        public static Size panelGeneralSize()
+        {
+            int w = (int)(ValueNeverChange.SCREEN_SIZE.Width * 0.98);
+            int h = (int)(ValueNeverChange.SCREEN_SIZE.Height * 0.85);
+            return new Size(w, h);
+        }
+
+        public static Point distribute(Panel parent, int thisElementXorY, int position, int totalElement, String flag, double per)
+        {
+            double percent = (100 / totalElement) / 100.0;
+            double widthPercent = per;
+            if (flag == "h")
+            {
+                int parentHeight = parent.Size.Height;
+                int thisElementLocationY = (int)(percent * parentHeight * (position - 1));
+                return new Point(thisElementXorY, thisElementLocationY);
+            }
+            else if (flag == "w")
+            {
+                int parentWidth = parent.Size.Width;
+                int thisElementLocationX = (int)(widthPercent * parentWidth);
+                return new Point(thisElementLocationX, thisElementXorY);
+            }
+            else
+            {
+                return new Point();
+            }
+        }
+
+        public static Size controlLength(Panel parent, int thisElementHeight, double percent)
+        {
+            int parentLength = parent.Size.Width;
+            int length = (int)(parentLength * percent);
+            return new Size(length, thisElementHeight);
+        }
+
+        public static Size controlLength(Control first, Control second, int thisElementHeight)
+        {
+            int length = (second.Location.X + second.Size.Width + second.Parent.Location.X) - (first.Location.X + first.Parent.Location.X);
+            return new Size(length, thisElementHeight);
+        }
+
+        public static Point labelPosition(Panel parent, Label label)
+        {
+            int parentWidth = parent.Size.Width;
+            int labelX = (int)(parentWidth * 0.02);
+            return new Point(labelX, label.Location.Y);
+        }
+
+        public static Point reletiveLocation(Control relativeTo, int thisControlXorY, int space, char hov)
+        {
+            Point p = new Point();
+            switch (hov)
+            {
+                case 'h':
+                    p.X = thisControlXorY;
+                    p.Y = relativeTo.Location.Y + space + relativeTo.Size.Height;
+                    break;
+                case 'v':
+                    p.X = relativeTo.Location.X + space + relativeTo.Size.Width;
+                    p.Y = thisControlXorY;
+                    break;
+            }
+            return p;
         }
 
         public static void evenlyDistrubute(Panel parentPanel)
