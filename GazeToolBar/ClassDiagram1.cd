@@ -38,21 +38,21 @@
       </Delegate>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>gIAABAAEBBAECgAIAACAAAAAAigAAAKAAAAAgACAARA=</HashCode>
+      <HashCode>gIAABAAEBAAECgAIAACAAAAAAigAAACAAAACkACAARA=</HashCode>
       <FileName>FixationDetection.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GazeToolBar.FixationProgressEventArgs">
     <Position X="11.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgYAA=</HashCode>
       <FileName>FixationProgressEventArgs.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GazeToolBar.Form1" Collapsed="true">
     <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AASCSAgwCjISEAGAAIGAAJA2gBCOOgEIAAQJrE4DBKE=</HashCode>
+      <HashCode>AASCSAgwCjISGAGAAIGAAJA2gBCOOgEIAAQJrE4DBKE=</HashCode>
       <FileName>Form1.BehavMap.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -79,7 +79,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="GazeToolBar.HookedKeyboardEventArgs" Collapsed="true">
-    <Position X="3.75" Y="7.25" Width="1.5" />
+    <Position X="4" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>HookedKeyboardEventArgs.cs</FileName>
@@ -102,14 +102,14 @@
   <Class Name="GazeToolBar.PointSmoother">
     <Position X="7.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACAAAAAAIAAAAACAMAAAAAAAAACAAACAAAAAAACA=</HashCode>
+      <HashCode>AAAACAAAAAAIAAAAAAAMAAAAAAAAACAAACAAAAAAACA=</HashCode>
       <FileName>PointSmoother.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GazeToolBar.Program" Collapsed="true">
     <Position X="2.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIAAAACgAAAAACAAAAAAAAAAAIAAAABABAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAAAACAAAAAAAAAAAIAAAABABAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -123,7 +123,7 @@
   <Class Name="GazeToolBar.ScrollControl">
     <Position X="16.5" Y="6" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AgAAAIGAAAAAAARAGAAEAAIAABAAACAAWAAAAQAAAAA=</HashCode>
+      <HashCode>AgAAAIGAAAAAAARAGAAAAAIAABAAACAAWAAAAQAAAAA=</HashCode>
       <FileName>ScrollControl.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -137,7 +137,7 @@
   <Class Name="GazeToolBar.Settings" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>nBgDA3E+H25Vk7UTscCGQuqiLFIAdzwxIoLIVE5gAPA=</HashCode>
+      <HashCode>nBgDA3E+H25Vm7UTscCGQuqiLFIAdzwxIoLIVE5gAPA=</HashCode>
       <FileName>Settings.BehavMap.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -158,7 +158,7 @@
   <Class Name="GazeToolBar.StateManager" Collapsed="true">
     <Position X="0.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAIAAgAACAACAEAggAAAAABCAAAAY=</HashCode>
+      <HashCode>AAAAAQAAAAAACAAAIAAgAACAACAEAggAAAAABCAAAAY=</HashCode>
       <FileName>StateManager.cs</FileName>
     </TypeIdentifier>
   </Class>

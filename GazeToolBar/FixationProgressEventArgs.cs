@@ -11,9 +11,14 @@ namespace GazeToolBar
     {
         public int ProgressPercent { get; set; }
 
-        public FixationProgressEventArgs(int progressPercent )
+        public int X { get; set; }
+        public int Y { get; set; }
+
+        public FixationProgressEventArgs(int progressPercent, int x, int y )
         {
             ProgressPercent = progressPercent;
+            X = x;
+            Y = y;
         }
     }
 }

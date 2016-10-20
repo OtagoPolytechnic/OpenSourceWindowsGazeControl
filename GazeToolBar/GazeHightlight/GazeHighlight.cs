@@ -34,7 +34,7 @@ namespace GazeToolBar
 
             gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
 
-            gazeStream.Next += SetCurrentGaze;
+            //gazeStream.Next += SetCurrentGaze;
             
             canvas = zoomerCanvas;
 
@@ -79,6 +79,8 @@ namespace GazeToolBar
         private void setPercent(object o, FixationProgressEventArgs progress)
         {
             fixationPercent = progress.ProgressPercent;
+            currentGaze.X = progress.X;
+            currentGaze.Y = progress.Y;
         }
 
 

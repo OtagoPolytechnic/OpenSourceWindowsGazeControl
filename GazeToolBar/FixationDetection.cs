@@ -136,7 +136,8 @@ namespace GazeToolBar
                         yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
                     }
 
-                    calculateFixationProgressPercent(fixationDataBucket.TimeStamp);
+                   // calculateFixationProgressPercent(fixationDataBucket.TimeStamp);
+                    onFixationProgressEvent(fixationDataBucket.TimeStamp, xPosFixation, yPosFixation);
 
                 }
                 //if the fixation ends before the fixation timer completes, reset the fixation timer.
@@ -212,7 +213,7 @@ namespace GazeToolBar
         /// Calculates progress through current fixation,the call method to raise an event containing the current progress percentage.
         /// </summary>
         /// <param name="currentTimeStamp"></param>
-        private void calculateFixationProgressPercent(double currentTimeStamp)
+        private int calculateFixationProgressPercent(double currentTimeStamp)
         {
 
             double currentFixationlength = currentTimeStamp - fixationProgressStartTimeStamp;
@@ -220,18 +221,20 @@ namespace GazeToolBar
             double progressPercent = (currentFixationlength / FixationDetectionTimeLength) * ValueNeverChange.ONE_HUNDERED;
 
            
-            onFixationProgressEvent((int)progressPercent);
+            return(int)progressPercent;
         }
 
         /// <summary>
         /// Raises event to advertise current fixations progress.
         /// </summary>
         /// <param name="progressPercent"></param>
-        private void onFixationProgressEvent(int progressPercent )
+        private void onFixationProgressEvent(double timeStamp, int x, int y)
         {
-            FixationProgressEventArgs FPEA = new FixationProgressEventArgs(progressPercent);
+            int progress = calculateFixationProgressPercent(timeStamp);
 
-            Console.WriteLine("Fixation percentage " + progressPercent);
+            FixationProgressEventArgs FPEA = new FixationProgressEventArgs(progress, x, y);
+
+            Console.WriteLine("Fixation percentage " + progress);
 
             if(currentProgress != null)
             {
