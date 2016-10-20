@@ -21,8 +21,8 @@ namespace GazeToolBar
         private int delayBeforeButtonSelected = 1000;
         private void connectBehaveMap()
         {
-            Program.EyeXHost.Connect(bhavMap);
-            Program.EyeXHost.Connect(bhavMapHLCurrentGazeOnBT);
+            eyeXHost.Connect(bhavMap);
+            eyeXHost.Connect(bhavMapHLCurrentGazeOnBT);
 
             //Temp for 100 
             //Will change later

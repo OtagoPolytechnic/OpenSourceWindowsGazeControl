@@ -43,16 +43,6 @@ namespace GazeToolBar
             return new Point((ValueNeverChange.SCREEN_SIZE.Width - width) / 2, ValueNeverChange.SCREEN_SIZE.Height - height);
         }
 
-        public static void evenlyDistrubute(Panel parentPanel)
-        {
-            float percent = 0.0f;
-            foreach (Control c in parentPanel.Controls)
-            {
-                percent += 0.1f;
-                //c.Location.Y
-            }
-        }
-
         public static Size TabControlSize = new Size(ValueNeverChange.SCREEN_SIZE.Width, ValueNeverChange.SCREEN_SIZE.Height - 56 * 2);  
     }
 }

@@ -8,6 +8,7 @@ using EyeXFramework;
 using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Timers;
+using EyeXFramework.Forms;
 
 namespace GazeToolBar
 {
@@ -16,24 +17,24 @@ namespace GazeToolBar
 
         Graphics canvas;
         int fixationPercent;
-        int transparentValue = 100;
+        int transparentValue = 50;
         IGazeHighlightShader gazeShader;
         GazeHighlightShaderFactory shaderMachine;
         Point currentGaze;
         GazePointDataStream gazeStream;
-        Size highlightSize = new Size(20, 20);
+        Size highlightSize = new Size(40, 40);
         ZoomLens lensForm;
 
 
-        public GazeHighlight(FixationDetection fixationWorker, Graphics zoomerCanvas, EHighlightShaderType shaderType, ZoomLens LensForm)
+        public GazeHighlight(FixationDetection fixationWorker, Graphics zoomerCanvas, EHighlightShaderType shaderType, ZoomLens LensForm, FormsEyeXHost EyeXHost)
         {
             lensForm = LensForm;
 
             fixationWorker.currentProgress += setPercent;
-            
-            gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
 
-            gazeStream.Next += setCurrentGaze;
+            gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+
+            gazeStream.Next += SetCurrentGaze;
             
             canvas = zoomerCanvas;
 
@@ -50,7 +51,7 @@ namespace GazeToolBar
         }
 
 
-        public void drawHightlight()
+        public void DrawHightlight()
         {
             SolidBrush highlightbrush = gazeShader.GenerateBrush(fixationPercent, transparentValue);
 
@@ -68,14 +69,14 @@ namespace GazeToolBar
 
 
          
-        public void setCurrentGaze(object o , GazePointEventArgs currentGazePoint)
+        public void SetCurrentGaze(object o , GazePointEventArgs currentGazePoint)
         {
             currentGaze.X = (int)Math.Floor(currentGazePoint.X);
             currentGaze.Y = (int)Math.Floor(currentGazePoint.Y);
         }
 
 
-        public void setPercent(object o, FixationProgressEventArgs progress)
+        private void setPercent(object o, FixationProgressEventArgs progress)
         {
             fixationPercent = progress.ProgressPercent;
         }

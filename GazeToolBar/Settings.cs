@@ -4,6 +4,8 @@ using ShellLib;
 using System.Drawing;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections.Generic;
+using EyeXFramework.Forms;
 
 namespace GazeToolBar
 {
@@ -16,6 +18,11 @@ namespace GazeToolBar
         private Sizes sizes;
         private bool pnlKeyboardIsShow;
         private bool pnlGeneralIsShow;
+        private bool WaitForUserKeyPress;
+        private static FormsEyeXHost eyeXHost;
+
+
+        private List<Panel> fKeyPannels;
 
         public enum GazeOrSwitch
         {
@@ -29,8 +36,9 @@ namespace GazeToolBar
             LARGE
         }
 
-        public Settings(Form1 form1)
+        public Settings(Form1 form1, FormsEyeXHost EyeXHost)
         {
+            eyeXHost = EyeXHost;
             InitializeComponent();
             pnlPageKeyboard.Hide();
             ChangeButtonColor(btnGeneralSetting, true, true);
@@ -41,6 +49,9 @@ namespace GazeToolBar
             //End
             OnTheRight = true;
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
+            
+            
+            
             //tabControlMain.Size = ReletiveSize.TabControlSize;
             onOff = new bool[5];
             for (int i = 0; i < onOff.Length; i++)
@@ -49,6 +60,30 @@ namespace GazeToolBar
             }
             pnlGeneralIsShow = true;
             pnlKeyboardIsShow = false;
+
+            //Set Short cut key assignment panel to the viable width of the form
+            pnlPageKeyboard.Width = ValueNeverChange.SCREEN_SIZE.Width - 20;
+
+            //Set feed back label to the center of the screen.
+            lbFKeyFeedback.Location = new Point((pnlPageKeyboard.Width / 2) - (lbFKeyFeedback.Width / 2), lbFKeyFeedback.Location.Y);
+            //Store reference to short cut assignment panels in a list so they can be iterated over and set their on screen positions relative form size.
+            fKeyPannels = new List<Panel>() { pnlLeftClick, pnlRightClick, pnlDoubleClick, pnlScroll, pnlDragAndDrop };
+            //Set panel positions.
+            setFkeyPanelWidth(fKeyPannels);
+
+            //set initial values of mapped keys to on screen label.
+            lbDouble.Text = form1.FKeyMapDictionary[ActionToBePerformed.DoubleClick];
+            lbRight.Text = form1.FKeyMapDictionary[ActionToBePerformed.RightClick];
+            lbLeft.Text = form1.FKeyMapDictionary[ActionToBePerformed.LeftClick];
+            lbScroll.Text = form1.FKeyMapDictionary[ActionToBePerformed.Scroll];
+
+            WaitForUserKeyPress = false;
+
+            form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;
+
+
+           
+
         }
 
         private void btnChangeSide_Click(object sender, EventArgs e)
@@ -146,22 +181,7 @@ namespace GazeToolBar
             }
         }
 
-        private void changeSizes(Sizes s)
-        {
-            switch (s)
-            {
-                case Sizes.SMALL:
-                    ChangeButtonColor(btnSizeLarge, onOff[4], false);
-                    ChangeButtonColor(btnSizeSmall, !onOff[4], false);
-                    break;
-                case Sizes.LARGE:
-                    ChangeButtonColor(btnSizeLarge, !onOff[4], false);
-                    ChangeButtonColor(btnSizeSmall, onOff[4], false);
-                    break;
-                default:
-                    break;
-            }
-        }
+        
 
         private void lblOnOff(Label l, bool b)
         {
@@ -176,31 +196,7 @@ namespace GazeToolBar
 
         }
 
-        private void btnWordPredictionOnOff_Click(object sender, EventArgs e)
-        {
-            onOff[2] = !onOff[2];
-            ChangeButtonColor(btnWordPredictionOnOff, onOff[2], false);
-            lblOnOff(lblWordPredictionOnOffIndiction, onOff[2]);
-        }
-
-        private void btnSoundFeedback_Click(object sender, EventArgs e)
-        {
-            onOff[3] = !onOff[3];
-            ChangeButtonColor(btnSoundFeedback, onOff[3], false);
-            lblOnOff(lblSoundFeedbackOnOff, onOff[3]);
-        }
-
-        private void btnSizeLarge_Click(object sender, EventArgs e)
-        {
-            sizes = Sizes.LARGE;
-            changeSizes(sizes);
-        }
-
-        private void btnSizeSmall_Click(object sender, EventArgs e)
-        {
-            sizes = Sizes.SMALL;
-            changeSizes(sizes);
-        }
+        
 
         private void trackBarSpeed_Scroll(object sender, EventArgs e)
         {
@@ -227,14 +223,14 @@ namespace GazeToolBar
             try
             {
                 SettingJSON setting = new SettingJSON();
-                setting.language = lblCurrentLanguage.Text;
+                
                 setting.position = lblIndicationLeftOrRight.Text.Substring(3);
-                setting.precision = trackBarFixTimeLength.Value;
+                setting.precision = trackBarPrecision.Value;
                 setting.selection = gazeOrSwitch.ToString();
                 setting.size = sizes.ToString();
                 setting.soundFeedback = onOff[3];
-                setting.speed = trackBarFixTimeOut.Value;
-                setting.typingSpeed = trackBarGazeTypingSpeed.Value;
+                setting.speed = trackBarSpeed.Value;
+                
                 setting.wordPrediction = onOff[2];
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
@@ -264,10 +260,9 @@ namespace GazeToolBar
         private void Settings_Load(object sender, EventArgs e)
         {
             Program.ReadWriteJson();
-            trackBarFixTimeLength.Value = Program.readSettings.precision;
-            trackBarFixTimeOut.Value = Program.readSettings.speed;
-            trackBarGazeTypingSpeed.Value = Program.readSettings.typingSpeed;
-            lblCurrentLanguage.Text = Program.readSettings.language;
+            trackBarPrecision.Value = Program.readSettings.precision;
+            trackBarSpeed.Value = Program.readSettings.speed;
+            
             lblIndicationLeftOrRight.Text = lblIndicationLeftOrRight.Text.Remove(3) + Program.readSettings.position;
             
             if (Program.onStartUp)
@@ -279,42 +274,7 @@ namespace GazeToolBar
                 ChangeButtonColor(btnAutoStart, false, false);
             }
 
-            if (Program.readSettings.wordPrediction)
-            {
-                onOff[2] = true;
-                ChangeButtonColor(btnWordPredictionOnOff, onOff[2], false);
-                lblOnOff(lblWordPredictionOnOffIndiction, onOff[2]);
-            }
-            else
-            {
-                onOff[2] = false;
-                ChangeButtonColor(btnWordPredictionOnOff, onOff[2], false);
-                lblOnOff(lblWordPredictionOnOffIndiction, onOff[2]);
-            }
 
-            if (Program.readSettings.soundFeedback)
-            {
-                onOff[3] = true;
-                ChangeButtonColor(btnSoundFeedback, onOff[3], false);
-                lblOnOff(lblSoundFeedbackOnOff, onOff[3]);
-            }
-            else
-            {
-                onOff[3] = false;
-                ChangeButtonColor(btnSoundFeedback, onOff[3], false);
-                lblOnOff(lblSoundFeedbackOnOff, onOff[3]);
-            }
-
-            if (Program.readSettings.size == Sizes.SMALL.ToString())
-            {
-                sizes = Sizes.SMALL;
-                changeSizes(sizes);
-            }
-            else
-            {
-                sizes = Sizes.LARGE;
-                changeSizes(sizes);
-            }
 
             if (Program.readSettings.selection == GazeOrSwitch.GAZE.ToString())
             {
@@ -343,11 +303,13 @@ namespace GazeToolBar
             if (!pnlGeneralIsShow)
             {
                 pnlPageKeyboard.Hide();
-                ChangeButtonColor(btnKeyBoardSetting, false, true);
+                ChangeButtonColor(btnShortCutKeySetting, false, true);
                 pnlGeneral.Show();
                 ChangeButtonColor(btnGeneralSetting, true, true);
                 pnlKeyboardIsShow = false;
                 pnlGeneralIsShow = true;
+
+                WaitForUserKeyPress = false;
             }
         }
 
@@ -358,59 +320,116 @@ namespace GazeToolBar
                 pnlGeneral.Hide();
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 pnlPageKeyboard.Show();
-                ChangeButtonColor(btnKeyBoardSetting, true, true);
+                ChangeButtonColor(btnShortCutKeySetting, true, true);
                 pnlKeyboardIsShow = true;
                 pnlGeneralIsShow = false;
-            }
-        }
 
-        private void changeTrackBarValue(TrackBar trackbar, String IncrementOrDecrement)
-        {
-            switch (IncrementOrDecrement)
-            {
-                case "I":
-                    if (trackbar.Value != trackbar.Maximum) { trackbar.Value = ++trackbar.Value; }
-                    break;
-                case "D":
-                    if (trackbar.Value != trackbar.Minimum) { trackbar.Value = --trackbar.Value; }
-                    break;
+                lbFKeyFeedback.Text = "";
             }
-            trackbar.Update();
         }
 
         private void Settings_Shown(object sender, EventArgs e)
         {
             connectBehaveMap();
+            form1.shortCutKeyWorker.StopKeyboardWorker();
         }
 
-        private void btnFixTimeLengthMins_Click(object sender, EventArgs e)
+
+        //Method to assign key when for function short cut. Waits until WaitForUserKeyPress is set to true, the next key that is pressed
+        //is assign to the function stored in actionToAssignKey.
+        public void GetKeyPress(object o, HookedKeyboardEventArgs pressedKey)
+
         {
-            changeTrackBarValue(trackBarFixTimeLength, "D");
+
+            String keyPressed = pressedKey.KeyPressed.ToString();
+
+             if(WaitForUserKeyPress)
+            {
+
+                if (checkIfKeyIsAssignedAlready(keyPressed, form1.shortCutKeyWorker.keyAssignments))
+                {
+                    lbFKeyFeedback.Text = keyPressed + " already assigned.";
+                }
+                else
+                {
+                    form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = keyPressed;
+                    updateLabel(pressedKey.KeyPressed.ToString(), actionToAssignKey);
+                    WaitForUserKeyPress = false;
+                    lbFKeyFeedback.Text = "";
+                }
+            }
         }
 
-        private void btnFixTimeLengthPlus_Click(object sender, EventArgs e)
+
+        private bool checkIfKeyIsAssignedAlready(String ValueToCheck, Dictionary<ActionToBePerformed, String> KeyAssignedDict)
         {
-            changeTrackBarValue(trackBarFixTimeLength, "I");
+            
+            foreach (KeyValuePair<ActionToBePerformed, String> currentKVP in KeyAssignedDict)
+            { 
+                if(currentKVP.Value == ValueToCheck)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
-        private void btnFixTimeOutMins_Click(object sender, EventArgs e)
+        void updateLabel(String newKey, ActionToBePerformed functiontoAssign)
         {
-            changeTrackBarValue(trackBarFixTimeOut, "D");
+            switch (functiontoAssign)
+            {
+                case ActionToBePerformed.LeftClick:
+                    lbLeft.Text = newKey;
+                    break;
+                case ActionToBePerformed.RightClick:
+                    lbRight.Text = newKey;
+                    break;
+                case ActionToBePerformed.Scroll:
+                    lbScroll.Text = newKey;
+                    break;
+                case ActionToBePerformed.DoubleClick:
+                    lbDouble.Text = newKey;
+                    break;
+            }
         }
 
-        private void btnFixTimeOutPlus_Click(object sender, EventArgs e)
+
+
+
+        private void setFkeyPanelWidth(List<Panel> panelList)
         {
-            changeTrackBarValue(trackBarFixTimeOut, "I");
+            int screenWidth = pnlPageKeyboard.Width;
+
+            int amountOfPanels = panelList.Count;
+
+            int panelWidth = panelList[0].Width;
+
+            int screenSectionSize = screenWidth / amountOfPanels;
+
+            int spacer = screenSectionSize - panelWidth;
+
+            int spacerBuffer = spacer / 2;
+
+            foreach (Panel currentPanel in panelList)
+            {
+                Point panelLocation = new Point(spacerBuffer, currentPanel.Location.Y);
+
+                Console.WriteLine(screenWidth);
+                Console.WriteLine(panelLocation.X);
+
+                currentPanel.Location = panelLocation;
+
+                spacerBuffer += screenSectionSize;
+            }
         }
 
-        private void btnGzeTypingSpeedPlus_Click(object sender, EventArgs e)
+        private void Settings_FormClosed(object sender, FormClosedEventArgs e)
         {
-            changeTrackBarValue(trackBarGazeTypingSpeed, "I");
+            form1.shortCutKeyWorker.StartKeyBoardWorker();
+            WaitForUserKeyPress = false;
         }
 
-        private void btnGzeTypingSpeedMins_Click(object sender, EventArgs e)
-        {
-            changeTrackBarValue(trackBarGazeTypingSpeed, "D");
-        }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GazeToolBar
 {
-    // Event Raised by Fixation detection during the coarse of a running fixation detection, the event contains the percentage of how far through the fixation is to completion.
+    // Event Raised by Fixation detection during the course of a running fixation detection, the event contains the percentage of how far through the fixation is to completion.
     public class FixationProgressEventArgs : EventArgs
     {
         public int ProgressPercent { get; set; }
