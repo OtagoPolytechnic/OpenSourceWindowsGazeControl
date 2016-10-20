@@ -1,23 +1,17 @@
 ﻿using EyeXFramework;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace GazeToolBar
 {
     partial class Settings 
     {
-
-        int buttonClickDelay = 500;
-        String notAssigned = "Key not assigned";
-
         private void connectBehaveMap()
         {
-            eyeXHost.Connect(bhavSettingMap);
+            Program.EyeXHost.Connect(bhavSettingMap);
 
             //Temp for 100 
             //Will change later
@@ -25,70 +19,55 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnGaze, new GazeAwareBehavior(OnbtnGaze_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSave, new GazeAwareBehavior(OnbtnSave_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnCancel, new GazeAwareBehavior(OnbtnCancel_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnChangeLanguage, new GazeAwareBehavior(OnbtnChangeLanguage_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnChangeSide, new GazeAwareBehavior(OnbtnChangeSide_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnSizeLarge, new GazeAwareBehavior(OnbtnSizeLarge_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSwitch, new GazeAwareBehavior(OnbtnSwitch_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarPrecision, new GazeAwareBehavior(OntrackBarPrecision_Scroll) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarSpeed, new GazeAwareBehavior(OntrackBarSpeed_Scroll) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnWordPredictionOnOff, new GazeAwareBehavior(OnbtnWordPredictionOnOff_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnSizeSmall, new GazeAwareBehavior(OnbtnSizeSmall_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnSoundFeedback, new GazeAwareBehavior(OnbtnSoundFeedback_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeLengthMins, new GazeAwareBehavior(OnbtnFixTimeLengthMins_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeLengthPlus, new GazeAwareBehavior(OnbtnFixTimeLengthPlus_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeOutMins, new GazeAwareBehavior(OnbtnFixTimeOutMins_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeOutPlus, new GazeAwareBehavior(OnbtnFixTimeOutPlus_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSettingClick) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnShortCutKeySetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
-
-            //Set buttons
-            bhavSettingMap.Add(btFKeyLeftClick, new GazeAwareBehavior(btFKeyLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
-            bhavSettingMap.Add(btFKeyRightClick, new GazeAwareBehavior(btFKeyRightClick_Click) { DelayMilliseconds = buttonClickDelay });
-            bhavSettingMap.Add(btFKeyDoubleClick, new GazeAwareBehavior(btFKeyDoubleClick_Click) { DelayMilliseconds = buttonClickDelay });
-            bhavSettingMap.Add(btFKeyScroll, new GazeAwareBehavior(btFKeyScroll_Click) { DelayMilliseconds = buttonClickDelay });
-            bhavSettingMap.Add(btFKeyDrapAndDrop, new GazeAwareBehavior(btFKeyDrapAndDrop_Click) { DelayMilliseconds = buttonClickDelay });
-            //clear buttons
-            bhavSettingMap.Add(btClearFKeyLeftClick, new GazeAwareBehavior(btClearFKeyLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
-            bhavSettingMap.Add(btClearFKeyRightClick, new GazeAwareBehavior(btClearFKeyRightClick_Click) { DelayMilliseconds = buttonClickDelay });
-            bhavSettingMap.Add(btClearFKeyDoubleClick, new GazeAwareBehavior(btClearFKeyDoubleClick_Click) { DelayMilliseconds = buttonClickDelay });
-            bhavSettingMap.Add(btClearFKeyScroll, new GazeAwareBehavior(btClearFKeyScroll_Click) { DelayMilliseconds = buttonClickDelay });
-            bhavSettingMap.Add(btClearFKeyDrapAndDrop, new GazeAwareBehavior(btClearFKeyDrapAndDrop_Click) { DelayMilliseconds = buttonClickDelay });
-            //highlight panels
-            bhavSettingMap.Add(pnlFKeyHighlight1, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavSettingMap.Add(pnlFKeyHighlight2, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavSettingMap.Add(pnlFKeyHighlight3, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavSettingMap.Add(pnlFKeyHighlight4, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavSettingMap.Add(pnlFKeyHighlight5, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavSettingMap.Add(pnlFKeyHighlight6, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavSettingMap.Add(pnlFKeyHighlight7, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavSettingMap.Add(pnlFKeyHighlight8, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavSettingMap.Add(pnlFKeyHighlight9, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavSettingMap.Add(pnlFKeyHighlight10, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(btnKeyBoardSetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
             
         }
 
-
-        //toggle border on and off on gaze to gaze to give feed back.
-        private void OnGazeChangeBTColour(object s, GazeAwareEventArgs e)
+        private void OnbtnFixTimeOutPlus_Click(object sender, GazeAwareEventArgs e)
         {
-            var sentButton = s as Panel;
-            if (sentButton != null)
-            {
-                sentButton.BackColor = (e.HasGaze) ? Color.Red : Color.Black;
-            }
+            btnFixTimeOutPlus.PerformClick();
         }
 
-        private void OntrackBarGazeTypingSpeed_Scroll(object sender, GazeAwareEventArgs e)
+        private void OnbtnFixTimeOutMins_Click(object sender, GazeAwareEventArgs e)
         {
-            //throw new NotImplementedException();
+            btnFixTimeOutMins.PerformClick();
         }
 
-
-
-
-
-
-
-        private void OntrackBarSpeed_Scroll(object sender, GazeAwareEventArgs e)
+        private void OnbtnFixTimeLengthPlus_Click(object sender, GazeAwareEventArgs e)
         {
-            //trackBarSpeed.
-            //throw new NotImplementedException();
+            btnFixTimeLengthPlus.PerformClick();
         }
 
-        private void OntrackBarPrecision_Scroll(object sender, GazeAwareEventArgs e)
+        private void OnbtnFixTimeLengthMins_Click(object sender, GazeAwareEventArgs e)
         {
-            //throw new NotImplementedException();
+            btnFixTimeLengthMins.PerformClick();
+        }
+
+        private void OnbtnSoundFeedback_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnSoundFeedback.PerformClick();
+        }
+
+        private void OnbtnSizeSmall_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnSizeSmall.PerformClick();
+        }
+
+        private void OnbtnWordPredictionOnOff_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnWordPredictionOnOff.PerformClick();
         }
 
         private void OnbtnSwitch_Click(object sender, GazeAwareEventArgs e)
@@ -96,14 +75,20 @@ namespace GazeToolBar
             btnSwitch.PerformClick();
         }
 
-
+        private void OnbtnSizeLarge_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnSizeLarge.PerformClick();
+        }
 
         private void OnbtnChangeSide_Click(object sender, GazeAwareEventArgs e)
         {
             btnChangeSide.PerformClick();
         }
 
-
+        private void OnbtnChangeLanguage_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnChangeLanguage.PerformClick();
+        }
 
         private void OnbtnCancel_Click(object sender, GazeAwareEventArgs e)
         {
@@ -132,87 +117,7 @@ namespace GazeToolBar
 
         private void OnBtnKeyboardSettingClick(object sender, GazeAwareEventArgs e)
         {
-            btnShortCutKeySetting.PerformClick();
+            btnKeyBoardSetting.PerformClick();
         }
-
-
-
-        //====================================================================================
-
-
-              //Shortcut keys panel buy button event methods. 
-
-
-        //====================================================================================
-
-        ActionToBePerformed actionToAssignKey;
-
-        private void btFKeyLeftClick_Click(object sender, EventArgs e)
-        {
-            WaitForUserKeyPress = true;
-            actionToAssignKey = ActionToBePerformed.LeftClick;
-            lbFKeyFeedback.Text = "please press a key";
-            
-        }
-
-        private void btFKeyRightClick_Click(object sender, EventArgs e)
-        {
-            WaitForUserKeyPress = true;
-            actionToAssignKey = ActionToBePerformed.RightClick;
-            lbFKeyFeedback.Text = "please press a key";
-        }
-
-        private void btFKeyDoubleClick_Click(object sender, EventArgs e)
-        {
-            WaitForUserKeyPress = true;
-            actionToAssignKey = ActionToBePerformed.DoubleClick;
-            lbFKeyFeedback.Text = "please press a key";
-        }
-
-        private void btFKeyScroll_Click(object sender, EventArgs e)
-        {
-            WaitForUserKeyPress = true;
-            actionToAssignKey = ActionToBePerformed.Scroll;
-            lbFKeyFeedback.Text = "please press a key";
-        }
-
-        private void btFKeyDrapAndDrop_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
-        //Clear key map
-
-        private void btClearFKeyLeftClick_Click(object sender, EventArgs e)
-        {
-            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = notAssigned;
-            lbLeft.Text = notAssigned;
-        }
-
-        private void btClearFKeyRightClick_Click(object sender, EventArgs e)
-        {
-            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.RightClick] = notAssigned;
-            lbRight.Text = notAssigned;
-        }
-
-        private void btClearFKeyDoubleClick_Click(object sender, EventArgs e)
-        {
-            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = notAssigned;
-            lbDouble.Text = notAssigned;
-        }
-
-        private void btClearFKeyScroll_Click(object sender, EventArgs e)
-        {
-            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.Scroll] = notAssigned;
-            lbScroll.Text = notAssigned;
-        }
-
-        private void btClearFKeyDrapAndDrop_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

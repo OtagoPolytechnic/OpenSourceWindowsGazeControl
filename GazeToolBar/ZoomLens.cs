@@ -1,5 +1,4 @@
 ﻿using EyeXFramework;
-using EyeXFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +27,7 @@ namespace GazeToolBar
 
         GazeHighlight gazeHighlight;
 
-        public ZoomLens(FixationDetection FixDet, FormsEyeXHost EyeXHost)
+        public ZoomLens(FixationDetection FixDet)
         {
             InitializeComponent();
             lensPoint = new Point();
@@ -51,11 +50,11 @@ namespace GazeToolBar
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = FixDet;
 
-            gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen, this, EyeXHost);
+            gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen, this);
         }
         public int checkCorners(Point FixationPoint)
         {
-            int maxDistance = bmpScreenshot.Size.Width;
+            int maxDistance = 300;
             int screenWidth = Screen.FromControl(this).Bounds.Width;
             int screenHeight = Screen.FromControl(this).Bounds.Height;
 
@@ -131,11 +130,11 @@ namespace GazeToolBar
                 this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
                 Point newLensPoint = new Point();
                 /*Yeah this is pretty horrible*/
-                newLensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
-                newLensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);
-                newLensPoint.X = newLensPoint.X + this.Size.Width / 4;
-                newLensPoint.Y = newLensPoint.Y + this.Size.Width / 4;
-                SetLensPoint(newLensPoint.X, newLensPoint.Y);
+                //newLensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
+                //newLensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);
+                //newLensPoint.X = newLensPoint.X + this.Size.Width / 4;
+                //newLensPoint.Y = newLensPoint.Y + this.Size.Width / 4;
+                SetLensPoint((this.Width / ZOOMLEVEL) / 2, (this.Height / ZOOMLEVEL) / 2);
             }
         }
         private void SetLensPoint(int x, int y)
@@ -188,8 +187,7 @@ namespace GazeToolBar
         }
         public Point CornerOffset(Corner corner, Point fixationPoint)
         {
-            int offset = (int)(ZOOMLENS_SIZE * 0.34);/*This used to calculate the offset based on zoomlevel etc, but was lost in a git accident. RIP. This version works but only
-                                                    * for zoom level 3*/
+            int offset = 170;//need to get proper formula for determining offset amount. 170 works for now (only 1920X1080)
             switch (corner)
             {
                 case Corner.NoCorner:
@@ -218,7 +216,7 @@ namespace GazeToolBar
         {
             offScreenGraphics.DrawImage(bmpScreenshot, 0, 0, 500, 500);
 
-            gazeHighlight.DrawHightlight();
+            gazeHighlight.drawHightlight();
 
             mainCanvas.DrawImage(offScreenBitmap, 0, 0);
         }

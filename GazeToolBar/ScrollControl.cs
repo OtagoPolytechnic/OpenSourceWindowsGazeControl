@@ -8,7 +8,6 @@ using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Drawing;
 using System.Timers;
-using EyeXFramework.Forms;
 
 namespace GazeToolBar
 {
@@ -54,13 +53,13 @@ namespace GazeToolBar
 
 
        //Constructor
-        public ScrollControl(int scrollStepTimerDuration, int InitialScrollScalarValue, int deadZoneHorizontalPercent, int deadZoneVerticalPercent, FormsEyeXHost EyeXHost)
+        public ScrollControl(int scrollStepTimerDuration, int InitialScrollScalarValue, int deadZoneHorizontalPercent, int deadZoneVerticalPercent)
         {
             //set scroll step timer duration.
             ScrollStepTimerDuration = scrollStepTimerDuration;
 
             //Connect to eyeX engine gaze stream. 
-            gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+            gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
 
             //Create gate points event handler delegate
             EventHandler<GazePointEventArgs> gazeDel = new EventHandler<GazePointEventArgs>(updateGazeCoodinates);
@@ -193,7 +192,7 @@ namespace GazeToolBar
 
 
        //Public method for the sate machine to start scroll control running.
-        public void StartScroll()
+        public void startScroll()
         {
             SetDeadZoneBounds();
 

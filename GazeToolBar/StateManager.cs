@@ -1,5 +1,4 @@
 ﻿using EyeXFramework;
-using EyeXFramework.Forms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -41,7 +40,6 @@ namespace GazeToolBar
         Point fixationPoint;
         Corner corner;
         SystemState currentState;
-        FormsEyeXHost eyeXHost;
 
         ShortcutKeyWorker shortCutKeyWorker;
 
@@ -54,22 +52,21 @@ namespace GazeToolBar
          * StateManger needs to save the x,y from the zoomer and it also needs to know which action was to be performed (Form will raise the flag based on what action was selected)
          * */
 
-        public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker, FormsEyeXHost EyeXHost)
+        public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker)
         {
-            eyeXHost = EyeXHost;
             toolbar = Toolbar;
 
             SystemFlags.currentState = SystemState.Setup;
 
-            fixationWorker = new FixationDetection(eyeXHost);
+            fixationWorker = new FixationDetection();
 
-            scrollWorker = new ScrollControl(200, 5, 50, 20, eyeXHost);
+            scrollWorker = new ScrollControl(200, 5, 50, 20);
 
             SystemFlags.currentState = SystemState.Wait;
 
             SystemFlags.HasSelectedButtonColourBeenReset = true;
 
-            zoomer = new ZoomLens(fixationWorker, eyeXHost);
+            zoomer = new ZoomLens(fixationWorker);
 
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
             corner = new Corner();
@@ -100,7 +97,7 @@ namespace GazeToolBar
             switch (currentState)
             {
                 case SystemState.Wait:
-                   // Console.WriteLine("Wait State");
+                    Console.WriteLine("Wait State");
                     if (SystemFlags.actionButtonSelected) //if a button has been selected (raised by the form itself?)
                     {
                         currentState = SystemState.ActionButtonSelected;
@@ -117,7 +114,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.ActionButtonSelected:
-                   // Console.WriteLine("ActionButtonSelected");
+                    Console.WriteLine("ActionButtonSelected");
                     SystemFlags.HasSelectedButtonColourBeenReset = false;
                     if (SystemFlags.Gaze)
                     {
@@ -132,7 +129,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.Zooming:
-                   // Console.WriteLine("Zooming");
+                    Console.WriteLine("Zooming");
 
                     if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
                     {
@@ -144,7 +141,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.ZoomWait:
-                   // Console.WriteLine("ZoomWait");
+                    Console.WriteLine("ZoomWait");
                     if (SystemFlags.Gaze)//if the second zoomGaze has happed an action needs to be performed
                     {
                         currentState = SystemState.ApplyAction;
@@ -168,7 +165,7 @@ namespace GazeToolBar
                         //currentState = SystemState.Wait;
                     break;
                 case SystemState.ApplyAction:
-                  //  Console.WriteLine("ApplyAction");
+                    Console.WriteLine("ApplyAction");
                     //action is applied in action()
                     if (SystemFlags.isKeyBoardUP)
                     {
@@ -283,7 +280,7 @@ namespace GazeToolBar
                             SystemFlags.currentState = SystemState.ScrollWait;
                             SystemFlags.Scrolling = true;
                             VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
-                            scrollWorker.StartScroll();
+                            scrollWorker.startScroll();
 
                         }
                     }

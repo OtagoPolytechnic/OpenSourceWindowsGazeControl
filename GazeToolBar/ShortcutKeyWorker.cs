@@ -8,82 +8,49 @@ using Tobii.EyeX.Framework;
 using Tobii.EyeX.Client;
 using System.Windows.Input;
 using System.Drawing;
-using EyeXFramework.Forms;
 
 namespace GazeToolBar
 {
-
-    //public enum EToolBarFunction { LeftClick, RightClick, DoubleClick, Scroll, DragAndDrop}
-
     public class ShortcutKeyWorker
     {
-        
 
         //Fields
         GazePointDataStream gazeStream;
-        EventHandler<GazePointEventArgs> gazeDel;
 
         double currentGazeLocationX;
         double currentGazeLocationY;
 
-       public  Dictionary<ActionToBePerformed, String> keyAssignments { get; set; }
-
         Keyboardhook keyBoardHook;
-        public ShortcutKeyWorker(Keyboardhook KeyboardObserver, Dictionary<ActionToBePerformed, String> KeyAssignments, FormsEyeXHost EyeXHost)//, Dictionary<EToolBarFunction, String> KeyAssignments)
+        public ShortcutKeyWorker(Keyboardhook KeyboardObserver)
         {
             keyBoardHook = KeyboardObserver;
             keyBoardHook.OnKeyPressed += RunKeyFunction;
 
-            keyAssignments = KeyAssignments;
-
             //Connect to eyeX engine gaze stream. 
-            gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+            gazeStream = Program.EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             //Create gate points event handler delegate
-            gazeDel = new EventHandler<GazePointEventArgs>(updateGazeCoodinates);
+            EventHandler<GazePointEventArgs> gazeDel = new EventHandler<GazePointEventArgs>(updateGazeCoodinates);
             //register delegate with gaze data stream next event.
             gazeStream.Next += gazeDel;
 
-        }
 
-        public void StopKeyboardWorker()
-        {
-            keyBoardHook.OnKeyPressed -= RunKeyFunction;
-        }
-        public void StartKeyBoardWorker(){
-            keyBoardHook.OnKeyPressed += RunKeyFunction;
+
+
+
         }
 
         //Test functionality, tests ok, next step is to allow the user to program in and assign different keys to different gazetoolbar functions via the settings form.
         public void RunKeyFunction(object o, HookedKeyboardEventArgs pressedKey)
         {
+            switch(pressedKey.KeyPressed){
+                case Key.F2:
+                    //signal to state manager the action to be performed.
+                    SystemFlags.ShortCutKeyPressed = true;
+                    SystemFlags.actionToBePerformed = ActionToBePerformed.LeftClick;
 
-            String keyString = pressedKey.KeyPressed.ToString();
+            break;
 
-            if (keyString == keyAssignments[ActionToBePerformed.LeftClick])
-            {
-                SystemFlags.ShortCutKeyPressed = true;
-                
-                SystemFlags.actionToBePerformed = ActionToBePerformed.LeftClick;
             }
-            else if (keyString == keyAssignments[ActionToBePerformed.RightClick])
-            {
-                SystemFlags.ShortCutKeyPressed = true;
-                
-                SystemFlags.actionToBePerformed = ActionToBePerformed.RightClick;
-            }
-            else if (keyString == keyAssignments[ActionToBePerformed.DoubleClick])
-            {
-                SystemFlags.ShortCutKeyPressed = true;
-       
-                SystemFlags.actionToBePerformed = ActionToBePerformed.DoubleClick;
-            }
-            else if (keyString == keyAssignments[ActionToBePerformed.Scroll])
-            {
-                
-                SystemFlags.ShortCutKeyPressed = true;
-                SystemFlags.actionToBePerformed = ActionToBePerformed.Scroll;
-            }
-
         }
 
 
@@ -99,7 +66,7 @@ namespace GazeToolBar
         public Point GetXY()
         {
             return new Point((int)currentGazeLocationX, (int)currentGazeLocationY);
-           
+
         }
     }
 }
