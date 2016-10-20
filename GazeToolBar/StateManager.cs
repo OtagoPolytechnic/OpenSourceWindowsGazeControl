@@ -14,7 +14,7 @@ namespace GazeToolBar
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
 
     public enum Corner { NoCorner = -1, TopLeft, TopRight, BottomLeft, BottomRight }
-    public enum Edge { Top, Right, Bottom, Left }
+    public enum Edge { NoEdge = -1, Top, Right, Bottom, Left, TopLeft, TopRight, BottomLeft, BottomRight }
     public static class SystemFlags
     {
 
@@ -41,6 +41,7 @@ namespace GazeToolBar
         Point fixationPoint;
         Corner corner;
         Edge edge;
+        Edge edge2;
         SystemState currentState;
 
         ShortcutKeyWorker shortCutKeyWorker;
@@ -231,11 +232,16 @@ namespace GazeToolBar
 
                     }
 
+                    //corner = (Corner)zoomer.checkCorners(fixationPoint);
 
-                    corner = (Corner)zoomer.checkCorners(fixationPoint);
                     //zoomer.checkEdge();
-                    zoomer.determineDesktopLocation(fixationPoint, (int)(corner));
-                    
+                    zoomer.determineDesktopLocation(fixationPoint, (int)Corner.NoCorner);
+                    edge = zoomer.checkEdge();
+
+                    //need to set the lens point based on which edge was triggered
+                    //and then caluclate the offset for when the user actually clicks
+                    zoomer.SetLensPoint(fixationPoint, edge);
+
                     zoomer.TakeScreenShot();
                     zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
                     SystemFlags.Gaze = false;
@@ -254,8 +260,11 @@ namespace GazeToolBar
 
                     fixationPoint = fixationWorker.getXY();
                     zoomer.ResetZoomLens();//hide the lens
+                    fixationPoint = zoomer.edgeOffset(edge, fixationPoint);
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);//translate the form coordinates to the desktop
-                    fixationPoint = zoomer.CornerOffset(corner, fixationPoint);//account for corner offset (this method only does anything if the user has looked in a corner zone)
+                    //fixationPoint = zoomer.CornerOffset(corner, fixationPoint);//account for corner offset (this method only does anything if the user has looked in a corner zone)
+
+
                     if (fixationPoint.X == -1)//check if it's out of bounds
                     {
                         if (SystemFlags.isKeyBoardUP)

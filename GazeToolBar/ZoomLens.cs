@@ -73,38 +73,59 @@ namespace GazeToolBar
             }
             return -1;
         }
-        public bool checkEdge(Point fixationPoint)
+        public Edge checkEdge()
         {
-            bool hitEdge = false;
-            if (this.Top < 0)
+            Edge edge = Edge.NoEdge;
+            if (this.DesktopLocation.Y < 0)//top
             {
                 this.DesktopLocation = new Point(this.DesktopLocation.X, 0);
-                SetLensPoint(calculateLensPointX(fixationPoint.X), 0);
-                hitEdge = true;
+                //SetLensPoint(calculateLensPointX(fixationPoint.X), 0);
+                edge = Edge.Top;
             }
-            if (this.Left < 0)
+            if (this.DesktopLocation.X < 0)//left
             {
                 this.DesktopLocation = new Point(0, this.DesktopLocation.Y);
-                SetLensPoint(0, calculateLensPointY(fixationPoint.Y));
-                hitEdge = true;
+                //SetLensPoint(0, calculateLensPointY(fixationPoint.Y));
+                if (edge == Edge.Top)
+                {
+                    edge = Edge.TopLeft;
+                }
+                else
+                {
+                    edge = Edge.Left;
+                }
             }
-            if (this.Top + this.Height > Screen.PrimaryScreen.Bounds.Size.Height)
+            if (this.DesktopLocation.Y + this.Height > Screen.PrimaryScreen.Bounds.Size.Height)//bottom
             {
                 this.DesktopLocation = new Point(this.DesktopLocation.X, Screen.PrimaryScreen.Bounds.Size.Height - this.Height);
-                SetLensPoint(calculateLensPointX(fixationPoint.X), Screen.PrimaryScreen.Bounds.Size.Height - bmpScreenshot.Height);
-                hitEdge = true;
+                //SetLensPoint(calculateLensPointX(fixationPoint.X), Screen.PrimaryScreen.Bounds.Size.Height - bmpScreenshot.Height);
+                if (edge == Edge.Left)
+                {
+                    edge = Edge.BottomLeft;
+                }
+                else
+                {
+                    edge = Edge.Bottom;
+                }
             }
-            if (this.Left + this.Width > Screen.PrimaryScreen.Bounds.Size.Width)
+            if (this.DesktopLocation.X + this.Width > Screen.PrimaryScreen.Bounds.Size.Width)//right
             {
                 this.DesktopLocation = new Point(Screen.PrimaryScreen.Bounds.Size.Width - this.Width, this.DesktopLocation.Y);
-                SetLensPoint(Screen.PrimaryScreen.Bounds.Size.Width - bmpScreenshot.Width, calculateLensPointX(fixationPoint.X));
-                hitEdge = true;
+                //SetLensPoint(Screen.PrimaryScreen.Bounds.Size.Width - bmpScreenshot.Width, calculateLensPointX(fixationPoint.X));
+                if (edge == Edge.Top)
+                {
+                    edge = Edge.TopRight;
+                }
+                else if (edge == Edge.Bottom)
+                {
+                    edge = Edge.BottomRight;
+                }
+                else
+                {
+                    edge = Edge.Right;
+                }
             }
-            if (hitEdge)
-            {
-                return true;
-            }
-            return false;
+            return edge;
         }
         private int calculateCornerDistance(Point fixationPoint, Point corner)
         {
@@ -137,22 +158,22 @@ namespace GazeToolBar
                 {
                     case 0:
                         this.DesktopLocation = new Point(0, 0);
-                        SetLensPoint(0, 0);
+                        //SetLensPoint(0, 0);
                         Console.WriteLine("Top left corner detected");
                         break;
                     case 1:
                         this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, 0);
-                        SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, 0);
+                        //SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, 0);
                         Console.WriteLine("Top right corner detected");
                         break;
                     case 2:
                         this.DesktopLocation = new Point(0, Screen.FromControl(this).Bounds.Height - this.Height);
-                        SetLensPoint(0, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
+                        //SetLensPoint(0, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
                         Console.WriteLine("Bottom left corner detected");
                         break;
                     case 3:
                         this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, Screen.FromControl(this).Bounds.Height - this.Height);
-                        SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
+                        //SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
                         Console.WriteLine("Bottom right corner detected");
                         break;
                 }
@@ -160,14 +181,12 @@ namespace GazeToolBar
             else
             {
                 this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
-                if (!checkEdge(FixationPoint))
-                {
-                    Point newLensPoint = new Point();
-                    /*Yeah this is pretty horrible*/
-                    newLensPoint.X = calculateLensPointX(FixationPoint.X);
-                    newLensPoint.Y = calculateLensPointY(FixationPoint.Y);
-                    SetLensPoint(newLensPoint.X, newLensPoint.Y);
-                }
+
+                //Point newLensPoint = new Point();
+                /*Yeah this is pretty horrible*/
+                //newLensPoint.X = calculateLensPointX(FixationPoint.X);
+                //newLensPoint.Y = calculateLensPointY(FixationPoint.Y);
+                SetLensPoint(FixationPoint, Edge.NoEdge);
             }
         }
         private int calculateLensPointX(int fixationX)
@@ -184,10 +203,49 @@ namespace GazeToolBar
             y = y + this.Size.Height / 4;
             return y;
         }
-        private void SetLensPoint(int x, int y)
+        //
+        public void SetLensPoint(Point FixationPoint, Edge edge)
         {
-            lensPoint.X = x;
-            lensPoint.Y = y;
+
+            switch (edge)
+            {
+                case Edge.NoEdge:
+                    lensPoint.X = calculateLensPointX(FixationPoint.X);
+                    lensPoint.Y = calculateLensPointY(FixationPoint.Y);
+                    break;
+                case Edge.Top:
+                    lensPoint.X = calculateLensPointX(FixationPoint.X);
+                    lensPoint.Y = this.DesktopLocation.Y;
+                    break;
+                case Edge.Right:
+                    lensPoint.X = Screen.PrimaryScreen.Bounds.Size.Width - bmpScreenshot.Width;
+                    lensPoint.Y = calculateLensPointY(FixationPoint.Y);
+                    break;
+                case Edge.Bottom:
+                    lensPoint.X = calculateLensPointX(FixationPoint.X);
+                    lensPoint.Y = Screen.PrimaryScreen.Bounds.Size.Height - bmpScreenshot.Height;
+                    break;
+                case Edge.Left:
+                    lensPoint.X = this.DesktopLocation.X;
+                    lensPoint.Y = calculateLensPointY(FixationPoint.Y);
+                    break;
+                case Edge.TopLeft:
+                    lensPoint.X = this.DesktopLocation.X;
+                    lensPoint.Y = this.DesktopLocation.Y;
+                    break;
+                case Edge.TopRight:
+                    lensPoint.X = Screen.PrimaryScreen.Bounds.Size.Width - bmpScreenshot.Width;
+                    lensPoint.Y = this.DesktopLocation.Y;
+                    break;
+                case Edge.BottomLeft:
+                    lensPoint.X = this.DesktopLocation.X;
+                    lensPoint.Y = Screen.PrimaryScreen.Bounds.Size.Height - bmpScreenshot.Height;
+                    break;
+                case Edge.BottomRight:
+                    lensPoint.X = Screen.PrimaryScreen.Bounds.Size.Width - bmpScreenshot.Width;
+                    lensPoint.Y = Screen.PrimaryScreen.Bounds.Size.Height - bmpScreenshot.Height;
+                    break;
+            }
         }
         public void TakeScreenShot()
         {
@@ -206,9 +264,7 @@ namespace GazeToolBar
             //check to see if the user actually fixated on the ZoomLens
             if (relativePoint.X < 0 || relativePoint.Y < 0 || relativePoint.X > this.Width || relativePoint.Y > this.Height)
             {
-
                 return new Point(-1, -1);//cheap hack. If it is out of bound at all, this will return -1, -1. The statemanager will cancel the zoom
-
             }
             return TranslateToDesktop(relativePoint.X, relativePoint.Y);
         }
@@ -230,6 +286,27 @@ namespace GazeToolBar
             finalX = this.Left + finalX;
             returnPoint.X = finalX + (x / ZOOMLEVEL);
             return returnPoint;
+        }
+        public Point edgeOffset(Edge edge, Point fixationPoint)
+        {
+            switch (edge)
+            {
+                case Edge.NoEdge:
+                    return fixationPoint;
+                case Edge.Top:
+                    fixationPoint.Y = this.Height / 2;
+                    break;
+                case Edge.Right:
+                    fixationPoint.X = Screen.PrimaryScreen.Bounds.Size.Width - this.Width / 2;
+                    break;
+                case Edge.Bottom:
+                    fixationPoint.Y = Screen.PrimaryScreen.Bounds.Size.Height - this.Height / 2;
+                    break;
+                case Edge.Left:
+                    fixationPoint.X = this.Width / 2;
+                    break;
+            }
+            return fixationPoint;
         }
         public Point CornerOffset(Corner corner, Point fixationPoint)
         {
