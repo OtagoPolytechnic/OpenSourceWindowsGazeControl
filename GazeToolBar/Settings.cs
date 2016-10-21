@@ -234,27 +234,6 @@ namespace GazeToolBar
 
         }
 
-        
-
-        private void trackBarSpeed_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trackBarPrecision_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnChangeLanguage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void trackBarGazeTypingSpeed_Scroll(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {

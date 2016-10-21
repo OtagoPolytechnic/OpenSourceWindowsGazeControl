@@ -267,7 +267,6 @@ namespace GazeToolBar
             this.trackBarFixTimeLength.Size = new System.Drawing.Size(1362, 69);
             this.trackBarFixTimeLength.TabIndex = 12;
             this.trackBarFixTimeLength.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarFixTimeLength.Scroll += new System.EventHandler(this.trackBarPrecision_Scroll);
             // 
             // panelPrecision
             // 
@@ -328,7 +327,6 @@ namespace GazeToolBar
             this.trackBarFixTimeOut.Size = new System.Drawing.Size(1362, 69);
             this.trackBarFixTimeOut.TabIndex = 15;
             this.trackBarFixTimeOut.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarFixTimeOut.Scroll += new System.EventHandler(this.trackBarSpeed_Scroll);
             // 
             // panelSpeed
             // 
