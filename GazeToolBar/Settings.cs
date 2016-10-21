@@ -49,9 +49,7 @@ namespace GazeToolBar
             //End
             OnTheRight = true;
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
-            
-            
-            
+            controlRelocateAndResize();
             //tabControlMain.Size = ReletiveSize.TabControlSize;
             onOff = new bool[5];
             for (int i = 0; i < onOff.Length; i++)
@@ -84,6 +82,46 @@ namespace GazeToolBar
 
            
 
+        }
+
+        private void controlRelocateAndResize()
+        {
+            panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
+            pnlGeneral.Size = ReletiveSize.panelGeneralSize();
+            panelSelection.Location = ReletiveSize.distribute(pnlGeneral, panelSelection.Location.X, 1, 4, "h", 0);
+            panelPrecision.Location = ReletiveSize.distribute(pnlGeneral, panelPrecision.Location.X, 2, 4, "h", 0);
+            panelSpeed.Location = ReletiveSize.distribute(pnlGeneral, panelSpeed.Location.X, 3, 4, "h", 0);
+            panelOther.Location = ReletiveSize.distribute(pnlGeneral, panelOther.Location.X, 4, 4, "h", 0);
+
+            panelSelection.Size = new Size(pnlGeneral.Size.Width, panelSelection.Size.Height);
+            panelPrecision.Size = new Size(pnlGeneral.Size.Width, panelPrecision.Size.Height);
+            panelSpeed.Size = new Size(pnlGeneral.Size.Width, panelSpeed.Size.Height);
+            panelOther.Size = new Size(pnlGeneral.Size.Width, panelOther.Size.Height);
+
+            lblSelection.Location = ReletiveSize.labelPosition(panelSelection, lblSelection);
+            lblFixationDetectionTimeLength.Location = ReletiveSize.labelPosition(panelPrecision, lblFixationDetectionTimeLength);
+            lblSpeed.Location = ReletiveSize.labelPosition(panelSpeed, lblSpeed);
+            lblOther.Location = ReletiveSize.labelPosition(panelOther, lblOther);
+
+            pnlSelectionGaze.Location = ReletiveSize.distribute(panelSelection, pnlSelectionGaze.Location.Y, 1, 2, "w", 0.3);
+            pnlSelectionSwitch.Location = ReletiveSize.distribute(panelSelection, pnlSelectionSwitch.Location.Y, 2, 2, "w", 0.8);
+
+            pnlOtherPosition.Location = new Point(pnlSelectionGaze.Location.X, pnlOtherPosition.Location.Y);
+            pnlOtherAuto.Location = new Point(pnlSelectionSwitch.Location.X, pnlOtherAuto.Location.Y);
+
+            double p = ((double)pnlSelectionGaze.Location.X + (double)btnGaze.Location.X) / (double)pnlSelectionGaze.Parent.Size.Width;
+            pnlFixTimeLengthContent.Location = ReletiveSize.distribute(panelPrecision, pnlFixTimeLengthContent.Location.Y, 1, 1, "w", p);
+            pnlFixTimeOutContent.Location = new Point(pnlFixTimeLengthContent.Location.X, pnlFixTimeOutContent.Location.Y);
+
+            pnlFixTimeLengthContent.Size = ReletiveSize.controlLength(btnGaze, btnSwitch, pnlFixTimeLengthContent.Size.Height);
+            pnlFixTimeOutContent.Size = pnlFixTimeLengthContent.Size;
+
+            double percentage = (double)(pnlFixTimeLengthContent.Size.Width - 138) / (double)pnlFixTimeLengthContent.Size.Width;
+            trackBarFixTimeLength.Size = ReletiveSize.controlLength(pnlFixTimeLengthContent, trackBarFixTimeLength.Size.Height, percentage);
+            trackBarFixTimeOut.Size = trackBarFixTimeLength.Size;
+
+            btnFixTimeLengthPlus.Location = ReletiveSize.reletiveLocation(trackBarFixTimeLength, btnFixTimeLengthPlus.Location.Y, 7, 'v');
+            btnFixTimeOutPlus.Location = new Point(btnFixTimeLengthPlus.Location.X, btnFixTimeOutPlus.Location.Y);
         }
 
         private void btnChangeSide_Click(object sender, EventArgs e)
@@ -225,12 +263,11 @@ namespace GazeToolBar
                 SettingJSON setting = new SettingJSON();
                 
                 setting.position = lblIndicationLeftOrRight.Text.Substring(3);
-                setting.precision = trackBarPrecision.Value;
+                setting.precision = trackBarFixTimeLength.Value;
                 setting.selection = gazeOrSwitch.ToString();
                 setting.size = sizes.ToString();
                 setting.soundFeedback = onOff[3];
-                setting.speed = trackBarSpeed.Value;
-                
+                setting.speed = trackBarFixTimeOut.Value;
                 setting.wordPrediction = onOff[2];
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
@@ -260,9 +297,8 @@ namespace GazeToolBar
         private void Settings_Load(object sender, EventArgs e)
         {
             Program.ReadWriteJson();
-            trackBarPrecision.Value = Program.readSettings.precision;
-            trackBarSpeed.Value = Program.readSettings.speed;
-            
+            trackBarFixTimeLength.Value = Program.readSettings.precision;
+            trackBarFixTimeOut.Value = Program.readSettings.speed;
             lblIndicationLeftOrRight.Text = lblIndicationLeftOrRight.Text.Remove(3) + Program.readSettings.position;
             
             if (Program.onStartUp)
@@ -328,12 +364,25 @@ namespace GazeToolBar
             }
         }
 
+        private void changeTrackBarValue(TrackBar trackbar, String IncrementOrDecrement)
+        {
+            switch (IncrementOrDecrement)
+            {
+                case "I":
+                    if (trackbar.Value != trackbar.Maximum) { trackbar.Value = ++trackbar.Value; }
+                    break;
+                case "D":
+                    if (trackbar.Value != trackbar.Minimum) { trackbar.Value = --trackbar.Value; }
+                    break;
+            }
+            trackbar.Update();
+        }
+
         private void Settings_Shown(object sender, EventArgs e)
         {
             connectBehaveMap();
             form1.shortCutKeyWorker.StopKeyboardWorker();
         }
-
 
         //Method to assign key when for function short cut. Waits until WaitForUserKeyPress is set to true, the next key that is pressed
         //is assign to the function stored in actionToAssignKey.
@@ -429,7 +478,24 @@ namespace GazeToolBar
             form1.shortCutKeyWorker.StartKeyBoardWorker();
             WaitForUserKeyPress = false;
         }
+        private void btnFixTimeLengthMins_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarFixTimeLength, "D");
+        }
 
+        private void btnFixTimeLengthPlus_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarFixTimeLength, "I");
+        }
 
+        private void btnFixTimeOutMins_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarFixTimeOut, "D");
+        }
+
+        private void btnFixTimeOutPlus_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarFixTimeOut, "I");
+        }
     }
 }

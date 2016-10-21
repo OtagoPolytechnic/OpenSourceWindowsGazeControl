@@ -27,8 +27,10 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnCancel, new GazeAwareBehavior(OnbtnCancel_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnChangeSide, new GazeAwareBehavior(OnbtnChangeSide_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSwitch, new GazeAwareBehavior(OnbtnSwitch_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarPrecision, new GazeAwareBehavior(OntrackBarPrecision_Scroll) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(trackBarSpeed, new GazeAwareBehavior(OntrackBarSpeed_Scroll) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeLengthMins, new GazeAwareBehavior(OnbtnFixTimeLengthMins_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeLengthPlus, new GazeAwareBehavior(OnbtnFixTimeLengthPlus_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeOutMins, new GazeAwareBehavior(OnbtnFixTimeOutMins_Click) { DelayMilliseconds = 100 });
+            bhavSettingMap.Add(btnFixTimeOutPlus, new GazeAwareBehavior(OnbtnFixTimeOutPlus_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSettingClick) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnShortCutKeySetting, new GazeAwareBehavior(OnBtnKeyboardSettingClick) { DelayMilliseconds = 100 });
 
@@ -58,7 +60,6 @@ namespace GazeToolBar
             
         }
 
-
         //toggle border on and off on gaze to gaze to give feed back.
         private void OnGazeChangeBTColour(object s, GazeAwareEventArgs e)
         {
@@ -68,27 +69,24 @@ namespace GazeToolBar
                 sentButton.BackColor = (e.HasGaze) ? Color.Red : Color.Black;
             }
         }
-
-        private void OntrackBarGazeTypingSpeed_Scroll(object sender, GazeAwareEventArgs e)
+        private void OnbtnFixTimeOutPlus_Click(object sender, GazeAwareEventArgs e)
         {
-            //throw new NotImplementedException();
+            btnFixTimeOutPlus.PerformClick();
         }
 
-
-
-
-
-
-
-        private void OntrackBarSpeed_Scroll(object sender, GazeAwareEventArgs e)
+        private void OnbtnFixTimeOutMins_Click(object sender, GazeAwareEventArgs e)
         {
-            //trackBarSpeed.
-            //throw new NotImplementedException();
+            btnFixTimeOutMins.PerformClick();
         }
 
-        private void OntrackBarPrecision_Scroll(object sender, GazeAwareEventArgs e)
+        private void OnbtnFixTimeLengthPlus_Click(object sender, GazeAwareEventArgs e)
         {
-            //throw new NotImplementedException();
+            btnFixTimeLengthPlus.PerformClick();
+        }
+
+        private void OnbtnFixTimeLengthMins_Click(object sender, GazeAwareEventArgs e)
+        {
+            btnFixTimeLengthMins.PerformClick();
         }
 
         private void OnbtnSwitch_Click(object sender, GazeAwareEventArgs e)
