@@ -49,7 +49,7 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHiLteRightClick);
             highlightPannerList.Add(pnlHighLightSingleLeft);
             highlightPannerList.Add(pnlHighLightDoubleClick);
-            highlightPannerList.Add(pnlHighLightDragAndDrop);
+            //highlightPannerList.Add(pnlHighLightDragAndDrop);
             highlightPannerList.Add(pnlHighLightScrol);
             highlightPannerList.Add(pnlHighLightKeyboard);
             highlightPannerList.Add(pnlHighLightSettings);
@@ -162,10 +162,10 @@ namespace GazeToolBar
 
         }
 
-        private void btnDragAndDrop_Click(object sender, EventArgs e)
-        {
-            //Create logic to run left mouse down, update xy then left mouse up to simulate drag and drop
-        }
+        //private void btnDragAndDrop_Click(object sender, EventArgs e)
+        //{
+        //    //Create logic to run left mouse down, update xy then left mouse up to simulate drag and drop
+        //}
 
         public void OnStartTextChange()
         {

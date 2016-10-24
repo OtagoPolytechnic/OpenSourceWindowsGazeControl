@@ -65,7 +65,7 @@ namespace GazeToolBar
             //Set feed back label to the center of the screen.
             lbFKeyFeedback.Location = new Point((pnlPageKeyboard.Width / 2) - (lbFKeyFeedback.Width / 2), lbFKeyFeedback.Location.Y);
             //Store reference to short cut assignment panels in a list so they can be iterated over and set their on screen positions relative form size.
-            fKeyPannels = new List<Panel>() { pnlLeftClick, pnlRightClick, pnlDoubleClick, pnlScroll, pnlDragAndDrop };
+            fKeyPannels = new List<Panel>() { pnlLeftClick, pnlRightClick, pnlDoubleClick, pnlScroll };// pnlDragAndDrop };
             //Set panel positions.
             setFkeyPanelWidth(fKeyPannels);
 

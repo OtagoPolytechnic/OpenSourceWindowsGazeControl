@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bhavMap = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.pnlHighLightDragAndDrop = new System.Windows.Forms.Panel();
-            this.btnDragAndDrop = new System.Windows.Forms.Button();
+            //this.pnlHighLightDragAndDrop = new System.Windows.Forms.Panel();
+            //this.btnDragAndDrop = new System.Windows.Forms.Button();
             this.pnlHighLightKeyboard = new System.Windows.Forms.Panel();
             this.btnKeyboard = new System.Windows.Forms.Button();
             this.pnlHighLightScrol = new System.Windows.Forms.Panel();
@@ -48,7 +48,7 @@
             this.bhavMapHLCurrentGazeOnBT = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.pnlHighLightDragAndDrop.SuspendLayout();
+            //this.pnlHighLightDragAndDrop.SuspendLayout();
             this.pnlHighLightKeyboard.SuspendLayout();
             this.pnlHighLightScrol.SuspendLayout();
             this.pnlHighLightSettings.SuspendLayout();
@@ -59,23 +59,23 @@
             // 
             // pnlHighLightDragAndDrop
             // 
-            this.pnlHighLightDragAndDrop.Controls.Add(this.btnDragAndDrop);
-            this.pnlHighLightDragAndDrop.Location = new System.Drawing.Point(12, 340);
-            this.pnlHighLightDragAndDrop.Name = "pnlHighLightDragAndDrop";
-            this.pnlHighLightDragAndDrop.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightDragAndDrop.TabIndex = 12;
+            //this.pnlHighLightDragAndDrop.Controls.Add(this.btnDragAndDrop);
+            //this.pnlHighLightDragAndDrop.Location = new System.Drawing.Point(12, 340);
+            //this.pnlHighLightDragAndDrop.Name = "pnlHighLightDragAndDrop";
+            //this.pnlHighLightDragAndDrop.Size = new System.Drawing.Size(80, 80);
+            //this.pnlHighLightDragAndDrop.TabIndex = 12;
             // 
             // btnDragAndDrop
             // 
-            this.btnDragAndDrop.BackColor = System.Drawing.Color.Black;
-            this.btnDragAndDrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDragAndDrop.Image = global::GazeToolBar.Properties.Resources.Drag_and_drop_icon;
-            this.btnDragAndDrop.Location = new System.Drawing.Point(3, 3);
-            this.btnDragAndDrop.Name = "btnDragAndDrop";
-            this.btnDragAndDrop.Size = new System.Drawing.Size(75, 75);
-            this.btnDragAndDrop.TabIndex = 5;
-            this.btnDragAndDrop.UseVisualStyleBackColor = false;
-            this.btnDragAndDrop.Click += new System.EventHandler(this.btnDragAndDrop_Click);
+            //this.btnDragAndDrop.BackColor = System.Drawing.Color.Black;
+            //this.btnDragAndDrop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            //this.btnDragAndDrop.Image = global::GazeToolBar.Properties.Resources.Drag_and_drop_icon;
+            //this.btnDragAndDrop.Location = new System.Drawing.Point(3, 3);
+            //this.btnDragAndDrop.Name = "btnDragAndDrop";
+            //this.btnDragAndDrop.Size = new System.Drawing.Size(75, 75);
+            //this.btnDragAndDrop.TabIndex = 5;
+            //this.btnDragAndDrop.UseVisualStyleBackColor = false;
+            //this.btnDragAndDrop.Click += new System.EventHandler(this.btnDragAndDrop_Click);
             // 
             // pnlHighLightKeyboard
             // 
@@ -214,7 +214,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(120, 780);
             this.ControlBox = false;
-            this.Controls.Add(this.pnlHighLightDragAndDrop);
+            //this.Controls.Add(this.pnlHighLightDragAndDrop);
             this.Controls.Add(this.pnlHighLightKeyboard);
             this.Controls.Add(this.pnlHiLteRightClick);
             this.Controls.Add(this.pnlHighLightScrol);
@@ -231,7 +231,7 @@
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.pnlHighLightDragAndDrop.ResumeLayout(false);
+            //this.pnlHighLightDragAndDrop.ResumeLayout(false);
             this.pnlHighLightKeyboard.ResumeLayout(false);
             this.pnlHighLightScrol.ResumeLayout(false);
             this.pnlHighLightSettings.ResumeLayout(false);
@@ -250,14 +250,14 @@
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnScoll;
         private System.Windows.Forms.Button btnKeyboard;
-        private System.Windows.Forms.Button btnDragAndDrop;
+        //private System.Windows.Forms.Button btnDragAndDrop;
         private System.Windows.Forms.Button btnDoubleClick;
         private EyeXFramework.Forms.BehaviorMap bhavMapHLCurrentGazeOnBT;
         private System.Windows.Forms.Panel pnlHiLteRightClick;
         private System.Windows.Forms.Panel pnlHighLightDoubleClick;
         private System.Windows.Forms.Panel pnlHighLightSettings;
         private System.Windows.Forms.Panel pnlHighLightSingleLeft;
-        private System.Windows.Forms.Panel pnlHighLightDragAndDrop;
+        //private System.Windows.Forms.Panel pnlHighLightDragAndDrop;
         private System.Windows.Forms.Panel pnlHighLightKeyboard;
         private System.Windows.Forms.Panel pnlHighLightScrol;
         private System.Windows.Forms.Timer timer2;

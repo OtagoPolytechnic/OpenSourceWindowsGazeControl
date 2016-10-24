@@ -24,7 +24,7 @@ namespace GazeToolBar
             eyeXHost.Connect(bhavMap);
             eyeXHost.Connect(bhavMapHLCurrentGazeOnBT);
 
-            //Temp for 100 
+            
             //Will change later
             bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnRightClick, new GazeAwareBehavior(OnBtnRightClick) { DelayMilliseconds = delayBeforeButtonSelected });
@@ -32,11 +32,11 @@ namespace GazeToolBar
             bhavMap.Add(btnSettings, new GazeAwareBehavior(OnBtnSettings) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnKeyboard, new GazeAwareBehavior(OnBtnKeyboard) { DelayMilliseconds = delayBeforeButtonSelected });
-            bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
+            //bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
 
             bhavMap.Add(pnlHiLteRightClick, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightDoubleClick, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavMap.Add(pnlHighLightDragAndDrop, new GazeAwareBehavior(OnGazeChangeBTColour));
+            //bhavMap.Add(pnlHighLightDragAndDrop, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightScrol, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightSettings, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightSingleLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
@@ -82,7 +82,6 @@ namespace GazeToolBar
         private void OnBtnSettings(object sender, EventArgs e)
         {
             resetButtonsColor();
-            btnSettings.BackColor = ValueNeverChange.SelectedColor;
             btnSettings.PerformClick();
         }
 
@@ -100,16 +99,16 @@ namespace GazeToolBar
             btnKeyboard.PerformClick();
         }
 
-        private void OnBtnDragAndDrop(object sender, EventArgs e)
-        {
-            resetButtonsColor();
-            btnDragAndDrop.BackColor = ValueNeverChange.SelectedColor;
-            btnDragAndDrop.PerformClick();
-        }
+        //private void OnBtnDragAndDrop(object sender, EventArgs e)
+        //{
+        //    resetButtonsColor();
+        //    btnDragAndDrop.BackColor = ValueNeverChange.SelectedColor;
+        //    btnDragAndDrop.PerformClick();
+        //}
 
         public void resetButtonsColor()
         {
-            ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard, btnDragAndDrop);
+            ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard);
         }
 
         /// <summary>
