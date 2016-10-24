@@ -22,11 +22,8 @@ namespace GazeToolBar
             //Temp for 100 
             //Will change later
             bhavSettingMap.Add(btnAutoStart, new GazeAwareBehavior(OnbtnAutoStart_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnGaze, new GazeAwareBehavior(OnbtnGaze_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnSave, new GazeAwareBehavior(OnbtnSave_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnCancel, new GazeAwareBehavior(OnbtnCancel_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnChangeSide, new GazeAwareBehavior(OnbtnChangeSide_Click) { DelayMilliseconds = 100 });
-            bhavSettingMap.Add(btnSwitch, new GazeAwareBehavior(OnbtnSwitch_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnFixTimeLengthMins, new GazeAwareBehavior(OnbtnFixTimeLengthMins_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnFixTimeLengthPlus, new GazeAwareBehavior(OnbtnFixTimeLengthPlus_Click) { DelayMilliseconds = 100 });
             bhavSettingMap.Add(btnFixTimeOutMins, new GazeAwareBehavior(OnbtnFixTimeOutMins_Click) { DelayMilliseconds = 100 });
@@ -89,20 +86,6 @@ namespace GazeToolBar
             btnFixTimeLengthMins.PerformClick();
         }
 
-        private void OnbtnSwitch_Click(object sender, GazeAwareEventArgs e)
-        {
-            btnSwitch.PerformClick();
-        }
-
-
-
-        private void OnbtnChangeSide_Click(object sender, GazeAwareEventArgs e)
-        {
-            btnChangeSide.PerformClick();
-        }
-
-
-
         private void OnbtnCancel_Click(object sender, GazeAwareEventArgs e)
         {
             btnCancel.PerformClick();
@@ -111,11 +94,6 @@ namespace GazeToolBar
         private void OnbtnSave_Click(object sender, GazeAwareEventArgs e)
         {
             btnSave.PerformClick();
-        }
-
-        private void OnbtnGaze_Click(object sender, GazeAwareEventArgs e)
-        {
-            btnGaze.PerformClick();
         }
 
         private void OnbtnAutoStart_Click(object sender, GazeAwareEventArgs e)

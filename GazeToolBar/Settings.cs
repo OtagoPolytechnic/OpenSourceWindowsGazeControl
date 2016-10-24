@@ -88,32 +88,25 @@ namespace GazeToolBar
         {
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
             pnlGeneral.Size = ReletiveSize.panelGeneralSize();
-            panelSelection.Location = ReletiveSize.distribute(pnlGeneral, panelSelection.Location.X, 1, 4, "h", 0);
-            panelPrecision.Location = ReletiveSize.distribute(pnlGeneral, panelPrecision.Location.X, 2, 4, "h", 0);
-            panelSpeed.Location = ReletiveSize.distribute(pnlGeneral, panelSpeed.Location.X, 3, 4, "h", 0);
-            panelOther.Location = ReletiveSize.distribute(pnlGeneral, panelOther.Location.X, 4, 4, "h", 0);
+            panelPrecision.Location = ReletiveSize.distribute(pnlGeneral, panelPrecision.Location.X, 1, 3, "h", 0);
+            panelSpeed.Location = ReletiveSize.distribute(pnlGeneral, panelSpeed.Location.X, 2, 3, "h", 0);
+            panelOther.Location = ReletiveSize.distribute(pnlGeneral, panelOther.Location.X, 3, 3, "h", 0);
 
-            panelSelection.Size = new Size(pnlGeneral.Size.Width, panelSelection.Size.Height);
             panelPrecision.Size = new Size(pnlGeneral.Size.Width, panelPrecision.Size.Height);
             panelSpeed.Size = new Size(pnlGeneral.Size.Width, panelSpeed.Size.Height);
             panelOther.Size = new Size(pnlGeneral.Size.Width, panelOther.Size.Height);
 
-            lblSelection.Location = ReletiveSize.labelPosition(panelSelection, lblSelection);
             lblFixationDetectionTimeLength.Location = ReletiveSize.labelPosition(panelPrecision, lblFixationDetectionTimeLength);
             lblSpeed.Location = ReletiveSize.labelPosition(panelSpeed, lblSpeed);
             lblOther.Location = ReletiveSize.labelPosition(panelOther, lblOther);
 
-            pnlSelectionGaze.Location = ReletiveSize.distribute(panelSelection, pnlSelectionGaze.Location.Y, 1, 2, "w", 0.3);
-            pnlSelectionSwitch.Location = ReletiveSize.distribute(panelSelection, pnlSelectionSwitch.Location.Y, 2, 2, "w", 0.8);
+            pnlOtherAuto.Location = new Point(panelOther.Size.Width / 2, pnlOtherAuto.Location.Y);
 
-            pnlOtherPosition.Location = new Point(pnlSelectionGaze.Location.X, pnlOtherPosition.Location.Y);
-            pnlOtherAuto.Location = new Point(pnlSelectionSwitch.Location.X, pnlOtherAuto.Location.Y);
-
-            double p = ((double)pnlSelectionGaze.Location.X + (double)btnGaze.Location.X) / (double)pnlSelectionGaze.Parent.Size.Width;
-            pnlFixTimeLengthContent.Location = ReletiveSize.distribute(panelPrecision, pnlFixTimeLengthContent.Location.Y, 1, 1, "w", p);
+            //double p = ((double)pnlSelectionGaze.Location.X + (double)btnGaze.Location.X) / (double)pnlSelectionGaze.Parent.Size.Width;
+            pnlFixTimeLengthContent.Location = ReletiveSize.distribute(panelPrecision, pnlFixTimeLengthContent.Location.Y, 1, 1, "w", 0.8);
             pnlFixTimeOutContent.Location = new Point(pnlFixTimeLengthContent.Location.X, pnlFixTimeOutContent.Location.Y);
 
-            pnlFixTimeLengthContent.Size = ReletiveSize.controlLength(btnGaze, btnSwitch, pnlFixTimeLengthContent.Size.Height);
+            pnlFixTimeLengthContent.Size = ReletiveSize.controlLength(panelPrecision, pnlFixTimeLengthContent.Size.Height, 0.8);
             pnlFixTimeOutContent.Size = pnlFixTimeLengthContent.Size;
 
             double percentage = (double)(pnlFixTimeLengthContent.Size.Width - 138) / (double)pnlFixTimeLengthContent.Size.Width;
@@ -124,26 +117,26 @@ namespace GazeToolBar
             btnFixTimeOutPlus.Location = new Point(btnFixTimeLengthPlus.Location.X, btnFixTimeOutPlus.Location.Y);
         }
 
-        private void btnChangeSide_Click(object sender, EventArgs e)
-        {
-            if (OnTheRight)
-            {
-                changeSide("On left", ApplicationDesktopToolbar.AppBarEdges.Left, false);
-                ChangeButtonColor(btnChangeSide, true, false);
-            }
-            else
-            {
-                changeSide("On Right", ApplicationDesktopToolbar.AppBarEdges.Right, true);
-                ChangeButtonColor(btnChangeSide, false, false);
-            }
-        }
+        //private void btnChangeSide_Click(object sender, EventArgs e)
+        //{
+        //    if (OnTheRight)
+        //    {
+        //        changeSide("On left", ApplicationDesktopToolbar.AppBarEdges.Left, false);
+        //        ChangeButtonColor(btnChangeSide, true, false);
+        //    }
+        //    else
+        //    {
+        //        changeSide("On Right", ApplicationDesktopToolbar.AppBarEdges.Right, true);
+        //        ChangeButtonColor(btnChangeSide, false, false);
+        //    }
+        //}
 
-        private void changeSide(string text, ApplicationDesktopToolbar.AppBarEdges edge, bool flag)
-        {
-            lblIndicationLeftOrRight.Text = text;
-            form1.Edge = edge;
-            OnTheRight = flag;
-        }
+        //private void changeSide(string text, ApplicationDesktopToolbar.AppBarEdges edge, bool flag)
+        //{
+        //    lblIndicationLeftOrRight.Text = text;
+        //    form1.Edge = edge;
+        //    OnTheRight = flag;
+        //}
 
         private void btnAutoStart_Click(object sender, EventArgs e)
         {
@@ -184,55 +177,55 @@ namespace GazeToolBar
             }
         }
 
-        private void btnGaze_Click(object sender, EventArgs e)
-        {
+        //private void btnGaze_Click(object sender, EventArgs e)
+        //{
 
-            gazeOrSwitch = GazeOrSwitch.GAZE;
-            changeSitchGaze(gazeOrSwitch);
+        //    gazeOrSwitch = GazeOrSwitch.GAZE;
+        //    changeSitchGaze(gazeOrSwitch);
 
-        }
+        //}
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void btnSwitch_Click(object sender, EventArgs e)
-        {
+        //private void btnSwitch_Click(object sender, EventArgs e)
+        //{
 
-            gazeOrSwitch = GazeOrSwitch.SWITCH;
-            changeSitchGaze(gazeOrSwitch);
-        }
+        //    gazeOrSwitch = GazeOrSwitch.SWITCH;
+        //    changeSitchGaze(gazeOrSwitch);
+        //}
 
-        private void changeSitchGaze(GazeOrSwitch gs)
-        {
-            switch (gs)
-            {
-                case GazeOrSwitch.GAZE:
-                    ChangeButtonColor(btnGaze, !onOff[0], false);
-                    ChangeButtonColor(btnSwitch, onOff[0], false);
-                    break;
-                case GazeOrSwitch.SWITCH:
-                    ChangeButtonColor(btnGaze, onOff[0], false);
-                    ChangeButtonColor(btnSwitch, !onOff[0], false);
-                    break;
-            }
-        }
+        //private void changeSitchGaze(GazeOrSwitch gs)
+        //{
+        //    switch (gs)
+        //    {
+        //        case GazeOrSwitch.GAZE:
+        //            ChangeButtonColor(btnGaze, !onOff[0], false);
+        //            ChangeButtonColor(btnSwitch, onOff[0], false);
+        //            break;
+        //        case GazeOrSwitch.SWITCH:
+        //            ChangeButtonColor(btnGaze, onOff[0], false);
+        //            ChangeButtonColor(btnSwitch, !onOff[0], false);
+        //            break;
+        //    }
+        //}
 
         
 
-        private void lblOnOff(Label l, bool b)
-        {
-            if(b)
-            {
-                l.Text = "On";
-            }
-            else
-            {
-                l.Text = "Off";
-            }
+        //private void lblOnOff(Label l, bool b)
+        //{
+        //    if(b)
+        //    {
+        //        l.Text = "On";
+        //    }
+        //    else
+        //    {
+        //        l.Text = "Off";
+        //    }
 
-        }
+        //}
 
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -241,7 +234,7 @@ namespace GazeToolBar
             {
                 SettingJSON setting = new SettingJSON();
                 
-                setting.position = lblIndicationLeftOrRight.Text.Substring(3);
+                //setting.position = lblIndicationLeftOrRight.Text.Substring(3);
                 setting.precision = trackBarFixTimeLength.Value;
                 setting.selection = gazeOrSwitch.ToString();
                 setting.size = sizes.ToString();
@@ -278,7 +271,7 @@ namespace GazeToolBar
             Program.ReadWriteJson();
             trackBarFixTimeLength.Value = Program.readSettings.precision;
             trackBarFixTimeOut.Value = Program.readSettings.speed;
-            lblIndicationLeftOrRight.Text = lblIndicationLeftOrRight.Text.Remove(3) + Program.readSettings.position;
+            //lblIndicationLeftOrRight.Text = lblIndicationLeftOrRight.Text.Remove(3) + Program.readSettings.position;
             
             if (Program.onStartUp)
             {
@@ -294,18 +287,18 @@ namespace GazeToolBar
             if (Program.readSettings.selection == GazeOrSwitch.GAZE.ToString())
             {
                 gazeOrSwitch = GazeOrSwitch.GAZE;
-                changeSitchGaze(gazeOrSwitch);
+                //changeSitchGaze(gazeOrSwitch);
             }
             else
             {
                 gazeOrSwitch = GazeOrSwitch.SWITCH;
-                changeSitchGaze(gazeOrSwitch);
+                //changeSitchGaze(gazeOrSwitch);
             }
 
             if (Program.readSettings.position == "left")
             {
                 OnTheRight = false;
-                ChangeButtonColor(btnChangeSide, true, false);
+                //ChangeButtonColor(btnChangeSide, true, false);
             }
             else
             {
