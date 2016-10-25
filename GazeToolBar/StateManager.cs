@@ -41,8 +41,9 @@ namespace GazeToolBar
         Point fixationPoint;
         Corner corner;
         Edge edge;
-        Edge edge2;
         SystemState currentState;
+        bool cornerBool = false;
+        bool edgeBool = false;
 
         ShortcutKeyWorker shortCutKeyWorker;
 
@@ -77,6 +78,7 @@ namespace GazeToolBar
             this.shortCutKeyWorker = shortCutKeyWorker;
 
             Run();
+
         }
         public void Run()
         {
@@ -227,20 +229,24 @@ namespace GazeToolBar
                     }
                     else
                     {
-
                         fixationPoint = fixationWorker.getXY();//get the location the user looked
-
                     }
 
-                    //corner = (Corner)zoomer.checkCorners(fixationPoint);
-
-                    //zoomer.checkEdge();
-                    zoomer.determineDesktopLocation(fixationPoint, (int)Corner.NoCorner);
+                    zoomer.determineDesktopLocation(fixationPoint);
+                    corner = zoomer.checkCorners(fixationPoint);
                     edge = zoomer.checkEdge();
-
-                    //need to set the lens point based on which edge was triggered
-                    //and then caluclate the offset for when the user actually clicks
-                    zoomer.SetLensPoint(fixationPoint, edge);
+                    cornerBool = false;
+                    edgeBool = false;
+                    if (corner != Corner.NoCorner)
+                    {
+                        zoomer.setZoomLensPositionCorner(corner);
+                        cornerBool = true;
+                    }
+                    else if (edge != Edge.NoEdge)
+                    {
+                        zoomer.setZoomLensPositionEdge(edge, fixationPoint);
+                        edgeBool = true;
+                    }
 
                     zoomer.TakeScreenShot();
                     zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
@@ -260,10 +266,16 @@ namespace GazeToolBar
 
                     fixationPoint = fixationWorker.getXY();
                     zoomer.ResetZoomLens();//hide the lens
-                    
                     fixationPoint = zoomer.TranslateGazePoint(fixationPoint);//translate the form coordinates to the desktop
-                    fixationPoint = zoomer.edgeOffset(edge, fixationPoint);
-                    //fixationPoint = zoomer.CornerOffset(corner, fixationPoint);//account for corner offset (this method only does anything if the user has looked in a corner zone)
+
+                    if (cornerBool)
+                    {
+                        fixationPoint = zoomer.cornerOffset(corner, fixationPoint);
+                    }
+                    else if (edgeBool)
+                    {
+                        fixationPoint = zoomer.edgeOffset(edge, fixationPoint);
+                    }
 
 
                     if (fixationPoint.X == -1)//check if it's out of bounds
