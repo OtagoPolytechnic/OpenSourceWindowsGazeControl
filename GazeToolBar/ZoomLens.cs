@@ -68,19 +68,19 @@ namespace GazeToolBar
         public Edge checkEdge()
         {
             Edge edge = Edge.NoEdge;
-            if (this.DesktopLocation.Y < 0)//top
+            if (this.DesktopLocation.Y < -100)//top
             {
                 return Edge.Top;
             }
-            if (this.DesktopLocation.X < 0)//left
+            if (this.DesktopLocation.X < -100)//left
             {
                 return Edge.Left;
             }
-            if (this.DesktopLocation.Y + this.Height > Screen.PrimaryScreen.Bounds.Size.Height)//bottom
+            if (this.DesktopLocation.Y + this.Height > Screen.PrimaryScreen.Bounds.Size.Height + 100)//bottom
             {
                 return Edge.Bottom;
             }
-            if (this.DesktopLocation.X + this.Width > Screen.PrimaryScreen.Bounds.Size.Width)//right
+            if (this.DesktopLocation.X + this.Width > Screen.PrimaryScreen.Bounds.Size.Width + 100)//right
             {
                 return Edge.Right;
             }
