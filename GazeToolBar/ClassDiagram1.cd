@@ -8,7 +8,10 @@
     </TypeIdentifier>
   </Class>
   <Class Name="GazeToolBar.CustomFixationDataStream">
-    <Position X="16.5" Y="0.5" Width="2.75" />
+    <Position X="18" Y="0.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Delegate Name="GazeToolBar.CustomFixationDataStream.CustomFixationEventHandler" Collapsed="true">
         <TypeIdentifier>
@@ -21,15 +24,18 @@
       <FileName>CustomFixationDataStream.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GazeToolBar.CustomFixationEventArgs" Collapsed="true">
-    <Position X="6" Y="3.75" Width="1.5" />
+  <Class Name="GazeToolBar.CustomFixationEventArgs">
+    <Position X="20.5" Y="5.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
       <FileName>CustomFixationEventArgs.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GazeToolBar.FixationDetection">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="15.25" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Delegate Name="GazeToolBar.FixationDetection.FixationProgressEvent" Collapsed="true">
         <TypeIdentifier>
@@ -43,7 +49,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="GazeToolBar.FixationProgressEventArgs">
-    <Position X="11.25" Y="3.25" Width="1.5" />
+    <Position X="23.25" Y="2.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgYAA=</HashCode>
       <FileName>FixationProgressEventArgs.cs</FileName>
@@ -52,14 +58,14 @@
   <Class Name="GazeToolBar.Form1" Collapsed="true">
     <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AASCSAgwCjISGAGAAIGAAJA2gBCOOgEIAAQJrE4DBKE=</HashCode>
+      <HashCode>AASCSAgwCjISGAGAAAGAAJA2gACEOgEIAAQJrE4DBKE=</HashCode>
       <FileName>Form1.BehavMap.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GazeToolBar.GazeHighlight" Collapsed="true">
     <Position X="4" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAgAAAAAAQAAqAAAgACAAAAAAAAQAAEIIAAAIA=</HashCode>
+      <HashCode>AAAAAAAgAAAAAAQAAqAAAgACAAAAAAAAQAAEAIAAAIA=</HashCode>
       <FileName>GazeHightlight\GazeHighlight.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -116,12 +122,12 @@
   <Class Name="GazeToolBar.ReletiveSize" Collapsed="true">
     <Position X="4" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAIAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAAAAgAAAAAAAAAAAEAAAAAAAAAxAIAACAAAAAAAA=</HashCode>
       <FileName>ReletiveSize.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GazeToolBar.ScrollControl">
-    <Position X="16.5" Y="6" Width="2.75" />
+    <Position X="20.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AgAAAIGAAAAAAARAGAAAAAIAABAAACAAWAAAAQAAAAA=</HashCode>
       <FileName>ScrollControl.cs</FileName>
@@ -137,7 +143,7 @@
   <Class Name="GazeToolBar.Settings" Collapsed="true">
     <Position X="2.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>nBgDA3E+H25Vm7UTscCGQuqiLFIAdzwxIoLIVE5gAPA=</HashCode>
+      <HashCode>lBhDA7En329VvrUTtcCKQuqyLFIAdzwxIoLJVs9gAOA=</HashCode>
       <FileName>Settings.BehavMap.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -158,7 +164,7 @@
   <Class Name="GazeToolBar.StateManager" Collapsed="true">
     <Position X="0.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAACAAAIAAgAACAACAEAggAAAAABCAAAAY=</HashCode>
+      <HashCode>AAAAAUAAAAAACAAAIAAgAACAACAEAggAAAQABCAAIAY=</HashCode>
       <FileName>StateManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -170,7 +176,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="GazeToolBar.VirtualMouse">
-    <Position X="11.25" Y="0.5" Width="1.5" />
+    <Position X="11.25" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>BAABAAAAAIAAAAAAAAAAKAABABAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>VirtualMouse.cs</FileName>
@@ -179,7 +185,7 @@
   <Class Name="GazeToolBar.ZoomLens" Collapsed="true">
     <Position X="2.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAAACAABBAAkBSAEAgTCQCYABkAAAAAAAECAAA=</HashCode>
+      <HashCode>AAAIAAAAACAABBAgkBWAEAgTCASbABkAAAAAAAGCAAA=</HashCode>
       <FileName>ZoomLens.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -196,14 +202,14 @@
     </TypeIdentifier>
   </Class>
   <Struct Name="GazeToolBar.GazePoint">
-    <Position X="11.25" Y="5" Width="1.5" />
+    <Position X="11.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
       <FileName>PointSmoother.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="GazeToolBar.noScollRect">
-    <Position X="9.5" Y="5.25" Width="1.5" />
+  <Struct Name="GazeToolBar.NoScollRect">
+    <Position X="10" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAAAAAIAAAAAAAAAAAAAAQAAAAAAAAIAA=</HashCode>
       <FileName>ScrollControl.cs</FileName>
@@ -216,15 +222,15 @@
       <FileName>GazeHightlight\IGazeHighlightShader.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Enum Name="GazeToolBar.EFixationStreamEventType" Collapsed="true">
-    <Position X="0.5" Y="8.5" Width="1.5" />
+  <Enum Name="GazeToolBar.EFixationStreamEventType">
+    <Position X="15.25" Y="7.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAACAAAAAAAgAAAAAAAAAAAAABAAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAIAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAQQAAAAAA=</HashCode>
       <FileName>CustomFixationEventArgs.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="GazeToolBar.EFixationState" Collapsed="true">
-    <Position X="5.75" Y="8.5" Width="1.5" />
+  <Enum Name="GazeToolBar.EFixationState">
+    <Position X="18" Y="6.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAA=</HashCode>
       <FileName>FixationDetection.cs</FileName>
@@ -244,7 +250,7 @@
       <FileName>StateManager.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="GazeToolBar.ActionToBePerformed" Collapsed="true">
+  <Enum Name="GazeToolBar.ActionToBePerformed">
     <Position X="0.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAoAAAAAAA=</HashCode>
