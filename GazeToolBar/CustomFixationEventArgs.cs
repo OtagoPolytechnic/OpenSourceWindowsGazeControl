@@ -9,7 +9,7 @@ namespace GazeToolBar
     /// <summary>
     /// Fixation States
     /// </summary>
-    public enum EFixationStreamEventType {waiting, start, middle, end }
+    public enum EFixationStreamEventType {Waiting, Start, Middle, End }
 
 
 

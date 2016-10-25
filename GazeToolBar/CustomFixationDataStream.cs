@@ -58,7 +58,7 @@ namespace GazeToolBar
             xBuffer = new double[bufferSize];
             yBuffer = new double[bufferSize];
 
-            fixationState = EFixationStreamEventType.waiting;
+            fixationState = EFixationStreamEventType.Waiting;
 
         }
 
@@ -92,19 +92,19 @@ namespace GazeToolBar
 
 
               //Check gaze data variation, current state and create appropriate event. Then set the CustomfixationDetectionStreams state.
-            if (fixationState == EFixationStreamEventType.waiting && gazeVariation.x < xFixationThreashold && gazeVariation.y < yFixationThreashold)
+            if (fixationState == EFixationStreamEventType.Waiting && gazeVariation.x < xFixationThreashold && gazeVariation.y < yFixationThreashold)
             {
-                cpe = new CustomFixationEventArgs(EFixationStreamEventType.start, timestamp, gPAverage.x, gPAverage.y);
-                fixationState = EFixationStreamEventType.middle;
+                cpe = new CustomFixationEventArgs(EFixationStreamEventType.Start, timestamp, gPAverage.x, gPAverage.y);
+                fixationState = EFixationStreamEventType.Middle;
             }
-            else if (fixationState == EFixationStreamEventType.middle && gazeVariation.x > xFixationThreashold && gazeVariation.y > yFixationThreashold)
+            else if (fixationState == EFixationStreamEventType.Middle && gazeVariation.x > xFixationThreashold && gazeVariation.y > yFixationThreashold)
             {
-                cpe = new CustomFixationEventArgs(EFixationStreamEventType.end, timestamp, gPAverage.x, gPAverage.y);
-                fixationState = EFixationStreamEventType.waiting;
+                cpe = new CustomFixationEventArgs(EFixationStreamEventType.End, timestamp, gPAverage.x, gPAverage.y);
+                fixationState = EFixationStreamEventType.Waiting;
             }
-            else if (fixationState == EFixationStreamEventType.middle)
+            else if (fixationState == EFixationStreamEventType.Middle)
             {
-                cpe = new CustomFixationEventArgs(EFixationStreamEventType.middle, timestamp, gPAverage.x, gPAverage.y);
+                cpe = new CustomFixationEventArgs(EFixationStreamEventType.Middle, timestamp, gPAverage.x, gPAverage.y);
             }
 
 
@@ -182,7 +182,7 @@ namespace GazeToolBar
         /// </summary>
         public void ResetFixationDetectionState()
         {
-            fixationState = EFixationStreamEventType.waiting;
+            fixationState = EFixationStreamEventType.Waiting;
             bufferCurrentIndex = 0;
             bufferFullIndex = 0;
             xBuffer = new double[bufferSize];
