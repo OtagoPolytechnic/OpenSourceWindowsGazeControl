@@ -21,7 +21,7 @@ namespace GazeToolBar
     //https://msdn.microsoft.com/en-nz/library/windows/desktop/ms644985(v=vs.85).aspx
     //http://www.pinvoke.net/default.aspx/user32.setwindowshookex
 
-    public class Keyboardhook
+    public class KeyboardHook
     {
         //Lowlevel keyboard hook, as cannot inject dlls in managed c#, 
         private const int WH_KEYBOARD_LL = 13;
@@ -63,7 +63,7 @@ namespace GazeToolBar
 
 
         //Constructor
-        public Keyboardhook()
+        public KeyboardHook()
         {
             //set delegate to point to call back method that will be run by windows/system32 api when a key it pressed.
             LowLevelKBhookDelegate = HookCallback;

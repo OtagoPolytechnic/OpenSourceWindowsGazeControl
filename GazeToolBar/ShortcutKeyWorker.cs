@@ -28,8 +28,8 @@ namespace GazeToolBar
 
        public  Dictionary<ActionToBePerformed, String> keyAssignments { get; set; }
 
-        Keyboardhook keyBoardHook;
-        public ShortcutKeyWorker(Keyboardhook KeyboardObserver, Dictionary<ActionToBePerformed, String> KeyAssignments, FormsEyeXHost EyeXHost)//, Dictionary<EToolBarFunction, String> KeyAssignments)
+        KeyboardHook keyBoardHook;
+        public ShortcutKeyWorker(KeyboardHook KeyboardObserver, Dictionary<ActionToBePerformed, String> KeyAssignments, FormsEyeXHost EyeXHost)//, Dictionary<EToolBarFunction, String> KeyAssignments)
         {
             keyBoardHook = KeyboardObserver;
             keyBoardHook.OnKeyPressed += RunKeyFunction;

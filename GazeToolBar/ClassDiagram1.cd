@@ -91,10 +91,10 @@
       <FileName>HookedKeyboardEventArgs.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GazeToolBar.Keyboardhook">
+  <Class Name="GazeToolBar.KeyboardHook">
     <Position X="9.5" Y="0.5" Width="1.5" />
     <NestedTypes>
-      <Delegate Name="GazeToolBar.Keyboardhook.LowLevelKeyboardProc" Collapsed="true">
+      <Delegate Name="GazeToolBar.KeyboardHook.LowLevelKeyboardProc" Collapsed="true">
         <TypeIdentifier>
           <NewMemberFileName>Keyboardhook.cs</NewMemberFileName>
         </TypeIdentifier>

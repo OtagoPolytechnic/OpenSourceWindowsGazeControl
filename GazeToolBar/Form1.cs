@@ -27,7 +27,7 @@ namespace GazeToolBar
         private static FormsEyeXHost eyeXHost; 
 
         //Allocate memory location for KeyboardHook and worker.
-        public Keyboardhook LowLevelKeyBoardHook;
+        public KeyboardHook LowLevelKeyBoardHook;
         public ShortcutKeyWorker shortCutKeyWorker;
 
 
@@ -99,7 +99,7 @@ namespace GazeToolBar
 
 
             //Instantiate keyboard hook and pass into worker class.
-            LowLevelKeyBoardHook = new Keyboardhook();
+            LowLevelKeyBoardHook = new KeyboardHook();
 
             shortCutKeyWorker = new ShortcutKeyWorker(LowLevelKeyBoardHook, FKeyMapDictionary, eyeXHost);
 
