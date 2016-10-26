@@ -22,13 +22,13 @@ namespace GazeToolBar
         GazePointDataStream gazeStream;
 
         //Ring buffer size
-        int bufferSize = 60;
+        int bufferSize = 45;
         int bufferCurrentIndex = 0;
         int bufferFullIndex = 0;
 
         //Fixation variance threshold
-        double xFixationThreashold = .8;
-        double yFixationThreashold = .8;
+        double xFixationThreashold = .7;
+        double yFixationThreashold = .7;
 
         //ring buffer arrays.
         double[] xBuffer;

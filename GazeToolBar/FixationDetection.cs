@@ -144,6 +144,7 @@ namespace GazeToolBar
                 if (fixationDataBucket.Status == EFixationStreamEventType.End)
                 {
                     fixationTimer.Stop();
+                    //customfixStream.ResetFixationDetectionState();
                     //Debug
                     Console.WriteLine("Fixation Stopped due to end datatype");
                 }
