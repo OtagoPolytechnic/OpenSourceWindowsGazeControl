@@ -13,8 +13,6 @@ using EyeXFramework.Forms;
 namespace GazeToolBar
 {
 
-    //public enum EToolBarFunction { LeftClick, RightClick, DoubleClick, Scroll, DragAndDrop}
-
     public class ShortcutKeyWorker
     {
         
