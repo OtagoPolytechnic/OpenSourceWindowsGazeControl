@@ -233,14 +233,16 @@ namespace GazeToolBar
             try
             {
                 SettingJSON setting = new SettingJSON();
-                
+
+                //TODO: Need to be replaced
+
                 //setting.position = lblIndicationLeftOrRight.Text.Substring(3);
-                setting.precision = trackBarFixTimeLength.Value;
-                setting.selection = gazeOrSwitch.ToString();
-                setting.size = sizes.ToString();
-                setting.soundFeedback = onOff[3];
-                setting.speed = trackBarFixTimeOut.Value;
-                setting.wordPrediction = onOff[2];
+                //setting.precision = trackBarFixTimeLength.Value;
+                //setting.selection = gazeOrSwitch.ToString();
+                //setting.size = sizes.ToString();
+                //setting.soundFeedback = onOff[3];
+                //setting.speed = trackBarFixTimeOut.Value;
+                //setting.wordPrediction = onOff[2];
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
                 //MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -269,8 +271,9 @@ namespace GazeToolBar
         private void Settings_Load(object sender, EventArgs e)
         {
             Program.ReadWriteJson();
-            trackBarFixTimeLength.Value = Program.readSettings.precision;
-            trackBarFixTimeOut.Value = Program.readSettings.speed;
+            //TODO: Need to be replaced
+            //trackBarFixTimeLength.Value = Program.readSettings.precision;
+            //trackBarFixTimeOut.Value = Program.readSettings.speed;
             //lblIndicationLeftOrRight.Text = lblIndicationLeftOrRight.Text.Remove(3) + Program.readSettings.position;
             
             if (Program.onStartUp)
@@ -283,27 +286,28 @@ namespace GazeToolBar
             }
 
 
+            //TODO: Need to be replaced
 
-            if (Program.readSettings.selection == GazeOrSwitch.GAZE.ToString())
-            {
-                gazeOrSwitch = GazeOrSwitch.GAZE;
-                //changeSitchGaze(gazeOrSwitch);
-            }
-            else
-            {
-                gazeOrSwitch = GazeOrSwitch.SWITCH;
-                //changeSitchGaze(gazeOrSwitch);
-            }
+            //if (Program.readSettings.selection == GazeOrSwitch.GAZE.ToString())
+            //{
+            //    gazeOrSwitch = GazeOrSwitch.GAZE;
+            //    //changeSitchGaze(gazeOrSwitch);
+            //}
+            //else
+            //{
+            //    gazeOrSwitch = GazeOrSwitch.SWITCH;
+            //    //changeSitchGaze(gazeOrSwitch);
+            //}
 
-            if (Program.readSettings.position == "left")
-            {
-                OnTheRight = false;
-                //ChangeButtonColor(btnChangeSide, true, false);
-            }
-            else
-            {
-                OnTheRight = true;
-            }
+            //if (Program.readSettings.position == "left")
+            //{
+            //    OnTheRight = false;
+            //    //ChangeButtonColor(btnChangeSide, true, false);
+            //}
+            //else
+            //{
+            //    OnTheRight = true;
+            //}
         }
 
         private void btnGeneralSetting_Click(object sender, EventArgs e)

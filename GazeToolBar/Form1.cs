@@ -106,14 +106,16 @@ namespace GazeToolBar
             //Start monitoring key presses.
             LowLevelKeyBoardHook.HookKeyboard();
 
-            if(Program.readSettings.position == "left")
-            {
-                Edge = AppBarEdges.Left;
-            }
-            else
-            {
-                Edge = AppBarEdges.Right;
-            }
+            //TODO: Need to be replaced
+
+            //if(Program.readSettings.position == "left")
+            //{
+            //    Edge = AppBarEdges.Left;
+            //}
+            //else
+            //{
+            //    Edge = AppBarEdges.Right;
+            //}
             stateManager = new StateManager(this, shortCutKeyWorker, eyeXHost);
             timer2.Enabled = true;
         }
