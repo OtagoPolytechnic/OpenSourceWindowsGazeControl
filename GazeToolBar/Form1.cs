@@ -99,10 +99,10 @@ namespace GazeToolBar
 
 
             FKeyMapDictionary = new Dictionary<ActionToBePerformed, string>();
-            FKeyMapDictionary.Add(ActionToBePerformed.DoubleClick, "Key not assigned");
-            FKeyMapDictionary.Add(ActionToBePerformed.LeftClick, "Key not assigned");
-            FKeyMapDictionary.Add(ActionToBePerformed.Scroll, "Key not assigned");
-            FKeyMapDictionary.Add(ActionToBePerformed.RightClick, "Key not assigned");
+            FKeyMapDictionary.Add(ActionToBePerformed.DoubleClick, ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE);
+            FKeyMapDictionary.Add(ActionToBePerformed.LeftClick, ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE);
+            FKeyMapDictionary.Add(ActionToBePerformed.Scroll, ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE);
+            FKeyMapDictionary.Add(ActionToBePerformed.RightClick, ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE);
 
 
             //Instantiate keyboard hook and pass into worker class.
