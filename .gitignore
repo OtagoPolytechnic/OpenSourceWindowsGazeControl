@@ -254,7 +254,7 @@ paket-files/
 *.sln.iml
 
 # Compiled C# vs
-*.exe
+#*.exe
 
 bmpScreenshot.bmp
 Thumbs.db
