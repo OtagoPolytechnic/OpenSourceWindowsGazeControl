@@ -148,12 +148,16 @@ namespace GazeToolBar
 
         private void btnDoubleClick_Click(object sender, EventArgs e)
         {
+
             SystemFlags.actionButtonSelected = true;//raise action button flag
             SystemFlags.actionToBePerformed = ActionToBePerformed.DoubleClick;
         }
 
         private void btnKeyboard_Click(object sender, EventArgs e)
         {
+
+            //Console.WriteLine("optikey button");
+
             if (keyboard.IsVisible)
             {
                 keyboard.Hide();

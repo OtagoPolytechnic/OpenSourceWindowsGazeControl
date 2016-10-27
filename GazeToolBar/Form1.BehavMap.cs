@@ -41,6 +41,8 @@ namespace GazeToolBar
             bhavMap.Add(pnlHighLightSettings, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightSingleLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightKeyboard, new GazeAwareBehavior(OnGazeChangeBTColour));
+
+            
         }
 
 
@@ -55,48 +57,65 @@ namespace GazeToolBar
         }
 
 
-        private void OnBtnDoubleClick(object sender, EventArgs e)
+        private void OnBtnDoubleClick(object sender, GazeAwareEventArgs e)
         {
-            //Reset the button color to its origin color
-            resetButtonsColor();
-            //Set this button to other color, so people know this button has selected
-            btnDoubleClick.BackColor = ValueNeverChange.SelectedColor;
-            //Click this button
-            btnDoubleClick.PerformClick();
+            if (e.HasGaze)
+            {
+                //Reset the button color to its origin color
+                resetButtonsColor();
+                //Set this button to other color, so people know this button has selected
+                btnDoubleClick.BackColor = ValueNeverChange.SelectedColor;
+                //Click this button
+                btnDoubleClick.PerformClick();
+            }
         }
 
-        private void OnBtnRightClick(object sender, EventArgs e)
+        private void OnBtnRightClick(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnRightClick.BackColor = ValueNeverChange.SelectedColor;
-            btnRightClick.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnRightClick.BackColor = ValueNeverChange.SelectedColor;
+                btnRightClick.PerformClick();
+            }
         }
 
-        private void OnBtnSingleClick(object sender, EventArgs e)
+        private void OnBtnSingleClick(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnSingleLeftClick.BackColor = ValueNeverChange.SelectedColor;
-            btnSingleLeftClick.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnSingleLeftClick.BackColor = ValueNeverChange.SelectedColor;
+                btnSingleLeftClick.PerformClick();
+            }
         }
 
-        private void OnBtnSettings(object sender, EventArgs e)
+        private void OnBtnSettings(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnSettings.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnSettings.PerformClick();
+            }
         }
 
-        private void OnBtnScroll(object sender, EventArgs e)
+        private void OnBtnScroll(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnScoll.BackColor = ValueNeverChange.SelectedColor;
-            btnScoll.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnScoll.BackColor = ValueNeverChange.SelectedColor;
+                btnScoll.PerformClick();
+            }
         }
 
-        private void OnBtnKeyboard(object sender, EventArgs e)
+        private void OnBtnKeyboard(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnKeyboard.BackColor = ValueNeverChange.SelectedColor;
-            btnKeyboard.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnKeyboard.PerformClick();
+            }
         }
 
         //private void OnBtnDragAndDrop(object sender, EventArgs e)
