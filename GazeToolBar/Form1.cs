@@ -7,6 +7,8 @@ using System.IO;
 using System.Diagnostics;
 using System.Collections.Generic;
 using EyeXFramework.Forms;
+using OptiKey;
+using OptiKey.UI.Windows;
 
 
 namespace GazeToolBar
@@ -30,6 +32,8 @@ namespace GazeToolBar
         public KeyboardHook LowLevelKeyBoardHook;
         public ShortcutKeyWorker shortCutKeyWorker;
 
+        OptiKey.GazeKeyboard keyboardInitializer;
+        MainWindow keyboard;
 
         public Dictionary<ActionToBePerformed, String> FKeyMapDictionary;
 
@@ -58,6 +62,9 @@ namespace GazeToolBar
 
             eyeXHost = new FormsEyeXHost();
             eyeXHost.Start();
+
+            keyboardInitializer = new OptiKey.GazeKeyboard();
+            keyboard = keyboardInitializer.CreateKeyboard();
 
             connectBehaveMap();
         }
@@ -116,6 +123,8 @@ namespace GazeToolBar
             }
             stateManager = new StateManager(this, shortCutKeyWorker, eyeXHost);
             timer2.Enabled = true;
+
+            
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -145,13 +154,14 @@ namespace GazeToolBar
 
         private void btnKeyboard_Click(object sender, EventArgs e)
         {
-            // this will open the exe for optikey. is tried to both the location of optikeys exe and the binary file for GazeToolBar. so will likely break if file/folders are moved
-            //will need some logic to decide if it needs to open or close optikey
-            Process process = System.Diagnostics.Process.Start(Path.GetFullPath("../../../OptiKey/src/JuliusSweetland.OptiKey/bin/Debug/OptiKey.exe"));
-            //MessageBox.Show(Environment.CurrentDirectory);
-
-            //if optikey is already open
-            //process.Kill();
+            if (keyboard.IsVisible)
+            {
+                keyboard.Hide();
+            }
+            else
+            {
+                keyboard.Show();
+            }                 
         }
 
         private void btnScoll_Click(object sender, EventArgs e)
