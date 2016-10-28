@@ -258,3 +258,15 @@ paket-files/
 
 bmpScreenshot.bmp
 Thumbs.db
+
+GazeToolBar/bin/Debug/GazeToolBar.exe
+GazeToolBar/bin/Debug/OptiKey.exe
+GazeToolBar/bin/Debug/de-DE/OptiKey.resources.dll
+GazeToolBar/bin/Debug/fr-FR/OptiKey.resources.dll
+GazeToolBar/bin/Debug/nl/OptiKey.resources.dll
+GazeToolBar/bin/Debug/ru-RU/OptiKey.resources.dll
+OptiKey/bin/Debug/OptiKey.exe
+OptiKey/bin/Debug/de-DE/OptiKey.resources.dll
+OptiKey/bin/Debug/fr-FR/OptiKey.resources.dll
+OptiKey/bin/Debug/nl/OptiKey.resources.dll
+OptiKey/bin/Debug/ru-RU/OptiKey.resources.dll
