@@ -1,7 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
-  <Nodes />
-  <Links />
+  <Nodes>
+    <Node Id="OptiKey" Label="OptiKey" Category="Project" />
+    <Node Id="CommonServiceLocator 1.3" Label="CommonServiceLocator 1.3" Category="Package" />
+    <Node Id="log4net 2.0.3" Label="log4net 2.0.3" Category="Package" />
+    <Node Id="MahApps.Metro 1.1.2.0" Label="MahApps.Metro 1.1.2.0" Category="Package" />
+    <Node Id="MouseKeyboardActivityMonitor 4.0.5150.10665" Label="MouseKeyboardActivityMonitor 4.0.5150.10665" Category="Package" />
+    <Node Id="NBug 1.2.2" Label="NBug 1.2.2" Category="Package" />
+    <Node Id="Octokit 0.16.0" Label="Octokit 0.16.0" Category="Package" />
+    <Node Id="Octokit.Reactive 0.16.0" Label="Octokit.Reactive 0.16.0" Category="Package" />
+    <Node Id="Prism.Core 6.0.1" Label="Prism.Core 6.0.1" Category="Package" />
+    <Node Id="Prism.Wpf 6.0.1" Label="Prism.Wpf 6.0.1" Category="Package" />
+    <Node Id="Rx-Core 2.2.5" Label="Rx-Core 2.2.5" Category="Package" />
+    <Node Id="Rx-Interfaces 2.2.5" Label="Rx-Interfaces 2.2.5" Category="Package" />
+    <Node Id="Rx-Linq 2.2.5" Label="Rx-Linq 2.2.5" Category="Package" />
+    <Node Id="Rx-Main 2.2.5" Label="Rx-Main 2.2.5" Category="Package" />
+    <Node Id="Rx-PlatformServices 2.2.5" Label="Rx-PlatformServices 2.2.5" Category="Package" />
+    <Node Id="Rx-WPF 2.2.5" Label="Rx-WPF 2.2.5" Category="Package" />
+    <Node Id="Rx-XAML 2.2.5" Label="Rx-XAML 2.2.5" Category="Package" />
+  </Nodes>
+  <Links>
+    <Link Source="Octokit.Reactive 0.16.0" Target="Octokit 0.16.0" Category="Package Dependency" />
+    <Link Source="Octokit.Reactive 0.16.0" Target="Rx-Main 2.2.5" Category="Package Dependency" />
+    <Link Source="Prism.Wpf 6.0.1" Target="CommonServiceLocator 1.3" Category="Package Dependency" />
+    <Link Source="Prism.Wpf 6.0.1" Target="Prism.Core 6.0.1" Category="Package Dependency" />
+    <Link Source="Rx-Core 2.2.5" Target="Rx-Interfaces 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-Linq 2.2.5" Target="Rx-Interfaces 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-Linq 2.2.5" Target="Rx-Core 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-Main 2.2.5" Target="Rx-Interfaces 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-Main 2.2.5" Target="Rx-Core 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-Main 2.2.5" Target="Rx-Linq 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-Main 2.2.5" Target="Rx-PlatformServices 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-PlatformServices 2.2.5" Target="Rx-Interfaces 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-PlatformServices 2.2.5" Target="Rx-Core 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-WPF 2.2.5" Target="Rx-XAML 2.2.5" Category="Package Dependency" />
+    <Link Source="Rx-XAML 2.2.5" Target="Rx-Main 2.2.5" Category="Package Dependency" />
+    <Link Source="OptiKey" Target="log4net 2.0.3" Category="Installed Package" />
+    <Link Source="OptiKey" Target="MahApps.Metro 1.1.2.0" Category="Installed Package" />
+    <Link Source="OptiKey" Target="MouseKeyboardActivityMonitor 4.0.5150.10665" Category="Installed Package" />
+    <Link Source="OptiKey" Target="NBug 1.2.2" Category="Installed Package" />
+    <Link Source="OptiKey" Target="Octokit.Reactive 0.16.0" Category="Installed Package" />
+    <Link Source="OptiKey" Target="Prism.Wpf 6.0.1" Category="Installed Package" />
+    <Link Source="OptiKey" Target="Rx-WPF 2.2.5" Category="Installed Package" />
+  </Links>
   <Categories>
     <Category Id="Project" />
     <Category Id="Package" />
@@ -10,6 +51,10 @@
     <Style TargetType="Node" GroupLabel="Project" ValueLabel="True">
       <Condition Expression="HasCategory('Project')" />
       <Setter Property="Background" Value="Blue" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Package Dependency" ValueLabel="True">
+      <Condition Expression="HasCategory('Package Dependency')" />
+      <Setter Property="Background" Value="Yellow" />
     </Style>
   </Styles>
 </DirectedGraph>
