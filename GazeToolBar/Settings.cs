@@ -44,7 +44,6 @@ namespace GazeToolBar
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             //End
-            panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
             controlRelocateAndResize();
             //tabControlMain.Size = ReletiveSize.TabControlSize;
             onOff = new bool[5];
@@ -82,8 +81,13 @@ namespace GazeToolBar
 
         private void controlRelocateAndResize()
         {
+            pnlSwitchSetting.Location = ReletiveSize.panelSwitchSettingLocation(pnlSwitchSetting.Width, pnlSwitchSetting.Height);
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
             pnlGeneral.Size = ReletiveSize.panelGeneralSize();
+
+            pnlGeneral.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+            pnlPageKeyboard.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+
             panelPrecision.Location = ReletiveSize.distribute(pnlGeneral, panelPrecision.Location.X, 1, 3, "h", 0);
             pnlFixationTimeOut.Location = ReletiveSize.distribute(pnlGeneral, pnlFixationTimeOut.Location.X, 2, 3, "h", 0);
             panelOther.Location = ReletiveSize.distribute(pnlGeneral, panelOther.Location.X, 3, 3, "h", 0);
@@ -99,7 +103,7 @@ namespace GazeToolBar
             pnlOtherAuto.Location = new Point(panelOther.Size.Width / 2, pnlOtherAuto.Location.Y);
 
             //double p = ((double)pnlSelectionGaze.Location.X + (double)btnGaze.Location.X) / (double)pnlSelectionGaze.Parent.Size.Width;
-            pnlFixTimeLengthContent.Location = ReletiveSize.distribute(panelPrecision, pnlFixTimeLengthContent.Location.Y, 1, 1, "w", 0.8);
+            pnlFixTimeLengthContent.Location = ReletiveSize.distribute(panelPrecision, pnlFixTimeLengthContent.Location.Y, 1, 1, "w", 0.15);
             pnlFixTimeOutContent.Location = new Point(pnlFixTimeLengthContent.Location.X, pnlFixTimeOutContent.Location.Y);
 
             pnlFixTimeLengthContent.Size = ReletiveSize.controlLength(panelPrecision, pnlFixTimeLengthContent.Size.Height, 0.8);
@@ -109,8 +113,8 @@ namespace GazeToolBar
             trackBarFixTimeLength.Size = ReletiveSize.controlLength(pnlFixTimeLengthContent, trackBarFixTimeLength.Size.Height, percentage);
             trackBarFixTimeOut.Size = trackBarFixTimeLength.Size;
 
-            btnFixTimeLengthPlus.Location = ReletiveSize.reletiveLocation(trackBarFixTimeLength, btnFixTimeLengthPlus.Location.Y, 7, 'v');
-            btnFixTimeOutPlus.Location = new Point(btnFixTimeLengthPlus.Location.X, btnFixTimeOutPlus.Location.Y);
+            //btnFixTimeLengthPlus.Location = ReletiveSize.reletiveLocation(trackBarFixTimeLength, btnFixTimeLengthPlus.Location.Y, 7, 'v');
+            //btnFixTimeOutPlus.Location = new Point(btnFixTimeLengthPlus.Location.X, btnFixTimeOutPlus.Location.Y);
         }
 
         //private void btnChangeSide_Click(object sender, EventArgs e)
