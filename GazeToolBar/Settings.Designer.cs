@@ -83,10 +83,10 @@ namespace GazeToolBar
             this.pnlFKeyHighlight7 = new System.Windows.Forms.Panel();
             this.btFKeyScroll = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pnlDragAndDrop = new System.Windows.Forms.Panel();
+           // this.pnlDragAndDrop = new System.Windows.Forms.Panel();
             this.pnlFKeyHighlight10 = new System.Windows.Forms.Panel();
             this.btClearFKeyDrapAndDrop = new System.Windows.Forms.Button();
-            this.lbDragAndDrop = new System.Windows.Forms.Label();
+            //this.lbDragAndDrop = new System.Windows.Forms.Label();
             this.pnlFKeyHighlight9 = new System.Windows.Forms.Panel();
             this.btFKeyDrapAndDrop = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -131,7 +131,7 @@ namespace GazeToolBar
             this.pnlFKeyHighlight8.SuspendLayout();
             this.pnlFKeyHighlight7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.pnlDragAndDrop.SuspendLayout();
+            //this.pnlDragAndDrop.SuspendLayout();
             this.pnlFKeyHighlight10.SuspendLayout();
             this.pnlFKeyHighlight9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -454,7 +454,7 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Controls.Add(this.pnlRightClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlDoubleClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlScroll);
-            this.pnlPageKeyboard.Controls.Add(this.pnlDragAndDrop);
+           // this.pnlPageKeyboard.Controls.Add(this.pnlDragAndDrop);
             this.pnlPageKeyboard.Controls.Add(this.pnlLeftClick);
             this.pnlPageKeyboard.Location = new System.Drawing.Point(0, 61);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -719,15 +719,14 @@ namespace GazeToolBar
             // 
             // pnlDragAndDrop
             // 
-            this.pnlDragAndDrop.Controls.Add(this.pnlFKeyHighlight10);
-            this.pnlDragAndDrop.Controls.Add(this.lbDragAndDrop);
-            this.pnlDragAndDrop.Controls.Add(this.pnlFKeyHighlight9);
-            this.pnlDragAndDrop.Controls.Add(this.pictureBox5);
-            this.pnlDragAndDrop.Location = new System.Drawing.Point(711, 82);
-            this.pnlDragAndDrop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pnlDragAndDrop.Name = "pnlDragAndDrop";
-            this.pnlDragAndDrop.Size = new System.Drawing.Size(149, 253);
-            this.pnlDragAndDrop.TabIndex = 4;
+            //this.pnlDragAndDrop.Controls.Add(this.pnlFKeyHighlight10);
+            //this.pnlDragAndDrop.Controls.Add(this.lbDragAndDrop);
+            //this.pnlDragAndDrop.Controls.Add(this.pnlFKeyHighlight9);
+            //this.pnlDragAndDrop.Controls.Add(this.pictureBox5);
+            //this.pnlDragAndDrop.Location = new System.Drawing.Point(1067, 114);
+            //this.pnlDragAndDrop.Name = "pnlDragAndDrop";
+            //this.pnlDragAndDrop.Size = new System.Drawing.Size(224, 351);
+            //this.pnlDragAndDrop.TabIndex = 4;
             // 
             // pnlFKeyHighlight10
             // 
@@ -750,19 +749,18 @@ namespace GazeToolBar
             this.btClearFKeyDrapAndDrop.TabIndex = 2;
             this.btClearFKeyDrapAndDrop.Text = "Clear";
             this.btClearFKeyDrapAndDrop.UseVisualStyleBackColor = true;
-            this.btClearFKeyDrapAndDrop.Click += new System.EventHandler(this.btClearFKeyDrapAndDrop_Click);
+            //this.btClearFKeyDrapAndDrop.Click += new System.EventHandler(this.btClearFKeyDrapAndDrop_Click);
             // 
             // lbDragAndDrop
             // 
-            this.lbDragAndDrop.AutoSize = true;
-            this.lbDragAndDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDragAndDrop.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDragAndDrop.Location = new System.Drawing.Point(20, 230);
-            this.lbDragAndDrop.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbDragAndDrop.Name = "lbDragAndDrop";
-            this.lbDragAndDrop.Size = new System.Drawing.Size(60, 24);
-            this.lbDragAndDrop.TabIndex = 3;
-            this.lbDragAndDrop.Text = "label6";
+            //this.lbDragAndDrop.AutoSize = true;
+            //this.lbDragAndDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.lbDragAndDrop.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            //this.lbDragAndDrop.Location = new System.Drawing.Point(30, 318);
+            //this.lbDragAndDrop.Name = "lbDragAndDrop";
+            //this.lbDragAndDrop.Size = new System.Drawing.Size(60, 24);
+            //this.lbDragAndDrop.TabIndex = 3;
+            //this.lbDragAndDrop.Text = "label6";
             // 
             // pnlFKeyHighlight9
             // 
@@ -785,7 +783,7 @@ namespace GazeToolBar
             this.btFKeyDrapAndDrop.TabIndex = 1;
             this.btFKeyDrapAndDrop.Text = "Set";
             this.btFKeyDrapAndDrop.UseVisualStyleBackColor = true;
-            this.btFKeyDrapAndDrop.Click += new System.EventHandler(this.btFKeyDrapAndDrop_Click);
+            //this.btFKeyDrapAndDrop.Click += new System.EventHandler(this.btFKeyDrapAndDrop_Click);
             // 
             // pictureBox5
             // 
@@ -999,8 +997,8 @@ namespace GazeToolBar
             this.pnlFKeyHighlight8.ResumeLayout(false);
             this.pnlFKeyHighlight7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.pnlDragAndDrop.ResumeLayout(false);
-            this.pnlDragAndDrop.PerformLayout();
+            //this.pnlDragAndDrop.ResumeLayout(false);
+            //this.pnlDragAndDrop.PerformLayout();
             this.pnlFKeyHighlight10.ResumeLayout(false);
             this.pnlFKeyHighlight9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

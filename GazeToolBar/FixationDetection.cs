@@ -29,7 +29,7 @@ namespace GazeToolBar
     public class FixationDetection
     {
         //Use to toggle extra point smoothing on and off
-       bool usePointSmother = false;
+       bool usePointSmoother = false;
 
        //Deceleration of event used to drive Gaze highlight, event contains data that shows the percentage through the current fixation.
        public delegate void FixationProgressEvent( object o, FixationProgressEventArgs e);
@@ -108,7 +108,7 @@ namespace GazeToolBar
                 GazePoint currentSmoothPoint;
 
                 //If databucket state is the start of a fixation
-                if (fixationDataBucket.Status == EFixationStreamEventType.start)
+                if (fixationDataBucket.Status == EFixationStreamEventType.Start)
                 {
                     fixationTimer.Start();
                     fixationProgressStartTimeStamp = fixationDataBucket.TimeStamp;
@@ -119,10 +119,10 @@ namespace GazeToolBar
                     Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
                 //if fixation data is in the middle of a fixation, use the data returned to highlight progress and draw users current gaze location to the screen.
-                if (fixationDataBucket.Status == EFixationStreamEventType.middle)
+                if (fixationDataBucket.Status == EFixationStreamEventType.Middle)
                 {
                     //Check if point smoothing is required.
-                    if (usePointSmother)
+                    if (usePointSmoother)
                     {
                         //Data smoothing being done in CustomFixationDectection, 
                         currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
@@ -141,9 +141,10 @@ namespace GazeToolBar
 
                 }
                 //if the fixation ends before the fixation timer completes, reset the fixation timer.
-                if (fixationDataBucket.Status == EFixationStreamEventType.end)
+                if (fixationDataBucket.Status == EFixationStreamEventType.End)
                 {
                     fixationTimer.Stop();
+                    //customfixStream.ResetFixationDetectionState();
                     //Debug
                     Console.WriteLine("Fixation Stopped due to end datatype");
                 }

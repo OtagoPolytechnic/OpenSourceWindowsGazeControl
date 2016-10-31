@@ -62,12 +62,16 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="ShellBasics, Version=1.0.5926.36717, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\ShellBasics.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,8 +85,9 @@
       <HintPath>..\..\lib\x64\Tobii.EyeX.Client.Net20.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="WindowsInput">
-      <HintPath>..\..\lib\WindowsInput.dll</HintPath>
+    <Reference Include="WindowsInput, Version=0.2.0.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OptiKey\bin\Debug\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -104,7 +109,7 @@
     <Compile Include="GazeHightlight\GazeHighlightShaderFactory.cs" />
     <Compile Include="HookedKeyboardEventArgs.cs" />
     <Compile Include="GazeHightlight\IGazeHighlightShader.cs" />
-    <Compile Include="Keyboardhook.cs" />
+    <Compile Include="KeyboardHook.cs" />
     <Compile Include="PointSmoother.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -206,7 +211,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\OptiKey\OptiKey.csproj">
+      <Project>{6865c5af-c6f0-4bda-ba1c-7ae8bc225234}</Project>
+      <Name>OptiKey</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -15,6 +15,7 @@ namespace GazeToolBar
         public static readonly string RES_NAME = "GazeToolBar";
         public static readonly string AUTO_START_ON = "Auto Start Is On";
         public static readonly string AUTO_START_OFF = "Auto Start Is OFF";
+        public static readonly string KEY_FUNCTION_UNASSIGNED_MESSAGE = "Key not assigned";
         public static readonly int FIXED_HEIGHT = 800;
         public static readonly int FIXED_WIDTH = 600;
         public static readonly Size SCREEN_SIZE = Screen.PrimaryScreen.WorkingArea.Size;

@@ -24,7 +24,7 @@ namespace GazeToolBar
             eyeXHost.Connect(bhavMap);
             eyeXHost.Connect(bhavMapHLCurrentGazeOnBT);
 
-            //Temp for 100 
+            
             //Will change later
             bhavMap.Add(btnDoubleClick, new GazeAwareBehavior(OnBtnDoubleClick) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnRightClick, new GazeAwareBehavior(OnBtnRightClick) { DelayMilliseconds = delayBeforeButtonSelected });
@@ -32,15 +32,17 @@ namespace GazeToolBar
             bhavMap.Add(btnSettings, new GazeAwareBehavior(OnBtnSettings) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnKeyboard, new GazeAwareBehavior(OnBtnKeyboard) { DelayMilliseconds = delayBeforeButtonSelected });
-            bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
+            //bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
 
             bhavMap.Add(pnlHiLteRightClick, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightDoubleClick, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavMap.Add(pnlHighLightDragAndDrop, new GazeAwareBehavior(OnGazeChangeBTColour));
+            //bhavMap.Add(pnlHighLightDragAndDrop, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightScrol, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightSettings, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightSingleLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightKeyboard, new GazeAwareBehavior(OnGazeChangeBTColour));
+
+            
         }
 
 
@@ -55,61 +57,77 @@ namespace GazeToolBar
         }
 
 
-        private void OnBtnDoubleClick(object sender, EventArgs e)
+        private void OnBtnDoubleClick(object sender, GazeAwareEventArgs e)
         {
-            //Reset the button color to its origin color
-            resetButtonsColor();
-            //Set this button to other color, so people know this button has selected
-            btnDoubleClick.BackColor = ValueNeverChange.SelectedColor;
-            //Click this button
-            btnDoubleClick.PerformClick();
+            if (e.HasGaze)
+            {
+                //Reset the button color to its origin color
+                resetButtonsColor();
+                //Set this button to other color, so people know this button has selected
+                btnDoubleClick.BackColor = ValueNeverChange.SelectedColor;
+                //Click this button
+                btnDoubleClick.PerformClick();
+            }
         }
 
-        private void OnBtnRightClick(object sender, EventArgs e)
+        private void OnBtnRightClick(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnRightClick.BackColor = ValueNeverChange.SelectedColor;
-            btnRightClick.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnRightClick.BackColor = ValueNeverChange.SelectedColor;
+                btnRightClick.PerformClick();
+            }
         }
 
-        private void OnBtnSingleClick(object sender, EventArgs e)
+        private void OnBtnSingleClick(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnSingleLeftClick.BackColor = ValueNeverChange.SelectedColor;
-            btnSingleLeftClick.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnSingleLeftClick.BackColor = ValueNeverChange.SelectedColor;
+                btnSingleLeftClick.PerformClick();
+            }
         }
 
-        private void OnBtnSettings(object sender, EventArgs e)
+        private void OnBtnSettings(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnSettings.BackColor = ValueNeverChange.SelectedColor;
-            btnSettings.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnSettings.PerformClick();
+            }
         }
 
-        private void OnBtnScroll(object sender, EventArgs e)
+        private void OnBtnScroll(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnScoll.BackColor = ValueNeverChange.SelectedColor;
-            btnScoll.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnScoll.BackColor = ValueNeverChange.SelectedColor;
+                btnScoll.PerformClick();
+            }
         }
 
-        private void OnBtnKeyboard(object sender, EventArgs e)
+        private void OnBtnKeyboard(object sender, GazeAwareEventArgs e)
         {
-            resetButtonsColor();
-            btnKeyboard.BackColor = ValueNeverChange.SelectedColor;
-            btnKeyboard.PerformClick();
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnKeyboard.PerformClick();
+            }
         }
 
-        private void OnBtnDragAndDrop(object sender, EventArgs e)
-        {
-            resetButtonsColor();
-            btnDragAndDrop.BackColor = ValueNeverChange.SelectedColor;
-            btnDragAndDrop.PerformClick();
-        }
+        //private void OnBtnDragAndDrop(object sender, EventArgs e)
+        //{
+        //    resetButtonsColor();
+        //    btnDragAndDrop.BackColor = ValueNeverChange.SelectedColor;
+        //    btnDragAndDrop.PerformClick();
+        //}
 
         public void resetButtonsColor()
         {
-            ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard, btnDragAndDrop);
+            ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard);
         }
 
         /// <summary>

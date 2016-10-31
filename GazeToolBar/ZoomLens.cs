@@ -21,7 +21,6 @@ namespace GazeToolBar
         Graphics mainCanvas;
         public Bitmap bmpScreenshot;
         Bitmap offScreenBitmap;
-        int corner;//this is used to determine if a user has looked at a corner section of the screen
         Point lensPoint;
 
         FixationDetection fixdet;
@@ -37,25 +36,17 @@ namespace GazeToolBar
             offScreenBitmap = new Bitmap(this.Width, this.Height);
             //This bitmap is the zoomed in area. It's the bit of the screen that gets magnified
             bmpScreenshot = new Bitmap(this.Width / ZOOMLEVEL, this.Height / ZOOMLEVEL);
-            // graphics = this.CreateGraphics();
-
-            //DrawToScreen = this.CreateGraphics();
             mainCanvas = this.CreateGraphics();
             offScreenGraphics = Graphics.FromImage(offScreenBitmap);
             graphics = Graphics.FromImage(bmpScreenshot);
-
-            //This picturebox is what displays the zoomed in screenshot
-            //pictureBox1.Width = this.Width;
-            //pictureBox1.Height = this.Height;
-            //pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;//make the image stretch to the bounds of the picturebox
             this.FormBorderStyle = FormBorderStyle.None;
             fixdet = FixDet;
 
             gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen, this);
         }
-        public int checkCorners(Point FixationPoint)
+        public Corner checkCorners(Point FixationPoint)
         {
-            int maxDistance = bmpScreenshot.Size.Width;
+            int maxDistance = bmpScreenshot.Width;
             int screenWidth = Screen.FromControl(this).Bounds.Width;
             int screenHeight = Screen.FromControl(this).Bounds.Height;
 
@@ -70,10 +61,77 @@ namespace GazeToolBar
             {
                 if (calculateCornerDistance(FixationPoint, Corners[i]) < maxDistance)
                 {
-                    return i;
+                    return (Corner)i;
                 }
             }
-            return -1;
+            return Corner.NoCorner;
+        }
+        public Edge checkEdge()
+        {
+            Edge edge = Edge.NoEdge;
+            if (this.DesktopLocation.Y < -100)//top
+            {
+                return Edge.Top;
+            }
+            if (this.DesktopLocation.X < -100)//left
+            {
+                return Edge.Left;
+            }
+            if (this.DesktopLocation.Y + this.Height > Screen.PrimaryScreen.Bounds.Size.Height + 100)//bottom
+            {
+                return Edge.Bottom;
+            }
+            if (this.DesktopLocation.X + this.Width > Screen.PrimaryScreen.Bounds.Size.Width + 100)//right
+            {
+                return Edge.Right;
+            }
+            return edge;
+        }
+        public void setZoomLensPositionCorner(Corner corner)
+        {
+            switch (corner)
+            {
+                case Corner.TopLeft:
+                    this.DesktopLocation = new Point(0, 0);
+                    lensPoint = new Point(0, 0);
+                    break;
+                case Corner.TopRight:
+                    this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, 0);
+                    lensPoint = new Point(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, 0);
+                    break;
+                case Corner.BottomLeft:
+                    this.DesktopLocation = new Point(0, Screen.FromControl(this).Bounds.Height - this.Height);
+                    lensPoint = new Point(0, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
+                    break;
+                case Corner.BottomRight:
+                    this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, Screen.FromControl(this).Bounds.Height - this.Height);
+                    lensPoint = new Point(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
+                    break;
+            }
+        }
+        public void setZoomLensPositionEdge(Edge edge, Point fixationPoint)
+        {
+            switch (edge)
+            {
+                case Edge.NoEdge:
+                    break;
+                case Edge.Top:
+                    this.DesktopLocation = new Point(this.DesktopLocation.X, 0);
+                    lensPoint = new Point(calculateLensPointX(fixationPoint.X), this.DesktopLocation.Y);
+                    break;
+                case Edge.Right:
+                    this.DesktopLocation = new Point(Screen.PrimaryScreen.Bounds.Size.Width - this.Width, this.DesktopLocation.Y);
+                    lensPoint = new Point(Screen.PrimaryScreen.Bounds.Size.Width - bmpScreenshot.Width, calculateLensPointY(fixationPoint.Y));
+                    break;
+                case Edge.Bottom:
+                    this.DesktopLocation = new Point(this.DesktopLocation.X, Screen.PrimaryScreen.Bounds.Size.Height - this.Height);
+                    lensPoint = new Point(calculateLensPointX(fixationPoint.X), Screen.PrimaryScreen.Bounds.Size.Height - bmpScreenshot.Height);
+                    break;
+                case Edge.Left:
+                    this.DesktopLocation = new Point(0, this.DesktopLocation.Y);
+                    lensPoint = new Point(this.DesktopLocation.X,calculateLensPointY(fixationPoint.Y));
+                    break;
+            }
         }
         private int calculateCornerDistance(Point fixationPoint, Point corner)
         {
@@ -84,13 +142,9 @@ namespace GazeToolBar
         }
         public void CreateZoomLens(Point FixationPoint)
         {
-            //corner = checkCorners(FixationPoint);
-            //lensPoint is the position the actual screenshot is taken
-            //Point lensPoint = new Point();
             Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
 
             this.Show();//make lens visible
-            //pictureBox1.Image = bmpScreenshot;
             offScreenGraphics.DrawImage(bmpScreenshot, 0, 0, 500, 500);
             this.TopMost = true;
             Console.WriteLine("ZoomLens.Bounds.X = " + this.Bounds.X);
@@ -98,51 +152,50 @@ namespace GazeToolBar
             DrawTimer.Start();
             Application.DoEvents();
         }
-        public void determineDesktopLocation(Point FixationPoint, int corner)
+        public void determineDesktopLocation(Point FixationPoint)
         {
-            if (corner != -1)
-            {
-                switch (corner)
-                {
-                    case 0:
-                        this.DesktopLocation = new Point(0, 0);
-                        SetLensPoint(0, 0);
-                        Console.WriteLine("Top left corner detected");
-                        break;
-                    case 1:
-                        this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, 0);
-                        SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, 0);
-                        Console.WriteLine("Top right corner detected");
-                        break;
-                    case 2:
-                        this.DesktopLocation = new Point(0, Screen.FromControl(this).Bounds.Height - this.Height);
-                        SetLensPoint(0, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
-                        Console.WriteLine("Bottom left corner detected");
-                        break;
-                    case 3:
-                        this.DesktopLocation = new Point(Screen.FromControl(this).Bounds.Width - this.Width, Screen.FromControl(this).Bounds.Height - this.Height);
-                        SetLensPoint(Screen.FromControl(this).Bounds.Width - bmpScreenshot.Width, Screen.FromControl(this).Bounds.Height - bmpScreenshot.Height);
-                        Console.WriteLine("Bottom right corner detected");
-                        break;
-                }
-            }
-            else
-            {
-                this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
-                Point newLensPoint = new Point();
-                /*Yeah this is pretty horrible*/
-                newLensPoint.X = FixationPoint.X - (int)((this.Width / ZOOMLEVEL) * 1.25);
-                newLensPoint.Y = FixationPoint.Y - (int)((this.Height / ZOOMLEVEL) * 1.25);
-                newLensPoint.X = newLensPoint.X + this.Size.Width / 4;
-                newLensPoint.Y = newLensPoint.Y + this.Size.Width / 4;
-                SetLensPoint(newLensPoint.X, newLensPoint.Y);
-            }
+            this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
+            SetLensPoint(FixationPoint, Edge.NoEdge);
         }
-        private void SetLensPoint(int x, int y)
+        private int calculateLensPointX(int fixationX)
         {
-            lensPoint.X = x;
-            lensPoint.Y = y;
-            //return lensPoint;
+            int x;
+            x = fixationX - (int)((this.Width / ZOOMLEVEL) * 1.25);
+            x = x + this.Size.Width / 4;
+            return x;
+        }
+        private int calculateLensPointY(int fixationY)
+        {
+            int y;
+            y = fixationY - (int)((this.Height / ZOOMLEVEL) * 1.25);
+            y = y + this.Size.Height / 4;
+            return y;
+        }
+        public void SetLensPoint(Point FixationPoint, Edge edge)//determines the location of the zoomed in screenshot
+        {
+            switch (edge)
+            {
+                case Edge.NoEdge:
+                    lensPoint.X = calculateLensPointX(FixationPoint.X);
+                    lensPoint.Y = calculateLensPointY(FixationPoint.Y);
+                    break;
+                case Edge.Top:
+                    lensPoint.X = calculateLensPointX(FixationPoint.X);
+                    lensPoint.Y = this.DesktopLocation.Y;
+                    break;
+                case Edge.Right:
+                    lensPoint.X = Screen.PrimaryScreen.Bounds.Size.Width - bmpScreenshot.Width;
+                    lensPoint.Y = calculateLensPointY(FixationPoint.Y);
+                    break;
+                case Edge.Bottom:
+                    lensPoint.X = calculateLensPointX(FixationPoint.X);
+                    lensPoint.Y = Screen.PrimaryScreen.Bounds.Size.Height - bmpScreenshot.Height;
+                    break;
+                case Edge.Left:
+                    lensPoint.X = this.DesktopLocation.X;
+                    lensPoint.Y = calculateLensPointY(FixationPoint.Y);
+                    break;
+            }
         }
         public void TakeScreenShot()
         {
@@ -161,15 +214,12 @@ namespace GazeToolBar
             //check to see if the user actually fixated on the ZoomLens
             if (relativePoint.X < 0 || relativePoint.Y < 0 || relativePoint.X > this.Width || relativePoint.Y > this.Height)
             {
-
                 return new Point(-1, -1);//cheap hack. If it is out of bound at all, this will return -1, -1. The statemanager will cancel the zoom
-
             }
             return TranslateToDesktop(relativePoint.X, relativePoint.Y);
         }
         private Point TranslateToDesktop(int x, int y)//This method translates on form coordinates to desktop coordinates
         {
-            //somehow check if the user has looked in a corner or not, maybe a bool flag or something
             Point returnPoint = new Point();
 
             int halfHeight = this.Width / 2;
@@ -186,10 +236,32 @@ namespace GazeToolBar
             returnPoint.X = finalX + (x / ZOOMLEVEL);
             return returnPoint;
         }
-        public Point CornerOffset(Corner corner, Point fixationPoint)
+        public Point edgeOffset(Edge edge, Point fixationPoint)
         {
             int offset = (int)(ZOOMLENS_SIZE * 0.34);/*This used to calculate the offset based on zoomlevel etc, but was lost in a git accident. RIP. This version works but only
                                                     * for zoom level 3*/
+            switch (edge)
+            {
+                case Edge.NoEdge:
+                    return fixationPoint;
+                case Edge.Top:
+                    fixationPoint.Y = fixationPoint.Y - offset;
+                    break;
+                case Edge.Right:
+                    fixationPoint.X = fixationPoint.X + offset;
+                    break;
+                case Edge.Bottom:
+                    fixationPoint.Y = fixationPoint.Y + offset;
+                    break;
+                case Edge.Left:
+                    fixationPoint.X = fixationPoint.X - offset;
+                    break;
+            }
+            return fixationPoint;
+        }
+        public Point cornerOffset(Corner corner, Point fixationPoint)
+        { 
+            int offset = (int)(ZOOMLENS_SIZE * 0.34);
             switch (corner)
             {
                 case Corner.NoCorner:

@@ -13,11 +13,11 @@ using EyeXFramework.Forms;
 namespace GazeToolBar
 {
     // Struct that is used to define the bounds of the dead zone(zone where when users is looking there is no scrolling input to the current window that has focus.
-    public struct noScollRect
+    public struct NoScollRect
     {
         public int LeftBound, RightBound, TopBound, BottomBound;
 
-        public noScollRect(int leftBound, int rightBound, int topBound, int bottomBound)
+        public NoScollRect(int leftBound, int rightBound, int topBound, int bottomBound)
         {
             LeftBound = leftBound;
             RightBound = rightBound;
@@ -34,7 +34,7 @@ namespace GazeToolBar
         public int ScrollScalarValue { get; set; } 
 
        //Used to define bounds where no scrolling happens when a user is looking in this location
-        public noScollRect deadZoneRect;
+        public NoScollRect deadZoneRect;
 
        //Event stream used to capture data about where user is currently looking on screen.
         GazePointDataStream gazeStream;
