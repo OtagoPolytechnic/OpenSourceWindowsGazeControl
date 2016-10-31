@@ -105,7 +105,7 @@ namespace GazeToolBar
 
             //Start monitoring key presses.
             LowLevelKeyBoardHook.HookKeyboard();
-
+            Edge = AppBarEdges.Right;
             //TODO: Need to be replaced
 
             //if(Program.readSettings.position == "left")
