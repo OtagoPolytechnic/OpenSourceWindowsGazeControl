@@ -85,15 +85,15 @@ namespace GazeToolBar
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
             pnlGeneral.Size = ReletiveSize.panelGeneralSize();
             panelPrecision.Location = ReletiveSize.distribute(pnlGeneral, panelPrecision.Location.X, 1, 3, "h", 0);
-            pnlCancel.Location = ReletiveSize.distribute(pnlGeneral, pnlCancel.Location.X, 2, 3, "h", 0);
+            pnlFixationTimeOut.Location = ReletiveSize.distribute(pnlGeneral, pnlFixationTimeOut.Location.X, 2, 3, "h", 0);
             panelOther.Location = ReletiveSize.distribute(pnlGeneral, panelOther.Location.X, 3, 3, "h", 0);
 
             panelPrecision.Size = new Size(pnlGeneral.Size.Width, panelPrecision.Size.Height);
-            pnlCancel.Size = new Size(pnlGeneral.Size.Width, pnlCancel.Size.Height);
+            pnlFixationTimeOut.Size = new Size(pnlGeneral.Size.Width, pnlFixationTimeOut.Size.Height);
             panelOther.Size = new Size(pnlGeneral.Size.Width, panelOther.Size.Height);
 
             lblFixationDetectionTimeLength.Location = ReletiveSize.labelPosition(panelPrecision, lblFixationDetectionTimeLength);
-            lblSpeed.Location = ReletiveSize.labelPosition(pnlCancel, lblSpeed);
+            lblSpeed.Location = ReletiveSize.labelPosition(pnlFixationTimeOut, lblSpeed);
             lblOther.Location = ReletiveSize.labelPosition(panelOther, lblOther);
 
             pnlOtherAuto.Location = new Point(panelOther.Size.Width / 2, pnlOtherAuto.Location.Y);
