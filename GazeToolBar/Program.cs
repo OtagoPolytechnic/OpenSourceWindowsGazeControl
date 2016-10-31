@@ -35,15 +35,17 @@ namespace GazeToolBar
             if (!File.Exists(path))
             {
                 SettingJSON defaultSetting = new SettingJSON();
-                defaultSetting.language = "    English\r\n(United States)";
-                defaultSetting.position = "Right";
-                defaultSetting.precision = 0;
-                defaultSetting.selection = "GAZE";
-                defaultSetting.size = "SMALL";
-                defaultSetting.soundFeedback = false;
-                defaultSetting.speed = 0;
-                defaultSetting.typingSpeed = 0;
-                defaultSetting.wordPrediction = false;
+                //TODO: Need to be replaced
+
+                //defaultSetting.language = "    English\r\n(United States)";
+                //defaultSetting.position = "Right";
+                //defaultSetting.precision = 0;
+                //defaultSetting.selection = "GAZE";
+                //defaultSetting.size = "SMALL";
+                //defaultSetting.soundFeedback = false;
+                //defaultSetting.speed = 0;
+                //defaultSetting.typingSpeed = 0;
+                //defaultSetting.wordPrediction = false;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
             }
@@ -62,15 +64,17 @@ namespace GazeToolBar
             if (!File.Exists(path))
             {
                 SettingJSON defaultSetting = new SettingJSON();
-                defaultSetting.language = "    English\r\n(United States)";
-                defaultSetting.position = "Right";
-                defaultSetting.precision = 0;
-                defaultSetting.selection = "GAZE";
-                defaultSetting.size = "SMALL";
-                defaultSetting.soundFeedback = false;
-                defaultSetting.speed = 0;
-                defaultSetting.typingSpeed = 0;
-                defaultSetting.wordPrediction = false;
+                //TODO: Need to be replaced
+
+                //defaultSetting.language = "    English\r\n(United States)";
+                //defaultSetting.position = "Right";
+                //defaultSetting.precision = 0;
+                //defaultSetting.selection = "GAZE";
+                //defaultSetting.size = "SMALL";
+                //defaultSetting.soundFeedback = false;
+                //defaultSetting.speed = 0;
+                //defaultSetting.typingSpeed = 0;
+                //defaultSetting.wordPrediction = false;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
             }

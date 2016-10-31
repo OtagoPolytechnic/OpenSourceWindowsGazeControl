@@ -8,14 +8,10 @@ namespace GazeToolBar
 {
     public class SettingJSON
     {
-        public string selection { get; set; }
-        public int precision { get; set; }
-        public int speed { get; set; } 
-        public string position { get; set; }
-        public string language { get; set; }
-        public bool wordPrediction { get; set; }
-        public string size { get; set; }
-        public bool soundFeedback { get; set; }
-        public int typingSpeed { get; set; }
+        public float fixationTimeLength { get; set; }
+        public float fixationTimeOut { get; set; }
+        public int leftClick { get; set; }
+        public int rightClick { get; set; }
+        public int scoll { get; set; }
     }
 }
