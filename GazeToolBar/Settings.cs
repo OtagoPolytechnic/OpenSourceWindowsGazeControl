@@ -12,10 +12,7 @@ namespace GazeToolBar
     public partial class Settings : Form
     {
         private Form1 form1;
-        private bool OnTheRight;
         private bool[] onOff;
-        private GazeOrSwitch gazeOrSwitch;
-        private Sizes sizes;
         private bool pnlKeyboardIsShow;
         private bool pnlGeneralIsShow;
         private bool WaitForUserKeyPress;
@@ -47,7 +44,6 @@ namespace GazeToolBar
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             //End
-            OnTheRight = true;
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
             controlRelocateAndResize();
             //tabControlMain.Size = ReletiveSize.TabControlSize;

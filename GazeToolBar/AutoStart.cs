@@ -35,7 +35,7 @@ namespace GazeToolBar
                 MessageBox.Show("Please run as adminstrator", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
-        }  
+        }
 
         public static void SetOff()
         {

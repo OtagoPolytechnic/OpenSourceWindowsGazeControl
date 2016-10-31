@@ -54,7 +54,16 @@ namespace GazeToolBar
             bhavSettingMap.Add(pnlFKeyHighlight8, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlFKeyHighlight9, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlFKeyHighlight10, new GazeAwareBehavior(OnGazeChangeBTColour));
-            
+
+            bhavSettingMap.Add(pnlGeneralButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlKeysButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlFTLMins, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlFTLPlus, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlFTOMins, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlFTOPlus, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlAuto, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlSave, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlCancel, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
 
         //toggle border on and off on gaze to gaze to give feed back.
