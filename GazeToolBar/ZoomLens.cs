@@ -16,6 +16,7 @@ namespace GazeToolBar
     {
         const int ZOOMLEVEL = 3;// this is controls how far the lens will zoom in
         const int ZOOMLENS_SIZE = 500;//setting the width & height of the ZoomLens
+        const int EDGEOFFSET = 100;
         Graphics graphics;
         Graphics offScreenGraphics;
         Graphics mainCanvas;
@@ -46,7 +47,7 @@ namespace GazeToolBar
         }
         public Corner checkCorners(Point FixationPoint)
         {
-            int maxDistance = bmpScreenshot.Width;
+            int maxDistance = bmpScreenshot.Width + (int)(Screen.PrimaryScreen.Bounds.Height * 0.1);
             int screenWidth = Screen.FromControl(this).Bounds.Width;
             int screenHeight = Screen.FromControl(this).Bounds.Height;
 
@@ -69,19 +70,19 @@ namespace GazeToolBar
         public Edge checkEdge()
         {
             Edge edge = Edge.NoEdge;
-            if (this.DesktopLocation.Y < -100)//top
+            if (this.DesktopLocation.Y < -EDGEOFFSET)//top
             {
                 return Edge.Top;
             }
-            if (this.DesktopLocation.X < -100)//left
+            if (this.DesktopLocation.X < -EDGEOFFSET)//left
             {
                 return Edge.Left;
             }
-            if (this.DesktopLocation.Y + this.Height > Screen.PrimaryScreen.Bounds.Size.Height + 100)//bottom
+            if (this.DesktopLocation.Y + this.Height > Screen.PrimaryScreen.Bounds.Size.Height + EDGEOFFSET)//bottom
             {
                 return Edge.Bottom;
             }
-            if (this.DesktopLocation.X + this.Width > Screen.PrimaryScreen.Bounds.Size.Width + 100)//right
+            if (this.DesktopLocation.X + this.Width > Screen.PrimaryScreen.Bounds.Size.Width + EDGEOFFSET)//right
             {
                 return Edge.Right;
             }
