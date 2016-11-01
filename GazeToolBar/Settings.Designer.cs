@@ -169,6 +169,7 @@ namespace GazeToolBar
             // 
             // trackBarFixTimeLength
             // 
+            this.trackBarFixTimeLength.BackColor = System.Drawing.Color.Black;
             this.trackBarFixTimeLength.Location = new System.Drawing.Point(52, 9);
             this.trackBarFixTimeLength.Maximum = 8;
             this.trackBarFixTimeLength.Name = "trackBarFixTimeLength";
@@ -188,7 +189,7 @@ namespace GazeToolBar
             // 
             // pnlFixTimeLengthContent
             // 
-            this.pnlFixTimeLengthContent.BackColor = System.Drawing.Color.DimGray;
+            this.pnlFixTimeLengthContent.BackColor = System.Drawing.Color.Black;
             this.pnlFixTimeLengthContent.Controls.Add(this.pnlFTLPlus);
             this.pnlFixTimeLengthContent.Controls.Add(this.trackBarFixTimeLength);
             this.pnlFixTimeLengthContent.Controls.Add(this.pnlFTLMins);
@@ -279,7 +280,7 @@ namespace GazeToolBar
             // 
             // pnlFixTimeOutContent
             // 
-            this.pnlFixTimeOutContent.BackColor = System.Drawing.Color.DimGray;
+            this.pnlFixTimeOutContent.BackColor = System.Drawing.Color.Black;
             this.pnlFixTimeOutContent.Controls.Add(this.pnlFTOPlus);
             this.pnlFixTimeOutContent.Controls.Add(this.trackBarFixTimeOut);
             this.pnlFixTimeOutContent.Controls.Add(this.pnlFTOMins);

@@ -21,18 +21,6 @@ namespace GazeToolBar
 
         private List<Panel> fKeyPannels;
 
-        public enum GazeOrSwitch
-        {
-            GAZE,
-            SWITCH
-        }
-
-        public enum Sizes
-        {
-            SMALL,
-            LARGE
-        }
-
         public Settings(Form1 form1, FormsEyeXHost EyeXHost)
         {
             eyeXHost = EyeXHost;
@@ -109,12 +97,12 @@ namespace GazeToolBar
             pnlFixTimeLengthContent.Size = ReletiveSize.controlLength(panelPrecision, pnlFixTimeLengthContent.Size.Height, 0.8);
             pnlFixTimeOutContent.Size = pnlFixTimeLengthContent.Size;
 
-            double percentage = (double)(pnlFixTimeLengthContent.Size.Width - 138) / (double)pnlFixTimeLengthContent.Size.Width;
+            double percentage = (double)(pnlFixTimeLengthContent.Size.Width - 110) / (double)pnlFixTimeLengthContent.Size.Width;
             trackBarFixTimeLength.Size = ReletiveSize.controlLength(pnlFixTimeLengthContent, trackBarFixTimeLength.Size.Height, percentage);
             trackBarFixTimeOut.Size = trackBarFixTimeLength.Size;
 
-            //btnFixTimeLengthPlus.Location = ReletiveSize.reletiveLocation(trackBarFixTimeLength, btnFixTimeLengthPlus.Location.Y, 7, 'v');
-            //btnFixTimeOutPlus.Location = new Point(btnFixTimeLengthPlus.Location.X, btnFixTimeOutPlus.Location.Y);
+            pnlFTLPlus.Location = ReletiveSize.reletiveLocation(trackBarFixTimeLength, pnlFTLPlus.Location.Y, 7, 'v');
+            pnlFTOPlus.Location = new Point(pnlFTLPlus.Location.X, pnlFTOPlus.Location.Y);
         }
 
         //private void btnChangeSide_Click(object sender, EventArgs e)
