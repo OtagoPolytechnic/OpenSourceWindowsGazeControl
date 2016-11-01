@@ -67,6 +67,16 @@ namespace OptiKey.UI.Windows
         public ICommand ManagementWindowRequestCommand { get { return managementWindowRequestCommand; } }
         public ICommand QuitCommand { get { return quitCommand; } }
 
+        public void InputPause()
+        {
+            inputService.RequestSuspend();
+        }
+
+        public void InputResume()
+        {
+            inputService.RequestResume();
+        }
+
         private void RequestManagementWindow()
         {
             var modalManagementWindow = WindowManipulationService != null &&
