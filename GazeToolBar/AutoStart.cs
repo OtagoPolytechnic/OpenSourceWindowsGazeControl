@@ -27,12 +27,12 @@ namespace GazeToolBar
             {
                 f.Assert();
                 rkApp.SetValue("GazeToolBar", Application.ExecutablePath.ToString());
-                MessageBox.Show("Sussess", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Sussess", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return true;
             }
             catch (UnauthorizedAccessException)
             {
-                MessageBox.Show("Please run as adminstrator", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Please run as adminstrator", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return false;
             }
         }
@@ -40,7 +40,7 @@ namespace GazeToolBar
         public static void SetOff()
         {
             rkApp.DeleteValue("GazeToolBar", false);
-            MessageBox.Show("Sussess", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("Sussess", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public static bool IsOn()

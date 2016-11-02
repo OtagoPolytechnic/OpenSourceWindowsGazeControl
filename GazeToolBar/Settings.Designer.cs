@@ -897,7 +897,7 @@ namespace GazeToolBar
             // pnlGeneralButton
             // 
             this.pnlGeneralButton.Controls.Add(this.btnGeneralSetting);
-            this.pnlGeneralButton.Location = new System.Drawing.Point(370, 2);
+            this.pnlGeneralButton.Location = new System.Drawing.Point(2, 2);
             this.pnlGeneralButton.Margin = new System.Windows.Forms.Padding(2);
             this.pnlGeneralButton.Name = "pnlGeneralButton";
             this.pnlGeneralButton.Size = new System.Drawing.Size(151, 52);
@@ -906,7 +906,7 @@ namespace GazeToolBar
             // pnlKeysButton
             // 
             this.pnlKeysButton.Controls.Add(this.btnShortCutKeySetting);
-            this.pnlKeysButton.Location = new System.Drawing.Point(2, 2);
+            this.pnlKeysButton.Location = new System.Drawing.Point(370, 2);
             this.pnlKeysButton.Margin = new System.Windows.Forms.Padding(2);
             this.pnlKeysButton.Name = "pnlKeysButton";
             this.pnlKeysButton.Size = new System.Drawing.Size(151, 52);
