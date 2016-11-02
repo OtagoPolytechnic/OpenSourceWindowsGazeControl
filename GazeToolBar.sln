@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GazeToolBar", "GazeToolBar\GazeToolBar.csproj", "{21A92735-DEFF-4DFF-A550-D974DCDDC484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EyeXFramework", "EyeXFramework\EyeXFramework.csproj", "{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptiKey", "OptiKey\OptiKey.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 EndProject
 Global
@@ -31,18 +29,6 @@ Global
 		{21A92735-DEFF-4DFF-A550-D974DCDDC484}.Release|x64.Build.0 = Release|Any CPU
 		{21A92735-DEFF-4DFF-A550-D974DCDDC484}.Release|x86.ActiveCfg = Release|Any CPU
 		{21A92735-DEFF-4DFF-A550-D974DCDDC484}.Release|x86.Build.0 = Release|Any CPU
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Debug|x64.ActiveCfg = Debug|x64
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Debug|x64.Build.0 = Debug|x64
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Debug|x86.ActiveCfg = Debug|x86
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Debug|x86.Build.0 = Debug|x86
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x64.ActiveCfg = Release|x64
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x64.Build.0 = Release|x64
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x86.ActiveCfg = Release|x86
-		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x86.Build.0 = Release|x86
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -50,6 +36,7 @@ Global
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|x64.ActiveCfg = Release|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|x64.Build.0 = Release|Any CPU
 		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
