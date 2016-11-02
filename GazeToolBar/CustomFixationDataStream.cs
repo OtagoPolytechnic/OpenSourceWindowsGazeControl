@@ -27,7 +27,7 @@ namespace GazeToolBar
         int bufferFullIndex = 0;
 
         //Fixation variance threshold
-        double xFixationThreashold = .7;
+        double xFixationThreashold = .9;
         double yFixationThreashold = .7;
 
         //ring buffer arrays.
