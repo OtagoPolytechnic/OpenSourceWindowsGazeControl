@@ -448,31 +448,36 @@ namespace OptiKey.Services
 
         public void RequestResume()
         {
-            Log.InfoFormat("RequestResume received. SuspendRequestCount={0} before it is decremented.", suspendRequestCount);
-            lock (suspendRequestLock)
-            {
-                suspendRequestCount--;
-                if (suspendRequestCount == 0)
-                {
-                    if (keySelectionTriggerSource != null)
-                    {
-                        keySelectionTriggerSource.State = RunningStates.Running;
-                    }
-                    if (pointSelectionTriggerSource != null)
-                    {
-                        pointSelectionTriggerSource.State = RunningStates.Running;
-                    }
-                    if (pointSource != null)
-                    {
-                        pointSource.State = RunningStates.Running;
-                    }
-                }
-            }
+            //Log.InfoFormat("RequestResume received. SuspendRequestCount={0} before it is decremented.", suspendRequestCount);
 
-            if (suspendRequestCount < 0)
-            {
-                Log.WarnFormat("InputService suspend request counter is below zero. Current value:{0}", suspendRequestCount);
-            }
+            keySelectionTriggerSource.State = RunningStates.Running;
+            pointSelectionTriggerSource.State = RunningStates.Running;
+            pointSource.State = RunningStates.Running;
+
+            //lock (suspendRequestLock)
+            //{
+            //    suspendRequestCount--;
+            //    if (suspendRequestCount == 0)
+            //    {
+            //        if (keySelectionTriggerSource != null)
+            //        {
+            //            keySelectionTriggerSource.State = RunningStates.Running;
+            //        }
+            //        if (pointSelectionTriggerSource != null)
+            //        {
+            //            pointSelectionTriggerSource.State = RunningStates.Running;
+            //        }
+            //        if (pointSource != null)
+            //        {
+            //            pointSource.State = RunningStates.Running;
+            //        }
+            //    }
+            //}
+
+            //if (suspendRequestCount < 0)
+            //{
+            //    Log.WarnFormat("InputService suspend request counter is below zero. Current value:{0}", suspendRequestCount);
+            //}
         }
 
         #endregion

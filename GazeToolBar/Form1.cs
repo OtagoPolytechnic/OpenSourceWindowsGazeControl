@@ -65,6 +65,7 @@ namespace GazeToolBar
 
             keyboardInitializer = new OptiKey.GazeKeyboard();
             keyboard = keyboardInitializer.CreateKeyboard();
+            keyboard.ShowInTaskbar = false;
 
             connectBehaveMap();
         }
@@ -89,6 +90,7 @@ namespace GazeToolBar
 
         private void menuItemExit_Click(object sender, EventArgs e)
         {
+            keyboard.Close();
             Close();
         }
 
@@ -112,15 +114,17 @@ namespace GazeToolBar
 
             //Start monitoring key presses.
             LowLevelKeyBoardHook.HookKeyboard();
+            Edge = AppBarEdges.Right;
+            //TODO: Need to be replaced
 
-            if(Program.readSettings.position == "left")
-            {
-                Edge = AppBarEdges.Left;
-            }
-            else
-            {
-                Edge = AppBarEdges.Right;
-            }
+            //if(Program.readSettings.position == "left")
+            //{
+            //    Edge = AppBarEdges.Left;
+            //}
+            //else
+            //{
+            //    Edge = AppBarEdges.Right;
+            //}
             stateManager = new StateManager(this, shortCutKeyWorker, eyeXHost);
             timer2.Enabled = true;
 
@@ -155,17 +159,18 @@ namespace GazeToolBar
 
         private void btnKeyboard_Click(object sender, EventArgs e)
         {
-
-            //Console.WriteLine("optikey button");
-
             if (keyboard.IsVisible)
             {
                 keyboard.Hide();
+                keyboard.IsEnabled = false;
+                keyboard.InputPause();
             }
             else
             {
                 keyboard.Show();
-            }                 
+                keyboard.IsEnabled = true;
+                keyboard.InputResume();
+            }                  
         }
 
         private void btnScoll_Click(object sender, EventArgs e)
