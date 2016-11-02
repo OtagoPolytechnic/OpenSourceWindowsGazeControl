@@ -1875,13 +1875,6 @@
             </remarks>
             <param name="event_">Event to be handled.</param>
         </member>
-        <member name="M:EyeXFramework.Wpf.WpfInteractor.Clear">
-            <summary>
-            The Clear method should be called when the WpfInteractor no longer
-            qualifies as an interactor because of missing data, references or
-            an empty list of behaviors.
-            </summary>
-        </member>
         <member name="M:EyeXFramework.Wpf.WpfInteractor.NotifyIfInteractorStatusChanged(System.Boolean)">
             <summary>
             The WpfInteractor status as an interactor changes when
