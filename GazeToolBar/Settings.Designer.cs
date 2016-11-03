@@ -151,7 +151,7 @@ namespace GazeToolBar
             this.btnAutoStart.ForeColor = System.Drawing.Color.White;
             this.btnAutoStart.Location = new System.Drawing.Point(2, 2);
             this.btnAutoStart.Name = "btnAutoStart";
-            this.btnAutoStart.Size = new System.Drawing.Size(55, 55);
+            this.btnAutoStart.Size = new System.Drawing.Size(55, 51);
             this.btnAutoStart.TabIndex = 4;
             this.btnAutoStart.UseVisualStyleBackColor = false;
             this.btnAutoStart.Click += new System.EventHandler(this.btnAutoStart_Click);
@@ -161,7 +161,7 @@ namespace GazeToolBar
             this.lblFixationDetectionTimeLength.AutoSize = true;
             this.lblFixationDetectionTimeLength.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblFixationDetectionTimeLength.ForeColor = System.Drawing.Color.White;
-            this.lblFixationDetectionTimeLength.Location = new System.Drawing.Point(14, 33);
+            this.lblFixationDetectionTimeLength.Location = new System.Drawing.Point(14, 30);
             this.lblFixationDetectionTimeLength.Name = "lblFixationDetectionTimeLength";
             this.lblFixationDetectionTimeLength.Size = new System.Drawing.Size(96, 32);
             this.lblFixationDetectionTimeLength.TabIndex = 11;
@@ -170,21 +170,24 @@ namespace GazeToolBar
             // trackBarFixTimeLength
             // 
             this.trackBarFixTimeLength.BackColor = System.Drawing.Color.Black;
-            this.trackBarFixTimeLength.Location = new System.Drawing.Point(52, 9);
-            this.trackBarFixTimeLength.Maximum = 8;
+            this.trackBarFixTimeLength.Location = new System.Drawing.Point(52, 8);
+            this.trackBarFixTimeLength.Maximum = 11;
+            this.trackBarFixTimeLength.Minimum = 1;
             this.trackBarFixTimeLength.Name = "trackBarFixTimeLength";
             this.trackBarFixTimeLength.Size = new System.Drawing.Size(896, 45);
             this.trackBarFixTimeLength.TabIndex = 12;
             this.trackBarFixTimeLength.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarFixTimeLength.Value = 6;
+            this.trackBarFixTimeLength.ValueChanged += new System.EventHandler(this.trackBarFixTimeLength_ValueChanged);
             // 
             // panelPrecision
             // 
             this.panelPrecision.BackColor = System.Drawing.Color.Black;
             this.panelPrecision.Controls.Add(this.pnlFixTimeLengthContent);
             this.panelPrecision.Controls.Add(this.lblFixationDetectionTimeLength);
-            this.panelPrecision.Location = new System.Drawing.Point(0, 167);
+            this.panelPrecision.Location = new System.Drawing.Point(0, 154);
             this.panelPrecision.Name = "panelPrecision";
-            this.panelPrecision.Size = new System.Drawing.Size(1243, 115);
+            this.panelPrecision.Size = new System.Drawing.Size(1243, 106);
             this.panelPrecision.TabIndex = 13;
             // 
             // pnlFixTimeLengthContent
@@ -193,19 +196,19 @@ namespace GazeToolBar
             this.pnlFixTimeLengthContent.Controls.Add(this.pnlFTLPlus);
             this.pnlFixTimeLengthContent.Controls.Add(this.trackBarFixTimeLength);
             this.pnlFixTimeLengthContent.Controls.Add(this.pnlFTLMins);
-            this.pnlFixTimeLengthContent.Location = new System.Drawing.Point(172, 20);
+            this.pnlFixTimeLengthContent.Location = new System.Drawing.Point(172, 18);
             this.pnlFixTimeLengthContent.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFixTimeLengthContent.Name = "pnlFixTimeLengthContent";
-            this.pnlFixTimeLengthContent.Size = new System.Drawing.Size(1000, 72);
+            this.pnlFixTimeLengthContent.Size = new System.Drawing.Size(1000, 66);
             this.pnlFixTimeLengthContent.TabIndex = 22;
             // 
             // pnlFTLPlus
             // 
             this.pnlFTLPlus.Controls.Add(this.btnFixTimeLengthPlus);
-            this.pnlFTLPlus.Location = new System.Drawing.Point(953, 9);
+            this.pnlFTLPlus.Location = new System.Drawing.Point(953, 8);
             this.pnlFTLPlus.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFTLPlus.Name = "pnlFTLPlus";
-            this.pnlFTLPlus.Size = new System.Drawing.Size(45, 45);
+            this.pnlFTLPlus.Size = new System.Drawing.Size(45, 42);
             this.pnlFTLPlus.TabIndex = 23;
             // 
             // btnFixTimeLengthPlus
@@ -217,7 +220,7 @@ namespace GazeToolBar
             this.btnFixTimeLengthPlus.Location = new System.Drawing.Point(2, 2);
             this.btnFixTimeLengthPlus.Margin = new System.Windows.Forms.Padding(2);
             this.btnFixTimeLengthPlus.Name = "btnFixTimeLengthPlus";
-            this.btnFixTimeLengthPlus.Size = new System.Drawing.Size(41, 41);
+            this.btnFixTimeLengthPlus.Size = new System.Drawing.Size(41, 38);
             this.btnFixTimeLengthPlus.TabIndex = 13;
             this.btnFixTimeLengthPlus.Text = "+";
             this.btnFixTimeLengthPlus.UseVisualStyleBackColor = false;
@@ -226,10 +229,10 @@ namespace GazeToolBar
             // pnlFTLMins
             // 
             this.pnlFTLMins.Controls.Add(this.btnFixTimeLengthMins);
-            this.pnlFTLMins.Location = new System.Drawing.Point(2, 9);
+            this.pnlFTLMins.Location = new System.Drawing.Point(2, 8);
             this.pnlFTLMins.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFTLMins.Name = "pnlFTLMins";
-            this.pnlFTLMins.Size = new System.Drawing.Size(45, 45);
+            this.pnlFTLMins.Size = new System.Drawing.Size(45, 42);
             this.pnlFTLMins.TabIndex = 22;
             // 
             // btnFixTimeLengthMins
@@ -241,7 +244,7 @@ namespace GazeToolBar
             this.btnFixTimeLengthMins.Location = new System.Drawing.Point(2, 2);
             this.btnFixTimeLengthMins.Margin = new System.Windows.Forms.Padding(2);
             this.btnFixTimeLengthMins.Name = "btnFixTimeLengthMins";
-            this.btnFixTimeLengthMins.Size = new System.Drawing.Size(41, 41);
+            this.btnFixTimeLengthMins.Size = new System.Drawing.Size(41, 38);
             this.btnFixTimeLengthMins.TabIndex = 14;
             this.btnFixTimeLengthMins.Text = "-";
             this.btnFixTimeLengthMins.UseVisualStyleBackColor = false;
@@ -252,7 +255,7 @@ namespace GazeToolBar
             this.lblSpeed.AutoSize = true;
             this.lblSpeed.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblSpeed.ForeColor = System.Drawing.Color.White;
-            this.lblSpeed.Location = new System.Drawing.Point(14, 31);
+            this.lblSpeed.Location = new System.Drawing.Point(14, 29);
             this.lblSpeed.Name = "lblSpeed";
             this.lblSpeed.Size = new System.Drawing.Size(80, 32);
             this.lblSpeed.TabIndex = 14;
@@ -260,22 +263,25 @@ namespace GazeToolBar
             // 
             // trackBarFixTimeOut
             // 
-            this.trackBarFixTimeOut.Location = new System.Drawing.Point(52, 13);
-            this.trackBarFixTimeOut.Maximum = 8;
+            this.trackBarFixTimeOut.Location = new System.Drawing.Point(52, 12);
+            this.trackBarFixTimeOut.Maximum = 11;
+            this.trackBarFixTimeOut.Minimum = 1;
             this.trackBarFixTimeOut.Name = "trackBarFixTimeOut";
             this.trackBarFixTimeOut.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarFixTimeOut.Size = new System.Drawing.Size(894, 45);
             this.trackBarFixTimeOut.TabIndex = 15;
             this.trackBarFixTimeOut.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarFixTimeOut.Value = 6;
+            this.trackBarFixTimeOut.ValueChanged += new System.EventHandler(this.trackBarFixTimeOut_ValueChanged);
             // 
             // pnlFixationTimeOut
             // 
             this.pnlFixationTimeOut.BackColor = System.Drawing.Color.Black;
             this.pnlFixationTimeOut.Controls.Add(this.pnlFixTimeOutContent);
             this.pnlFixationTimeOut.Controls.Add(this.lblSpeed);
-            this.pnlFixationTimeOut.Location = new System.Drawing.Point(0, 300);
+            this.pnlFixationTimeOut.Location = new System.Drawing.Point(0, 277);
             this.pnlFixationTimeOut.Name = "pnlFixationTimeOut";
-            this.pnlFixationTimeOut.Size = new System.Drawing.Size(1243, 118);
+            this.pnlFixationTimeOut.Size = new System.Drawing.Size(1243, 109);
             this.pnlFixationTimeOut.TabIndex = 16;
             // 
             // pnlFixTimeOutContent
@@ -284,19 +290,19 @@ namespace GazeToolBar
             this.pnlFixTimeOutContent.Controls.Add(this.pnlFTOPlus);
             this.pnlFixTimeOutContent.Controls.Add(this.trackBarFixTimeOut);
             this.pnlFixTimeOutContent.Controls.Add(this.pnlFTOMins);
-            this.pnlFixTimeOutContent.Location = new System.Drawing.Point(174, 18);
+            this.pnlFixTimeOutContent.Location = new System.Drawing.Point(174, 17);
             this.pnlFixTimeOutContent.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFixTimeOutContent.Name = "pnlFixTimeOutContent";
-            this.pnlFixTimeOutContent.Size = new System.Drawing.Size(1000, 72);
+            this.pnlFixTimeOutContent.Size = new System.Drawing.Size(1000, 66);
             this.pnlFixTimeOutContent.TabIndex = 22;
             // 
             // pnlFTOPlus
             // 
             this.pnlFTOPlus.Controls.Add(this.btnFixTimeOutPlus);
-            this.pnlFTOPlus.Location = new System.Drawing.Point(951, 13);
+            this.pnlFTOPlus.Location = new System.Drawing.Point(951, 12);
             this.pnlFTOPlus.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFTOPlus.Name = "pnlFTOPlus";
-            this.pnlFTOPlus.Size = new System.Drawing.Size(45, 45);
+            this.pnlFTOPlus.Size = new System.Drawing.Size(45, 42);
             this.pnlFTOPlus.TabIndex = 23;
             // 
             // btnFixTimeOutPlus
@@ -308,7 +314,7 @@ namespace GazeToolBar
             this.btnFixTimeOutPlus.Location = new System.Drawing.Point(2, 2);
             this.btnFixTimeOutPlus.Margin = new System.Windows.Forms.Padding(2);
             this.btnFixTimeOutPlus.Name = "btnFixTimeOutPlus";
-            this.btnFixTimeOutPlus.Size = new System.Drawing.Size(41, 41);
+            this.btnFixTimeOutPlus.Size = new System.Drawing.Size(41, 38);
             this.btnFixTimeOutPlus.TabIndex = 16;
             this.btnFixTimeOutPlus.Text = "+";
             this.btnFixTimeOutPlus.UseVisualStyleBackColor = false;
@@ -317,10 +323,10 @@ namespace GazeToolBar
             // pnlFTOMins
             // 
             this.pnlFTOMins.Controls.Add(this.btnFixTimeOutMins);
-            this.pnlFTOMins.Location = new System.Drawing.Point(2, 13);
+            this.pnlFTOMins.Location = new System.Drawing.Point(2, 12);
             this.pnlFTOMins.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFTOMins.Name = "pnlFTOMins";
-            this.pnlFTOMins.Size = new System.Drawing.Size(45, 45);
+            this.pnlFTOMins.Size = new System.Drawing.Size(45, 42);
             this.pnlFTOMins.TabIndex = 22;
             // 
             // btnFixTimeOutMins
@@ -332,7 +338,7 @@ namespace GazeToolBar
             this.btnFixTimeOutMins.Location = new System.Drawing.Point(2, 2);
             this.btnFixTimeOutMins.Margin = new System.Windows.Forms.Padding(2);
             this.btnFixTimeOutMins.Name = "btnFixTimeOutMins";
-            this.btnFixTimeOutMins.Size = new System.Drawing.Size(41, 41);
+            this.btnFixTimeOutMins.Size = new System.Drawing.Size(41, 38);
             this.btnFixTimeOutMins.TabIndex = 17;
             this.btnFixTimeOutMins.Text = "-";
             this.btnFixTimeOutMins.UseVisualStyleBackColor = false;
@@ -343,7 +349,7 @@ namespace GazeToolBar
             this.lblOther.AutoSize = true;
             this.lblOther.Font = new System.Drawing.Font("SimSun", 12F);
             this.lblOther.ForeColor = System.Drawing.Color.White;
-            this.lblOther.Location = new System.Drawing.Point(19, 78);
+            this.lblOther.Location = new System.Drawing.Point(19, 72);
             this.lblOther.Name = "lblOther";
             this.lblOther.Size = new System.Drawing.Size(48, 16);
             this.lblOther.TabIndex = 17;
@@ -354,7 +360,7 @@ namespace GazeToolBar
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("SimSun", 12F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(19, 12);
+            this.label2.Location = new System.Drawing.Point(19, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 16);
             this.label2.TabIndex = 19;
@@ -365,9 +371,9 @@ namespace GazeToolBar
             this.panelOther.BackColor = System.Drawing.Color.Black;
             this.panelOther.Controls.Add(this.pnlOtherAuto);
             this.panelOther.Controls.Add(this.lblOther);
-            this.panelOther.Location = new System.Drawing.Point(0, 440);
+            this.panelOther.Location = new System.Drawing.Point(0, 406);
             this.panelOther.Name = "panelOther";
-            this.panelOther.Size = new System.Drawing.Size(1243, 192);
+            this.panelOther.Size = new System.Drawing.Size(1243, 177);
             this.panelOther.TabIndex = 21;
             // 
             // pnlOtherAuto
@@ -375,19 +381,19 @@ namespace GazeToolBar
             this.pnlOtherAuto.BackColor = System.Drawing.Color.Black;
             this.pnlOtherAuto.Controls.Add(this.pnlAuto);
             this.pnlOtherAuto.Controls.Add(this.label2);
-            this.pnlOtherAuto.Location = new System.Drawing.Point(765, 9);
+            this.pnlOtherAuto.Location = new System.Drawing.Point(765, 8);
             this.pnlOtherAuto.Margin = new System.Windows.Forms.Padding(2);
             this.pnlOtherAuto.Name = "pnlOtherAuto";
-            this.pnlOtherAuto.Size = new System.Drawing.Size(204, 178);
+            this.pnlOtherAuto.Size = new System.Drawing.Size(204, 164);
             this.pnlOtherAuto.TabIndex = 22;
             // 
             // pnlAuto
             // 
             this.pnlAuto.Controls.Add(this.btnAutoStart);
-            this.pnlAuto.Location = new System.Drawing.Point(31, 69);
+            this.pnlAuto.Location = new System.Drawing.Point(31, 64);
             this.pnlAuto.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAuto.Name = "pnlAuto";
-            this.pnlAuto.Size = new System.Drawing.Size(59, 59);
+            this.pnlAuto.Size = new System.Drawing.Size(59, 54);
             this.pnlAuto.TabIndex = 23;
             // 
             // btnSave
@@ -399,7 +405,7 @@ namespace GazeToolBar
             this.btnSave.Location = new System.Drawing.Point(2, 2);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(131, 40);
+            this.btnSave.Size = new System.Drawing.Size(131, 37);
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -414,7 +420,7 @@ namespace GazeToolBar
             this.btnCancel.Location = new System.Drawing.Point(2, 2);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(131, 40);
+            this.btnCancel.Size = new System.Drawing.Size(131, 37);
             this.btnCancel.TabIndex = 24;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -424,28 +430,28 @@ namespace GazeToolBar
             // 
             this.panelSaveAndCancel.Controls.Add(this.pnlCancel);
             this.panelSaveAndCancel.Controls.Add(this.pnlSave);
-            this.panelSaveAndCancel.Location = new System.Drawing.Point(309, 638);
+            this.panelSaveAndCancel.Location = new System.Drawing.Point(309, 589);
             this.panelSaveAndCancel.Margin = new System.Windows.Forms.Padding(2);
             this.panelSaveAndCancel.Name = "panelSaveAndCancel";
-            this.panelSaveAndCancel.Size = new System.Drawing.Size(364, 72);
+            this.panelSaveAndCancel.Size = new System.Drawing.Size(364, 66);
             this.panelSaveAndCancel.TabIndex = 25;
             // 
             // pnlCancel
             // 
             this.pnlCancel.Controls.Add(this.btnCancel);
-            this.pnlCancel.Location = new System.Drawing.Point(215, 17);
+            this.pnlCancel.Location = new System.Drawing.Point(215, 16);
             this.pnlCancel.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCancel.Name = "pnlCancel";
-            this.pnlCancel.Size = new System.Drawing.Size(135, 44);
+            this.pnlCancel.Size = new System.Drawing.Size(135, 41);
             this.pnlCancel.TabIndex = 22;
             // 
             // pnlSave
             // 
             this.pnlSave.Controls.Add(this.btnSave);
-            this.pnlSave.Location = new System.Drawing.Point(11, 17);
+            this.pnlSave.Location = new System.Drawing.Point(11, 16);
             this.pnlSave.Margin = new System.Windows.Forms.Padding(2);
             this.pnlSave.Name = "pnlSave";
-            this.pnlSave.Size = new System.Drawing.Size(135, 44);
+            this.pnlSave.Size = new System.Drawing.Size(135, 41);
             this.pnlSave.TabIndex = 22;
             // 
             // pnlPageKeyboard
@@ -456,10 +462,10 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Controls.Add(this.pnlDoubleClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlScroll);
             this.pnlPageKeyboard.Controls.Add(this.pnlLeftClick);
-            this.pnlPageKeyboard.Location = new System.Drawing.Point(0, 61);
+            this.pnlPageKeyboard.Location = new System.Drawing.Point(0, 56);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
-            this.pnlPageKeyboard.Size = new System.Drawing.Size(1267, 425);
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(1267, 392);
             this.pnlPageKeyboard.TabIndex = 26;
             // 
             // lbFKeyFeedback
@@ -467,7 +473,7 @@ namespace GazeToolBar
             this.lbFKeyFeedback.AutoSize = true;
             this.lbFKeyFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFKeyFeedback.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbFKeyFeedback.Location = new System.Drawing.Point(454, 365);
+            this.lbFKeyFeedback.Location = new System.Drawing.Point(454, 337);
             this.lbFKeyFeedback.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbFKeyFeedback.Name = "lbFKeyFeedback";
             this.lbFKeyFeedback.Size = new System.Drawing.Size(60, 24);
@@ -480,10 +486,10 @@ namespace GazeToolBar
             this.pnlRightClick.Controls.Add(this.pictureBox2);
             this.pnlRightClick.Controls.Add(this.pnlFKeyHighlight3);
             this.pnlRightClick.Controls.Add(this.pnlFKeyHighlight4);
-            this.pnlRightClick.Location = new System.Drawing.Point(241, 82);
+            this.pnlRightClick.Location = new System.Drawing.Point(241, 76);
             this.pnlRightClick.Margin = new System.Windows.Forms.Padding(2);
             this.pnlRightClick.Name = "pnlRightClick";
-            this.pnlRightClick.Size = new System.Drawing.Size(148, 253);
+            this.pnlRightClick.Size = new System.Drawing.Size(148, 234);
             this.pnlRightClick.TabIndex = 4;
             // 
             // lbRight
@@ -491,7 +497,7 @@ namespace GazeToolBar
             this.lbRight.AutoSize = true;
             this.lbRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRight.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbRight.Location = new System.Drawing.Point(13, 230);
+            this.lbRight.Location = new System.Drawing.Point(13, 212);
             this.lbRight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbRight.Name = "lbRight";
             this.lbRight.Size = new System.Drawing.Size(60, 24);
@@ -501,10 +507,10 @@ namespace GazeToolBar
             // pictureBox2
             // 
             this.pictureBox2.Image = global::GazeToolBar.Properties.Resources.Right_Click_icon;
-            this.pictureBox2.Location = new System.Drawing.Point(13, 22);
+            this.pictureBox2.Location = new System.Drawing.Point(13, 20);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(114, 77);
+            this.pictureBox2.Size = new System.Drawing.Size(114, 71);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -512,10 +518,10 @@ namespace GazeToolBar
             // pnlFKeyHighlight3
             // 
             this.pnlFKeyHighlight3.Controls.Add(this.btFKeyRightClick);
-            this.pnlFKeyHighlight3.Location = new System.Drawing.Point(13, 105);
+            this.pnlFKeyHighlight3.Location = new System.Drawing.Point(13, 97);
             this.pnlFKeyHighlight3.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFKeyHighlight3.Name = "pnlFKeyHighlight3";
-            this.pnlFKeyHighlight3.Size = new System.Drawing.Size(116, 51);
+            this.pnlFKeyHighlight3.Size = new System.Drawing.Size(116, 47);
             this.pnlFKeyHighlight3.TabIndex = 6;
             // 
             // btFKeyRightClick
@@ -526,7 +532,7 @@ namespace GazeToolBar
             this.btFKeyRightClick.Location = new System.Drawing.Point(2, 3);
             this.btFKeyRightClick.Margin = new System.Windows.Forms.Padding(2);
             this.btFKeyRightClick.Name = "btFKeyRightClick";
-            this.btFKeyRightClick.Size = new System.Drawing.Size(112, 45);
+            this.btFKeyRightClick.Size = new System.Drawing.Size(112, 42);
             this.btFKeyRightClick.TabIndex = 1;
             this.btFKeyRightClick.Text = "Set";
             this.btFKeyRightClick.UseVisualStyleBackColor = true;
@@ -535,10 +541,10 @@ namespace GazeToolBar
             // pnlFKeyHighlight4
             // 
             this.pnlFKeyHighlight4.Controls.Add(this.btClearFKeyRightClick);
-            this.pnlFKeyHighlight4.Location = new System.Drawing.Point(13, 165);
+            this.pnlFKeyHighlight4.Location = new System.Drawing.Point(13, 152);
             this.pnlFKeyHighlight4.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFKeyHighlight4.Name = "pnlFKeyHighlight4";
-            this.pnlFKeyHighlight4.Size = new System.Drawing.Size(116, 51);
+            this.pnlFKeyHighlight4.Size = new System.Drawing.Size(116, 47);
             this.pnlFKeyHighlight4.TabIndex = 7;
             // 
             // btClearFKeyRightClick
@@ -549,7 +555,7 @@ namespace GazeToolBar
             this.btClearFKeyRightClick.Location = new System.Drawing.Point(2, 2);
             this.btClearFKeyRightClick.Margin = new System.Windows.Forms.Padding(2);
             this.btClearFKeyRightClick.Name = "btClearFKeyRightClick";
-            this.btClearFKeyRightClick.Size = new System.Drawing.Size(112, 45);
+            this.btClearFKeyRightClick.Size = new System.Drawing.Size(112, 42);
             this.btClearFKeyRightClick.TabIndex = 2;
             this.btClearFKeyRightClick.Text = "Clear";
             this.btClearFKeyRightClick.UseVisualStyleBackColor = true;
@@ -561,10 +567,10 @@ namespace GazeToolBar
             this.pnlDoubleClick.Controls.Add(this.pictureBox3);
             this.pnlDoubleClick.Controls.Add(this.pnlFKeyHighlight5);
             this.pnlDoubleClick.Controls.Add(this.pnlFKeyHighlight6);
-            this.pnlDoubleClick.Location = new System.Drawing.Point(393, 82);
+            this.pnlDoubleClick.Location = new System.Drawing.Point(393, 76);
             this.pnlDoubleClick.Margin = new System.Windows.Forms.Padding(2);
             this.pnlDoubleClick.Name = "pnlDoubleClick";
-            this.pnlDoubleClick.Size = new System.Drawing.Size(148, 253);
+            this.pnlDoubleClick.Size = new System.Drawing.Size(148, 234);
             this.pnlDoubleClick.TabIndex = 4;
             // 
             // lbDouble
@@ -572,7 +578,7 @@ namespace GazeToolBar
             this.lbDouble.AutoSize = true;
             this.lbDouble.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDouble.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbDouble.Location = new System.Drawing.Point(15, 230);
+            this.lbDouble.Location = new System.Drawing.Point(15, 212);
             this.lbDouble.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDouble.Name = "lbDouble";
             this.lbDouble.Size = new System.Drawing.Size(60, 24);
@@ -582,10 +588,10 @@ namespace GazeToolBar
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(16, 22);
+            this.pictureBox3.Location = new System.Drawing.Point(16, 20);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(114, 77);
+            this.pictureBox3.Size = new System.Drawing.Size(114, 71);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 0;
             this.pictureBox3.TabStop = false;
@@ -593,10 +599,10 @@ namespace GazeToolBar
             // pnlFKeyHighlight5
             // 
             this.pnlFKeyHighlight5.Controls.Add(this.btFKeyDoubleClick);
-            this.pnlFKeyHighlight5.Location = new System.Drawing.Point(16, 108);
+            this.pnlFKeyHighlight5.Location = new System.Drawing.Point(16, 100);
             this.pnlFKeyHighlight5.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFKeyHighlight5.Name = "pnlFKeyHighlight5";
-            this.pnlFKeyHighlight5.Size = new System.Drawing.Size(116, 51);
+            this.pnlFKeyHighlight5.Size = new System.Drawing.Size(116, 47);
             this.pnlFKeyHighlight5.TabIndex = 8;
             // 
             // btFKeyDoubleClick
@@ -607,7 +613,7 @@ namespace GazeToolBar
             this.btFKeyDoubleClick.Location = new System.Drawing.Point(2, 2);
             this.btFKeyDoubleClick.Margin = new System.Windows.Forms.Padding(2);
             this.btFKeyDoubleClick.Name = "btFKeyDoubleClick";
-            this.btFKeyDoubleClick.Size = new System.Drawing.Size(112, 45);
+            this.btFKeyDoubleClick.Size = new System.Drawing.Size(112, 42);
             this.btFKeyDoubleClick.TabIndex = 1;
             this.btFKeyDoubleClick.Text = "Set";
             this.btFKeyDoubleClick.UseVisualStyleBackColor = true;
@@ -616,10 +622,10 @@ namespace GazeToolBar
             // pnlFKeyHighlight6
             // 
             this.pnlFKeyHighlight6.Controls.Add(this.btClearFKeyDoubleClick);
-            this.pnlFKeyHighlight6.Location = new System.Drawing.Point(16, 165);
+            this.pnlFKeyHighlight6.Location = new System.Drawing.Point(16, 152);
             this.pnlFKeyHighlight6.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFKeyHighlight6.Name = "pnlFKeyHighlight6";
-            this.pnlFKeyHighlight6.Size = new System.Drawing.Size(116, 51);
+            this.pnlFKeyHighlight6.Size = new System.Drawing.Size(116, 47);
             this.pnlFKeyHighlight6.TabIndex = 9;
             // 
             // btClearFKeyDoubleClick
@@ -630,7 +636,7 @@ namespace GazeToolBar
             this.btClearFKeyDoubleClick.Location = new System.Drawing.Point(2, 2);
             this.btClearFKeyDoubleClick.Margin = new System.Windows.Forms.Padding(2);
             this.btClearFKeyDoubleClick.Name = "btClearFKeyDoubleClick";
-            this.btClearFKeyDoubleClick.Size = new System.Drawing.Size(112, 45);
+            this.btClearFKeyDoubleClick.Size = new System.Drawing.Size(112, 42);
             this.btClearFKeyDoubleClick.TabIndex = 2;
             this.btClearFKeyDoubleClick.Text = "Clear";
             this.btClearFKeyDoubleClick.UseVisualStyleBackColor = true;
@@ -642,10 +648,10 @@ namespace GazeToolBar
             this.pnlScroll.Controls.Add(this.pnlFKeyHighlight8);
             this.pnlScroll.Controls.Add(this.pnlFKeyHighlight7);
             this.pnlScroll.Controls.Add(this.pictureBox4);
-            this.pnlScroll.Location = new System.Drawing.Point(545, 82);
+            this.pnlScroll.Location = new System.Drawing.Point(545, 76);
             this.pnlScroll.Margin = new System.Windows.Forms.Padding(2);
             this.pnlScroll.Name = "pnlScroll";
-            this.pnlScroll.Size = new System.Drawing.Size(148, 253);
+            this.pnlScroll.Size = new System.Drawing.Size(148, 234);
             this.pnlScroll.TabIndex = 4;
             // 
             // lbScroll
@@ -653,7 +659,7 @@ namespace GazeToolBar
             this.lbScroll.AutoSize = true;
             this.lbScroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbScroll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbScroll.Location = new System.Drawing.Point(21, 230);
+            this.lbScroll.Location = new System.Drawing.Point(21, 212);
             this.lbScroll.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbScroll.Name = "lbScroll";
             this.lbScroll.Size = new System.Drawing.Size(60, 24);
@@ -663,10 +669,10 @@ namespace GazeToolBar
             // pnlFKeyHighlight8
             // 
             this.pnlFKeyHighlight8.Controls.Add(this.btClearFKeyScroll);
-            this.pnlFKeyHighlight8.Location = new System.Drawing.Point(21, 165);
+            this.pnlFKeyHighlight8.Location = new System.Drawing.Point(21, 152);
             this.pnlFKeyHighlight8.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFKeyHighlight8.Name = "pnlFKeyHighlight8";
-            this.pnlFKeyHighlight8.Size = new System.Drawing.Size(116, 51);
+            this.pnlFKeyHighlight8.Size = new System.Drawing.Size(116, 47);
             this.pnlFKeyHighlight8.TabIndex = 9;
             // 
             // btClearFKeyScroll
@@ -677,7 +683,7 @@ namespace GazeToolBar
             this.btClearFKeyScroll.Location = new System.Drawing.Point(2, 2);
             this.btClearFKeyScroll.Margin = new System.Windows.Forms.Padding(2);
             this.btClearFKeyScroll.Name = "btClearFKeyScroll";
-            this.btClearFKeyScroll.Size = new System.Drawing.Size(112, 45);
+            this.btClearFKeyScroll.Size = new System.Drawing.Size(112, 42);
             this.btClearFKeyScroll.TabIndex = 2;
             this.btClearFKeyScroll.Text = "Clear";
             this.btClearFKeyScroll.UseVisualStyleBackColor = true;
@@ -686,10 +692,10 @@ namespace GazeToolBar
             // pnlFKeyHighlight7
             // 
             this.pnlFKeyHighlight7.Controls.Add(this.btFKeyScroll);
-            this.pnlFKeyHighlight7.Location = new System.Drawing.Point(19, 108);
+            this.pnlFKeyHighlight7.Location = new System.Drawing.Point(19, 100);
             this.pnlFKeyHighlight7.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFKeyHighlight7.Name = "pnlFKeyHighlight7";
-            this.pnlFKeyHighlight7.Size = new System.Drawing.Size(116, 51);
+            this.pnlFKeyHighlight7.Size = new System.Drawing.Size(116, 47);
             this.pnlFKeyHighlight7.TabIndex = 8;
             // 
             // btFKeyScroll
@@ -700,7 +706,7 @@ namespace GazeToolBar
             this.btFKeyScroll.Location = new System.Drawing.Point(2, 2);
             this.btFKeyScroll.Margin = new System.Windows.Forms.Padding(2);
             this.btFKeyScroll.Name = "btFKeyScroll";
-            this.btFKeyScroll.Size = new System.Drawing.Size(112, 45);
+            this.btFKeyScroll.Size = new System.Drawing.Size(112, 42);
             this.btFKeyScroll.TabIndex = 1;
             this.btFKeyScroll.Text = "Set";
             this.btFKeyScroll.UseVisualStyleBackColor = true;
@@ -709,10 +715,10 @@ namespace GazeToolBar
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(19, 22);
+            this.pictureBox4.Location = new System.Drawing.Point(19, 20);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(114, 77);
+            this.pictureBox4.Size = new System.Drawing.Size(114, 71);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
@@ -723,19 +729,19 @@ namespace GazeToolBar
             this.pnlLeftClick.Controls.Add(this.pnlFKeyHighlight1);
             this.pnlLeftClick.Controls.Add(this.lbLeft);
             this.pnlLeftClick.Controls.Add(this.pictureBox1);
-            this.pnlLeftClick.Location = new System.Drawing.Point(87, 82);
+            this.pnlLeftClick.Location = new System.Drawing.Point(87, 76);
             this.pnlLeftClick.Margin = new System.Windows.Forms.Padding(2);
             this.pnlLeftClick.Name = "pnlLeftClick";
-            this.pnlLeftClick.Size = new System.Drawing.Size(148, 253);
+            this.pnlLeftClick.Size = new System.Drawing.Size(148, 234);
             this.pnlLeftClick.TabIndex = 0;
             // 
             // pnlFKeyHighlight2
             // 
             this.pnlFKeyHighlight2.Controls.Add(this.btClearFKeyLeftClick);
-            this.pnlFKeyHighlight2.Location = new System.Drawing.Point(18, 165);
+            this.pnlFKeyHighlight2.Location = new System.Drawing.Point(18, 152);
             this.pnlFKeyHighlight2.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFKeyHighlight2.Name = "pnlFKeyHighlight2";
-            this.pnlFKeyHighlight2.Size = new System.Drawing.Size(116, 51);
+            this.pnlFKeyHighlight2.Size = new System.Drawing.Size(116, 47);
             this.pnlFKeyHighlight2.TabIndex = 5;
             // 
             // btClearFKeyLeftClick
@@ -746,7 +752,7 @@ namespace GazeToolBar
             this.btClearFKeyLeftClick.Location = new System.Drawing.Point(1, 3);
             this.btClearFKeyLeftClick.Margin = new System.Windows.Forms.Padding(2);
             this.btClearFKeyLeftClick.Name = "btClearFKeyLeftClick";
-            this.btClearFKeyLeftClick.Size = new System.Drawing.Size(112, 45);
+            this.btClearFKeyLeftClick.Size = new System.Drawing.Size(112, 42);
             this.btClearFKeyLeftClick.TabIndex = 2;
             this.btClearFKeyLeftClick.Text = "Clear";
             this.btClearFKeyLeftClick.UseVisualStyleBackColor = true;
@@ -755,10 +761,10 @@ namespace GazeToolBar
             // pnlFKeyHighlight1
             // 
             this.pnlFKeyHighlight1.Controls.Add(this.btFKeyLeftClick);
-            this.pnlFKeyHighlight1.Location = new System.Drawing.Point(16, 105);
+            this.pnlFKeyHighlight1.Location = new System.Drawing.Point(16, 97);
             this.pnlFKeyHighlight1.Margin = new System.Windows.Forms.Padding(2);
             this.pnlFKeyHighlight1.Name = "pnlFKeyHighlight1";
-            this.pnlFKeyHighlight1.Size = new System.Drawing.Size(116, 51);
+            this.pnlFKeyHighlight1.Size = new System.Drawing.Size(116, 47);
             this.pnlFKeyHighlight1.TabIndex = 4;
             // 
             // btFKeyLeftClick
@@ -769,7 +775,7 @@ namespace GazeToolBar
             this.btFKeyLeftClick.Location = new System.Drawing.Point(2, 3);
             this.btFKeyLeftClick.Margin = new System.Windows.Forms.Padding(2);
             this.btFKeyLeftClick.Name = "btFKeyLeftClick";
-            this.btFKeyLeftClick.Size = new System.Drawing.Size(112, 45);
+            this.btFKeyLeftClick.Size = new System.Drawing.Size(112, 42);
             this.btFKeyLeftClick.TabIndex = 1;
             this.btFKeyLeftClick.Text = "Set";
             this.btFKeyLeftClick.UseVisualStyleBackColor = true;
@@ -780,7 +786,7 @@ namespace GazeToolBar
             this.lbLeft.AutoSize = true;
             this.lbLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLeft.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lbLeft.Location = new System.Drawing.Point(17, 230);
+            this.lbLeft.Location = new System.Drawing.Point(17, 212);
             this.lbLeft.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbLeft.Name = "lbLeft";
             this.lbLeft.Size = new System.Drawing.Size(60, 24);
@@ -790,10 +796,10 @@ namespace GazeToolBar
             // pictureBox1
             // 
             this.pictureBox1.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 22);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 20);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(116, 77);
+            this.pictureBox1.Size = new System.Drawing.Size(116, 71);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -859,9 +865,9 @@ namespace GazeToolBar
             this.pnlGeneral.Controls.Add(this.pnlFixationTimeOut);
             this.pnlGeneral.Controls.Add(this.panelOther);
             this.pnlGeneral.Controls.Add(this.panelPrecision);
-            this.pnlGeneral.Location = new System.Drawing.Point(12, 84);
+            this.pnlGeneral.Location = new System.Drawing.Point(12, 78);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(1326, 648);
+            this.pnlGeneral.Size = new System.Drawing.Size(1326, 598);
             this.pnlGeneral.TabIndex = 27;
             // 
             // btnGeneralSetting
@@ -873,7 +879,7 @@ namespace GazeToolBar
             this.btnGeneralSetting.Location = new System.Drawing.Point(2, 2);
             this.btnGeneralSetting.Margin = new System.Windows.Forms.Padding(2);
             this.btnGeneralSetting.Name = "btnGeneralSetting";
-            this.btnGeneralSetting.Size = new System.Drawing.Size(147, 48);
+            this.btnGeneralSetting.Size = new System.Drawing.Size(147, 44);
             this.btnGeneralSetting.TabIndex = 28;
             this.btnGeneralSetting.Text = "General Setting";
             this.btnGeneralSetting.UseVisualStyleBackColor = false;
@@ -888,7 +894,7 @@ namespace GazeToolBar
             this.btnShortCutKeySetting.Location = new System.Drawing.Point(2, 2);
             this.btnShortCutKeySetting.Margin = new System.Windows.Forms.Padding(1);
             this.btnShortCutKeySetting.Name = "btnShortCutKeySetting";
-            this.btnShortCutKeySetting.Size = new System.Drawing.Size(147, 48);
+            this.btnShortCutKeySetting.Size = new System.Drawing.Size(147, 44);
             this.btnShortCutKeySetting.TabIndex = 29;
             this.btnShortCutKeySetting.Text = "Shortcut Keys";
             this.btnShortCutKeySetting.UseVisualStyleBackColor = false;
@@ -900,7 +906,7 @@ namespace GazeToolBar
             this.pnlGeneralButton.Location = new System.Drawing.Point(2, 2);
             this.pnlGeneralButton.Margin = new System.Windows.Forms.Padding(2);
             this.pnlGeneralButton.Name = "pnlGeneralButton";
-            this.pnlGeneralButton.Size = new System.Drawing.Size(151, 52);
+            this.pnlGeneralButton.Size = new System.Drawing.Size(151, 48);
             this.pnlGeneralButton.TabIndex = 22;
             // 
             // pnlKeysButton
@@ -909,7 +915,7 @@ namespace GazeToolBar
             this.pnlKeysButton.Location = new System.Drawing.Point(370, 2);
             this.pnlKeysButton.Margin = new System.Windows.Forms.Padding(2);
             this.pnlKeysButton.Name = "pnlKeysButton";
-            this.pnlKeysButton.Size = new System.Drawing.Size(151, 52);
+            this.pnlKeysButton.Size = new System.Drawing.Size(151, 48);
             this.pnlKeysButton.TabIndex = 22;
             // 
             // pnlSwitchSetting
@@ -919,15 +925,15 @@ namespace GazeToolBar
             this.pnlSwitchSetting.Controls.Add(this.pnlGeneralButton);
             this.pnlSwitchSetting.Location = new System.Drawing.Point(409, 0);
             this.pnlSwitchSetting.Name = "pnlSwitchSetting";
-            this.pnlSwitchSetting.Size = new System.Drawing.Size(523, 56);
+            this.pnlSwitchSetting.Size = new System.Drawing.Size(523, 52);
             this.pnlSwitchSetting.TabIndex = 28;
             // 
             // Settings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1269, 753);
+            this.ClientSize = new System.Drawing.Size(1269, 695);
             this.Controls.Add(this.pnlSwitchSetting);
             this.Controls.Add(this.panelSaveAndCancel);
             this.Controls.Add(this.pnlGeneral);
@@ -1038,8 +1044,6 @@ namespace GazeToolBar
         private Button btClearFKeyScroll;
         private Button btFKeyScroll;
         private PictureBox pictureBox4;
-        private Panel pnlDragAndDrop;
-        private Label lbDragAndDrop;
         private Button btClearFKeyDrapAndDrop;
         private Button btFKeyDrapAndDrop;
         private PictureBox pictureBox5;

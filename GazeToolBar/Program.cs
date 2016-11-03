@@ -32,23 +32,7 @@ namespace GazeToolBar
         {
             //eyeXHost.Start();
             path = Application.StartupPath + "\\" + "Settings.json";
-            if (!File.Exists(path))
-            {
-                SettingJSON defaultSetting = new SettingJSON();
-                //TODO: Need to be replaced
-
-                //defaultSetting.language = "    English\r\n(United States)";
-                //defaultSetting.position = "Right";
-                //defaultSetting.precision = 0;
-                //defaultSetting.selection = "GAZE";
-                //defaultSetting.size = "SMALL";
-                //defaultSetting.soundFeedback = false;
-                //defaultSetting.speed = 0;
-                //defaultSetting.typingSpeed = 0;
-                //defaultSetting.wordPrediction = false;
-                string JSONstr = JsonConvert.SerializeObject(defaultSetting);
-                File.AppendAllText(path, JSONstr);
-            }
+            ReadWriteJson();
             ReadWriteJson();
             onStartUp = AutoStart.IsOn();
 
@@ -75,6 +59,12 @@ namespace GazeToolBar
                 //defaultSetting.speed = 0;
                 //defaultSetting.typingSpeed = 0;
                 //defaultSetting.wordPrediction = false;
+                defaultSetting.fixationTimeLength = 1500;
+                defaultSetting.fixationTimeOut = 7000;
+                defaultSetting.leftClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
+                defaultSetting.doubleClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
+                defaultSetting.rightClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
+                defaultSetting.scoll = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
             }

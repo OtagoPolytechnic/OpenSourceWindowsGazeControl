@@ -8,10 +8,11 @@ namespace GazeToolBar
 {
     public class SettingJSON
     {
-        public float fixationTimeLength { get; set; }
-        public float fixationTimeOut { get; set; }
-        public int leftClick { get; set; }
-        public int rightClick { get; set; }
-        public int scoll { get; set; }
+        public int fixationTimeLength { get; set; }
+        public int fixationTimeOut { get; set; }
+        public string leftClick { get; set; }
+        public string doubleClick { get; set; }
+        public string rightClick { get; set; }
+        public string scoll { get; set; }
     }
 }

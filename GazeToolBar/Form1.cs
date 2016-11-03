@@ -25,7 +25,7 @@ namespace GazeToolBar
         private MenuItem menuItemExit;
         private MenuItem menuItemStartOnOff;
         private MenuItem settingsItem;
-        public StateManager stateManager; 
+        public StateManager stateManager;
         private static FormsEyeXHost eyeXHost; 
 
         //Allocate memory location for KeyboardHook and worker.
@@ -126,9 +126,15 @@ namespace GazeToolBar
             //    Edge = AppBarEdges.Right;
             //}
             stateManager = new StateManager(this, shortCutKeyWorker, eyeXHost);
-            timer2.Enabled = true;
-
-            
+            stateManager.fixationWorker.FixationDetectionTimeLength = Program.readSettings.fixationTimeLength;
+            stateManager.fixationWorker.FixationTimeOutLength = Program.readSettings.fixationTimeOut;
+            stateManager.fixationWorker.fixationTimer.Interval = Program.readSettings.fixationTimeLength;
+            stateManager.fixationWorker.timeOutTimer.Interval = Program.readSettings.fixationTimeOut;
+            shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = Program.readSettings.leftClick;
+            shortCutKeyWorker.keyAssignments[ActionToBePerformed.DoubleClick] = Program.readSettings.doubleClick;
+            shortCutKeyWorker.keyAssignments[ActionToBePerformed.RightClick] = Program.readSettings.rightClick;
+            shortCutKeyWorker.keyAssignments[ActionToBePerformed.Scroll] = Program.readSettings.scoll;
+            timer2.Enabled = true;           
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

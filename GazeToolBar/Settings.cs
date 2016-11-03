@@ -231,6 +231,9 @@ namespace GazeToolBar
                 //setting.soundFeedback = onOff[3];
                 //setting.speed = trackBarFixTimeOut.Value;
                 //setting.wordPrediction = onOff[2];
+
+                
+
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
                 //MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -460,6 +463,16 @@ namespace GazeToolBar
         private void btnFixTimeOutPlus_Click(object sender, EventArgs e)
         {
             changeTrackBarValue(trackBarFixTimeOut, "I");
+        }
+
+        private void trackBarFixTimeLength_ValueChanged(object sender, EventArgs e)
+        {
+            //form1.stateManager.fixationWorker.fixationTimer.Interval;
+        }
+
+        private void trackBarFixTimeOut_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
