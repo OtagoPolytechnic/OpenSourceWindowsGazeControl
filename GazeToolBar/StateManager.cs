@@ -216,6 +216,7 @@ namespace GazeToolBar
                     //set keyboard toolbar buttons to active
                     break;
                 case SystemState.ActionButtonSelected:
+                    scrollWorker.stopScroll();
                     if (!SystemFlags.FixationRunning)
                     {
                         fixationWorker.StartDetectingFixation();
