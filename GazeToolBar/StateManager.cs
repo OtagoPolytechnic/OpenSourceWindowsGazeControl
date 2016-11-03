@@ -35,7 +35,7 @@ namespace GazeToolBar
 
     public class StateManager
     {
-        FixationDetection fixationWorker;
+        public FixationDetection fixationWorker;
         ScrollControl scrollWorker;
         Form1 toolbar;
         ZoomLens zoomer;

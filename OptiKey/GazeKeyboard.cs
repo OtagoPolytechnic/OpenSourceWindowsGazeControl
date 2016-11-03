@@ -187,19 +187,17 @@ namespace OptiKey
 
             
             mainWindow.Closed += (_, __) => ReleaseKeysOnApplicationExit(keyStateService, publishService);
-
+            mainWindow.IsVisibleChanged += (_, __) => ReleaseKeysOnApplicationExit(keyStateService, publishService);
             
             return mainWindow;
         }
 
         public static void ReleaseKeysOnApplicationExit(IKeyStateService keyStateService, IPublishService publishService)
-        {
-            
+        {            
             if (keyStateService.SimulateKeyStrokes)
             {
                 publishService.ReleaseAllDownKeys();
-            }
-            
+            }            
         }
 
         private static void AttachUnhandledExceptionHandlers()

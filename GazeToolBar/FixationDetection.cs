@@ -39,8 +39,8 @@ namespace GazeToolBar
 
        
         //Timer to measure if a how long it has been since the fixation started. 
-        private Timer fixationTimer;
-        private Timer timeOutTimer;
+        public Timer fixationTimer;
+        public Timer timeOutTimer;
 
         //Fixation data stream, used to attached to fixation events.
         //public static FixationDataStream fixationPointDataStream;

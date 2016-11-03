@@ -10,6 +10,14 @@ namespace GazeToolBar
     */
     static class ValueNeverChange
     {
+        public static readonly int MAX_TIME_LENGTH = 2500;
+        public static readonly int MIN_TIME_LENGTH = 500;
+        public static readonly int GAP_TIME_LENGTH = 200;
+        public static readonly int DEFAULT_TIME_LENGTH = 1500;
+        public static readonly int MAX_TIME_OUT = 9500;
+        public static readonly int MIN_TIME_OUT = 4500;
+        public static readonly int GAP_TIME_OUT = 500;
+        public static readonly int DEFAULT_TIME_OUT = 7000;
         public static readonly int DELAY_MILLISECONDS = 1500;
         public static readonly double FORM_WEIGTH_PERCENTAGE = 0.1;
         public static readonly string RES_NAME = "GazeToolBar";

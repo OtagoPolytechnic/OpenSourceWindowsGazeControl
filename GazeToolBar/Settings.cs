@@ -231,6 +231,14 @@ namespace GazeToolBar
                 //setting.soundFeedback = onOff[3];
                 //setting.speed = trackBarFixTimeOut.Value;
                 //setting.wordPrediction = onOff[2];
+
+                setting.fixationTimeLength = trackBarFixTimeLength.Value * ValueNeverChange.GAP_TIME_LENGTH + ValueNeverChange.MIN_TIME_LENGTH;
+                setting.fixationTimeOut = trackBarFixTimeOut.Value * ValueNeverChange.GAP_TIME_OUT + ValueNeverChange.MIN_TIME_OUT;
+                setting.leftClick = lbLeft.Text;
+                setting.doubleClick = lbDouble.Text;
+                setting.rightClick = lbRight.Text;
+                setting.scoll = lbScroll.Text;
+
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
                 //MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -275,6 +283,12 @@ namespace GazeToolBar
 
 
             //TODO: Need to be replaced
+            trackBarFixTimeLength.Value = (Program.readSettings.fixationTimeLength - ValueNeverChange.MIN_TIME_LENGTH) / ValueNeverChange.GAP_TIME_LENGTH;
+            trackBarFixTimeOut.Value = (Program.readSettings.fixationTimeOut - ValueNeverChange.MIN_TIME_OUT) / ValueNeverChange.GAP_TIME_OUT;
+            lbLeft.Text = Program.readSettings.leftClick;
+            lbDouble.Text = Program.readSettings.doubleClick;
+            lbRight.Text = Program.readSettings.rightClick;
+            lbScroll.Text = Program.readSettings.scoll;
 
             //if (Program.readSettings.selection == GazeOrSwitch.GAZE.ToString())
             //{
@@ -460,6 +474,18 @@ namespace GazeToolBar
         private void btnFixTimeOutPlus_Click(object sender, EventArgs e)
         {
             changeTrackBarValue(trackBarFixTimeOut, "I");
+        }
+
+        private void trackBarFixTimeLength_ValueChanged(object sender, EventArgs e)
+        {
+            form1.stateManager.fixationWorker.FixationDetectionTimeLength = trackBarFixTimeLength.Value * ValueNeverChange.GAP_TIME_LENGTH + ValueNeverChange.MIN_TIME_LENGTH;
+            form1.stateManager.fixationWorker.fixationTimer.Interval = trackBarFixTimeLength.Value * ValueNeverChange.GAP_TIME_LENGTH + ValueNeverChange.MIN_TIME_LENGTH;
+        }
+
+        private void trackBarFixTimeOut_ValueChanged(object sender, EventArgs e)
+        {
+            form1.stateManager.fixationWorker.FixationTimeOutLength = trackBarFixTimeOut.Value * ValueNeverChange.GAP_TIME_OUT + ValueNeverChange.MIN_TIME_OUT;
+            form1.stateManager.fixationWorker.timeOutTimer.Interval = trackBarFixTimeOut.Value * ValueNeverChange.GAP_TIME_OUT + ValueNeverChange.MIN_TIME_OUT;
         }
     }
 }
