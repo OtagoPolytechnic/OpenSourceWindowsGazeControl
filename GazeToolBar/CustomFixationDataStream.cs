@@ -193,8 +193,7 @@ namespace GazeToolBar
         /// <summary>
         /// Calculates the average location of the users gaze, could be combined into calculateVariance() method.
         /// </summary>
-        /// <returns></returns>
-
+        /// <returns>Average of buffers current set of data</returns>
         private GazePoint average()
         {
             double xTotal = 0;
