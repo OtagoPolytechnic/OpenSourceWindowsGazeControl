@@ -377,7 +377,7 @@ namespace OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool AutoCapitalise {
             get {
@@ -1222,11 +1222,12 @@ namespace OptiKey.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Upper")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Lower")]
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public global::OptiKey.Enums.Case KeyCase {
             get {
-                return ((global::OptiKey.Enums.Case)(this["KeyCase"]));
+                //return ((global::OptiKey.Enums.Case)(this["KeyCase"]));
+                return Enums.Case.Lower;
             }
             set {
                 this["KeyCase"] = value;
