@@ -111,6 +111,8 @@ namespace GazeToolBar
                 if (fixationDataBucket.Status == EFixationStreamEventType.Start)
                 {
                     fixationTimer.Start();
+                    //increment timeout interval so a fixation doesn't get cut off.
+                    timeOutTimer.Interval = FixationTimeOutLength;
                     fixationProgressStartTimeStamp = fixationDataBucket.TimeStamp;
 
                     //Instantiate new point smoother, this clears out and previous in the ring buffer.
