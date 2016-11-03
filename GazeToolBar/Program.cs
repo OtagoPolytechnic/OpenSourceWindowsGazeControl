@@ -59,8 +59,8 @@ namespace GazeToolBar
                 //defaultSetting.speed = 0;
                 //defaultSetting.typingSpeed = 0;
                 //defaultSetting.wordPrediction = false;
-                defaultSetting.fixationTimeLength = 1500;
-                defaultSetting.fixationTimeOut = 7000;
+                defaultSetting.fixationTimeLength = ValueNeverChange.DEFAULT_TIME_LENGTH;
+                defaultSetting.fixationTimeOut = ValueNeverChange.DEFAULT_TIME_OUT;
                 defaultSetting.leftClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 defaultSetting.doubleClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 defaultSetting.rightClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;

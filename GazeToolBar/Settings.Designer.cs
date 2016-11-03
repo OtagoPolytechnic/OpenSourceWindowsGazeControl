@@ -171,13 +171,11 @@ namespace GazeToolBar
             // 
             this.trackBarFixTimeLength.BackColor = System.Drawing.Color.Black;
             this.trackBarFixTimeLength.Location = new System.Drawing.Point(52, 8);
-            this.trackBarFixTimeLength.Maximum = 11;
-            this.trackBarFixTimeLength.Minimum = 1;
             this.trackBarFixTimeLength.Name = "trackBarFixTimeLength";
             this.trackBarFixTimeLength.Size = new System.Drawing.Size(896, 45);
             this.trackBarFixTimeLength.TabIndex = 12;
             this.trackBarFixTimeLength.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarFixTimeLength.Value = 6;
+            this.trackBarFixTimeLength.Value = 5;
             this.trackBarFixTimeLength.ValueChanged += new System.EventHandler(this.trackBarFixTimeLength_ValueChanged);
             // 
             // panelPrecision
@@ -264,14 +262,12 @@ namespace GazeToolBar
             // trackBarFixTimeOut
             // 
             this.trackBarFixTimeOut.Location = new System.Drawing.Point(52, 12);
-            this.trackBarFixTimeOut.Maximum = 11;
-            this.trackBarFixTimeOut.Minimum = 1;
             this.trackBarFixTimeOut.Name = "trackBarFixTimeOut";
             this.trackBarFixTimeOut.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarFixTimeOut.Size = new System.Drawing.Size(894, 45);
             this.trackBarFixTimeOut.TabIndex = 15;
             this.trackBarFixTimeOut.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarFixTimeOut.Value = 6;
+            this.trackBarFixTimeOut.Value = 5;
             this.trackBarFixTimeOut.ValueChanged += new System.EventHandler(this.trackBarFixTimeOut_ValueChanged);
             // 
             // pnlFixationTimeOut
