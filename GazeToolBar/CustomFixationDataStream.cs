@@ -22,13 +22,13 @@ namespace GazeToolBar
         GazePointDataStream gazeStream;
 
         //Ring buffer size
-        int bufferSize = 45;
+        int bufferSize = 50;
         int bufferCurrentIndex = 0;
         int bufferFullIndex = 0;
 
         //Fixation variance threshold
         double xFixationThreashold = .9;
-        double yFixationThreashold = .7;
+        double yFixationThreashold = .3;
 
         //ring buffer arrays.
         double[] xBuffer;
@@ -193,8 +193,7 @@ namespace GazeToolBar
         /// <summary>
         /// Calculates the average location of the users gaze, could be combined into calculateVariance() method.
         /// </summary>
-        /// <returns></returns>
-
+        /// <returns>Average of buffers current set of data</returns>
         private GazePoint average()
         {
             double xTotal = 0;

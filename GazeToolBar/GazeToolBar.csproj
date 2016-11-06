@@ -87,9 +87,9 @@
       <HintPath>..\..\lib\x64\Tobii.EyeX.Client.Net20.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="WindowsInput, Version=0.2.0.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+    <Reference Include="WindowsInput, Version=1.0.4.1, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\OptiKey\bin\Debug\WindowsInput.dll</HintPath>
+      <HintPath>..\lib\WindowsInput.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
