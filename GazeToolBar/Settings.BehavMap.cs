@@ -79,22 +79,22 @@ namespace GazeToolBar
         }
         private void OnbtnFixTimeOutPlus_Click(object sender, GazeAwareEventArgs e)
         {
-            btnFixTimeOutPlus.PerformClick();
+            if (e.HasGaze) btnFixTimeOutPlus.PerformClick();
         }
 
         private void OnbtnFixTimeOutMins_Click(object sender, GazeAwareEventArgs e)
         {
-            btnFixTimeOutMins.PerformClick();
+            if (e.HasGaze) btnFixTimeOutMins.PerformClick();
         }
 
         private void OnbtnFixTimeLengthPlus_Click(object sender, GazeAwareEventArgs e)
         {
-            btnFixTimeLengthPlus.PerformClick();
+            if (e.HasGaze) btnFixTimeLengthPlus.PerformClick();
         }
 
         private void OnbtnFixTimeLengthMins_Click(object sender, GazeAwareEventArgs e)
         {
-            btnFixTimeLengthMins.PerformClick();
+            if (e.HasGaze) btnFixTimeLengthMins.PerformClick();
         }
 
         private void OnbtnCancel_Click(object sender, GazeAwareEventArgs e)
@@ -109,7 +109,7 @@ namespace GazeToolBar
 
         private void OnbtnAutoStart_Click(object sender, GazeAwareEventArgs e)
         {
-            btnAutoStart.PerformClick();
+            if (e.HasGaze) btnAutoStart.PerformClick();
         }
 
         private void OnBtnGeneralSettingClick(object sender, GazeAwareEventArgs e)
