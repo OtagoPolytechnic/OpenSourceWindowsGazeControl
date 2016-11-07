@@ -299,7 +299,7 @@ namespace GazeToolBar
 
         private void DrawTimer_Tick(object sender, EventArgs e)
         {
-            offScreenGraphics.DrawImage(zoomedScreenshot, 0, 0, zoomedScreenshot.Width, zoomedScreenshot.Height);
+            offScreenGraphics.DrawImage(zoomedScreenshot, 0, 0, ZOOMLENS_SIZE, ZOOMLENS_SIZE);
 
             gazeHighlight.DrawHightlight();
 
