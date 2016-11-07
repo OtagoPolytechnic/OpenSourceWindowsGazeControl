@@ -164,7 +164,7 @@ namespace GazeToolBar
             timeOutTimer.Stop();
             //Once the fixation has run, set the state of fixation detection back to waiting.
             fixationState = EFixationState.WaitingForFixationRequest;
-            SystemFlags.Gaze = true;
+            SystemFlags.gaze = true;
             //Debug
             Console.WriteLine("Timer reached event, running required action");
         }

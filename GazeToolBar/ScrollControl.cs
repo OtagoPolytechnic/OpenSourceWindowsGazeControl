@@ -204,7 +204,7 @@ namespace GazeToolBar
        //Stop Scroll control
         public void stopScroll()
         {//Raise flag with state manager
-            SystemFlags.Scrolling = false;
+            SystemFlags.scrolling = false;
             //Stop timer from running event to check if scrolling is needed.
             scrollStepTimer.Stop();
         }
