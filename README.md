@@ -1,3 +1,4 @@
+
 # OpenSourceWindowsGazeControl
 Developers should check out the wiki for detailed information https://github.com/OtagoPolytechnic/OpenSourceWindowsGazeControl/wiki
 
@@ -28,3 +29,5 @@ In Switch Mode the user selecets an action in the same way, but it removes the n
 The scroll function works similarly to clicking, once the action has begun the user can control the movement of the page by moving their eyes up or down the screen to perform a scroll.
 
 ## Adjusting The Settings
+
+Adjusting the settings by selecting the settings icon on the gaze toolbar, or right click on the notify icon and then select settings.
