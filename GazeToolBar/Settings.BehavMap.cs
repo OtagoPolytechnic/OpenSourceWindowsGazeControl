@@ -13,7 +13,7 @@ namespace GazeToolBar
     {
 
         int buttonClickDelay = 500;
-        String notAssigned = "Key not assigned";
+        String notAssigned = "N/A";
 
         private void connectBehaveMap()
         {
