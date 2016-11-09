@@ -47,6 +47,7 @@ namespace GazeToolBar
         //EventHandler<FixationEventArgs> FixationEventStreamDelegate;
        
         public int FixationDetectionTimeLength { get; set; }
+        int FixationExtensionBuffer;
         public int FixationTimeOutLength { get; set; }
         //State variable of FixationDetection class.
 
@@ -74,6 +75,7 @@ namespace GazeToolBar
             //Timer to run selected interaction with OS\aapplication user is trying to interact with, once gaze is longer than specified limit
             //the delegate that has been set in SelectedFixationAcion is run but the timer elapsed event.
             FixationDetectionTimeLength = 1500;
+            FixationExtensionBuffer = 100;
 
             FixationTimeOutLength = 7000;
 
@@ -112,7 +114,7 @@ namespace GazeToolBar
                 {
                     fixationTimer.Start();
                     //increment timeout interval so a fixation doesn't get cut off.
-                    timeOutTimer.Interval += FixationTimeOutLength;
+                    timeOutTimer.Interval += FixationDetectionTimeLength + FixationExtensionBuffer; ;
 
                     Console.WriteLine(timeOutTimer.Interval);
                     fixationProgressStartTimeStamp = fixationDataBucket.TimeStamp;
