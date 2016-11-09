@@ -112,8 +112,11 @@ namespace GazeToolBar
                 {
                     fixationTimer.Start();
                     //increment timeout interval so a fixation doesn't get cut off.
-                    timeOutTimer.Interval = FixationTimeOutLength;
+                    timeOutTimer.Interval += FixationTimeOutLength;
+
+                    Console.WriteLine(timeOutTimer.Interval);
                     fixationProgressStartTimeStamp = fixationDataBucket.TimeStamp;
+
 
                     //Instantiate new point smoother, this clears out and previous in the ring buffer.
                     pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
