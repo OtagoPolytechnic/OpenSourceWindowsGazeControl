@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ *  Class: GazeToolBar
+ *  Name: Richard Horne
+ *  Date: 11/11/2016
+ *  Description: Custom data bucket, information used to generate fixations in the FixationDetection class. 
+ */
+
 namespace GazeToolBar
 {
     /// <summary>
@@ -11,11 +18,6 @@ namespace GazeToolBar
     /// </summary>
     public enum EFixationStreamEventType {Waiting, Start, Middle, End }
 
-
-
-    /// <summary>
-    /// Custom data bucket, information used to generate fixations in the FixationDetection class. 
-    /// </summary>
     public class CustomFixationEventArgs : EventArgs
     {
         //Fixation data type
@@ -34,10 +36,6 @@ namespace GazeToolBar
             X = x;
             Y = y;
         }
-
-
-
-
 
     }
 }

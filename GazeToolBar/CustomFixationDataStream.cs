@@ -9,12 +9,19 @@ using Tobii.EyeX.Client;
 using System.Threading;
 using EyeXFramework.Forms;
 
+/*
+ *  Class: CustomFixationDataStream
+ *  Name: Richard Horne
+ *  Date: 11/11/2016
+ *  Description: Custom fixation datastream, Monitors stream of XY coordinates of a users gaze, and from this data calculates the standard deviation variance from the gaze average. 
+ *  It then raises appropriate events when the users gaze is moving less than a specified threshold.
+ */
+
 
 namespace GazeToolBar
 {
     /// <summary>
-    /// Custom fixation datastream, Monitors stream of XY coordinates of a users gaze, and from this data calculates the standard deviation variance from the gaze average. IT then raises
-    /// appropriate events when the users gaze is moving less than a specified threshold.
+    /// 
     /// </summary>
     public class CustomFixationDataStream
     {

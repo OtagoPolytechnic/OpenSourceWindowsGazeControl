@@ -7,10 +7,18 @@ using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Windows.Input;
 
-//Description: A class to enable access globally keyboard events.
-//Purpose : capture all keyboard input even when gazetoolbar is not the top level of windows or has focus, as default c# keyboard events to not work when the from is not top level or in focus. This will enable further
-//functionality of the gaze control software where a user can set a key or physical switch to call a function from the gaze tool bar with out looking
-//at the tool bar to select a function and enable further streamlined use.
+
+
+/*
+ *  Class: KeyboardHook
+ *  Name: Richard Horne
+ *  Date: 11/11/2016
+ *  Description: A class to enable access globally keyboard events.
+ *  Purpose : capture all keyboard input even when gazetoolbar is not the top level of windows or has focus, as default c# keyboard events to not work when the from is not top level or in focus. This will enable further
+ *  functionality of the gaze control software where a user can set a key or physical switch to call a function from the gaze tool bar with out looking
+ *  at the tool bar to select a function and enable further streamlined use.
+ */
+
 
 namespace GazeToolBar
 {
@@ -72,7 +80,7 @@ namespace GazeToolBar
  
          //Start hook
         public void HookKeyboard()
-        {//pass deledate that points at callback method into SetWindowsHookEx, and store pointer to in hookID
+        {//pass delegate that points at callback method into SetWindowsHookEx, and store pointer to in hookID
             hookID = SetHook(LowLevelKBhookDelegate);
         }
  
@@ -84,7 +92,7 @@ namespace GazeToolBar
  
         private IntPtr SetHook(LowLevelKeyboardProc proc)
         {
-            //not sure , something to do with getting the process of this application and passing it in with the hook.
+            //get the process of this application and passing it in with the hook.
             using (Process curProcess = Process.GetCurrentProcess())
             using (ProcessModule curModule = curProcess.MainModule)
             {

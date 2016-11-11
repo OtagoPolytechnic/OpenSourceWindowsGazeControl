@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+*  Class: PointSmoother
+*  Name: Richard Horne
+*  Date: 11/11/2016
+*  Description: A class to take a stream of points and fromt he collection of points return a average point. used to smooth out X and Y coordinates.
+*/
+
 namespace GazeToolBar
 {
     /// <summary>
@@ -22,7 +29,6 @@ namespace GazeToolBar
     }
 
 
-
     public class PointSmoother
     {
         //Set Fields
@@ -34,8 +40,6 @@ namespace GazeToolBar
         int bufferFullIndex;
         double[] xBuffer;
         double[] yBuffer;
-
-
 
         //Create new instance and set buffer size
         public PointSmoother(int BufferSize)

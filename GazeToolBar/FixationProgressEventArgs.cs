@@ -4,9 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+/*
+ *  Class: FixationProgressEventArgs
+ *  Name: Richard Horne
+ *  Date: 11/11/2016
+ *  Description: Event Raised by Fixation detection during the course of a running fixation detection, the event contains the percentage of how far through the fixation is to completion.
+ */
+
 namespace GazeToolBar
 {
-    // Event Raised by Fixation detection during the course of a running fixation detection, the event contains the percentage of how far through the fixation is to completion.
     public class FixationProgressEventArgs : EventArgs
     {
         public int ProgressPercent { get; set; }

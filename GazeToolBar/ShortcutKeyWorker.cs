@@ -11,12 +11,16 @@ using System.Drawing;
 using EyeXFramework.Forms;
 
 namespace GazeToolBar
-{
+{/*
+ *  Class: ShortcutKeyWorker
+ *  Name: Richard Horne
+ *  Date: 11/11/2016
+ *  Description: Check for keyboard key press events, and on a key press event if mapped to a GazeToolbarFunction signal state machine to proceed with requested function.
+ */
 
     public class ShortcutKeyWorker
     {
         
-
         //Fields
         GazePointDataStream gazeStream;
         EventHandler<GazePointEventArgs> gazeDel;
@@ -51,7 +55,8 @@ namespace GazeToolBar
             keyBoardHook.OnKeyPressed += RunKeyFunction;
         }
 
-        //Test functionality, tests ok, next step is to allow the user to program in and assign different keys to different gazetoolbar functions via the settings form.
+        //Convert pressed key into a string representation, then check if that key has been assigned to any of the functions stored 
+        //in the keyAssignments dictionary, if found signal state manager to proceed with function
         public void RunKeyFunction(object o, HookedKeyboardEventArgs pressedKey)
         {
 

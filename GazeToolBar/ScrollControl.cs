@@ -10,6 +10,15 @@ using System.Drawing;
 using System.Timers;
 using EyeXFramework.Forms;
 
+
+/*
+ *  Class: ScrollControl
+ *  Name: Richard Horne
+ *  Date: 11/11/2016
+ *  Description: Tracks a users gaze and computes this into actions that scroll the in-focus window up, down, left and right.
+ */
+
+
 namespace GazeToolBar
 {
     // Struct that is used to define the bounds of the dead zone(zone where when users is looking there is no scrolling input to the current window that has focus.
