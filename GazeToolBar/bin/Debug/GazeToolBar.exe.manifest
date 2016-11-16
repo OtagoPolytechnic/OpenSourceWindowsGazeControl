@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+<<<<<<< HEAD
   <asmv1:assemblyIdentity name="GazeToolBar.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+=======
+  <asmv1:assemblyIdentity name="GazeToolBar.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+>>>>>>> 517db4f37f343084088ab6675c2a6e995928ae8f
   <description asmv2:iconFile="Gaze.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -67,14 +71,22 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< HEAD
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1962936">
+=======
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1961912">
+>>>>>>> 517db4f37f343084088ab6675c2a6e995928ae8f
       <assemblyIdentity name="GazeToolBar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>Tlj02fGtnEtqhMxesighzLBA5HbkeaUjL+YvwmJ7bDM=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>cT3o4PTSRTOfj4QmzM8oKzg/fsCNLJeQxUHwAwB1Kdg=</dsig:DigestValue>
+>>>>>>> 517db4f37f343084088ab6675c2a6e995928ae8f
       </hash>
     </dependentAssembly>
   </dependency>
@@ -139,14 +151,22 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< HEAD
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OptiKey.exe" size="4062720">
+=======
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OptiKey.exe" size="4062208">
+>>>>>>> 517db4f37f343084088ab6675c2a6e995928ae8f
       <assemblyIdentity name="OptiKey" version="2.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>e1u6DL9ciQ2Lg62ABNZzyjmCAt7jSdArmGQsPXpcgrI=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>b9B0623IUpFLrushz6ki21gkF6DTzMJnZvsZaaOD7tQ=</dsig:DigestValue>
+>>>>>>> 517db4f37f343084088ab6675c2a6e995928ae8f
       </hash>
     </dependentAssembly>
   </dependency>
@@ -158,7 +178,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>mrjPVNlZJWlnZ/AGzKCVaoSzhYG4g67dzE5sxA9SA0U=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>ukfmS7dbXjS6LIhCwqz41NheT/1AbEZqOg08S+CcMKU=</dsig:DigestValue>
+>>>>>>> 517db4f37f343084088ab6675c2a6e995928ae8f
       </hash>
     </dependentAssembly>
   </dependency>
@@ -170,7 +194,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>ygqpIehwNBeNkquSTDCD2lPuto1Es0T6wClNpdeNbG0=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>mJ/QfYo7bDrEKebaaC8HEWxsVaMkLPbTEhFUV3tmWds=</dsig:DigestValue>
+>>>>>>> 517db4f37f343084088ab6675c2a6e995928ae8f
       </hash>
     </dependentAssembly>
   </dependency>
@@ -182,7 +210,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>CslTB07yf21R5e21Tl5dlDbIltpysYRGZgOkzr00XCE=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>F/kWfjld2tqCfC7g+7KunaHqG4ri5/t5221OJ88Es+M=</dsig:DigestValue>
+>>>>>>> 517db4f37f343084088ab6675c2a6e995928ae8f
       </hash>
     </dependentAssembly>
   </dependency>
@@ -194,7 +226,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>GcDjkRl6FiY68ZEUB+v+IK8L5BAnB0A7z9bOhjPpypM=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>+XREDrvmSMOCQtRbvI31+veOX3NBTUkvVx1AfIC79Q8=</dsig:DigestValue>
+>>>>>>> 517db4f37f343084088ab6675c2a6e995928ae8f
       </hash>
     </dependentAssembly>
   </dependency>
