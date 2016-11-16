@@ -114,7 +114,7 @@ namespace GazeToolBar
                 {
                     fixationTimer.Start();
                     //increment timeout interval so a fixation doesn't get cut off.
-                    timeOutTimer.Interval += FixationDetectionTimeLength + FixationExtensionBuffer; ;
+                    //timeOutTimer.Interval += FixationDetectionTimeLength + FixationExtensionBuffer; ;
 
                     Console.WriteLine(timeOutTimer.Interval);
                     fixationProgressStartTimeStamp = fixationDataBucket.TimeStamp;
